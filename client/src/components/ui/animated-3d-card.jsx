@@ -1,0 +1,346 @@
+import React, { useState, useCallback, useMemo, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
+import { isCompactViewport } from '../../motion/config';
+
+/** Unified dark charcoal + soft warm tint — orange only as accent, never full-card fill */
+export const THEMES = {
+  primary: 'from-[#1a1612] via-[#12100e] to-[#080808]',
+  secondary: 'from-[#1c1814] via-[#141210] to-[#090909]',
+  accent: 'from-[#1b1713] via-[#131110] to-[#070707]',
+  success: 'from-[#181614] via-[#11100e] to-[#080808]',
+  warning: 'from-[#1a1612] via-[#13110f] to-[#090909]',
+  danger: 'from-[#191512] via-[#12100e] to-[#080808]',
+  info: 'from-[#171614] via-[#11100f] to-[#070707]',
+  neutral: 'from-[#181614] via-[#121110] to-[#080808]',
+};
+
+const SIZES = {
+  sm: 'min-h-56 h-auto md:h-64',
+  md: 'min-h-64 h-auto md:h-80',
+  lg: 'min-h-72 h-auto md:h-96',
+};
+
+const VARIANTS = {
+  default: 'border border-white/[0.08] shadow-lg hover:border-white/15 hover:shadow-2xl',
+  minimal: 'border border-white/10 shadow-md hover:shadow-lg',
+  premium:
+    'border border-white/[0.1] shadow-[0_16px_40px_rgba(0,0,0,0.45)] ring-1 ring-white/[0.04] hover:border-[#f58220]/25 hover:shadow-[0_20px_50px_rgba(0,0,0,0.55)]',
+};
+
+const GRIDS = {
+  1: 'grid-cols-1',
+  2: 'grid-cols-1 md:grid-cols-2',
+  3: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
+  4: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4',
+};
+
+const GAPS = {
+  sm: 'gap-4',
+  md: 'gap-6',
+  lg: 'gap-8',
+  xl: 'gap-10',
+};
+
+export const Card3D = React.forwardRef(function Card3D(
+  {
+    title,
+    description,
+    image,
+    icon,
+    theme = 'primary',
+    gradient,
+    onClick,
+    className,
+    size = 'md',
+    variant = 'default',
+    disabled = false,
+    loading = false,
+    exploreLabel = 'Explore',
+    ...props
+  },
+  ref,
+) {
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [hovered, setHovered] = useState(false);
+  const [tiltEnabled, setTiltEnabled] = useState(true);
+
+  useEffect(() => {
+    const sync = () => setTiltEnabled(!isCompactViewport());
+    sync();
+    window.addEventListener('resize', sync);
+    return () => window.removeEventListener('resize', sync);
+  }, []);
+
+  const finalGradient = useMemo(() => gradient || THEMES[theme] || THEMES.primary, [gradient, theme]);
+  const patternId = useMemo(
+    () => `pattern-${theme}-${String(title).replace(/\s+/g, '-').toLowerCase()}`,
+    [theme, title],
+  );
+
+  const handleMove = useCallback(
+    (e) => {
+      if (disabled || !tiltEnabled) return;
+      const rect = e.currentTarget.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      setMousePos({
+        x: (x / rect.width - 0.5) * 25,
+        y: (y / rect.height - 0.5) * -25,
+      });
+    },
+    [disabled, tiltEnabled],
+  );
+
+  const handleEnter = useCallback(() => {
+    if (disabled) return;
+    setHovered(true);
+  }, [disabled]);
+
+  const handleLeave = useCallback(() => {
+    if (disabled) return;
+    setHovered(false);
+    setMousePos({ x: 0, y: 0 });
+  }, [disabled]);
+
+  const handleCtaClick = useCallback(
+    (e) => {
+      e.stopPropagation();
+      if (disabled || loading || !onClick) return;
+      onClick();
+    },
+    [disabled, loading, onClick],
+  );
+
+  return (
+    <motion.div
+      ref={ref}
+      className={cn(
+        'group relative w-full overflow-hidden rounded-2xl transform-gpu transition-all duration-500 ease-out',
+        SIZES[size],
+        VARIANTS[variant],
+        disabled && 'cursor-not-allowed opacity-50',
+        loading && 'pointer-events-none',
+        className,
+      )}
+      onMouseMove={handleMove}
+      onMouseEnter={handleEnter}
+      onMouseLeave={handleLeave}
+      animate={{
+        rotateX: disabled || !tiltEnabled ? 0 : mousePos.y,
+        rotateY: disabled || !tiltEnabled ? 0 : mousePos.x,
+        z: disabled || !tiltEnabled ? 0 : hovered ? 30 : 0,
+      }}
+      transition={{ type: 'spring', stiffness: 400, damping: 35, mass: 0.8 }}
+      style={{ transformStyle: 'preserve-3d', perspective: '1200px' }}
+      role="article"
+      {...props}
+    >
+      <motion.div
+        className={cn('absolute inset-0 rounded-2xl', image ? '' : `bg-gradient-to-br ${finalGradient}`)}
+        animate={{ scale: hovered ? 1.02 : 1 }}
+        transition={{ duration: 0.4 }}
+        style={{ transform: 'translateZ(-10px)' }}
+      >
+        {image ? (
+          <img
+            src={image}
+            alt={title}
+            className="h-full w-full object-cover transition-transform duration-500"
+            loading="lazy"
+          />
+        ) : null}
+      </motion.div>
+
+      <div className="absolute inset-0 overflow-hidden rounded-2xl opacity-20">
+        <svg className="absolute -top-4 -right-4 h-32 w-32 text-white/30" viewBox="0 0 100 100" aria-hidden>
+          <defs>
+            <pattern id={patternId} x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+              <circle cx="10" cy="10" r="1" fill="currentColor" opacity="0.3" />
+            </pattern>
+          </defs>
+          <rect width="100" height="100" fill={`url(#${patternId})`} />
+        </svg>
+
+        <motion.div
+          className="absolute -bottom-4 -left-4 h-24 w-24 opacity-30"
+          animate={{ rotate: hovered ? 180 : 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <svg viewBox="0 0 100 100" className="h-full w-full text-white/40" aria-hidden>
+            <rect x="20" y="20" width="60" height="60" fill="none" stroke="currentColor" strokeWidth="1" rx="8" />
+            <rect x="35" y="35" width="30" height="30" fill="none" stroke="currentColor" strokeWidth="0.5" rx="4" />
+          </svg>
+        </motion.div>
+      </div>
+
+      <motion.div
+        className="absolute inset-0 rounded-2xl"
+        style={{
+          background:
+            'linear-gradient(160deg, rgba(245,130,32,0.08) 0%, rgba(0,0,0,0.35) 42%, rgba(0,0,0,0.55) 100%)',
+          transform: 'translateZ(5px)',
+        }}
+        animate={{ opacity: hovered ? 0.85 : 1 }}
+        transition={{ duration: 0.3 }}
+      />
+
+      <motion.div
+        className="relative z-20 flex h-full flex-col justify-between p-6 text-white"
+        style={{ transform: 'translateZ(20px)' }}
+      >
+        <div className="flex items-start justify-between">
+          {icon ? (
+            <motion.div
+              className="relative"
+              whileHover={{ scale: 1.1 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+            >
+              <motion.div
+                className="text-3xl opacity-90 drop-shadow-lg filter"
+                animate={{
+                  rotateZ: hovered ? 5 : 0,
+                  y: hovered ? -2 : 0,
+                }}
+                transition={{ duration: 0.3 }}
+              >
+                {icon}
+              </motion.div>
+            </motion.div>
+          ) : (
+            <span />
+          )}
+
+          <div className="h-2.5 w-2.5 rounded-full bg-white/35 backdrop-blur-sm" />
+        </div>
+
+        <motion.div className="space-y-3" animate={{ y: hovered ? -3 : 0 }} transition={{ duration: 0.3 }}>
+          <motion.h3
+            className="font-display text-xl font-semibold tracking-tight drop-shadow-md"
+            animate={{ scale: hovered ? 1.02 : 1 }}
+            transition={{ duration: 0.3 }}
+          >
+            {title}
+          </motion.h3>
+
+          <motion.p
+            className="line-clamp-3 text-sm leading-relaxed text-white/85 drop-shadow-sm"
+            animate={{ opacity: hovered ? 1 : 0.85 }}
+            transition={{ duration: 0.3 }}
+          >
+            {description}
+          </motion.p>
+
+          {onClick && !disabled ? (
+            <button
+              type="button"
+              onClick={handleCtaClick}
+              className="inline-flex items-center gap-2 pt-1 text-xs font-medium text-[#ffb86b] transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f58220]/50"
+            >
+              <span className="h-0.5 w-4 rounded-full bg-current" />
+              {loading ? 'Loading...' : exploreLabel}
+            </button>
+          ) : null}
+        </motion.div>
+      </motion.div>
+
+      {loading ? (
+        <motion.div
+          className="absolute inset-0 flex items-center justify-center rounded-2xl bg-black/30 backdrop-blur-sm"
+          style={{ transform: 'translateZ(30px)' }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+        >
+          <motion.div
+            className="h-6 w-6 rounded-full border-2 border-white/30 border-t-[#f58220]"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+          />
+        </motion.div>
+      ) : null}
+    </motion.div>
+  );
+});
+
+Card3D.displayName = 'Card3D';
+
+export function Card3DList({
+  cards,
+  className,
+  columns = 3,
+  gap = 'md',
+  size = 'md',
+  variant = 'default',
+  animated = true,
+  staggerDelay = 0.08,
+}) {
+  const gridClass = useMemo(() => GRIDS[columns], [columns]);
+  const gapClass = useMemo(() => GAPS[gap], [gap]);
+
+  const customVariants = useMemo(
+    () => ({
+      hidden: { opacity: 0 },
+      visible: {
+        opacity: 1,
+        transition: {
+          staggerChildren: staggerDelay,
+          delayChildren: 0.08,
+          duration: 0.35,
+          ease: [0.23, 1, 0.32, 1],
+        },
+      },
+    }),
+    [staggerDelay],
+  );
+
+  if (!cards?.length) {
+    return null;
+  }
+
+  return (
+    <div className="relative">
+      <motion.div
+        className={cn('relative grid w-full', gridClass, gapClass, className)}
+        variants={animated ? customVariants : undefined}
+        initial={animated ? 'hidden' : false}
+        animate={animated ? 'visible' : undefined}
+        style={{ perspective: '1500px', transformStyle: 'preserve-3d' }}
+      >
+        {cards.map((card) => (
+          <motion.div
+            key={card.id}
+            variants={
+              animated
+                ? {
+                    hidden: { opacity: 0, y: 28 },
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      transition: { type: 'spring', stiffness: 120, damping: 16 },
+                    },
+                  }
+                : undefined
+            }
+            style={{ transformStyle: 'preserve-3d' }}
+          >
+            <Card3D
+              title={card.title}
+              description={card.description}
+              image={card.image}
+              icon={card.icon}
+              theme={card.theme}
+              gradient={card.gradient}
+              onClick={card.onClick}
+              size={size}
+              variant={variant}
+              disabled={card.disabled}
+              loading={card.loading}
+              exploreLabel={card.exploreLabel}
+            />
+          </motion.div>
+        ))}
+      </motion.div>
+    </div>
+  );
+}

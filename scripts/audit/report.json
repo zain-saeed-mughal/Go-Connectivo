@@ -1,0 +1,1440 @@
+[
+  {
+    "route": "/",
+    "label": "desktop-",
+    "errors": [],
+    "initial": {
+      "hidden": [
+        {
+          "tag": "svg",
+          "cls": "[object SVGAnimatedString]",
+          "text": "",
+          "opacity": 0.6,
+          "visibility": "visible",
+          "clipPath": "none",
+          "absTop": 0,
+          "pending": false
+        },
+        {
+          "tag": "div",
+          "cls": "group rounded-3xl border border-white/8 bg-white/[0.03] p-6 text-cente",
+          "text": "0+Businesses Served",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "absTop": 1103,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "About",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 1320,
+          "pending": true
+        },
+        {
+          "tag": "span",
+          "cls": "inline-block will-change-transform ",
+          "text": "Your",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 52.8)",
+          "absTop": 1373,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Go Connectivo delivers enterprise-grade VoIP infrastructure,",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 1504,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Learn more about us",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 1648,
+          "pending": true
+        },
+        {
+          "tag": "article",
+          "cls": "rounded-2xl border border-white/8 bg-white/[0.03] p-5 transition-all d",
+          "text": "Infrastructure that holdsRedundant systems and a 99.9% uptim",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "absTop": 1264,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Why Choose Go Connectivo?",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 1896,
+          "pending": true
+        },
+        {
+          "tag": "span",
+          "cls": "inline-block will-change-transform ",
+          "text": "Enterprise-grade",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 52.8)",
+          "absTop": 1949,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Reliability, scale, and support built into every deployment.",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 2080,
+          "pending": true
+        },
+        {
+          "tag": "article",
+          "cls": "group rounded-3xl border border-white/8 bg-white/[0.03] p-6 text-cente",
+          "text": "99.9% UptimeReliable infrastructure with redundant systems e",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "absTop": 2159,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Complete VoIP Solutions",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 2621,
+          "pending": true
+        },
+        {
+          "tag": "span",
+          "cls": "inline-block will-change-transform ",
+          "text": "Everything",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 52.8)",
+          "absTop": 2674,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "A comprehensive suite of calling, collaboration, and messagi",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 2805,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "group relative overflow-hidden rounded-3xl border border-white/8 bg-gr",
+          "text": "Business Phone SystemsComplete VoIP phone systems with advan",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "absTop": 2924,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Why Businesses Choose Us",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 4281,
+          "pending": true
+        },
+        {
+          "tag": "span",
+          "cls": "inline-block will-change-transform ",
+          "text": "Practical",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 52.8)",
+          "absTop": 4334,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Lower costs, faster setup, and enterprise features without t",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 4417,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "group flex items-start gap-4",
+          "text": "Cost SavingsSave up to 60% compared to traditional phone sys",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 32, 0)",
+          "absTop": 4503,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "overflow-hidden rounded-[2rem] border border-white/10",
+          "text": "Traditional phone systemsHigh cost · Slow setupGo Connectivo",
+          "opacity": 1,
+          "visibility": "visible",
+          "clipPath": "inset(100% 0% 0%)",
+          "absTop": 4339,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Onboarding",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 5034,
+          "pending": true
+        },
+        {
+          "tag": "span",
+          "cls": "inline-block will-change-transform ",
+          "text": "A",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 52.8)",
+          "absTop": 5087,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Most customers are up and running within 24-48 hours.",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 5170,
+          "pending": true
+        },
+        {
+          "tag": "article",
+          "cls": "group rounded-3xl border border-white/8 bg-[#0d0d16] p-5 transition-al",
+          "text": "01Choose Your PlanPick the services that fit your team size,",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "absTop": 5258,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Platform",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 5725,
+          "pending": true
+        },
+        {
+          "tag": "span",
+          "cls": "inline-block will-change-transform ",
+          "text": "Every",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 52.8)",
+          "absTop": 5777,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Enterprise capabilities included across calling, collaborati",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 5861,
+          "pending": true
+        },
+        {
+          "tag": "article",
+          "cls": "rounded-3xl border border-white/8 bg-white/[0.03] p-6 transition-all d",
+          "text": "CallingUnlimited US & CanadaAdvanced call routingCall forwar",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "absTop": 5969,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Testimonials",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 6615,
+          "pending": true
+        },
+        {
+          "tag": "span",
+          "cls": "inline-block will-change-transform ",
+          "text": "What",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 52.8)",
+          "absTop": 6668,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Join thousands of satisfied businesses worldwide.",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 6703,
+          "pending": true
+        },
+        {
+          "tag": "blockquote",
+          "cls": "group relative flex h-full flex-col justify-between overflow-hidden ro",
+          "text": "“Go Connectivo transformed our customer service operations. ",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "absTop": 6792,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] border borde",
+          "text": "Next stepReady to transform your business communication? Get",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "inset(6% 4% round 32px)",
+          "absTop": 7233,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Next step",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 7318,
+          "pending": true
+        },
+        {
+          "tag": "span",
+          "cls": "inline-block will-change-transform ",
+          "text": "Ready",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 52.8)",
+          "absTop": 7371,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Get started with Go Connectivo today and experience the diff",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 7458,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Start Free TrialView Services",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 7516,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "space-y-4 lg:col-span-1",
+          "text": "Go ConnectivoVoIP SolutionsLeading provider of premium VoIP ",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 32)",
+          "absTop": 7800,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "© 2026 Go Connectivo. All rights reserved.Built for clarity,",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "absTop": 8096,
+          "pending": true
+        }
+      ],
+      "stillPending": 119,
+      "docWidth": 1440,
+      "winWidth": 1440
+    },
+    "after": {
+      "hidden": [
+        {
+          "tag": "svg",
+          "cls": "[object SVGAnimatedString]",
+          "text": "",
+          "opacity": 0.6,
+          "visibility": "visible",
+          "clipPath": "none",
+          "absTop": 0,
+          "pending": false
+        }
+      ],
+      "stillPending": 0,
+      "docWidth": 1440,
+      "winWidth": 1440
+    }
+  },
+  {
+    "route": "/about",
+    "label": "desktop-",
+    "errors": [],
+    "initial": {
+      "hidden": [
+        {
+          "tag": "li",
+          "cls": "flex items-start gap-2.5 text-sm text-[#c3c3d4]",
+          "text": "Enterprise-grade infrastructure",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 32, 0)",
+          "absTop": 921,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "group rounded-3xl border border-white/8 bg-white/[0.03] p-6 text-cente",
+          "text": "0+Businesses Served",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "absTop": 1078,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Our values",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 1283,
+          "pending": true
+        },
+        {
+          "tag": "span",
+          "cls": "inline-block will-change-transform ",
+          "text": "Principles",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 52.8)",
+          "absTop": 1335,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "The standards we hold ourselves to, from first call through ",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 1419,
+          "pending": true
+        },
+        {
+          "tag": "article",
+          "cls": "rounded-3xl border border-white/8 bg-[#0d0d16] p-6 transition-all dura",
+          "text": "01Reliability99.9% uptime guarantee backed by redundant, wel",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "absTop": 1497,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "What we do",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 1935,
+          "pending": true
+        },
+        {
+          "tag": "span",
+          "cls": "inline-block will-change-transform ",
+          "text": "Our",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 52.8)",
+          "absTop": 1988,
+          "pending": true
+        },
+        {
+          "tag": "article",
+          "cls": "group rounded-2xl border border-white/8 bg-white/[0.03] p-5 transition",
+          "text": "Business Phone Systems",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "absTop": 2119,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "How we work",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 2475,
+          "pending": true
+        },
+        {
+          "tag": "span",
+          "cls": "inline-block will-change-transform ",
+          "text": "From",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 52.8)",
+          "absTop": 2528,
+          "pending": true
+        },
+        {
+          "tag": "article",
+          "cls": "rounded-3xl border border-white/8 bg-[#0d0d16] p-5 transition-all dura",
+          "text": "01Choose Your PlanPick the services that fit your team size,",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "absTop": 2659,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Why businesses choose us",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 2980,
+          "pending": true
+        },
+        {
+          "tag": "span",
+          "cls": "inline-block will-change-transform ",
+          "text": "Advantages",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 52.8)",
+          "absTop": 3033,
+          "pending": true
+        },
+        {
+          "tag": "article",
+          "cls": "rounded-3xl border border-white/8 bg-gradient-to-b from-white/[0.05] t",
+          "text": "Cost SavingsSave up to 60% compared to traditional phone sys",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(0.98, 0, 0, 0.98, 0, 20)",
+          "absTop": 3105,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] border borde",
+          "text": "Next stepReady to transform your business communication? Get",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "inset(6% 4% round 32px)",
+          "absTop": 3469,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Next step",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 3554,
+          "pending": true
+        },
+        {
+          "tag": "span",
+          "cls": "inline-block will-change-transform ",
+          "text": "Ready",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 52.8)",
+          "absTop": 3607,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Get started with Go Connectivo today and experience the diff",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 3694,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Start Free TrialView Services",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 3752,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "© 2026 Go Connectivo. All rights reserved.Built for clarity,",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "absTop": 4332,
+          "pending": true
+        }
+      ],
+      "stillPending": 72,
+      "docWidth": 1440,
+      "winWidth": 1440
+    },
+    "after": {
+      "hidden": [],
+      "stillPending": 0,
+      "docWidth": 1440,
+      "winWidth": 1440
+    }
+  },
+  {
+    "route": "/services",
+    "label": "desktop-",
+    "errors": [],
+    "initial": {
+      "hidden": [
+        {
+          "tag": "div",
+          "cls": "group rounded-3xl border border-white/8 bg-white/[0.03] p-6 text-cente",
+          "text": "0+Businesses Served",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "absTop": 2078,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Onboarding",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 2283,
+          "pending": true
+        },
+        {
+          "tag": "span",
+          "cls": "inline-block will-change-transform ",
+          "text": "Up",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 52.8)",
+          "absTop": 2336,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "A simple path from sign-up to a fully configured communicati",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 2419,
+          "pending": true
+        },
+        {
+          "tag": "article",
+          "cls": "rounded-3xl border border-white/8 bg-[#0d0d16] p-5 transition-all dura",
+          "text": "01Choose Your PlanPick the services that fit your team size,",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "absTop": 2509,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] border borde",
+          "text": "Next stepReady to transform your business communication? Get",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "inset(6% 4% round 32px)",
+          "absTop": 2874,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Next step",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 2959,
+          "pending": true
+        },
+        {
+          "tag": "span",
+          "cls": "inline-block will-change-transform ",
+          "text": "Ready",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 52.8)",
+          "absTop": 3011,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Get started with Go Connectivo today and experience the diff",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 3099,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Start Free TrialView Services",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 3157,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "© 2026 Go Connectivo. All rights reserved.Built for clarity,",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "absTop": 3737,
+          "pending": true
+        }
+      ],
+      "stillPending": 32,
+      "docWidth": 1440,
+      "winWidth": 1440
+    },
+    "after": {
+      "hidden": [],
+      "stillPending": 0,
+      "docWidth": 1440,
+      "winWidth": 1440
+    }
+  },
+  {
+    "route": "/faqs",
+    "label": "desktop-",
+    "errors": [],
+    "initial": {
+      "hidden": [
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "02Features & Functionality",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 878,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "overflow-hidden rounded-2xl border transition-all duration-400 border-",
+          "text": "What features are included in all plans?",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 32, 0)",
+          "absTop": 911,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "03Pricing & Billing",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 1271,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "overflow-hidden rounded-2xl border transition-all duration-400 border-",
+          "text": "Are there any setup fees?",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 32, 0)",
+          "absTop": 1304,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "04Technical Support",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 1664,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "overflow-hidden rounded-2xl border transition-all duration-400 border-",
+          "text": "What internet speed do I need?",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 32, 0)",
+          "absTop": 1697,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Still have questions?Our team is here to help! Contact us fo",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(0.97, 0, 0, 0.97, 0, 0)",
+          "absTop": 2032,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] border borde",
+          "text": "Next stepReady to transform your business communication? Get",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "inset(6% 4% round 32px)",
+          "absTop": 2447,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Next step",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 2532,
+          "pending": true
+        },
+        {
+          "tag": "span",
+          "cls": "inline-block will-change-transform ",
+          "text": "Ready",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 52.8)",
+          "absTop": 2585,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Get started with Go Connectivo today and experience the diff",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 2672,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Start Free TrialView Services",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 2730,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "© 2026 Go Connectivo. All rights reserved.Built for clarity,",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "absTop": 3310,
+          "pending": true
+        }
+      ],
+      "stillPending": 27,
+      "docWidth": 1440,
+      "winWidth": 1440
+    },
+    "after": {
+      "hidden": [],
+      "stillPending": 0,
+      "docWidth": 1440,
+      "winWidth": 1440
+    }
+  },
+  {
+    "route": "/contact",
+    "label": "desktop-",
+    "errors": [],
+    "initial": {
+      "hidden": [
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "© 2026 Go Connectivo. All rights reserved.Built for clarity,",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "absTop": 1586,
+          "pending": true
+        }
+      ],
+      "stillPending": 1,
+      "docWidth": 1440,
+      "winWidth": 1440
+    },
+    "after": {
+      "hidden": [],
+      "stillPending": 0,
+      "docWidth": 1440,
+      "winWidth": 1440
+    }
+  },
+  {
+    "route": "/",
+    "label": "mobile-",
+    "errors": [],
+    "initial": {
+      "hidden": [
+        {
+          "tag": "div",
+          "cls": "group rounded-3xl border border-white/8 bg-white/[0.03] p-6 text-cente",
+          "text": "0+Businesses Served",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "absTop": 1031,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "About",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 1606,
+          "pending": true
+        },
+        {
+          "tag": "span",
+          "cls": "inline-block will-change-transform ",
+          "text": "Your",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 39.6)",
+          "absTop": 1646,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Go Connectivo delivers enterprise-grade VoIP infrastructure,",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 1754,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Learn more about us",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 1898,
+          "pending": true
+        },
+        {
+          "tag": "article",
+          "cls": "rounded-2xl border border-white/8 bg-white/[0.03] p-5 transition-all d",
+          "text": "Infrastructure that holdsRedundant systems and a 99.9% uptim",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "absTop": 1942,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Why Choose Go Connectivo?",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 2565,
+          "pending": true
+        },
+        {
+          "tag": "span",
+          "cls": "inline-block will-change-transform ",
+          "text": "Enterprise-grade",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 39.6)",
+          "absTop": 2604,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Reliability, scale, and support built into every deployment.",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 2749,
+          "pending": true
+        },
+        {
+          "tag": "article",
+          "cls": "group rounded-3xl border border-white/8 bg-white/[0.03] p-6 text-cente",
+          "text": "99.9% UptimeReliable infrastructure with redundant systems e",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "absTop": 2835,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Complete VoIP Solutions",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 3941,
+          "pending": true
+        },
+        {
+          "tag": "span",
+          "cls": "inline-block will-change-transform ",
+          "text": "Everything",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 39.6)",
+          "absTop": 3981,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "A comprehensive suite of calling, collaboration, and messagi",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 4125,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "group relative overflow-hidden rounded-3xl border border-white/8 bg-gr",
+          "text": "Business Phone SystemsComplete VoIP phone systems with advan",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "absTop": 4247,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Why Businesses Choose Us",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 6867,
+          "pending": true
+        },
+        {
+          "tag": "span",
+          "cls": "inline-block will-change-transform ",
+          "text": "Practical",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 39.6)",
+          "absTop": 6907,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Lower costs, faster setup, and enterprise features without t",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 6979,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "group flex items-start gap-4",
+          "text": "Cost SavingsSave up to 60% compared to traditional phone sys",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 32, 0)",
+          "absTop": 7043,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "overflow-hidden rounded-[2rem] border border-white/10",
+          "text": "Traditional phone systemsHigh cost · Slow setupGo Connectivo",
+          "opacity": 1,
+          "visibility": "visible",
+          "clipPath": "inset(100% 0% 0%)",
+          "absTop": 7461,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Onboarding",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 8072,
+          "pending": true
+        },
+        {
+          "tag": "span",
+          "cls": "inline-block will-change-transform ",
+          "text": "A",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 39.6)",
+          "absTop": 8112,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Most customers are up and running within 24-48 hours.",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 8184,
+          "pending": true
+        },
+        {
+          "tag": "article",
+          "cls": "group rounded-3xl border border-white/8 bg-[#0d0d16] p-5 transition-al",
+          "text": "01Choose Your PlanPick the services that fit your team size,",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "absTop": 8278,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Platform",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 9413,
+          "pending": true
+        },
+        {
+          "tag": "span",
+          "cls": "inline-block will-change-transform ",
+          "text": "Every",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 39.6)",
+          "absTop": 9452,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Enterprise capabilities included across calling, collaborati",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 9597,
+          "pending": true
+        },
+        {
+          "tag": "article",
+          "cls": "rounded-3xl border border-white/8 bg-white/[0.03] p-6 transition-all d",
+          "text": "CallingUnlimited US & CanadaAdvanced call routingCall forwar",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "absTop": 9683,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Testimonials",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 11161,
+          "pending": true
+        },
+        {
+          "tag": "span",
+          "cls": "inline-block will-change-transform ",
+          "text": "What",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 39.6)",
+          "absTop": 11200,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Join thousands of satisfied businesses worldwide.",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 11237,
+          "pending": true
+        },
+        {
+          "tag": "blockquote",
+          "cls": "group relative flex h-full flex-col justify-between overflow-hidden ro",
+          "text": "“Go Connectivo transformed our customer service operations. ",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "absTop": 11333,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] border borde",
+          "text": "Next stepReady to transform your business communication? Get",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "inset(6% 4% round 32px)",
+          "absTop": 12294,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Next step",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 12379,
+          "pending": true
+        },
+        {
+          "tag": "span",
+          "cls": "inline-block will-change-transform ",
+          "text": "Ready",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 39.6)",
+          "absTop": 12418,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Get started with Go Connectivo today and experience the diff",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 12567,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "Start Free TrialView Services",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 28)",
+          "absTop": 12651,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "space-y-4 lg:col-span-1",
+          "text": "Go ConnectivoVoIP SolutionsLeading provider of premium VoIP ",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "transform": "matrix(1, 0, 0, 1, 0, 32)",
+          "absTop": 12975,
+          "pending": true
+        },
+        {
+          "tag": "div",
+          "cls": "",
+          "text": "© 2026 Go Connectivo. All rights reserved.Built for clarity,",
+          "opacity": 0,
+          "visibility": "visible",
+          "clipPath": "none",
+          "absTop": 13831,
+          "pending": true
+        }
+      ],
+      "stillPending": 119,
+      "docWidth": 398,
+      "winWidth": 390
+    },
+    "after": {
+      "hidden": [],
+      "stillPending": 0,
+      "docWidth": 390,
+      "winWidth": 390
+    }
+  }
+]
