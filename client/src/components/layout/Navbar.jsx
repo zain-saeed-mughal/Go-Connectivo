@@ -7,6 +7,7 @@ import MagneticButton from '../ui/MagneticButton';
 import ServiceIcon from '../ui/ServiceIcon';
 import ServicesMegaMenu from './ServicesMegaMenu';
 import { getServicesForCategory, navLinks, serviceCategories } from '../../data/content';
+import { startPageScroll } from '../motion/SmoothScroll';
 
 const menuVariants = {
   hidden: { opacity: 0, y: -12, clipPath: 'inset(0% 0% 100% 0%)' },
@@ -51,6 +52,7 @@ export default function Navbar() {
     setOpen(false);
     setServicesOpen(false);
     setMobileServicesOpen(false);
+    startPageScroll();
   }, [location.pathname, location.hash]);
 
   useEffect(() => {
@@ -83,7 +85,10 @@ export default function Navbar() {
   };
 
   const scheduleCloseServices = () => {
-    closeTimer.current = setTimeout(() => setServicesOpen(false), 160);
+    closeTimer.current = setTimeout(() => {
+      setServicesOpen(false);
+      startPageScroll();
+    }, 160);
   };
 
   useEffect(

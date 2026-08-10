@@ -1,7 +1,9 @@
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ServiceIcon from '../ui/ServiceIcon';
 import { getServicesForCategory, serviceCategories } from '../../data/content';
+import { startPageScroll, stopPageScroll } from '../motion/SmoothScroll';
 
 const panelVariants = {
   hidden: { opacity: 0, y: -14, clipPath: 'inset(0% 0% 100% 0%)' },
@@ -20,16 +22,49 @@ const panelVariants = {
 };
 
 /**
- * Desktop mega-menu: three pillars with linked services (slides in on hover).
+ * Desktop mega-menu. Wheel over this panel scrolls the menu only —
+ * Lenis/page scroll stays paused until the pointer leaves.
  */
 export default function ServicesMegaMenu({ onNavigate }) {
+  const panelRef = useRef(null);
+
+  useEffect(() => {
+    stopPageScroll();
+    const el = panelRef.current;
+    if (!el) return () => startPageScroll();
+
+    const onWheel = (event) => {
+      stopPageScroll();
+      event.stopPropagation();
+
+      const { scrollTop, scrollHeight, clientHeight } = el;
+      const atTop = scrollTop <= 0;
+      const atBottom = scrollTop + clientHeight >= scrollHeight - 1;
+
+      // At edges, block the event so the page behind still doesn't move.
+      if ((event.deltaY < 0 && atTop) || (event.deltaY > 0 && atBottom)) {
+        event.preventDefault();
+      }
+    };
+
+    el.addEventListener('wheel', onWheel, { passive: false });
+
+    return () => {
+      el.removeEventListener('wheel', onWheel);
+      startPageScroll();
+    };
+  }, []);
+
   return (
     <motion.div
+      ref={panelRef}
       variants={panelVariants}
       initial="hidden"
       animate="visible"
       exit="exit"
-      className="gc-scrollbar max-h-[min(78vh,720px)] w-full overflow-y-auto overflow-x-hidden rounded-2xl border border-white/10 bg-[#0c0c0c]/95 shadow-[0_24px_80px_rgba(0,0,0,0.55)] backdrop-blur-xl"
+      onMouseEnter={stopPageScroll}
+      onMouseLeave={startPageScroll}
+      className="gc-scrollbar max-h-[min(78vh,720px)] w-full overflow-y-auto overflow-x-hidden overscroll-contain rounded-2xl border border-white/10 bg-[#0c0c0c]/95 shadow-[0_24px_80px_rgba(0,0,0,0.55)] backdrop-blur-xl"
       role="menu"
       aria-label="Services"
     >

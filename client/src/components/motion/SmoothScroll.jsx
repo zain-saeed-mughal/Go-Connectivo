@@ -9,6 +9,16 @@ export function scrollToTop(immediate = true) {
   else window.scrollTo(0, 0);
 }
 
+/** Pause smooth page scroll (e.g. while hovering a scrollable mega-menu). */
+export function stopPageScroll() {
+  lenisInstance?.stop();
+}
+
+/** Resume smooth page scroll. */
+export function startPageScroll() {
+  lenisInstance?.start();
+}
+
 export default function SmoothScroll({ children }) {
   useEffect(() => {
     let refreshTimer = null;
