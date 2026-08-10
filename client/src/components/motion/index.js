@@ -6,4 +6,4 @@ export { default as ParallaxElement } from './ParallaxElement';
 export { default as RevealCard } from './RevealCard';
 export { default as AnimatedCounter } from './AnimatedCounter';
 export { default as PageTransition } from './PageTransition';
-export { default as SmoothScroll, scrollToTop, stopPageScroll, startPageScroll } from './SmoothScroll';
+export { default as SmoothScroll, scrollToTop, scrollToId, stopPageScroll, startPageScroll } from './SmoothScroll';

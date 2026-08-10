@@ -160,6 +160,27 @@ html::-webkit-scrollbar-corner {
   color: transparent;
 }
 
+.hero-shine {
+  background-size: 200% 100%;
+  animation: heroShine 4.5s ease-in-out infinite;
+}
+
+@keyframes heroShine {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-shine {
+    animation: none;
+  }
+}
+
 .grid-fade {
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),

@@ -32,6 +32,7 @@ export default function TechMarquee() {
 
   return (
     <section
+      id="home-next"
       ref={scope}
       className="relative border-y border-white/8 bg-[#080808] py-6"
       aria-label="Technology capabilities"
