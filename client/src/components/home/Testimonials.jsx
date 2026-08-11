@@ -13,7 +13,7 @@ function initials(name) {
 
 export default function Testimonials() {
   return (
-    <section className="px-4 py-16 sm:px-6 sm:py-24 md:py-28">
+    <section className="px-4 py-12 sm:px-6 sm:py-16 md:py-20">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           eyebrow="Testimonials"
@@ -26,21 +26,21 @@ export default function Testimonials() {
             <RevealCard
               key={item.name}
               as="blockquote"
-              className="group relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-white/8 bg-gradient-to-b from-white/[0.05] to-transparent p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#f58220]/35 hover:shadow-[0_20px_60px_rgba(255,107,0,0.1)]"
+              className="group relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-[rgba(47,76,115,0.1)] bg-[#FFFFFF] p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#4A6B94]/35 hover:shadow-[0_20px_60px_rgba(74,107,148,0.1)]"
             >
               <Quote
-                className="absolute top-5 right-5 text-[#f58220]/20 transition-all duration-500 group-hover:scale-110 group-hover:text-[#f58220]/35"
+                className="absolute top-5 right-5 text-[#4A6B94]/20 transition-all duration-500 group-hover:scale-110 group-hover:text-[#4A6B94]/35"
                 size={40}
               />
-              <p className="relative text-sm leading-relaxed text-[#d0d0e0]">“{item.quote}”</p>
+              <p className="relative text-sm leading-relaxed text-[#4A5D73]">“{item.quote}”</p>
 
-              <footer className="relative mt-6 flex items-center gap-3 border-t border-white/8 pt-5">
-                <span className="grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-[#f58220] to-[#ff6b00] text-xs font-semibold text-white transition-transform duration-500 group-hover:scale-105">
+              <footer className="relative mt-6 flex items-center gap-3 border-t border-[rgba(47,76,115,0.1)] pt-5">
+                <span className="grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-[#4A6B94] to-[#2F4C73] text-xs font-semibold text-[#FFFFFF] transition-transform duration-500 group-hover:scale-105">
                   {initials(item.name)}
                 </span>
                 <span>
-                  <span className="block text-sm font-semibold text-white">{item.name}</span>
-                  <span className="block text-xs text-[#9a9ab0]">{item.role}</span>
+                  <span className="block text-sm font-semibold text-[#2F4C73]">{item.name}</span>
+                  <span className="block text-xs text-[#6B7C8F]">{item.role}</span>
                 </span>
               </footer>
             </RevealCard>

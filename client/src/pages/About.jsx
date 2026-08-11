@@ -41,7 +41,7 @@ export default function About() {
               {aboutIntro.map((paragraph) => (
                 <p
                   key={paragraph.slice(0, 32)}
-                  className="text-sm leading-relaxed text-[#9a9ab0] md:text-base"
+                  className="text-sm leading-relaxed text-[#6B7C8F] md:text-base"
                 >
                   {paragraph}
                 </p>
@@ -56,7 +56,7 @@ export default function About() {
             >
               {commitments.map((item) => (
                 <li key={item} className="flex items-start gap-2.5 text-sm text-[#c3c3d4]">
-                  <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[#f58220]/15 text-[#ffa04a]">
+                  <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[#4A6B94]/15 text-[#6B8AB0]">
                     <Check size={12} strokeWidth={3} />
                   </span>
                   {item}
@@ -68,11 +68,11 @@ export default function About() {
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
             <ImageReveal
               direction="left"
-              className="rounded-3xl border border-white/8"
-              innerClassName="bg-white/[0.03] p-6"
+              className="rounded-3xl border border-[rgba(47,76,115,0.1)]"
+              innerClassName="bg-[#FFFFFF] p-6"
             >
-              <h3 className="font-display text-xl font-semibold text-white">Our mission</h3>
-              <p className="mt-3 text-sm leading-relaxed text-[#9a9ab0]">
+              <h3 className="font-display text-xl font-semibold text-[#2F4C73]">Our mission</h3>
+              <p className="mt-3 text-sm leading-relaxed text-[#6B7C8F]">
                 Provide enterprise-grade VoIP solutions that empower businesses to communicate more
                 effectively, reduce costs, and scale operations without limitations.
               </p>
@@ -81,11 +81,11 @@ export default function About() {
             <ImageReveal
               direction="left"
               delay={0.12}
-              className="rounded-3xl border border-white/8"
-              innerClassName="bg-white/[0.03] p-6"
+              className="rounded-3xl border border-[rgba(47,76,115,0.1)]"
+              innerClassName="bg-[#FFFFFF] p-6"
             >
-              <h3 className="font-display text-xl font-semibold text-white">Our approach</h3>
-              <p className="mt-3 text-sm leading-relaxed text-[#9a9ab0]">
+              <h3 className="font-display text-xl font-semibold text-[#2F4C73]">Our approach</h3>
+              <p className="mt-3 text-sm leading-relaxed text-[#6B7C8F]">
                 Cutting-edge technology, exceptional customer service, and an unwavering commitment
                 to reliability — backed by 24/7 expert support.
               </p>
@@ -116,13 +116,13 @@ export default function About() {
               <RevealCard
                 key={value.title}
                 as="article"
-                className="rounded-3xl border border-white/8 bg-[#0c0c0c] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#f58220]/35"
+                className="rounded-3xl border border-[rgba(47,76,115,0.1)] bg-[#FFFFFF] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#4A6B94]/35"
               >
-                <span className="font-display text-sm font-semibold text-[#ff8a1f]">
+                <span className="font-display text-sm font-semibold text-[#4A6B94]">
                   {String(index + 1).padStart(2, '0')}
                 </span>
-                <h3 className="mt-3 font-display text-xl font-semibold text-white">{value.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-[#9a9ab0]">{value.description}</p>
+                <h3 className="mt-3 font-display text-xl font-semibold text-[#2F4C73]">{value.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-[#6B7C8F]">{value.description}</p>
               </RevealCard>
             ))}
           </StaggerContainer>
@@ -137,12 +137,12 @@ export default function About() {
               <Link
                 key={service.id}
                 to={`/services/${service.id}`}
-                className="group rounded-2xl border border-white/8 bg-white/[0.03] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#f58220]/35"
+                className="group rounded-2xl border border-[rgba(47,76,115,0.1)] bg-[#FFFFFF] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#4A6B94]/35"
               >
-                <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-[#f58220]/25 to-[#ff6b00]/20 text-[#ffb86b] transition-transform duration-500 group-hover:scale-105">
+                <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-[#4A6B94]/25 to-[#4A6B94]/20 text-[#6B8AB0] transition-transform duration-500 group-hover:scale-105">
                   <ServiceIcon name={service.icon} />
                 </span>
-                <h3 className="mt-4 font-display text-base font-semibold text-white">
+                <h3 className="mt-4 font-display text-base font-semibold text-[#2F4C73]">
                   {service.title}
                 </h3>
               </Link>
@@ -161,13 +161,13 @@ export default function About() {
             {processSteps.map((step) => (
               <article
                 key={step.step}
-                className="rounded-3xl border border-white/8 bg-[#0c0c0c] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#f58220]/35"
+                className="rounded-3xl border border-[rgba(47,76,115,0.1)] bg-[#FFFFFF] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#4A6B94]/35"
               >
-                <div className="mb-4 grid h-8 w-8 place-items-center rounded-full border border-[#f58220]/40 bg-[#f58220]/10 text-xs font-semibold text-[#ffb86b]">
+                <div className="mb-4 grid h-8 w-8 place-items-center rounded-full border border-[#4A6B94]/40 bg-[#4A6B94]/10 text-xs font-semibold text-[#6B8AB0]">
                   {step.step}
                 </div>
-                <h3 className="font-display text-lg font-semibold text-white">{step.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-[#9a9ab0]">{step.description}</p>
+                <h3 className="font-display text-lg font-semibold text-[#2F4C73]">{step.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-[#6B7C8F]">{step.description}</p>
               </article>
             ))}
           </StaggerContainer>
@@ -182,10 +182,10 @@ export default function About() {
               <RevealCard
                 key={item.title}
                 as="article"
-                className="rounded-3xl border border-white/8 bg-gradient-to-b from-white/[0.05] to-transparent p-6 transition-all duration-300 hover:border-[#f58220]/35"
+                className="rounded-3xl border border-[rgba(47,76,115,0.1)] bg-gradient-to-b from-white/[0.05] to-transparent p-6 transition-all duration-300 hover:border-[#4A6B94]/35"
               >
-                <h3 className="font-display text-xl font-semibold text-white">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-[#9a9ab0]">{item.description}</p>
+                <h3 className="font-display text-xl font-semibold text-[#2F4C73]">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-[#6B7C8F]">{item.description}</p>
               </RevealCard>
             ))}
           </StaggerContainer>

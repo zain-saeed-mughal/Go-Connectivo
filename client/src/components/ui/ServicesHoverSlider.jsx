@@ -38,8 +38,8 @@ export const SERVICE_SLIDES = featuredServices.map((service) => {
 export default function ServicesHoverSlider() {
   return (
     <AnimatedSection from="up" duration={0.9}>
-      <HoverSlider className="mx-auto max-w-6xl overflow-hidden rounded-[1.5rem] border border-white/8 bg-[#0c0c0c] px-4 py-10 sm:rounded-[2rem] sm:px-6 sm:py-12 md:px-12 md:py-16">
-        <p className="mb-6 text-xs font-semibold tracking-[0.22em] text-[#ff8a1f] uppercase">
+      <HoverSlider className="mx-auto max-w-6xl overflow-hidden rounded-[1.5rem] border border-[rgba(47,76,115,0.1)] bg-[#FFFFFF] px-4 py-10 sm:rounded-[2rem] sm:px-6 sm:py-12 md:px-12 md:py-16">
+        <p className="mb-6 text-xs font-semibold tracking-[0.22em] text-[#4A6B94] uppercase">
           / our services
         </p>
 
@@ -50,13 +50,13 @@ export default function ServicesHoverSlider() {
                 key={slide.id}
                 index={index}
                 to={`/services/${slide.id}`}
-                className="cursor-pointer font-display text-xl font-bold tracking-tight text-white uppercase sm:text-2xl md:text-3xl lg:text-4xl"
+                className="cursor-pointer font-display text-xl font-bold tracking-tight text-[#2F4C73] uppercase sm:text-2xl md:text-3xl lg:text-4xl"
                 text={slide.title}
               />
             ))}
           </div>
 
-          <HoverSliderImageWrap className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10 bg-[#141414] lg:max-w-xl lg:flex-1">
+          <HoverSliderImageWrap className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-[rgba(47,76,115,0.12)] bg-[#E8ECF2] lg:max-w-xl lg:flex-1">
             {SERVICE_SLIDES.map((slide, index) => (
               <div key={slide.id} className="size-full">
                 <HoverSliderImage

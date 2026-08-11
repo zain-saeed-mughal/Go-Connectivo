@@ -4,7 +4,7 @@ import { RevealCard, StaggerContainer } from '../motion';
 
 export default function Technologies() {
   return (
-    <section className="px-4 py-16 sm:px-6 sm:py-24 md:py-28">
+    <section className="px-4 py-12 sm:px-6 sm:py-16 md:py-20">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           eyebrow="Platform"
@@ -21,14 +21,14 @@ export default function Technologies() {
             <RevealCard
               key={group.group}
               as="article"
-              className="rounded-3xl border border-white/8 bg-white/[0.03] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#f58220]/30"
+              className="rounded-3xl border border-[rgba(47,76,115,0.1)] bg-[#FFFFFF] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#4A6B94]/30"
             >
-              <h3 className="font-display text-lg font-semibold text-white">{group.group}</h3>
+              <h3 className="font-display text-lg font-semibold text-[#2F4C73]">{group.group}</h3>
               <div className="mt-4 flex flex-wrap gap-2">
                 {group.items.map((item) => (
                   <span
                     key={item}
-                    className="rounded-full border border-white/8 bg-[#0c0c0c] px-3 py-1.5 text-xs text-[#b7b7cb] transition-all duration-300 hover:border-[#f58220]/35 hover:text-white"
+                    className="rounded-full border border-[rgba(47,76,115,0.1)] bg-[#FFFFFF] px-3 py-1.5 text-xs text-[#6B7C8F] transition-all duration-300 hover:border-[#4A6B94]/35 hover:text-[#2F4C73]"
                   >
                     {item}
                   </span>

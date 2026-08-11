@@ -1,8 +1,9 @@
 import { useRef } from 'react';
-import { gsap, isCompactViewport, prefersReducedMotion } from '../../motion/config';
+import { isCompactViewport, prefersReducedMotion } from '../../motion/config';
 
 /**
- * Soft perspective tilt on pointer — material response, not a 3D gadget.
+ * Soft perspective tilt on pointer — CSS only so it never fights GSAP reveals.
+ * Outer node stays free for stagger y/autoAlpha; inner node owns the tilt.
  */
 export default function RevealCard({
   children,
@@ -11,47 +12,36 @@ export default function RevealCard({
   tilt = true,
   ...rest
 }) {
-  const ref = useRef(null);
-  const quickRotX = useRef(null);
-  const quickRotY = useRef(null);
-
-  const ensureQuickTo = () => {
-    if (!ref.current || quickRotX.current) return;
-    quickRotX.current = gsap.quickTo(ref.current, 'rotateX', {
-      duration: 0.75,
-      ease: 'power3.out',
-    });
-    quickRotY.current = gsap.quickTo(ref.current, 'rotateY', {
-      duration: 0.75,
-      ease: 'power3.out',
-    });
-  };
+  const tiltRef = useRef(null);
 
   const onMove = (event) => {
     if (!tilt || prefersReducedMotion() || isCompactViewport()) return;
-    ensureQuickTo();
-    const rect = ref.current.getBoundingClientRect();
+    const el = tiltRef.current;
+    if (!el) return;
+
+    const rect = el.getBoundingClientRect();
     const px = (event.clientX - rect.left) / rect.width - 0.5;
     const py = (event.clientY - rect.top) / rect.height - 0.5;
-    quickRotY.current(px * 5);
-    quickRotX.current(py * -5);
+    el.style.transform = `rotateX(${(py * -5).toFixed(2)}deg) rotateY(${(px * 5).toFixed(2)}deg)`;
   };
 
   const onLeave = () => {
-    if (!ref.current || !quickRotX.current) return;
-    gsap.to(ref.current, { rotateX: 0, rotateY: 0, duration: 0.9, ease: 'power3.out' });
+    const el = tiltRef.current;
+    if (!el) return;
+    el.style.transform = 'rotateX(0deg) rotateY(0deg)';
   };
 
   return (
-    <Tag
-      ref={ref}
-      onMouseMove={onMove}
-      onMouseLeave={onLeave}
-      style={{ transformStyle: 'preserve-3d', perspective: 900 }}
-      className={className}
-      {...rest}
-    >
-      {children}
+    <Tag className={className} {...rest}>
+      <div
+        ref={tiltRef}
+        onMouseMove={onMove}
+        onMouseLeave={onLeave}
+        className="h-full will-change-transform [transform-style:preserve-3d] transition-transform duration-500 ease-out"
+        style={{ perspective: 900 }}
+      >
+        {children}
+      </div>
     </Tag>
   );
 }

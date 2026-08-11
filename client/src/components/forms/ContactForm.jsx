@@ -14,15 +14,15 @@ const initialState = {
 };
 
 const fieldClass =
-  'peer w-full rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white outline-none transition-all duration-300 placeholder:text-[#6b6b82] focus:border-[#f58220]/60 focus:bg-white/[0.06] focus:shadow-[0_0_0_4px_rgba(245,130,32,0.12)]';
+  'peer w-full rounded-2xl border border-[rgba(47,76,115,0.12)] bg-[#FFFFFF]/80 px-4 py-3 text-sm text-[#2F4C73] outline-none transition-all duration-300 placeholder:text-[#6B7C8F] focus:border-[#4A6B94]/60 focus:bg-[#E8ECF2] focus:shadow-[0_0_0_4px_rgba(74,107,148,0.15)]';
 
 function Field({ label, error, children }) {
   return (
     <label className="block space-y-2 text-sm">
-      <span className="text-[#b7b7cb] transition-colors duration-300">{label}</span>
+      <span className="text-[#6B7C8F] transition-colors duration-300">{label}</span>
       <span className="relative block">
         {children}
-        <span className="pointer-events-none absolute bottom-0 left-1/2 h-px w-[calc(100%-2rem)] -translate-x-1/2 origin-center scale-x-0 bg-gradient-to-r from-transparent via-[#ff8a1f] to-transparent transition-transform duration-400 peer-focus:scale-x-100" />
+        <span className="pointer-events-none absolute bottom-0 left-1/2 h-px w-[calc(100%-2rem)] -translate-x-1/2 origin-center scale-x-0 bg-gradient-to-r from-transparent via-[#4A6B94] to-transparent transition-transform duration-400 peer-focus:scale-x-100" />
       </span>
       <AnimatePresence initial={false}>
         {error && (

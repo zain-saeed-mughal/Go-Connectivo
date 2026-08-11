@@ -11,7 +11,7 @@ export default function Terms() {
           description="General terms for using the Go Connectivo website and requesting services."
         />
         <StaggerContainer
-          className="space-y-5 text-sm leading-relaxed text-[#9a9ab0]"
+          className="space-y-5 text-sm leading-relaxed text-[#6B7C8F]"
           stagger={0.1}
         >
           <p>
@@ -26,7 +26,7 @@ export default function Terms() {
           </p>
           <p>
             Questions about these terms can be sent to{' '}
-            <a className="text-[#ffb86b] hover:text-white" href="mailto:compliance@goconnectivo.com">
+            <a className="text-[#6B8AB0] hover:text-[#2F4C73]" href="mailto:compliance@goconnectivo.com">
               compliance@goconnectivo.com
             </a>
             .

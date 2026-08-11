@@ -30,7 +30,7 @@ export default function ServicesCards3D({
           title: service.title,
           description: service.description,
           image: showImages ? slide?.imageUrl : undefined,
-          icon: <ServiceIcon name={service.icon} size={28} className="text-[#ffb86b]" />,
+          icon: <ServiceIcon name={service.icon} size={28} className="text-[#6B8AB0]" />,
           theme: 'primary',
           exploreLabel,
           onClick: () => navigate(`/services/${service.id}`),

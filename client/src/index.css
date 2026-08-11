@@ -1,19 +1,41 @@
 @import "tailwindcss";
 
+:root {
+  --luxe-navy: #2f4c73;
+  --luxe-navy-dark: #243c5c;
+  --luxe-navy-deep: #1c314f;
+  --luxe-navy-mid: #4a6b94;
+  --luxe-navy-soft: #6b8ab0;
+  --luxe-navy-mist: #8ba3c4;
+
+  --bg-primary: #f4f6f9;
+  --bg-secondary: #e8ecf2;
+  --bg-surface: #ffffff;
+  --accent: #2f4c73;
+  --accent-bright: #4a6b94;
+  --accent-soft: #6b8ab0;
+  --text-primary: #2f4c73;
+  --text-secondary: #4a5d73;
+  --text-muted: #6b7c8f;
+  --text-on-accent: #f7f9fc;
+  --border-soft: rgba(47, 76, 115, 0.14);
+  --shadow-soft: 0 14px 40px rgba(47, 76, 115, 0.1);
+}
+
 @theme {
-  --color-bg: #050505;
-  --color-bg-elevated: #0c0c0c;
-  --color-bg-soft: #141414;
-  --color-surface: rgba(255, 255, 255, 0.03);
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-border-strong: rgba(255, 255, 255, 0.14);
-  --color-text: #ffffff;
-  --color-muted: #a3a3a3;
-  --color-dim: #6b6b6b;
-  --color-brand: #e86f0c;
-  --color-brand-bright: #f58220;
-  --color-accent: #ff6b00;
-  --color-cyan: #ffb020;
+  --color-bg: #f4f6f9;
+  --color-bg-elevated: #ffffff;
+  --color-bg-soft: #e8ecf2;
+  --color-surface: #ffffff;
+  --color-border: rgba(47, 76, 115, 0.14);
+  --color-border-strong: rgba(74, 107, 148, 0.35);
+  --color-text: #2f4c73;
+  --color-muted: #6b7c8f;
+  --color-dim: #4a5d73;
+  --color-brand: #2f4c73;
+  --color-brand-bright: #4a6b94;
+  --color-accent: #4a6b94;
+  --color-cyan: #6b8ab0;
   --font-display: "Montserrat", system-ui, sans-serif;
   --font-body: "DM Sans", system-ui, sans-serif;
 }
@@ -28,7 +50,6 @@
   transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Default hover glide — long enough to feel premium, not sluggish. */
 a,
 button {
   transition-property: color, background-color, border-color, box-shadow, opacity, transform;
@@ -40,11 +61,6 @@ button {
   transition: none !important;
 }
 
-/*
- * Hidden from the very first paint so route changes never flash text
- * before GSAP arms the reveal. Inline GSAP styles override this once set;
- * the class is removed on settle so content stays visible.
- */
 .gc-will-reveal {
   opacity: 0;
   visibility: hidden;
@@ -71,7 +87,10 @@ html.lenis body {
 body {
   margin: 0;
   min-height: 100vh;
-  background: var(--color-bg);
+  background:
+    radial-gradient(ellipse 70% 45% at 90% 0%, rgba(74, 107, 148, 0.12), transparent 55%),
+    linear-gradient(160deg, #f8fafc 0%, #f4f6f9 45%, #e8ecf2 100%);
+  background-color: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-body);
   overflow-x: hidden;
@@ -83,15 +102,14 @@ body {
 }
 
 ::selection {
-  background: rgba(245, 130, 32, 0.45);
-  color: #fff;
+  background: rgba(47, 76, 115, 0.22);
+  color: #2f4c73;
 }
 
-/* Brand scrollbar — dark track, soft orange thumb */
 .gc-scrollbar,
 html {
   scrollbar-width: thin;
-  scrollbar-color: rgba(245, 130, 32, 0.55) rgba(255, 255, 255, 0.04);
+  scrollbar-color: rgba(47, 76, 115, 0.55) rgba(232, 236, 242, 0.95);
 }
 
 .gc-scrollbar::-webkit-scrollbar,
@@ -103,24 +121,22 @@ html::-webkit-scrollbar {
 .gc-scrollbar::-webkit-scrollbar-track,
 html::-webkit-scrollbar-track {
   margin: 8px 0;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(232, 236, 242, 0.9);
   border-radius: 999px;
 }
 
 .gc-scrollbar::-webkit-scrollbar-thumb,
 html::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #f58220 0%, #e86f0c 55%, #ff6b00 100%);
+  background: linear-gradient(180deg, #4a6b94 0%, #2f4c73 100%);
   border-radius: 999px;
   border: 2px solid transparent;
   background-clip: padding-box;
-  box-shadow: 0 0 12px rgba(245, 130, 32, 0.25);
 }
 
 .gc-scrollbar::-webkit-scrollbar-thumb:hover,
 html::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #ffb86b 0%, #f58220 50%, #ff6b00 100%);
+  background: linear-gradient(180deg, #6b8ab0 0%, #2f4c73 100%);
   background-clip: padding-box;
-  box-shadow: 0 0 16px rgba(245, 130, 32, 0.4);
 }
 
 .gc-scrollbar::-webkit-scrollbar-corner,
@@ -133,28 +149,30 @@ html::-webkit-scrollbar-corner {
 }
 
 .glass {
-  background: rgba(8, 8, 8, 0.62);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(16px) saturate(130%);
+  -webkit-backdrop-filter: blur(16px) saturate(130%);
+  border: 1px solid rgba(47, 76, 115, 0.12);
+  box-shadow: var(--shadow-soft);
 }
 
 .glass-strong {
-  background: rgba(12, 12, 12, 0.78);
-  backdrop-filter: blur(22px) saturate(160%);
-  -webkit-backdrop-filter: blur(22px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(47, 76, 115, 0.16);
+  box-shadow: var(--shadow-soft);
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #ffffff 0%, #ffc48a 45%, #f58220 100%);
+  background: linear-gradient(135deg, #1c314f 0%, #2f4c73 50%, #4a6b94 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .gradient-text-brand {
-  background: linear-gradient(135deg, #ffb020 0%, #f58220 50%, #ff6b00 100%);
+  background: linear-gradient(135deg, #6b8ab0 0%, #4a6b94 40%, #2f4c73 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -181,10 +199,122 @@ html::-webkit-scrollbar-corner {
   }
 }
 
+/* Hero polish — uses existing brand blues only; does not alter palette tokens */
+.hero-video {
+  filter: brightness(0.72) contrast(1.05) saturate(0.82);
+}
+
+.hero-overlay-directional {
+  background: linear-gradient(
+    90deg,
+    rgba(47, 76, 115, 0.78) 0%,
+    rgba(47, 76, 115, 0.48) 38%,
+    rgba(47, 76, 115, 0.18) 65%,
+    transparent 100%
+  );
+}
+
+@media (max-width: 639px) {
+  .hero-overlay-directional {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(47, 76, 115, 0.42) 0%,
+        rgba(47, 76, 115, 0.55) 48%,
+        rgba(47, 76, 115, 0.28) 100%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(47, 76, 115, 0.72) 0%,
+        rgba(47, 76, 115, 0.4) 50%,
+        rgba(47, 76, 115, 0.12) 100%
+      );
+  }
+}
+
+.hero-overlay-vignette {
+  background: radial-gradient(
+    ellipse 95% 85% at 50% 45%,
+    transparent 42%,
+    rgba(47, 76, 115, 0.28) 100%
+  );
+}
+
+.hero-overlay-bottom {
+  background: linear-gradient(
+    to top,
+    #f4f6f9 0%,
+    rgba(244, 246, 249, 0.72) 28%,
+    rgba(244, 246, 249, 0) 100%
+  );
+}
+
+.hero-title {
+  font-size: clamp(2.05rem, 8.2vw, 5.625rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+@media (min-width: 640px) {
+  .hero-title {
+    font-size: clamp(2.75rem, 5vw, 5.625rem);
+    line-height: 0.96;
+    letter-spacing: -0.04em;
+    overflow-wrap: normal;
+  }
+}
+
+.hero-copy {
+  max-width: 620px;
+  width: 100%;
+  font-size: clamp(1rem, 2.8vw, 1.25rem);
+  line-height: 1.6;
+}
+
+.hero-cta-row > a,
+.hero-cta-row > button {
+  max-width: 100%;
+}
+
+@media (max-width: 639px) {
+  .hero-cta-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-cta-row > a,
+  .hero-cta-row > button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-cta-primary {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+}
+
+.hero-cta-primary {
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
+}
+
+.hero-cta-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+}
+
+.hero-cta-secondary:hover,
+.hero-cta-ghost:hover {
+  transform: translateY(-2px);
+}
+
 .grid-fade {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(47, 76, 115, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(47, 76, 115, 0.05) 1px, transparent 1px);
   background-size: 64px 64px;
   mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 75%);
 }
@@ -226,7 +356,8 @@ html::-webkit-scrollbar-corner {
   inset: 0;
   pointer-events: none;
   z-index: 60;
-  opacity: 0.03;
+  opacity: 0.025;
+  mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -235,7 +366,7 @@ button:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
-  outline: 2px solid rgba(245, 130, 32, 0.75);
+  outline: 2px solid rgba(47, 76, 115, 0.55);
   outline-offset: 3px;
 }
 

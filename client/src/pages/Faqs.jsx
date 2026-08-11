@@ -24,9 +24,9 @@ export default function Faqs() {
           {faqCategories.map((group, groupIndex) => (
             <div key={group.category}>
               <AnimatedSection from="up" duration={0.7}>
-                <div className="mb-5 border-b border-white/10 pb-3">
-                  <h2 className="font-display text-xl font-semibold tracking-[-0.02em] text-white">
-                    <span className="mr-3 text-sm font-semibold text-[#ff8a1f]">
+                <div className="mb-5 border-b border-[rgba(47,76,115,0.12)] pb-3">
+                  <h2 className="font-display text-xl font-semibold tracking-[-0.02em] text-[#2F4C73]">
+                    <span className="mr-3 text-sm font-semibold text-[#4A6B94]">
                       {String(groupIndex + 1).padStart(2, '0')}
                     </span>
                     {group.category}
@@ -44,8 +44,8 @@ export default function Faqs() {
                       key={item.q}
                       className={`overflow-hidden rounded-2xl border transition-[border-color,background-color,box-shadow] duration-500 ${
                         open
-                          ? 'border-[#f58220]/35 bg-white/[0.05] shadow-[0_10px_40px_rgba(255,107,0,0.08)]'
-                          : 'border-white/8 bg-white/[0.03] hover:border-white/15'
+                          ? 'border-[#4A6B94]/35 bg-white/[0.05] shadow-[0_10px_40px_rgba(74,107,148,0.08)]'
+                          : 'border-[rgba(47,76,115,0.1)] bg-[#FFFFFF] hover:border-[rgba(47,76,115,0.16)]'
                       }`}
                     >
                       <button
@@ -54,15 +54,15 @@ export default function Faqs() {
                         onClick={() => setOpenId(open ? null : id)}
                         aria-expanded={open}
                       >
-                        <span className="min-w-0 flex-1 font-medium text-white">{item.q}</span>
+                        <span className="min-w-0 flex-1 font-medium text-[#2F4C73]">{item.q}</span>
                         <span
                           className={`grid h-7 w-7 shrink-0 place-items-center rounded-full border transition-[transform,border-color,background-color] duration-500 ${
                             open
-                              ? 'rotate-45 border-[#f58220]/50 bg-[#f58220]/15'
-                              : 'border-white/10 bg-white/5'
+                              ? 'rotate-45 border-[#4A6B94]/50 bg-[#4A6B94]/15'
+                              : 'border-[rgba(47,76,115,0.12)] bg-[#FFFFFF]/80'
                           }`}
                         >
-                          <Plus size={15} className="text-[#ff8a1f]" />
+                          <Plus size={15} className="text-[#4A6B94]" />
                         </span>
                       </button>
 
@@ -78,7 +78,7 @@ export default function Faqs() {
                               initial={{ y: -8, opacity: 0 }}
                               animate={{ y: 0, opacity: 1 }}
                               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.05 }}
-                              className="px-5 pb-5 text-sm leading-relaxed text-[#9a9ab0]"
+                              className="px-5 pb-5 text-sm leading-relaxed text-[#6B7C8F]"
                             >
                               {item.a}
                             </motion.p>
@@ -93,15 +93,15 @@ export default function Faqs() {
           ))}
 
           <AnimatedSection from="scale">
-            <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-[#1a1208] via-[#14100a] to-[#0a0a0a] px-6 py-12 text-center">
-              <div className="pointer-events-none absolute -top-12 left-1/4 h-40 w-40 rounded-full bg-[#e86f0c]/25 blur-3xl" />
-              <div className="pointer-events-none absolute right-1/4 -bottom-12 h-44 w-44 rounded-full bg-[#ff6b00]/20 blur-3xl" />
+            <div className="relative overflow-hidden rounded-[2rem] border border-[rgba(47,76,115,0.12)] bg-gradient-to-br from-[#E8ECF2] via-[#E0E5ED] to-[#FFFFFF] px-6 py-12 text-center">
+              <div className="pointer-events-none absolute -top-12 left-1/4 h-40 w-40 rounded-full bg-[#2F4C73]/25 blur-3xl" />
+              <div className="pointer-events-none absolute right-1/4 -bottom-12 h-44 w-44 rounded-full bg-[#4A6B94]/20 blur-3xl" />
 
               <div className="relative">
-                <h2 className="font-display text-2xl font-bold tracking-[-0.02em] text-white sm:text-3xl">
+                <h2 className="font-display text-2xl font-bold tracking-[-0.02em] text-[#2F4C73] sm:text-3xl">
                   Still have questions?
                 </h2>
-                <p className="mt-3 text-sm text-[#b0b0c4] md:text-base">
+                <p className="mt-3 text-sm text-[#4A5D73] md:text-base">
                   Our team is here to help! Contact us for personalized assistance.
                 </p>
                 <div className="mt-7 flex justify-center">

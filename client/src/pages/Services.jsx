@@ -34,13 +34,13 @@ export default function Services() {
             {serviceCategories.map((category) => (
               <article
                 key={category.id}
-                className="rounded-3xl border border-white/8 bg-[#0c0c0c] p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#f58220]/35"
+                className="rounded-3xl border border-[rgba(47,76,115,0.1)] bg-[#FFFFFF] p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#4A6B94]/35"
               >
-                <span className="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-[#f58220]/25 to-[#ff6b00]/15 text-[#ffb86b]">
+                <span className="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-[#4A6B94]/25 to-[#4A6B94]/15 text-[#6B8AB0]">
                   <ServiceIcon name={category.icon} size={22} />
                 </span>
-                <h3 className="mt-4 font-display text-xl font-semibold text-white">{category.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-[#9a9ab0]">{category.description}</p>
+                <h3 className="mt-4 font-display text-xl font-semibold text-[#2F4C73]">{category.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-[#6B7C8F]">{category.description}</p>
                 <ul className="mt-4 space-y-2">
                   {getServicesForCategory(category.id)
                     .slice(0, 4)
@@ -48,9 +48,9 @@ export default function Services() {
                       <li key={service.id}>
                         <Link
                           to={`/services/${service.id}`}
-                          className="flex items-center gap-2 text-sm text-[#c8c8d4] transition-colors hover:text-white"
+                          className="flex items-center gap-2 text-sm text-[#4A5D73] transition-colors hover:text-[#2F4C73]"
                         >
-                          <span className="h-1 w-1 rounded-full bg-[#f58220]" />
+                          <span className="h-1 w-1 rounded-full bg-[#4A6B94]" />
                           {service.title}
                         </Link>
                       </li>
@@ -80,16 +80,16 @@ export default function Services() {
             <Link
               key={service.id}
               to={`/services/${service.id}`}
-              className="group flex h-full flex-col rounded-3xl border border-white/8 bg-[#0c0c0c] p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#f58220]/4 hover:bg-white/[0.03] hover:shadow-[0_20px_50px_rgba(245,130,32,0.12)]"
+              className="group flex h-full flex-col rounded-3xl border border-[rgba(47,76,115,0.1)] bg-[#FFFFFF] p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#4A6B94]/4 hover:bg-[#FFFFFF] hover:shadow-[0_20px_50px_rgba(74,107,148,0.12)]"
             >
-              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-[#f58220] to-[#ff6b00] text-white shadow-[0_10px_28px_rgba(245,130,32,0.35)] transition-transform duration-300 group-hover:scale-105">
+              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-[#4A6B94] to-[#2F4C73] text-[#FFFFFF] shadow-[0_10px_28px_rgba(74,107,148,0.35)] transition-transform duration-300 group-hover:scale-105">
                 <ServiceIcon name={service.icon} size={22} />
               </span>
-              <h3 className="mt-5 font-display text-lg font-semibold tracking-[-0.02em] text-white">
+              <h3 className="mt-5 font-display text-lg font-semibold tracking-[-0.02em] text-[#2F4C73]">
                 {service.title}
               </h3>
-              <p className="mt-2 flex-1 text-sm leading-relaxed text-[#9a9ab0]">{service.description}</p>
-              <span className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-[#ffb86b] transition-colors group-hover:text-white">
+              <p className="mt-2 flex-1 text-sm leading-relaxed text-[#6B7C8F]">{service.description}</p>
+              <span className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-[#6B8AB0] transition-colors group-hover:text-[#2F4C73]">
                 Learn More
                 <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-0.5">
                   →
@@ -117,13 +117,13 @@ export default function Services() {
             {processSteps.map((step) => (
               <article
                 key={step.step}
-                className="rounded-3xl border border-white/8 bg-[#0c0c0c] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#f58220]/35"
+                className="rounded-3xl border border-[rgba(47,76,115,0.1)] bg-[#FFFFFF] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#4A6B94]/35"
               >
-                <div className="mb-4 grid h-8 w-8 place-items-center rounded-full border border-[#f58220]/40 bg-[#f58220]/10 text-xs font-semibold text-[#ffb86b]">
+                <div className="mb-4 grid h-8 w-8 place-items-center rounded-full border border-[#4A6B94]/40 bg-[#4A6B94]/10 text-xs font-semibold text-[#6B8AB0]">
                   {step.step}
                 </div>
-                <h3 className="font-display text-lg font-semibold text-white">{step.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-[#9a9ab0]">{step.description}</p>
+                <h3 className="font-display text-lg font-semibold text-[#2F4C73]">{step.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-[#6B7C8F]">{step.description}</p>
               </article>
             ))}
           </StaggerContainer>

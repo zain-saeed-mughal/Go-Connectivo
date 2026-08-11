@@ -3,16 +3,16 @@ import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { isCompactViewport } from '../../motion/config';
 
-/** Unified dark charcoal + soft warm tint — orange only as accent, never full-card fill */
+/** Theme surfaces — Luxe Navy professional gradients */
 export const THEMES = {
-  primary: 'from-[#1a1612] via-[#12100e] to-[#080808]',
-  secondary: 'from-[#1c1814] via-[#141210] to-[#090909]',
-  accent: 'from-[#1b1713] via-[#131110] to-[#070707]',
-  success: 'from-[#181614] via-[#11100e] to-[#080808]',
-  warning: 'from-[#1a1612] via-[#13110f] to-[#090909]',
-  danger: 'from-[#191512] via-[#12100e] to-[#080808]',
-  info: 'from-[#171614] via-[#11100f] to-[#070707]',
-  neutral: 'from-[#181614] via-[#121110] to-[#080808]',
+  primary: 'from-[#FFFFFF] via-[#E8ECF2] to-[#6B8AB0]/25',
+  secondary: 'from-[#F4F6F9] via-[#E0E5ED] to-[#4A6B94]/20',
+  accent: 'from-[#FFFFFF] via-[#E8ECF2] to-[#2F4C73]/18',
+  success: 'from-[#FFFFFF] via-[#F4F6F9] to-[#6B8AB0]/22',
+  warning: 'from-[#F4F6F9] via-[#E8ECF2] to-[#4A6B94]/28',
+  danger: 'from-[#FFFFFF] via-[#E8ECF2] to-[#2F4C73]/15',
+  info: 'from-[#FFFFFF] via-[#E8ECF2] to-[#6B8AB0]/30',
+  neutral: 'from-[#FFFFFF] via-[#F4F6F9] to-[#4A6B94]/16',
 };
 
 const SIZES = {
@@ -22,10 +22,10 @@ const SIZES = {
 };
 
 const VARIANTS = {
-  default: 'border border-white/[0.08] shadow-lg hover:border-white/15 hover:shadow-2xl',
-  minimal: 'border border-white/10 shadow-md hover:shadow-lg',
+  default: 'border border-[rgba(47,76,115,0.12)] shadow-[0_14px_40px_rgba(47,76,115,0.08)] hover:border-[#6B8AB0]/40 hover:shadow-[0_20px_50px_rgba(47,76,115,0.12)]',
+  minimal: 'border border-[rgba(47,76,115,0.12)] shadow-md hover:shadow-lg',
   premium:
-    'border border-white/[0.1] shadow-[0_16px_40px_rgba(0,0,0,0.45)] ring-1 ring-white/[0.04] hover:border-[#f58220]/25 hover:shadow-[0_20px_50px_rgba(0,0,0,0.55)]',
+    'border border-[rgba(47,76,115,0.14)] shadow-[0_16px_40px_rgba(47,76,115,0.1)] ring-1 ring-white/50 hover:border-[#4A6B94]/35 hover:shadow-[0_20px_50px_rgba(47,76,115,0.12)]',
 };
 
 const GRIDS = {
@@ -153,7 +153,7 @@ export const Card3D = React.forwardRef(function Card3D(
       </motion.div>
 
       <div className="absolute inset-0 overflow-hidden rounded-2xl opacity-20">
-        <svg className="absolute -top-4 -right-4 h-32 w-32 text-white/30" viewBox="0 0 100 100" aria-hidden>
+        <svg className="absolute -top-4 -right-4 h-32 w-32 text-[#2F4C73]/30" viewBox="0 0 100 100" aria-hidden>
           <defs>
             <pattern id={patternId} x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
               <circle cx="10" cy="10" r="1" fill="currentColor" opacity="0.3" />
@@ -167,7 +167,7 @@ export const Card3D = React.forwardRef(function Card3D(
           animate={{ rotate: hovered ? 180 : 0 }}
           transition={{ duration: 0.8 }}
         >
-          <svg viewBox="0 0 100 100" className="h-full w-full text-white/40" aria-hidden>
+          <svg viewBox="0 0 100 100" className="h-full w-full text-[#2F4C73]/40" aria-hidden>
             <rect x="20" y="20" width="60" height="60" fill="none" stroke="currentColor" strokeWidth="1" rx="8" />
             <rect x="35" y="35" width="30" height="30" fill="none" stroke="currentColor" strokeWidth="0.5" rx="4" />
           </svg>
@@ -178,15 +178,15 @@ export const Card3D = React.forwardRef(function Card3D(
         className="absolute inset-0 rounded-2xl"
         style={{
           background:
-            'linear-gradient(160deg, rgba(245,130,32,0.08) 0%, rgba(0,0,0,0.35) 42%, rgba(0,0,0,0.55) 100%)',
+            'linear-gradient(160deg, rgba(255,255,255,0.72) 0%, rgba(232,236,242,0.4) 45%, rgba(47,76,115,0.12) 100%)',
           transform: 'translateZ(5px)',
         }}
-        animate={{ opacity: hovered ? 0.85 : 1 }}
+        animate={{ opacity: hovered ? 0.8 : 1 }}
         transition={{ duration: 0.3 }}
       />
 
       <motion.div
-        className="relative z-20 flex h-full flex-col justify-between p-6 text-white"
+        className="relative z-20 flex h-full flex-col justify-between p-6 text-[#2F4C73]"
         style={{ transform: 'translateZ(20px)' }}
       >
         <div className="flex items-start justify-between">
@@ -224,7 +224,7 @@ export const Card3D = React.forwardRef(function Card3D(
           </motion.h3>
 
           <motion.p
-            className="line-clamp-3 text-sm leading-relaxed text-white/85 drop-shadow-sm"
+            className="line-clamp-3 text-sm leading-relaxed text-[#2F4C73]/85 drop-shadow-sm"
             animate={{ opacity: hovered ? 1 : 0.85 }}
             transition={{ duration: 0.3 }}
           >
@@ -235,7 +235,7 @@ export const Card3D = React.forwardRef(function Card3D(
             <button
               type="button"
               onClick={handleCtaClick}
-              className="inline-flex items-center gap-2 pt-1 text-xs font-medium text-[#ffb86b] transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f58220]/50"
+              className="inline-flex items-center gap-2 pt-1 text-xs font-medium text-[#6B8AB0] transition-colors hover:text-[#2F4C73] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4A6B94]/50"
             >
               <span className="h-0.5 w-4 rounded-full bg-current" />
               {loading ? 'Loading...' : exploreLabel}
@@ -246,14 +246,14 @@ export const Card3D = React.forwardRef(function Card3D(
 
       {loading ? (
         <motion.div
-          className="absolute inset-0 flex items-center justify-center rounded-2xl bg-black/30 backdrop-blur-sm"
+          className="absolute inset-0 flex items-center justify-center rounded-2xl bg-[#2F4C73]/25 backdrop-blur-sm"
           style={{ transform: 'translateZ(30px)' }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
         >
           <motion.div
-            className="h-6 w-6 rounded-full border-2 border-white/30 border-t-[#f58220]"
+            className="h-6 w-6 rounded-full border-2 border-white/30 border-t-[#4A6B94]"
             animate={{ rotate: 360 }}
             transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
           />

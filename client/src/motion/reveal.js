@@ -40,8 +40,7 @@ export function forceVisible(el) {
     xPercent: 0,
     yPercent: 0,
     scale: 1,
-    clipPath: 'none',
-    clearProps: 'transform,filter,willChange,clipPath',
+    // Avoid clearProps:"transform" — it warns when sibling rotate/x/y were touched.
   });
   settle(el);
 }
@@ -60,7 +59,11 @@ const finishClean = (el) => () => {
   el.classList.remove('gc-will-reveal');
   gsap.set(el, {
     autoAlpha: 1,
-    clearProps: 'transform,clipPath,filter,willChange,x,y,xPercent,yPercent,scale',
+    x: 0,
+    y: 0,
+    xPercent: 0,
+    yPercent: 0,
+    scale: 1,
   });
 };
 
@@ -81,19 +84,19 @@ export function createReveal({
   if (prefersReducedMotion()) {
     items.forEach((el) => el.classList.remove('gc-will-reveal'));
     if (trigger) trigger.classList?.remove('gc-stagger-pending');
-    gsap.set(items, { autoAlpha: 1, clearProps: 'all' });
+    gsap.set(items, { autoAlpha: 1 });
     return null;
   }
 
   items.forEach((el) => markPending(el, finishClean(el)));
 
-  const fromVars = { ...from, force3D: true };
+  const fromVars = { ...from };
   if (from.opacity !== undefined && from.autoAlpha === undefined) {
     fromVars.autoAlpha = from.opacity;
     delete fromVars.opacity;
   }
 
-  const toVars = { ...to, force3D: true };
+  const toVars = { ...to };
   if (to.opacity !== undefined) {
     toVars.autoAlpha = to.opacity;
     delete toVars.opacity;

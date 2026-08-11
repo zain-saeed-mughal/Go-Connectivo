@@ -45,7 +45,7 @@ export default function Layout() {
 
   return (
     <SmoothScroll>
-      <div className="relative min-h-screen bg-[#050505] text-white">
+      <div className="relative min-h-screen bg-[#F4F6F9] text-[#2F4C73]">
         <div className="noise" aria-hidden="true" />
         <FloatingIconsBackground />
         <Navbar />

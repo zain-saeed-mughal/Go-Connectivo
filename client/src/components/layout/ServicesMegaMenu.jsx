@@ -64,7 +64,7 @@ export default function ServicesMegaMenu({ onNavigate }) {
       exit="exit"
       onMouseEnter={stopPageScroll}
       onMouseLeave={startPageScroll}
-      className="gc-scrollbar max-h-[min(78vh,720px)] w-full overflow-y-auto overflow-x-hidden overscroll-contain rounded-2xl border border-white/10 bg-[#0c0c0c]/95 shadow-[0_24px_80px_rgba(0,0,0,0.55)] backdrop-blur-xl"
+      className="gc-scrollbar max-h-[min(78vh,720px)] w-full overflow-y-auto overflow-x-hidden overscroll-contain rounded-2xl border border-[rgba(47,76,115,0.12)] bg-[#FFFFFF]/95 shadow-[0_24px_80px_rgba(0,0,0,0.55)] backdrop-blur-xl"
       role="menu"
       aria-label="Services"
     >
@@ -74,15 +74,15 @@ export default function ServicesMegaMenu({ onNavigate }) {
           return (
             <div
               key={category.id}
-              className={`p-5 ${index < serviceCategories.length - 1 ? 'md:border-r md:border-white/8' : ''}`}
+              className={`p-5 ${index < serviceCategories.length - 1 ? 'md:border-r md:border-[rgba(47,76,115,0.1)]' : ''}`}
             >
               <div className="mb-4 flex items-center gap-3">
-                <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-[#f58220]/25 to-[#ff6b00]/15 text-[#ffb86b]">
+                <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-[#4A6B94]/25 to-[#4A6B94]/15 text-[#6B8AB0]">
                   <ServiceIcon name={category.icon} size={20} />
                 </span>
                 <div>
-                  <p className="font-display text-sm font-semibold text-white">{category.title}</p>
-                  <p className="text-[11px] leading-snug text-[#8a8a9c]">{category.description}</p>
+                  <p className="font-display text-sm font-semibold text-[#2F4C73]">{category.title}</p>
+                  <p className="text-[11px] leading-snug text-[#6B7C8F]">{category.description}</p>
                 </div>
               </div>
 
@@ -95,10 +95,10 @@ export default function ServicesMegaMenu({ onNavigate }) {
                       onClick={onNavigate}
                       className="group flex items-center gap-2.5 rounded-xl px-2 py-2 transition-colors duration-200 hover:bg-white/[0.05]"
                     >
-                      <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-[#f58220] text-[#0a0a0a] shadow-[0_6px_16px_rgba(245,130,32,0.35)] transition-transform duration-300 group-hover:scale-105">
+                      <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-[#4A6B94] text-[#FFFFFF] shadow-[0_6px_16px_rgba(74,107,148,0.35)] transition-transform duration-300 group-hover:scale-105">
                         <ServiceIcon name={service.icon} size={15} />
                       </span>
-                      <span className="text-sm font-medium text-[#c8c8d4] transition-colors group-hover:text-white">
+                      <span className="text-sm font-medium text-[#4A5D73] transition-colors group-hover:text-[#2F4C73]">
                         {service.title}
                       </span>
                     </Link>
@@ -110,12 +110,12 @@ export default function ServicesMegaMenu({ onNavigate }) {
         })}
       </div>
 
-      <div className="flex flex-col gap-2 border-t border-white/8 bg-white/[0.02] px-5 py-3 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-xs text-[#8a8a9c]">Dialers · PBX · Inbound · Outbound</p>
+      <div className="flex flex-col gap-2 border-t border-[rgba(47,76,115,0.1)] bg-[#FFFFFF] px-5 py-3 sm:flex-row sm:items-center sm:justify-between">
+        <p className="text-xs text-[#6B7C8F]">Dialers · PBX · Inbound · Outbound</p>
         <Link
           to="/services#all-services"
           onClick={onNavigate}
-          className="text-xs font-semibold text-[#ffb86b] transition-colors hover:text-white"
+          className="text-xs font-semibold text-[#6B8AB0] transition-colors hover:text-[#2F4C73]"
         >
           View all services →
         </Link>

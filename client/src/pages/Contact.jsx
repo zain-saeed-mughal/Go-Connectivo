@@ -37,33 +37,33 @@ export default function Contact() {
         <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-2">
           <ImageReveal
             direction="left"
-            className="rounded-3xl border border-white/8"
-            innerClassName="bg-white/[0.03] p-7 md:p-8"
+            className="rounded-3xl border border-[rgba(47,76,115,0.1)]"
+            innerClassName="bg-[#FFFFFF] p-7 md:p-8"
           >
-            <h3 className="font-display text-2xl font-semibold text-white">Get In Touch</h3>
-            <p className="mt-2 text-sm leading-relaxed text-[#9a9ab0]">
+            <h3 className="font-display text-2xl font-semibold text-[#2F4C73]">Get In Touch</h3>
+            <p className="mt-2 text-sm leading-relaxed text-[#6B7C8F]">
               Have questions about our services? Our team is here to help you.
             </p>
 
             <StaggerContainer className="mt-8 space-y-6" stagger={0.1} from="left">
               {details.map((detail) => (
                 <div key={detail.title} className="group flex items-start gap-4">
-                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-[#f58220] to-[#ff6b00] text-white shadow-[0_8px_24px_rgba(232,111,12,0.3)] transition-transform duration-500 group-hover:scale-105">
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-[#4A6B94] to-[#2F4C73] text-[#FFFFFF] shadow-[0_8px_24px_rgba(47,76,115,0.3)] transition-transform duration-500 group-hover:scale-105">
                     <detail.icon size={18} />
                   </span>
                   <div>
-                    <p className="text-sm font-semibold text-white">{detail.title}</p>
+                    <p className="text-sm font-semibold text-[#2F4C73]">{detail.title}</p>
                     {detail.lines.map((line) =>
                       detail.href ? (
                         <a
                           key={line}
                           href={detail.href}
-                          className="mt-1 block text-sm text-[#9a9ab0] transition-colors duration-300 hover:text-white"
+                          className="mt-1 block text-sm text-[#6B7C8F] transition-colors duration-300 hover:text-[#2F4C73]"
                         >
                           {line}
                         </a>
                       ) : (
-                        <p key={line} className="mt-1 text-sm text-[#9a9ab0]">
+                        <p key={line} className="mt-1 text-sm text-[#6B7C8F]">
                           {line}
                         </p>
                       ),
@@ -73,9 +73,9 @@ export default function Contact() {
               ))}
             </StaggerContainer>
 
-            <div className="mt-8 rounded-2xl border border-white/8 bg-[#0c0c0c] p-5">
-              <p className="text-sm font-semibold text-white">24/7 Customer Support</p>
-              <p className="mt-1.5 text-sm leading-relaxed text-[#9a9ab0]">
+            <div className="mt-8 rounded-2xl border border-[rgba(47,76,115,0.1)] bg-[#FFFFFF] p-5">
+              <p className="text-sm font-semibold text-[#2F4C73]">24/7 Customer Support</p>
+              <p className="mt-1.5 text-sm leading-relaxed text-[#6B7C8F]">
                 Existing customers can reach our technical support team any time via phone, email,
                 or live chat.
               </p>
@@ -85,11 +85,11 @@ export default function Contact() {
           <ImageReveal
             direction="right"
             delay={0.1}
-            className="rounded-3xl border border-white/8"
-            innerClassName="bg-[#0c0c0c]/80 p-7 backdrop-blur md:p-8"
+            className="rounded-3xl border border-[rgba(47,76,115,0.1)]"
+            innerClassName="bg-[#FFFFFF]/80 p-7 backdrop-blur md:p-8"
           >
-            <h3 className="font-display text-2xl font-semibold text-white">Send Us a Message</h3>
-            <p className="mt-2 mb-7 text-sm text-[#9a9ab0]">
+            <h3 className="font-display text-2xl font-semibold text-[#2F4C73]">Send Us a Message</h3>
+            <p className="mt-2 mb-7 text-sm text-[#6B7C8F]">
               Fill out the form below and we’ll get back to you shortly.
             </p>
             <ContactForm />

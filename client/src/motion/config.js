@@ -6,10 +6,12 @@ let registered = false;
 export function registerGsap() {
   if (registered) return;
   gsap.registerPlugin(ScrollTrigger);
+  // force3D belongs in config — NOT defaults (defaults apply to every tween,
+  // including plain-object counters, which triggers "Missing plugin?" spam).
+  gsap.config({ force3D: 'auto', nullTargetWarn: false });
   gsap.defaults({
     overwrite: 'auto',
     ease: 'power3.out',
-    force3D: true,
   });
   registered = true;
 }

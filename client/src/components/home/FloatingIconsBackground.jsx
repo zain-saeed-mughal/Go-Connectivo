@@ -92,14 +92,14 @@ export default function FloatingIconsBackground() {
       className="pointer-events-none fixed inset-0 z-[1] hidden overflow-hidden lg:block"
       aria-hidden="true"
     >
-      <div className="absolute top-[10%] left-[5%] h-80 w-80 rounded-full bg-[#f58220]/10 blur-[100px]" />
-      <div className="absolute right-[4%] bottom-[12%] h-96 w-96 rounded-full bg-[#ff6b00]/[0.08] blur-[110px]" />
+      <div className="absolute top-[10%] left-[5%] h-80 w-80 rounded-full bg-[#4A6B94]/10 blur-[100px]" />
+      <div className="absolute right-[4%] bottom-[12%] h-96 w-96 rounded-full bg-[#6B8AB0]/[0.08] blur-[110px]" />
 
       {ICONS.map(({ Icon, x, y, size, opacity, rotate }, index) => (
         <span
           key={`float-icon-${index}`}
           data-float-icon
-          className="absolute text-[#ffb86b] drop-shadow-[0_0_10px_rgba(245,130,32,0.28)] will-change-transform"
+          className="absolute text-[#6B8AB0]/70 drop-shadow-none will-change-transform"
           style={{
             left: `${x}%`,
             top: `${y}%`,

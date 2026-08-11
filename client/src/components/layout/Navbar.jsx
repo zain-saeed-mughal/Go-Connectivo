@@ -102,7 +102,7 @@ export default function Navbar() {
     <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-6 sm:pt-4">
       <div className="pointer-events-none fixed inset-x-0 top-0 h-0.5">
         <div
-          className="h-full w-full origin-left bg-gradient-to-r from-[#e86f0c] via-[#ff6b00] to-[#ffb020] transition-transform duration-500 ease-out"
+          className="h-full w-full origin-left bg-gradient-to-r from-[#2F4C73] via-[#4A6B94] to-[#6B8AB0] transition-transform duration-500 ease-out"
           style={{ transform: `scaleX(${progress / 100})` }}
         />
       </div>
@@ -115,7 +115,7 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 bg-black/55 backdrop-blur-[2px] lg:hidden"
+            className="fixed inset-0 z-40 bg-[#2F4C73]/40 backdrop-blur-[2px] lg:hidden"
             onClick={() => setOpen(false)}
           />
         ) : null}
@@ -126,10 +126,10 @@ export default function Navbar() {
           initial={{ y: -24, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className={`flex items-center justify-between rounded-2xl px-3 py-2.5 transition-all duration-500 sm:px-5 sm:py-3 ${
+          className={`flex items-center justify-between rounded-2xl border px-3 py-2.5 transition-all duration-500 sm:px-5 sm:py-3 ${
             scrolled || open || servicesOpen
-              ? 'glass-strong shadow-[0_10px_40px_rgba(0,0,0,0.35)]'
-              : 'glass shadow-none'
+              ? 'border-[#6B8AB0]/30 bg-[#2F4C73]/96 shadow-[0_10px_35px_rgba(0,0,0,0.14)] backdrop-blur-xl'
+              : 'border-[#6B8AB0]/20 bg-[#2F4C73]/90 shadow-[0_10px_35px_rgba(0,0,0,0.14)] backdrop-blur-lg'
           }`}
         >
           <Logo compact />
@@ -147,8 +147,8 @@ export default function Navbar() {
                     <NavLink
                       to="/services"
                       className={() =>
-                        `group relative inline-flex items-center gap-1 rounded-full px-3.5 py-2 text-sm font-medium transition-colors duration-300 ${
-                          servicesActive ? 'text-white' : 'text-[#9a9ab0] hover:text-white'
+                        `group relative inline-flex items-center gap-1 rounded-full px-3.5 py-2 text-sm font-semibold transition-colors duration-300 ${
+                          servicesActive ? 'text-[#FFFFFF]' : 'text-[#D7E2E8] hover:text-[#FFFFFF]'
                         }`
                       }
                       onFocus={openServices}
@@ -159,12 +159,12 @@ export default function Navbar() {
                         <motion.span
                           layoutId="nav-active"
                           transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                          className="absolute inset-0 -z-10 rounded-full bg-white/10 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]"
+                          className="absolute inset-0 -z-10 rounded-full bg-[#FFFFFF]/20 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.35)]"
                         />
                       )}
                       <span className="relative">
                         Services
-                        <span className="absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-gradient-to-r from-[#ff8a1f] to-[#ff6b00] transition-transform duration-400 group-hover:scale-x-100" />
+                        <span className="absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-gradient-to-r from-[#FFFFFF] to-[#6B8AB0] transition-transform duration-400 group-hover:scale-x-100" />
                       </span>
                       <ChevronDown
                         size={14}
@@ -182,7 +182,7 @@ export default function Navbar() {
                   end={link.path === '/'}
                   className={({ isActive }) =>
                     `group relative rounded-full px-3.5 py-2 text-sm font-medium transition-colors duration-300 ${
-                      isActive ? 'text-white' : 'text-[#9a9ab0] hover:text-white'
+                      isActive ? 'font-semibold text-[#FFFFFF]' : 'text-[#D7E2E8] hover:text-[#FFFFFF]'
                     }`
                   }
                 >
@@ -192,12 +192,12 @@ export default function Navbar() {
                         <motion.span
                           layoutId="nav-active"
                           transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                          className="absolute inset-0 -z-10 rounded-full bg-white/10 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]"
+                          className="absolute inset-0 -z-10 rounded-full bg-[#FFFFFF]/20 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.35)]"
                         />
                       )}
                       <span className="relative">
                         {link.label}
-                        <span className="absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-gradient-to-r from-[#ff8a1f] to-[#ff6b00] transition-transform duration-400 group-hover:scale-x-100" />
+                        <span className="absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-gradient-to-r from-[#FFFFFF] to-[#6B8AB0] transition-transform duration-400 group-hover:scale-x-100" />
                       </span>
                     </>
                   )}
@@ -214,7 +214,7 @@ export default function Navbar() {
 
           <button
             type="button"
-            className="grid h-10 w-10 place-items-center rounded-xl border border-white/10 bg-white/5 text-white transition-colors duration-300 hover:bg-white/10 lg:hidden"
+            className="grid h-10 w-10 place-items-center rounded-xl border border-[#6B8AB0]/35 bg-[#FFFFFF]/15 text-[#FFFFFF] transition-colors duration-300 hover:bg-[#FFFFFF]/25 lg:hidden"
             onClick={() => setOpen((value) => !value)}
             aria-label={open ? 'Close menu' : 'Open menu'}
             aria-expanded={open}
@@ -255,7 +255,7 @@ export default function Navbar() {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="glass-strong relative z-50 mx-auto mt-2 max-h-[min(78dvh,640px)] max-w-6xl overflow-y-auto rounded-2xl p-3 sm:p-4 lg:hidden"
+            className="relative z-50 mx-auto mt-2 max-h-[min(78dvh,640px)] max-w-6xl overflow-y-auto rounded-2xl border border-[#6B8AB0]/25 bg-[#FFFFFF] p-3 shadow-[0_16px_40px_rgba(47,76,115,0.2)] sm:p-4 lg:hidden"
           >
             <div className="flex flex-col gap-1">
               {navLinks.map((link) => {
@@ -266,7 +266,7 @@ export default function Navbar() {
                         type="button"
                         onClick={() => setMobileServicesOpen((value) => !value)}
                         className={`flex w-full items-center justify-between rounded-xl px-4 py-3 text-left text-sm font-medium transition-colors duration-300 ${
-                          servicesActive ? 'bg-white/10 text-white' : 'text-[#b7b7cb] hover:bg-white/5'
+                          servicesActive ? 'bg-[#4A6B94]/12 text-[#2F4C73]' : 'text-[#4A5D73] hover:bg-[#E8ECF2]'
                         }`}
                         aria-expanded={mobileServicesOpen}
                       >
@@ -289,7 +289,7 @@ export default function Navbar() {
                             <div className="gc-scrollbar max-h-[45vh] space-y-4 overflow-y-auto px-2 pt-2 pb-3">
                               {serviceCategories.map((category) => (
                                 <div key={category.id}>
-                                  <p className="mb-2 flex items-center gap-2 px-2 text-xs font-semibold tracking-wide text-[#ff8a1f] uppercase">
+                                  <p className="mb-2 flex items-center gap-2 px-2 text-xs font-semibold tracking-wide text-[#4A6B94] uppercase">
                                     <ServiceIcon name={category.icon} size={14} />
                                     {category.title}
                                   </p>
@@ -298,9 +298,9 @@ export default function Navbar() {
                                       <li key={service.id}>
                                         <Link
                                           to={`/services/${service.id}`}
-                                          className="flex items-center gap-2.5 rounded-lg px-2 py-2 text-sm text-[#c8c8d4] hover:bg-white/5 hover:text-white"
+                                          className="flex items-center gap-2.5 rounded-lg px-2 py-2 text-sm text-[#4A5D73] hover:bg-[#FFFFFF]/80 hover:text-[#2F4C73]"
                                         >
-                                          <span className="grid h-7 w-7 place-items-center rounded-md bg-[#f58220] text-[#0a0a0a]">
+                                          <span className="grid h-7 w-7 place-items-center rounded-md bg-[#4A6B94] text-[#FFFFFF]">
                                             <ServiceIcon name={service.icon} size={13} />
                                           </span>
                                           {service.title}
@@ -312,7 +312,7 @@ export default function Navbar() {
                               ))}
                               <Link
                                 to="/services#all-services"
-                                className="block px-2 text-sm font-semibold text-[#ffb86b]"
+                                className="block px-2 text-sm font-semibold text-[#6B8AB0]"
                               >
                                 View all services →
                               </Link>
@@ -331,7 +331,7 @@ export default function Navbar() {
                       end={link.path === '/'}
                       className={({ isActive }) =>
                         `block rounded-xl px-4 py-3 text-sm font-medium transition-colors duration-300 ${
-                          isActive ? 'bg-white/10 text-white' : 'text-[#b7b7cb] hover:bg-white/5'
+                          isActive ? 'bg-[#4A6B94]/12 text-[#2F4C73]' : 'text-[#4A5D73] hover:bg-[#E8ECF2]'
                         }`
                       }
                     >

@@ -32,7 +32,7 @@ export default function Process() {
   }, []);
 
   return (
-    <section className="px-4 py-16 sm:px-6 sm:py-24 md:py-28">
+    <section className="px-4 py-12 sm:px-6 sm:py-16 md:py-20">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           eyebrow="Onboarding"
@@ -46,16 +46,16 @@ export default function Process() {
               <article
                 key={step.step}
                 data-step
-                className="group relative rounded-3xl border border-white/8 bg-[#0c0c0c] p-5 transition-[transform,border-color,box-shadow] duration-500 hover:-translate-y-1 hover:border-[#f58220]/35"
+                className="group relative rounded-3xl border border-[rgba(47,76,115,0.1)] bg-[#FFFFFF] p-5 transition-[transform,border-color,box-shadow] duration-500 hover:-translate-y-1 hover:border-[#4A6B94]/35"
               >
                 <div
                   data-dot
-                  className="relative z-[2] mb-4 grid h-8 w-8 place-items-center rounded-full border border-[#f58220]/40 bg-[#0c0c0c] text-xs font-semibold text-[#ffb86b] transition-[border-color,background-color] duration-500 group-hover:border-[#f58220]/70 group-hover:bg-[#16120a]"
+                  className="relative z-[2] mb-4 grid h-8 w-8 place-items-center rounded-full border border-[#4A6B94]/40 bg-[#FFFFFF] text-xs font-semibold text-[#6B8AB0] transition-[border-color,background-color] duration-500 group-hover:border-[#4A6B94]/70 group-hover:bg-[#16120a]"
                 >
                   {step.step}
                 </div>
-                <h3 className="font-display text-lg font-semibold text-white">{step.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-[#9a9ab0]">{step.description}</p>
+                <h3 className="font-display text-lg font-semibold text-[#2F4C73]">{step.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-[#6B7C8F]">{step.description}</p>
               </article>
             ))}
           </div>

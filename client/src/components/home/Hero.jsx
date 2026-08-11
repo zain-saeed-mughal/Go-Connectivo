@@ -1,6 +1,7 @@
+import { useEffect, useRef } from 'react';
 import { ArrowDown, ArrowRight, Mail, Sparkles, Zap } from 'lucide-react';
 import MagneticButton from '../ui/MagneticButton';
-import NetworkBackground from './NetworkBackground';
+import heroVideo from '../../assets/hero-video.mp4';
 import { heroContent } from '../../data/content';
 import { gsap, ease, prefersReducedMotion } from '../../motion/config';
 import { markPending, settleReveal } from '../../motion/reveal';
@@ -15,6 +16,24 @@ const trustBits = [
 
 export default function Hero() {
   const reduced = prefersReducedMotion();
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return undefined;
+
+    if (reduced) {
+      video.pause();
+      return undefined;
+    }
+
+    const play = () => {
+      video.play().catch(() => {});
+    };
+    play();
+    video.addEventListener('loadeddata', play);
+    return () => video.removeEventListener('loadeddata', play);
+  }, [reduced]);
 
   const scope = useGsapContext(() => {
     const root = scope.current;
@@ -31,17 +50,17 @@ export default function Hero() {
     all.forEach((el) => {
       markPending(el, () => {
         el.classList.remove('gc-revealing', 'gc-will-reveal');
-        gsap.set(el, { autoAlpha: 1, clearProps: 'transform,y,willChange' });
+        gsap.set(el, { autoAlpha: 1, y: 0 });
       });
     });
 
-    gsap.set(all, { autoAlpha: 0, y: 28, force3D: true });
+    gsap.set(all, { autoAlpha: 0, y: 28 });
     all.forEach((el) => el.classList.remove('gc-will-reveal'));
     cta?.classList.remove('gc-stagger-pending');
 
     gsap
       .timeline({
-        defaults: { ease: ease.reveal, force3D: true },
+        defaults: { ease: ease.reveal },
         delay: 0.1,
         onComplete: () => all.forEach(settleReveal),
       })
@@ -54,7 +73,7 @@ export default function Hero() {
 
     if (glow && !prefersReducedMotion()) {
       gsap.to(glow, {
-        opacity: 0.55,
+        opacity: 0.45,
         scale: 1.08,
         duration: 2.8,
         repeat: -1,
@@ -79,80 +98,104 @@ export default function Hero() {
   return (
     <section
       ref={scope}
-      className="relative flex min-h-[100svh] items-center overflow-hidden px-4 pt-28 pb-20 sm:px-6 sm:pb-24"
+      className="relative flex min-h-[100svh] items-center overflow-hidden px-4 pt-24 pb-20 sm:px-6 sm:pt-28 sm:pb-24"
     >
-      <NetworkBackground />
+      {/* HD cinematic skyline video */}
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
+        <video
+          ref={videoRef}
+          className="hero-video absolute inset-0 h-full w-full object-cover object-[center_35%] sm:object-center"
+          src={heroVideo}
+          autoPlay={!reduced}
+          muted
+          loop
+          playsInline
+          preload="auto"
+        />
+        {/* Directional wash — existing #2F4C73 only; city visible on the right */}
+        <div className="hero-overlay-directional absolute inset-0" />
+        <div className="hero-overlay-vignette absolute inset-0" />
+        <div className="hero-overlay-bottom absolute inset-x-0 bottom-0 h-[22%] sm:h-[28%] md:h-[32%]" />
+      </div>
 
-      {/* Accent glow behind headline */}
       <div
         data-hero="glow"
-        className="pointer-events-none absolute top-[28%] left-[8%] h-64 w-64 rounded-full bg-[#f58220]/25 blur-[100px] opacity-40 sm:left-[12%]"
+        className="pointer-events-none absolute top-[28%] left-[8%] z-[1] hidden h-64 w-64 rounded-full bg-[#4A6B94]/18 blur-[100px] opacity-35 sm:block sm:left-[12%]"
         aria-hidden="true"
       />
 
       <div className="relative z-10 mx-auto w-full max-w-6xl">
-        <div className="max-w-3xl">
-          <div className="mb-5 flex flex-wrap items-center gap-2.5">
+        <div className="w-full max-w-3xl">
+          <div className="mb-5 flex flex-wrap items-center gap-2.5 sm:mb-7">
             <p
               data-hero="eyebrow"
-              className={`${hide} inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold tracking-[0.18em] text-[#ffb86b] uppercase backdrop-blur-md`}
+              className={`${hide} inline-flex max-w-full items-center gap-2 rounded-full border border-white/20 bg-[#FFFFFF]/18 px-3 py-1 text-[10px] font-semibold tracking-[0.18em] text-[#FFFFFF] uppercase backdrop-blur-md sm:px-3.5 sm:text-[11px] sm:tracking-[0.22em]`}
             >
-              <Sparkles size={14} className="text-[#f58220]" />
-              {heroContent.eyebrow}
+              <Sparkles size={13} className="shrink-0 text-[#6B8AB0]" />
+              <span className="truncate">{heroContent.eyebrow}</span>
             </p>
           </div>
 
           <h1
             data-hero="title"
-            className={`${hide} font-display text-4xl font-extrabold tracking-[-0.045em] text-white sm:text-5xl md:text-6xl lg:text-[4.35rem] lg:leading-[1.05]`}
+            className={`${hide} hero-title font-display font-extrabold text-[#FFFFFF]`}
           >
-            <span className="block">{heroContent.titleStart}</span>
-            <span className="relative mt-1 inline-block">
+            <span className="block drop-shadow-[0_2px_18px_rgba(0,0,0,0.28)]">
+              {heroContent.titleStart}
+            </span>
+            <span className="relative mt-1.5 inline-block max-w-full">
               <span className="gradient-text-brand hero-shine">{heroContent.titleHighlight}</span>
-              <span
-                className="pointer-events-none absolute -bottom-1 left-0 h-[3px] w-full origin-left rounded-full bg-gradient-to-r from-[#f58220] via-[#ffb020] to-transparent opacity-80"
-                aria-hidden="true"
-              />
             </span>
           </h1>
 
           <p
             data-hero="copy"
-            className={`${hide} mt-6 max-w-xl text-base leading-relaxed text-[#b0b0c4] md:text-lg`}
+            className={`${hide} hero-copy mt-6 text-[#F4F6F9]/90 sm:mt-8 md:mt-9`}
           >
             {heroContent.description}
           </p>
 
           <div
             data-hero="cta"
-            className={`${reduced ? '' : 'gc-stagger-pending'} mt-9 flex flex-wrap items-center gap-3`}
+            className={`${reduced ? '' : 'gc-stagger-pending'} hero-cta-row mt-8 flex flex-wrap items-center gap-3 sm:mt-10 sm:gap-3.5 md:mt-11 md:gap-4`}
           >
-            <MagneticButton to={heroContent.primaryCta.to} className="!px-7 !py-3.5 text-[15px]">
+            <MagneticButton
+              to={heroContent.primaryCta.to}
+              className="hero-cta-primary !px-6 !py-3 text-sm font-semibold sm:!px-8 sm:!py-3.5 sm:text-[15px]"
+            >
               {heroContent.primaryCta.label}
               <ArrowRight
                 size={16}
                 className="transition-transform duration-500 group-hover/btn:translate-x-1"
               />
             </MagneticButton>
-            <MagneticButton to={heroContent.secondaryCta.to} variant="secondary" className="!px-6 !py-3.5">
-              <Mail size={16} /> {heroContent.secondaryCta.label}
+            <MagneticButton
+              to={heroContent.secondaryCta.to}
+              variant="secondary"
+              className="hero-cta-secondary !border !border-white/40 !bg-[#FFFFFF]/18 !px-5 !py-2.5 text-sm !text-[#FFFFFF] !backdrop-blur-md hover:!bg-[#FFFFFF]/30 sm:!px-6 sm:!py-3"
+            >
+              <Mail size={15} /> {heroContent.secondaryCta.label}
             </MagneticButton>
-            <MagneticButton to="/services" variant="ghost" className="!px-5 !py-3">
-              <Zap size={15} className="text-[#ffb86b]" />
+            <MagneticButton
+              to="/services"
+              variant="ghost"
+              className="hero-cta-ghost !border !border-white/25 !px-5 !py-2.5 text-sm !text-[#FFFFFF]/90 hover:!border-[#6B8AB0] hover:!text-[#FFFFFF]"
+            >
+              <Zap size={14} className="text-[#6B8AB0]" />
               Explore services
             </MagneticButton>
           </div>
 
           <ul
             data-hero="trust"
-            className={`${hide} mt-10 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-white/8 pt-6 text-sm text-[#8a8a9c]`}
+            className={`${hide} mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-white/15 pt-5 text-xs text-[#F4F6F9]/75 sm:mt-11 sm:gap-x-5 sm:pt-6 sm:text-sm md:mt-12`}
           >
             {trustBits.map((bit, index) => (
               <li key={bit.label} className="inline-flex items-center gap-2">
                 {index > 0 ? (
-                  <span className="mr-1 hidden h-1 w-1 rounded-full bg-[#f58220]/50 sm:inline-block" />
+                  <span className="mr-1 hidden h-1 w-1 rounded-full bg-[#6B8AB0]/70 sm:inline-block" />
                 ) : null}
-                <span className="text-[#c8c8d4]">{bit.label}</span>
+                <span className="text-[#FFFFFF]/90">{bit.label}</span>
               </li>
             ))}
           </ul>
@@ -163,10 +206,10 @@ export default function Hero() {
         type="button"
         data-hero="scroll"
         onClick={() => scrollToId('home-next', { offset: -24 })}
-        className={`${hide} absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-1 text-[11px] tracking-[0.18em] text-[#8a8a9c] uppercase transition-colors hover:text-[#ffb86b] sm:bottom-8`}
+        className={`${hide} absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-1 text-[10px] tracking-[0.18em] text-[#2F4C73]/80 uppercase transition-colors hover:text-[#2F4C73] sm:bottom-6 sm:text-[11px] md:bottom-8`}
       >
-        <span>Scroll</span>
-        <span data-bounce className="grid h-8 w-8 place-items-center rounded-full border border-white/12 bg-white/5">
+        <span className="hidden sm:inline">Scroll</span>
+        <span data-bounce className="grid h-8 w-8 place-items-center rounded-full border border-[rgba(47,76,115,0.2)] bg-[#FFFFFF]/85 shadow-sm">
           <ArrowDown size={14} />
         </span>
       </button>

@@ -6,10 +6,11 @@ const base =
 
 const variants = {
   primary:
-    'bg-gradient-to-r from-[#e86f0c] to-[#ff6b00] text-white shadow-[0_10px_40px_rgba(255,107,0,0.28)] hover:shadow-[0_16px_50px_rgba(232,111,12,0.45)]',
+    'bg-gradient-to-r from-[#2F4C73] to-[#4A6B94] text-[#FFFFFF] shadow-[0_12px_32px_rgba(47,76,115,0.28)] hover:-translate-y-0.5 hover:shadow-[0_16px_40px_rgba(47,76,115,0.38)]',
   secondary:
-    'border border-white/15 bg-white/5 text-white backdrop-blur-md hover:border-white/30 hover:bg-white/10',
-  ghost: 'border border-white/10 text-[#cfcfcf] hover:border-white/25 hover:text-white',
+    'border border-[#6B8AB0]/45 bg-[#FFFFFF] text-[#2F4C73] hover:border-[#6B8AB0] hover:bg-[#E8ECF2]',
+  ghost:
+    'border border-[rgba(47,76,115,0.16)] bg-transparent text-[#4A5D73] hover:border-[#4A6B94]/55 hover:text-[#2F4C73]',
 };
 
 export default function MagneticButton({
@@ -30,12 +31,8 @@ export default function MagneticButton({
 
   const content = (
     <>
-      {/* Light sweep on hover */}
-      <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover/btn:translate-x-full" />
-      <span
-        ref={ref}
-        className="relative inline-flex items-center gap-2 will-change-transform"
-      >
+      <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 group-hover/btn:translate-x-full" />
+      <span ref={ref} className="relative inline-flex items-center gap-2 will-change-transform">
         {children}
       </span>
     </>
