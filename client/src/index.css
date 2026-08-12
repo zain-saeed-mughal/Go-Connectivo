@@ -99,6 +99,21 @@ body {
 
 #root {
   min-height: 100vh;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+img,
+video {
+  max-width: 100%;
+}
+
+/* Keep absolute full-bleed media filling their frame */
+.hero-video,
+[class*='absolute'][class*='inset-0'] > video,
+[class*='absolute'][class*='inset-0'] > img {
+  max-width: none;
 }
 
 ::selection {
@@ -250,12 +265,20 @@ html::-webkit-scrollbar-corner {
 }
 
 .hero-title {
-  font-size: clamp(2.05rem, 8.2vw, 5.625rem);
-  line-height: 1.05;
-  letter-spacing: -0.035em;
+  font-size: clamp(1.75rem, 7.2vw, 5.625rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
   max-width: 100%;
   overflow-wrap: anywhere;
-  word-break: normal;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+.hero-title-highlight {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 @media (min-width: 640px) {
@@ -264,13 +287,21 @@ html::-webkit-scrollbar-corner {
     line-height: 0.96;
     letter-spacing: -0.04em;
     overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+  }
+
+  .hero-title-highlight {
+    display: inline-block;
+    overflow-wrap: normal;
+    word-break: normal;
   }
 }
 
 .hero-copy {
   max-width: 620px;
   width: 100%;
-  font-size: clamp(1rem, 2.8vw, 1.25rem);
+  font-size: clamp(0.95rem, 2.8vw, 1.25rem);
   line-height: 1.6;
 }
 

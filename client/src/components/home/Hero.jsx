@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { ArrowDown, ArrowRight, Mail, Sparkles, Zap } from 'lucide-react';
+import { ArrowDown, ArrowRight, Mail, Zap } from 'lucide-react';
 import MagneticButton from '../ui/MagneticButton';
 import heroVideo from '../../assets/hero-video.mp4';
 import { heroContent } from '../../data/content';
@@ -37,7 +37,6 @@ export default function Hero() {
 
   const scope = useGsapContext(() => {
     const root = scope.current;
-    const eyebrow = root.querySelector('[data-hero="eyebrow"]');
     const title = root.querySelector('[data-hero="title"]');
     const copy = root.querySelector('[data-hero="copy"]');
     const cta = root.querySelector('[data-hero="cta"]');
@@ -46,7 +45,7 @@ export default function Hero() {
     const buttons = gsap.utils.toArray('[data-hero="cta"] > *');
     const glow = root.querySelector('[data-hero="glow"]');
 
-    const all = [eyebrow, title, copy, ...buttons, trust, scrollCue].filter(Boolean);
+    const all = [title, copy, ...buttons, trust, scrollCue].filter(Boolean);
     all.forEach((el) => {
       markPending(el, () => {
         el.classList.remove('gc-revealing', 'gc-will-reveal');
@@ -64,8 +63,7 @@ export default function Hero() {
         delay: 0.1,
         onComplete: () => all.forEach(settleReveal),
       })
-      .to(eyebrow, { autoAlpha: 1, y: 0, duration: 0.65 })
-      .to(title, { autoAlpha: 1, y: 0, duration: 1 }, '-=0.35')
+      .to(title, { autoAlpha: 1, y: 0, duration: 1 })
       .to(copy, { autoAlpha: 1, y: 0, duration: 0.75 }, '-=0.55')
       .to(buttons, { autoAlpha: 1, y: 0, duration: 0.65, stagger: 0.09 }, '-=0.45')
       .to(trust, { autoAlpha: 1, y: 0, duration: 0.6 }, '-=0.35')
@@ -98,7 +96,7 @@ export default function Hero() {
   return (
     <section
       ref={scope}
-      className="relative flex min-h-[100svh] items-center overflow-hidden px-4 pt-24 pb-20 sm:px-6 sm:pt-28 sm:pb-24"
+      className="relative flex min-h-[100svh] items-start overflow-x-clip overflow-y-hidden px-5 pt-24 pb-16 sm:items-center sm:px-6 sm:pt-28 sm:pb-24"
     >
       {/* HD cinematic skyline video */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
@@ -124,18 +122,8 @@ export default function Hero() {
         aria-hidden="true"
       />
 
-      <div className="relative z-10 mx-auto w-full max-w-6xl">
-        <div className="w-full max-w-3xl">
-          <div className="mb-5 flex flex-wrap items-center gap-2.5 sm:mb-7">
-            <p
-              data-hero="eyebrow"
-              className={`${hide} inline-flex max-w-full items-center gap-2 rounded-full border border-white/20 bg-[#FFFFFF]/18 px-3 py-1 text-[10px] font-semibold tracking-[0.18em] text-[#FFFFFF] uppercase backdrop-blur-md sm:px-3.5 sm:text-[11px] sm:tracking-[0.22em]`}
-            >
-              <Sparkles size={13} className="shrink-0 text-[#6B8AB0]" />
-              <span className="truncate">{heroContent.eyebrow}</span>
-            </p>
-          </div>
-
+      <div className="relative z-10 mx-auto w-full min-w-0 max-w-6xl">
+        <div className="w-full min-w-0 max-w-3xl">
           <h1
             data-hero="title"
             className={`${hide} hero-title font-display font-extrabold text-[#FFFFFF]`}
@@ -143,14 +131,14 @@ export default function Hero() {
             <span className="block drop-shadow-[0_2px_18px_rgba(0,0,0,0.28)]">
               {heroContent.titleStart}
             </span>
-            <span className="relative mt-1.5 inline-block max-w-full">
+            <span className="hero-title-highlight relative mt-1.5">
               <span className="gradient-text-brand hero-shine">{heroContent.titleHighlight}</span>
             </span>
           </h1>
 
           <p
             data-hero="copy"
-            className={`${hide} hero-copy mt-6 text-[#F4F6F9]/90 sm:mt-8 md:mt-9`}
+            className={`${hide} hero-copy mt-5 pr-1 text-[#F4F6F9]/90 sm:mt-8 md:mt-9`}
           >
             {heroContent.description}
           </p>
@@ -188,7 +176,7 @@ export default function Hero() {
 
           <ul
             data-hero="trust"
-            className={`${hide} mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-white/15 pt-5 text-xs text-[#F4F6F9]/75 sm:mt-11 sm:gap-x-5 sm:pt-6 sm:text-sm md:mt-12`}
+            className={`${hide} mt-8 flex flex-col gap-2 border-t border-white/15 pt-5 text-xs text-[#F4F6F9]/75 sm:mt-11 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-5 sm:gap-y-2 sm:pt-6 sm:text-sm md:mt-12`}
           >
             {trustBits.map((bit, index) => (
               <li key={bit.label} className="inline-flex items-center gap-2">
@@ -206,7 +194,7 @@ export default function Hero() {
         type="button"
         data-hero="scroll"
         onClick={() => scrollToId('home-next', { offset: -24 })}
-        className={`${hide} absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-1 text-[10px] tracking-[0.18em] text-[#2F4C73]/80 uppercase transition-colors hover:text-[#2F4C73] sm:bottom-6 sm:text-[11px] md:bottom-8`}
+        className={`${hide} absolute bottom-3 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-1 text-[10px] tracking-[0.18em] text-[#2F4C73]/80 uppercase transition-colors hover:text-[#2F4C73] sm:bottom-6 sm:flex sm:text-[11px] md:bottom-8`}
       >
         <span className="hidden sm:inline">Scroll</span>
         <span data-bounce className="grid h-8 w-8 place-items-center rounded-full border border-[rgba(47,76,115,0.2)] bg-[#FFFFFF]/85 shadow-sm">

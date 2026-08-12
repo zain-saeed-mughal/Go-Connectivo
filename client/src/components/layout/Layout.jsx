@@ -45,18 +45,18 @@ export default function Layout() {
 
   return (
     <SmoothScroll>
-      <div className="relative min-h-screen bg-[#F4F6F9] text-[#2F4C73]">
+      <div className="relative min-h-screen max-w-[100vw] overflow-x-clip bg-[#F4F6F9] text-[#2F4C73]">
         <div className="noise" aria-hidden="true" />
         <FloatingIconsBackground />
         <Navbar />
-        <main className="relative z-10">
+        <main className="relative z-10 min-w-0 w-full">
           <AnimatePresence mode="wait">
             <PageTransition key={location.pathname}>
               <Outlet />
             </PageTransition>
           </AnimatePresence>
         </main>
-        <div className="relative z-10">
+        <div className="relative z-10 min-w-0">
           <Footer />
         </div>
       </div>

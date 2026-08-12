@@ -56,7 +56,7 @@ export const TextStaggerHover = React.forwardRef(
     return (
       <Tag
         className={cn(
-          'relative inline-block origin-bottom overflow-hidden whitespace-normal text-left',
+          'relative inline-block max-w-full min-w-0 origin-bottom overflow-hidden whitespace-normal text-left',
           className,
         )}
         {...interactiveProps}
@@ -73,7 +73,7 @@ export const TextStaggerHover = React.forwardRef(
           return (
             <span
               key={`${entry.word}-${wordStart}`}
-              className="inline-block whitespace-nowrap"
+              className="inline-block max-w-full whitespace-normal sm:whitespace-nowrap"
             >
               {entry.characters.map((char, charIndex) => {
                 const delayIndex = wordStart + charIndex;

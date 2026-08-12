@@ -33,7 +33,7 @@ export default function Contact() {
         description="Questions about dialers, cloud PBX, inbound/outbound voice, or support — we’re here to help."
       />
 
-      <section className="px-6 pb-24">
+      <section className="px-4 sm:px-6 pb-24">
         <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-2">
           <ImageReveal
             direction="left"

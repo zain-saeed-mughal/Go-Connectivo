@@ -22,7 +22,7 @@ export default function CTA() {
     <section className="px-4 py-12 sm:px-6 sm:py-16 md:py-20">
       <div
         ref={scope}
-        className="gc-will-reveal relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] border border-[rgba(47,76,115,0.12)] px-6 py-14 sm:px-10 md:px-16"
+        className="gc-will-reveal relative mx-auto max-w-6xl overflow-hidden rounded-[1.5rem] border border-[rgba(47,76,115,0.12)] px-5 py-10 sm:rounded-[2rem] sm:px-10 sm:py-14 md:px-16"
       >
         <div className="absolute inset-0 bg-gradient-to-br from-[#E8ECF2] via-[#FFFFFF] to-[#F4F6F9]" />
         <ParallaxElement
@@ -43,7 +43,7 @@ export default function CTA() {
 
           <TextReveal
             as="h2"
-            className="mt-3 font-display text-3xl font-bold tracking-[-0.03em] text-[#2F4C73] sm:text-4xl md:text-5xl"
+            className="mt-3 font-display text-[1.65rem] font-bold tracking-[-0.03em] break-words text-[#2F4C73] sm:text-4xl md:text-5xl"
             parts={[
               { text: 'Ready to transform your business' },
               { text: 'communication?', className: 'gradient-text-brand' },
@@ -59,15 +59,15 @@ export default function CTA() {
           </AnimatedSection>
 
           <AnimatedSection from="up" delay={0.12}>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <MagneticButton to="/contact">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <MagneticButton to="/contact" className="w-full justify-center sm:w-auto">
                 Start Free Trial
                 <ArrowRight
                   size={16}
                   className="transition-transform duration-500 group-hover/btn:translate-x-1"
                 />
               </MagneticButton>
-              <MagneticButton to="/services" variant="secondary">
+              <MagneticButton to="/services" variant="secondary" className="w-full justify-center sm:w-auto">
                 View Services
               </MagneticButton>
             </div>

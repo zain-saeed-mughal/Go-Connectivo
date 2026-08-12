@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ServiceIcon from '../ui/ServiceIcon';
 import { getServicesForCategory, serviceCategories } from '../../data/content';
@@ -27,6 +27,7 @@ const panelVariants = {
  */
 export default function ServicesMegaMenu({ onNavigate }) {
   const panelRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     stopPageScroll();
@@ -55,6 +56,12 @@ export default function ServicesMegaMenu({ onNavigate }) {
     };
   }, []);
 
+  const goToService = (serviceId) => {
+    startPageScroll();
+    navigate(`/services/${serviceId}`);
+    onNavigate?.();
+  };
+
   return (
     <motion.div
       ref={panelRef}
@@ -65,7 +72,7 @@ export default function ServicesMegaMenu({ onNavigate }) {
       onMouseEnter={stopPageScroll}
       onMouseLeave={startPageScroll}
       className="gc-scrollbar max-h-[min(78vh,720px)] w-full overflow-y-auto overflow-x-hidden overscroll-contain rounded-2xl border border-[rgba(47,76,115,0.12)] bg-[#FFFFFF]/95 shadow-[0_24px_80px_rgba(0,0,0,0.55)] backdrop-blur-xl"
-      role="menu"
+      role="navigation"
       aria-label="Services"
     >
       <div className="grid gap-0 md:grid-cols-3">
@@ -89,11 +96,10 @@ export default function ServicesMegaMenu({ onNavigate }) {
               <ul className="space-y-1">
                 {categoryServices.map((service) => (
                   <li key={service.id}>
-                    <Link
-                      to={`/services/${service.id}`}
-                      role="menuitem"
-                      onClick={onNavigate}
-                      className="group flex items-center gap-2.5 rounded-xl px-2 py-2 transition-colors duration-200 hover:bg-white/[0.05]"
+                    <button
+                      type="button"
+                      onClick={() => goToService(service.id)}
+                      className="group flex w-full items-center gap-2.5 rounded-xl px-2 py-2.5 text-left transition-colors duration-200 hover:bg-[#E8ECF2]"
                     >
                       <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-[#4A6B94] text-[#FFFFFF] shadow-[0_6px_16px_rgba(74,107,148,0.35)] transition-transform duration-300 group-hover:scale-105">
                         <ServiceIcon name={service.icon} size={15} />
@@ -101,7 +107,7 @@ export default function ServicesMegaMenu({ onNavigate }) {
                       <span className="text-sm font-medium text-[#4A5D73] transition-colors group-hover:text-[#2F4C73]">
                         {service.title}
                       </span>
-                    </Link>
+                    </button>
                   </li>
                 ))}
               </ul>
@@ -114,7 +120,10 @@ export default function ServicesMegaMenu({ onNavigate }) {
         <p className="text-xs text-[#6B7C8F]">Dialers · PBX · Inbound · Outbound</p>
         <Link
           to="/services#all-services"
-          onClick={onNavigate}
+          onClick={() => {
+            startPageScroll();
+            onNavigate?.();
+          }}
           className="text-xs font-semibold text-[#6B8AB0] transition-colors hover:text-[#2F4C73]"
         >
           View all services →

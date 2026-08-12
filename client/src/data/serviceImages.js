@@ -8,7 +8,10 @@ import voicemailImg from '../assets/services/voicemail.png';
 import clickImg from '../assets/services/click.png';
 import networkImg from '../assets/services/network.png';
 
-/** Flat illustration mapped to each service detail hero. */
+/**
+ * Service detail / PageHero illustrations (original flat art).
+ * Photo assets for the Services hover slider live in ServicesHoverSlider.jsx.
+ */
 export const serviceHeroImages = {
   'auto-dialer': dialerImg,
   'predictive-dialer': dialerImg,

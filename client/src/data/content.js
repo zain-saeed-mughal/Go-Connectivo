@@ -161,7 +161,7 @@ export const services = [
   {
     id: 'progressive-dialer',
     title: 'Progressive Dialer',
-    icon: 'Phone',
+    icon: 'PhoneForwarded',
     category: 'cloud-telephony',
     description:
       'Progressive mode dials the next lead only when an agent is free — ideal when quality beats raw volume.',

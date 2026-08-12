@@ -255,7 +255,7 @@ export default function Navbar() {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="relative z-50 mx-auto mt-2 max-h-[min(78dvh,640px)] max-w-6xl overflow-y-auto rounded-2xl border border-[#6B8AB0]/25 bg-[#FFFFFF] p-3 shadow-[0_16px_40px_rgba(47,76,115,0.2)] sm:p-4 lg:hidden"
+            className="relative z-50 mx-auto mt-2 max-h-[min(85dvh,720px)] max-w-6xl overflow-y-auto overscroll-contain rounded-2xl border border-[#6B8AB0]/25 bg-[#FFFFFF] p-3 shadow-[0_16px_40px_rgba(47,76,115,0.2)] sm:p-4 lg:hidden"
           >
             <div className="flex flex-col gap-1">
               {navLinks.map((link) => {
@@ -286,7 +286,7 @@ export default function Navbar() {
                             transition={{ duration: 0.3 }}
                             className="overflow-hidden"
                           >
-                            <div className="gc-scrollbar max-h-[45vh] space-y-4 overflow-y-auto px-2 pt-2 pb-3">
+                            <div className="space-y-4 px-2 pt-2 pb-3">
                               {serviceCategories.map((category) => (
                                 <div key={category.id}>
                                   <p className="mb-2 flex items-center gap-2 px-2 text-xs font-semibold tracking-wide text-[#4A6B94] uppercase">
@@ -298,12 +298,12 @@ export default function Navbar() {
                                       <li key={service.id}>
                                         <Link
                                           to={`/services/${service.id}`}
-                                          className="flex items-center gap-2.5 rounded-lg px-2 py-2 text-sm text-[#4A5D73] hover:bg-[#FFFFFF]/80 hover:text-[#2F4C73]"
+                                          className="flex min-h-11 items-center gap-2.5 rounded-lg px-2 py-2.5 text-sm text-[#4A5D73] hover:bg-[#FFFFFF]/80 hover:text-[#2F4C73]"
                                         >
-                                          <span className="grid h-7 w-7 place-items-center rounded-md bg-[#4A6B94] text-[#FFFFFF]">
+                                          <span className="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-[#4A6B94] text-[#FFFFFF]">
                                             <ServiceIcon name={service.icon} size={13} />
                                           </span>
-                                          {service.title}
+                                          <span className="min-w-0 leading-snug">{service.title}</span>
                                         </Link>
                                       </li>
                                     ))}
@@ -312,7 +312,7 @@ export default function Navbar() {
                               ))}
                               <Link
                                 to="/services#all-services"
-                                className="block px-2 text-sm font-semibold text-[#6B8AB0]"
+                                className="block min-h-11 px-2 py-2.5 text-sm font-semibold text-[#6B8AB0]"
                               >
                                 View all services →
                               </Link>

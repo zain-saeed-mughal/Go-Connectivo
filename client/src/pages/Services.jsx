@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import voipVisual from '../assets/services/voip-4.jpg';
 import SectionHeading from '../components/ui/SectionHeading';
 import PageHero from '../components/ui/PageHero';
 import StatsBand from '../components/ui/StatsBand';
@@ -21,6 +22,8 @@ export default function Services() {
         title="Cloud Telephony,"
         highlight="Dialers & Voice"
         description="Hosted PBX, multi-mode dialers, inbound DIDs and toll-free, plus outbound termination — engineered for call centers and teams that live on the phone."
+        image={voipVisual}
+        imageAlt="VoIP desk phone and cloud telephony interface"
       />
 
       <section className="px-4 pb-16 sm:px-6">
@@ -66,7 +69,7 @@ export default function Services() {
         <ServicesHoverSlider />
       </section>
 
-      <section id="all-services" className="scroll-mt-28 px-6 pb-20">
+      <section id="all-services" className="scroll-mt-28 px-4 sm:px-6 pb-20">
         <div className="mx-auto mb-10 max-w-6xl">
           <SectionHeading
             eyebrow="Full catalog"

@@ -1,5 +1,6 @@
 import { Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import voipHeadset from '../assets/services/voip-2.jpg';
 import SectionHeading from '../components/ui/SectionHeading';
 import PageHero from '../components/ui/PageHero';
 import StatsBand from '../components/ui/StatsBand';
@@ -24,16 +25,20 @@ export default function About() {
         title="Your Trusted"
         highlight="VoIP Partner"
         description="Leading the future of business communication with reliable, scalable, and cost-effective solutions."
+        image={voipHeadset}
+        imageAlt="Professional headset for VoIP and contact center support"
       >
-        <div className="flex flex-wrap gap-3">
-          <MagneticButton to="/contact">Get Started Today</MagneticButton>
-          <MagneticButton to="/services" variant="secondary">
+        <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <MagneticButton to="/contact" className="w-full justify-center sm:w-auto">
+            Get Started Today
+          </MagneticButton>
+          <MagneticButton to="/services" variant="secondary" className="w-full justify-center sm:w-auto">
             View Services
           </MagneticButton>
         </div>
       </PageHero>
 
-      <section className="px-6 pb-20">
+      <section className="px-4 sm:px-6 pb-20">
         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
           <div className="space-y-5">
             <SectionHeading title="Built on reliability, engineered for scale" />
@@ -94,13 +99,13 @@ export default function About() {
         </div>
       </section>
 
-      <section className="px-6 pb-20">
+      <section className="px-4 sm:px-6 pb-20">
         <div className="mx-auto max-w-6xl">
           <StatsBand />
         </div>
       </section>
 
-      <section className="px-6 pb-20">
+      <section className="px-4 sm:px-6 pb-20">
         <div className="mx-auto max-w-6xl">
           <SectionHeading
             eyebrow="Our values"
@@ -129,7 +134,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="px-6 pb-20">
+      <section className="px-4 sm:px-6 pb-20">
         <div className="mx-auto max-w-6xl">
           <SectionHeading eyebrow="What we do" title="Our complete range of services." />
           <StaggerContainer className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4" stagger={0.06}>
@@ -151,7 +156,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="px-6 pb-20">
+      <section className="px-4 sm:px-6 pb-20">
         <div className="mx-auto max-w-6xl">
           <SectionHeading
             eyebrow="How we work"
@@ -174,7 +179,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="px-6 pb-10">
+      <section className="px-4 sm:px-6 pb-10">
         <div className="mx-auto max-w-6xl">
           <SectionHeading eyebrow="Why businesses choose us" title="Advantages from day one." />
           <StaggerContainer className="grid gap-4 sm:grid-cols-2" stagger={0.09} from="scale">

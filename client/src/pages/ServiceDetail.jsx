@@ -16,7 +16,10 @@ import { getServiceHeroImage } from '../data/serviceImages';
 
 export default function ServiceDetail() {
   const { slug } = useParams();
-  const service = getServiceById(slug);
+  const serviceId = String(slug || '')
+    .trim()
+    .toLowerCase();
+  const service = getServiceById(serviceId);
 
   if (!service) {
     return <Navigate to="/services" replace />;
@@ -40,17 +43,19 @@ export default function ServiceDetail() {
         image={heroImage}
         imageAlt={`${service.title} illustration`}
       >
-        <div className="flex flex-wrap items-center gap-3">
-          <MagneticButton to="/contact">Get Started</MagneticButton>
-          <MagneticButton to="/services" variant="secondary">
+        <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+          <MagneticButton to="/contact" className="w-full justify-center sm:w-auto">
+            Get Started
+          </MagneticButton>
+          <MagneticButton to="/services" variant="secondary" className="w-full justify-center sm:w-auto">
             All Services
           </MagneticButton>
         </div>
       </PageHero>
 
-      <section className="px-6 pb-16">
+      <section className="px-4 sm:px-6 pb-16">
         <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-          <RevealCard className="rounded-3xl border border-[rgba(47,76,115,0.1)] bg-[#FFFFFF] p-7 md:p-9">
+          <RevealCard className="rounded-3xl border border-[rgba(47,76,115,0.1)] bg-[#FFFFFF] p-5 sm:p-7 md:p-9">
             <div className="mb-6 flex items-center gap-4">
               <span className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-[#4A6B94] to-[#2F4C73] text-[#FFFFFF] shadow-[0_12px_32px_rgba(74,107,148,0.35)]">
                 <ServiceIcon name={service.icon} size={26} />
@@ -88,7 +93,9 @@ export default function ServiceDetail() {
                 your stack and share next steps.
               </p>
               <div className="mt-5">
-                <MagneticButton to="/contact">Talk to sales</MagneticButton>
+                <MagneticButton to="/contact" className="w-full justify-center sm:w-auto">
+                  Talk to sales
+                </MagneticButton>
               </div>
             </RevealCard>
 
@@ -128,7 +135,7 @@ export default function ServiceDetail() {
         </div>
       </section>
 
-      <section className="px-6 pb-20">
+      <section className="px-4 sm:px-6 pb-20">
         <div className="mx-auto max-w-6xl">
           <SectionHeading
             eyebrow="Explore more"

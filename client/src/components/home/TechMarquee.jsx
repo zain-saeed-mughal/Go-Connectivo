@@ -37,11 +37,11 @@ export default function TechMarquee() {
       className="relative border-y border-[rgba(47,76,115,0.1)] bg-[#E8ECF2] py-6"
       aria-label="Technology capabilities"
     >
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-[#E8ECF2] to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-[#E8ECF2] to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-[#E8ECF2] to-transparent sm:w-16 md:w-20" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-[#E8ECF2] to-transparent sm:w-16 md:w-20" />
 
       <div className="overflow-hidden">
-        <div data-track className="flex w-max items-center gap-10 px-6 will-change-transform">
+        <div data-track className="flex w-max items-center gap-6 px-4 will-change-transform sm:gap-10 sm:px-6">
           {items.map((item, index) => (
             <div key={`${item}-${index}`} className="flex items-center gap-10">
               <span className="font-display text-sm font-semibold tracking-[0.18em] whitespace-nowrap text-[#8d8d8d] uppercase transition-colors duration-500 hover:text-[#6B8AB0]">

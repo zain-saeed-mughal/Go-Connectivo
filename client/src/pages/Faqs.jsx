@@ -19,7 +19,7 @@ export default function Faqs() {
         description="Everything you need to know about our dialers, cloud PBX, inbound/outbound voice, and support."
       />
 
-      <section className="px-6 pb-16">
+      <section className="px-4 sm:px-6 pb-16">
         <div className="mx-auto max-w-3xl space-y-12">
           {faqCategories.map((group, groupIndex) => (
             <div key={group.category}>
@@ -93,7 +93,7 @@ export default function Faqs() {
           ))}
 
           <AnimatedSection from="scale">
-            <div className="relative overflow-hidden rounded-[2rem] border border-[rgba(47,76,115,0.12)] bg-gradient-to-br from-[#E8ECF2] via-[#E0E5ED] to-[#FFFFFF] px-6 py-12 text-center">
+            <div className="relative overflow-hidden rounded-[1.5rem] border border-[rgba(47,76,115,0.12)] bg-gradient-to-br from-[#E8ECF2] via-[#E0E5ED] to-[#FFFFFF] px-4 py-10 text-center sm:rounded-[2rem] sm:px-6 sm:py-12">
               <div className="pointer-events-none absolute -top-12 left-1/4 h-40 w-40 rounded-full bg-[#2F4C73]/25 blur-3xl" />
               <div className="pointer-events-none absolute right-1/4 -bottom-12 h-44 w-44 rounded-full bg-[#4A6B94]/20 blur-3xl" />
 
@@ -105,7 +105,9 @@ export default function Faqs() {
                   Our team is here to help! Contact us for personalized assistance.
                 </p>
                 <div className="mt-7 flex justify-center">
-                  <MagneticButton to="/contact">Contact Support</MagneticButton>
+                  <MagneticButton to="/contact" className="w-full justify-center sm:w-auto">
+                    Contact Support
+                  </MagneticButton>
                 </div>
               </div>
             </div>

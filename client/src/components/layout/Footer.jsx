@@ -97,7 +97,7 @@ export default function Footer() {
 
       <AnimatedSection from="none" duration={0.7} start="top 98%">
         <div className="relative border-t border-white/10">
-          <div className="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-5 text-xs text-[#9BB0BA] sm:flex-row sm:items-center sm:justify-between">
+          <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-5 text-xs text-[#9BB0BA] sm:flex-row sm:items-center sm:justify-between sm:px-6">
             <p>© {new Date().getFullYear()} Go Connectivo. All rights reserved.</p>
             <p>Built for clarity, performance, and long-term products.</p>
           </div>

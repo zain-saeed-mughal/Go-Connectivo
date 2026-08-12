@@ -3,7 +3,7 @@ import { StaggerContainer } from '../components/motion';
 
 export default function Terms() {
   return (
-    <section className="px-6 pt-36 pb-24">
+    <section className="px-4 sm:px-6 pt-36 pb-24">
       <div className="mx-auto max-w-3xl">
         <SectionHeading
           eyebrow="Legal"

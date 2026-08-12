@@ -105,20 +105,41 @@ export const Card3D = React.forwardRef(function Card3D(
 
   const handleCtaClick = useCallback(
     (e) => {
-      e.stopPropagation();
+      e?.stopPropagation?.();
       if (disabled || loading || !onClick) return;
       onClick();
     },
     [disabled, loading, onClick],
   );
 
+  const handleCardActivate = useCallback(
+    (e) => {
+      if (disabled || loading || !onClick) return;
+      if (e.target.closest('button')) return;
+      onClick();
+    },
+    [disabled, loading, onClick],
+  );
+
+  const handleKeyDown = useCallback(
+    (e) => {
+      if (!onClick || disabled || loading) return;
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        onClick();
+      }
+    },
+    [onClick, disabled, loading],
+  );
+
   return (
     <motion.div
       ref={ref}
       className={cn(
-        'group relative w-full overflow-hidden rounded-2xl transform-gpu transition-all duration-500 ease-out',
+        'group relative w-full min-w-0 overflow-hidden rounded-2xl transform-gpu transition-all duration-500 ease-out',
         SIZES[size],
         VARIANTS[variant],
+        onClick && !disabled && 'cursor-pointer',
         disabled && 'cursor-not-allowed opacity-50',
         loading && 'pointer-events-none',
         className,
@@ -126,6 +147,9 @@ export const Card3D = React.forwardRef(function Card3D(
       onMouseMove={handleMove}
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
+      onClick={onClick ? handleCardActivate : undefined}
+      onKeyDown={onClick ? handleKeyDown : undefined}
+      tabIndex={onClick && !disabled ? 0 : undefined}
       animate={{
         rotateX: disabled || !tiltEnabled ? 0 : mousePos.y,
         rotateY: disabled || !tiltEnabled ? 0 : mousePos.x,
@@ -133,7 +157,8 @@ export const Card3D = React.forwardRef(function Card3D(
       }}
       transition={{ type: 'spring', stiffness: 400, damping: 35, mass: 0.8 }}
       style={{ transformStyle: 'preserve-3d', perspective: '1200px' }}
-      role="article"
+      role={onClick ? 'link' : 'article'}
+      aria-label={onClick ? `${title} — ${exploreLabel}` : undefined}
       {...props}
     >
       <motion.div
@@ -216,7 +241,7 @@ export const Card3D = React.forwardRef(function Card3D(
 
         <motion.div className="space-y-3" animate={{ y: hovered ? -3 : 0 }} transition={{ duration: 0.3 }}>
           <motion.h3
-            className="font-display text-xl font-semibold tracking-tight drop-shadow-md"
+            className="font-display text-lg font-semibold tracking-tight break-words drop-shadow-md sm:text-xl"
             animate={{ scale: hovered ? 1.02 : 1 }}
             transition={{ duration: 0.3 }}
           >
@@ -235,7 +260,7 @@ export const Card3D = React.forwardRef(function Card3D(
             <button
               type="button"
               onClick={handleCtaClick}
-              className="inline-flex items-center gap-2 pt-1 text-xs font-medium text-[#6B8AB0] transition-colors hover:text-[#2F4C73] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4A6B94]/50"
+              className="inline-flex min-h-11 cursor-pointer items-center gap-2 pt-1 text-sm font-medium text-[#6B8AB0] transition-colors hover:text-[#2F4C73] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4A6B94]/50 sm:min-h-0 sm:text-xs"
             >
               <span className="h-0.5 w-4 rounded-full bg-current" />
               {loading ? 'Loading...' : exploreLabel}

@@ -5,8 +5,7 @@ import { featuredServices } from '../../data/content';
 import SectionHeading from '../ui/SectionHeading';
 import ServiceIcon from '../ui/ServiceIcon';
 import { Card3DList } from '../ui/animated-3d-card';
-import { ParallaxElement } from '../motion';
-import ScaleFlipReveal from './ScaleFlipReveal';
+import { ImageReveal, ParallaxElement } from '../motion';
 
 export default function ServicesBento() {
   const navigate = useNavigate();
@@ -44,11 +43,20 @@ export default function ServicesBento() {
             className="!mb-0"
           />
 
-          <ScaleFlipReveal
-            src={voipVisual}
-            alt="Cloud telephony and VoIP communication network"
-            className="mx-auto w-full max-w-[280px] sm:max-w-[320px] md:ml-auto md:max-w-[340px]"
-          />
+          <ImageReveal
+            direction="up"
+            delay={0.08}
+            className="group mx-auto w-full max-w-[280px] overflow-hidden rounded-2xl border border-[rgba(47,76,115,0.12)] bg-[#FFFFFF] shadow-[0_14px_36px_rgba(47,76,115,0.1)] sm:max-w-[320px] sm:rounded-[1.25rem] md:ml-auto md:max-w-[340px]"
+            zoomOnHover
+          >
+            <img
+              src={voipVisual}
+              alt="Cloud telephony and VoIP communication network"
+              className="aspect-[735/490] w-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+          </ImageReveal>
         </div>
 
         <Card3DList cards={cards} columns={3} gap="md" size="md" variant="premium" className="mt-2" />

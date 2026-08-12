@@ -12,7 +12,7 @@ export default function PageHero({
   const hasImage = Boolean(image);
 
   return (
-    <section className="relative overflow-hidden px-4 pt-28 pb-12 sm:px-6 sm:pt-36 sm:pb-16">
+    <section className="relative overflow-x-clip overflow-y-hidden px-5 pt-28 pb-12 sm:px-6 sm:pt-36 sm:pb-16">
       <div className="grid-fade pointer-events-none absolute inset-0 opacity-60" />
       <ParallaxElement
         speed={14}
@@ -24,8 +24,8 @@ export default function PageHero({
       />
 
       <div
-        className={`relative mx-auto max-w-6xl ${
-          hasImage ? 'grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12' : ''
+        className={`relative mx-auto w-full min-w-0 max-w-6xl ${
+          hasImage ? 'grid items-center gap-8 lg:grid-cols-[1.15fr_0.75fr] lg:gap-10' : ''
         }`}
       >
         <div className={hasImage ? 'min-w-0' : ''}>
@@ -39,7 +39,7 @@ export default function PageHero({
 
           <TextReveal
             as="h1"
-            className={`font-display text-4xl font-extrabold tracking-[-0.04em] text-[#2F4C73] sm:text-5xl md:text-6xl ${
+            className={`font-display text-[1.75rem] leading-[1.12] font-extrabold tracking-[-0.03em] break-words text-[#2F4C73] sm:text-5xl sm:leading-none sm:tracking-[-0.04em] md:text-6xl ${
               hasImage ? 'max-w-xl' : 'max-w-3xl'
             }`}
             parts={[
@@ -70,16 +70,16 @@ export default function PageHero({
 
         {hasImage ? (
           <AnimatedSection from="right" delay={0.12} duration={0.9} className="relative">
-            <div className="pointer-events-none absolute -inset-3 rounded-[2rem] bg-[#4A6B94]/10 blur-3xl sm:-inset-6" />
-            <div className="relative overflow-hidden rounded-2xl border border-[rgba(47,76,115,0.12)] bg-[#FFFFFF] shadow-[0_24px_80px_rgba(47,76,115,0.12)] sm:rounded-[1.75rem]">
+            <div className="pointer-events-none absolute -inset-3 rounded-[2rem] bg-[#4A6B94]/10 blur-3xl sm:-inset-5" />
+            <div className="relative mx-auto w-full max-w-[280px] overflow-hidden rounded-2xl border border-[rgba(47,76,115,0.12)] bg-[#FFFFFF] shadow-[0_14px_36px_rgba(47,76,115,0.1)] sm:max-w-[320px] sm:rounded-[1.25rem] md:ml-auto md:max-w-[340px]">
               <img
                 src={image}
                 alt={imageAlt || title || 'Service illustration'}
-                className="aspect-[16/11] w-full object-cover object-center"
+                className="aspect-[3/2] w-full object-cover object-center"
                 loading="eager"
                 decoding="async"
               />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#F4F6F9]/50 via-transparent to-transparent" />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#F4F6F9]/40 via-transparent to-transparent" />
             </div>
           </AnimatedSection>
         ) : null}
