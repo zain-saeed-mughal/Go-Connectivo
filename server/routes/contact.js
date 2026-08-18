@@ -1,45 +1,36 @@
 import { Router } from 'express';
 import { contactRules, handleValidation } from '../middleware/validateContact.js';
+import { clientMeta } from '../middleware/adminAuth.js';
+import { createInquiry } from '../services/contactService.js';
 
 const router = Router();
-
-// In-memory store for demo; replace with email/DB integration in production.
-const inquiries = [];
 
 router.post('/', contactRules, handleValidation, (req, res) => {
   try {
     const { name, email, phone, subject, service, message } = req.body;
-
-    const inquiry = {
-      id: `inq_${Date.now()}`,
+    const meta = clientMeta(req);
+    const saved = createInquiry({
       name,
       email,
-      phone: phone || null,
+      phone: phone || '',
       subject,
-      service: service || null,
+      service: service || '',
       message,
-      receivedAt: new Date().toISOString(),
-    };
-
-    inquiries.push(inquiry);
-
-    // Keep memory bounded in long-running demos.
-    if (inquiries.length > 200) {
-      inquiries.shift();
-    }
+      ip: meta.ip,
+      userAgent: meta.userAgent,
+    });
 
     console.log('[contact] New inquiry:', {
-      id: inquiry.id,
-      name: inquiry.name,
-      email: inquiry.email,
-      subject: inquiry.subject,
-      service: inquiry.service,
+      id: saved.id,
+      name,
+      email,
+      subject,
     });
 
     return res.status(201).json({
       success: true,
       message: 'Thanks for reaching out. Our team will get back to you shortly.',
-      data: { id: inquiry.id },
+      data: { id: saved.id },
     });
   } catch (error) {
     console.error('[contact] Failed to process inquiry:', error);

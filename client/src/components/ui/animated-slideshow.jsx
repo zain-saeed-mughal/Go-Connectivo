@@ -119,7 +119,7 @@ export const TextStaggerHover = React.forwardRef(
 );
 TextStaggerHover.displayName = 'TextStaggerHover';
 
-export const clipPathVariants = {
+const clipPathVariants = {
   visible: {
     clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
   },

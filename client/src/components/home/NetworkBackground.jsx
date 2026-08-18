@@ -150,7 +150,7 @@ export default function NetworkBackground() {
     >
       <div className="absolute inset-0 grid-fade opacity-70" />
 
-      <div className="absolute top-[18%] left-[-10%] h-[55vh] w-[55vw] rounded-full bg-[#4A6B94]/[0.07] blur-[120px]" />
+      <div className="absolute top-[18%] left-[-10%] h-[40vh] w-[55vw] rounded-full bg-[#4A6B94]/[0.07] gc-glow md:h-[55vh]" />
 
       <div
         data-arcs
@@ -170,15 +170,15 @@ export default function NetworkBackground() {
 
       <div
         data-orb
-        className="absolute top-10 -left-24 h-72 w-72 rounded-full bg-[#2F4C73]/22 blur-[100px]"
+        className="gc-glow absolute top-10 -left-16 h-48 w-48 rounded-full bg-[#2F4C73]/22 sm:-left-24 sm:h-72 sm:w-72"
       />
       <div
         data-orb
-        className="absolute top-24 right-[-4rem] h-80 w-80 rounded-full bg-[#4A6B94]/28 blur-[110px]"
+        className="gc-glow absolute top-24 right-[-2rem] h-52 w-52 rounded-full bg-[#4A6B94]/28 sm:right-[-4rem] sm:h-80 sm:w-80"
       />
       <div
         data-orb
-        className="absolute right-1/4 bottom-10 h-56 w-56 rounded-full bg-[#6B8AB0]/12 blur-[90px]"
+        className="gc-glow absolute right-1/4 bottom-10 hidden h-56 w-56 rounded-full bg-[#6B8AB0]/12 sm:block"
       />
 
       <div data-depth="0.55" className="absolute inset-0 hidden lg:block">

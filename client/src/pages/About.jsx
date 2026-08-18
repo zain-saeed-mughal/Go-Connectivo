@@ -1,21 +1,13 @@
-import { Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import voipHeadset from '../assets/services/voip-2.jpg';
+import voipHeadset from '../assets/services/voip-2.webp';
 import SectionHeading from '../components/ui/SectionHeading';
 import PageHero from '../components/ui/PageHero';
 import StatsBand from '../components/ui/StatsBand';
 import MagneticButton from '../components/ui/MagneticButton';
 import ServiceIcon from '../components/ui/ServiceIcon';
 import CTA from '../components/home/CTA';
-import { ImageReveal, RevealCard, StaggerContainer } from '../components/motion';
-import { aboutIntro, coreValues, processSteps, services, whyUs } from '../data/content';
-
-const commitments = [
-  'Enterprise-grade infrastructure',
-  'No long-term contracts',
-  'Transparent pricing, no hidden fees',
-  '14-day free trial available',
-];
+import { RevealCard, StaggerContainer } from '../components/motion';
+import { aboutIntro, coreValues, getCatalogServices, processSteps, whyUs } from '../data/content';
 
 export default function About() {
   return (
@@ -24,7 +16,7 @@ export default function About() {
         eyebrow="About Go Connectivo"
         title="Your Trusted"
         highlight="VoIP Partner"
-        description="Leading the future of business communication with reliable, scalable, and cost-effective solutions."
+        description="Reliable dialers, business voice, numbers, VoIP Termination, contact-center platforms, and APIs — built to scale with your team."
         image={voipHeadset}
         imageAlt="Professional headset for VoIP and contact center support"
       >
@@ -38,75 +30,30 @@ export default function About() {
         </div>
       </PageHero>
 
-      <section className="px-4 sm:px-6 pb-20">
-        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
-          <div className="space-y-5">
-            <SectionHeading title="Built on reliability, engineered for scale" />
-            <StaggerContainer className="space-y-5" stagger={0.1} from="up">
-              {aboutIntro.map((paragraph) => (
-                <p
-                  key={paragraph.slice(0, 32)}
-                  className="text-sm leading-relaxed text-[#6B7C8F] md:text-base"
-                >
-                  {paragraph}
-                </p>
-              ))}
-            </StaggerContainer>
-
-            <StaggerContainer
-              as="ul"
-              className="grid gap-3 pt-2 sm:grid-cols-2"
-              stagger={0.07}
-              from="left"
-            >
-              {commitments.map((item) => (
-                <li key={item} className="flex items-start gap-2.5 text-sm text-[#c3c3d4]">
-                  <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[#4A6B94]/15 text-[#6B8AB0]">
-                    <Check size={12} strokeWidth={3} />
-                  </span>
-                  {item}
-                </li>
-              ))}
-            </StaggerContainer>
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-            <ImageReveal
-              direction="left"
-              className="rounded-3xl border border-[rgba(47,76,115,0.1)]"
-              innerClassName="bg-[#FFFFFF] p-6"
-            >
-              <h3 className="font-display text-xl font-semibold text-[#2F4C73]">Our mission</h3>
-              <p className="mt-3 text-sm leading-relaxed text-[#6B7C8F]">
-                Provide enterprise-grade VoIP solutions that empower businesses to communicate more
-                effectively, reduce costs, and scale operations without limitations.
+      <section className="gc-section">
+        <div className="gc-prose-width space-y-5">
+          <SectionHeading title="Built on reliability, engineered for scale" />
+          <StaggerContainer className="space-y-5" stagger={0.1} from="up">
+            {aboutIntro.map((paragraph) => (
+              <p
+                key={paragraph.slice(0, 32)}
+                className="gc-prose-muted"
+              >
+                {paragraph}
               </p>
-            </ImageReveal>
-
-            <ImageReveal
-              direction="left"
-              delay={0.12}
-              className="rounded-3xl border border-[rgba(47,76,115,0.1)]"
-              innerClassName="bg-[#FFFFFF] p-6"
-            >
-              <h3 className="font-display text-xl font-semibold text-[#2F4C73]">Our approach</h3>
-              <p className="mt-3 text-sm leading-relaxed text-[#6B7C8F]">
-                Cutting-edge technology, exceptional customer service, and an unwavering commitment
-                to reliability — backed by 24/7 expert support.
-              </p>
-            </ImageReveal>
-          </div>
+            ))}
+          </StaggerContainer>
         </div>
       </section>
 
-      <section className="px-4 sm:px-6 pb-20">
-        <div className="mx-auto max-w-6xl">
+      <section className="gc-section">
+        <div className="gc-container">
           <StatsBand />
         </div>
       </section>
 
-      <section className="px-4 sm:px-6 pb-20">
-        <div className="mx-auto max-w-6xl">
+      <section className="gc-section">
+        <div className="gc-container">
           <SectionHeading
             eyebrow="Our values"
             title="Principles that shape every engagement."
@@ -121,7 +68,7 @@ export default function About() {
               <RevealCard
                 key={value.title}
                 as="article"
-                className="rounded-3xl border border-[rgba(47,76,115,0.1)] bg-[#FFFFFF] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#4A6B94]/35"
+                className="p-6"
               >
                 <span className="font-display text-sm font-semibold text-[#4A6B94]">
                   {String(index + 1).padStart(2, '0')}
@@ -134,15 +81,20 @@ export default function About() {
         </div>
       </section>
 
-      <section className="px-4 sm:px-6 pb-20">
-        <div className="mx-auto max-w-6xl">
-          <SectionHeading eyebrow="What we do" title="Our complete range of services." />
+      <section className="gc-section">
+        <div className="gc-container">
+          <SectionHeading
+            eyebrow="What we do"
+            title="Our complete range of services."
+            description="Browse the full catalog — dialers, business voice, numbers, carrier outbound, contact center, and APIs."
+          />
           <StaggerContainer className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4" stagger={0.06}>
-            {services.map((service) => (
+            {getCatalogServices().map((service) => (
               <Link
                 key={service.id}
                 to={`/services/${service.id}`}
-                className="group rounded-2xl border border-[rgba(47,76,115,0.1)] bg-[#FFFFFF] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#4A6B94]/35"
+                className="gc-card group block p-5"
+                data-cursor="hover"
               >
                 <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-[#4A6B94]/25 to-[#4A6B94]/20 text-[#6B8AB0] transition-transform duration-500 group-hover:scale-105">
                   <ServiceIcon name={service.icon} />
@@ -156,8 +108,8 @@ export default function About() {
         </div>
       </section>
 
-      <section className="px-4 sm:px-6 pb-20">
-        <div className="mx-auto max-w-6xl">
+      <section className="gc-section">
+        <div className="gc-container">
           <SectionHeading
             eyebrow="How we work"
             title="From sign-up to fully configured in 24–48 hours."
@@ -166,7 +118,7 @@ export default function About() {
             {processSteps.map((step) => (
               <article
                 key={step.step}
-                className="rounded-3xl border border-[rgba(47,76,115,0.1)] bg-[#FFFFFF] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#4A6B94]/35"
+                className="gc-card h-full p-5"
               >
                 <div className="mb-4 grid h-8 w-8 place-items-center rounded-full border border-[#4A6B94]/40 bg-[#4A6B94]/10 text-xs font-semibold text-[#6B8AB0]">
                   {step.step}
@@ -179,15 +131,15 @@ export default function About() {
         </div>
       </section>
 
-      <section className="px-4 sm:px-6 pb-10">
-        <div className="mx-auto max-w-6xl">
+      <section className="gc-section-tight">
+        <div className="gc-container">
           <SectionHeading eyebrow="Why businesses choose us" title="Advantages from day one." />
           <StaggerContainer className="grid gap-4 sm:grid-cols-2" stagger={0.09} from="scale">
             {whyUs.map((item) => (
               <RevealCard
                 key={item.title}
                 as="article"
-                className="rounded-3xl border border-[rgba(47,76,115,0.1)] bg-gradient-to-b from-white/[0.05] to-transparent p-6 transition-all duration-300 hover:border-[#4A6B94]/35"
+                className="p-6"
               >
                 <h3 className="font-display text-xl font-semibold text-[#2F4C73]">{item.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-[#6B7C8F]">{item.description}</p>

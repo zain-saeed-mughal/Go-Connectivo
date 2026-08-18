@@ -6,3 +6,7 @@ dist
 .DS_Store
 .vite
 coverage
+server/data/*.sqlite
+server/data/*.sqlite-*
+server/storage/kyc/**
+!server/storage/kyc/.gitkeep

@@ -1,10 +1,10 @@
 import React, { useState, useCallback, useMemo, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { cn } from '@/lib/utils';
 import { isCompactViewport } from '../../motion/config';
 
 /** Theme surfaces — Luxe Navy professional gradients */
-export const THEMES = {
+const THEMES = {
   primary: 'from-[#FFFFFF] via-[#E8ECF2] to-[#6B8AB0]/25',
   secondary: 'from-[#F4F6F9] via-[#E0E5ED] to-[#4A6B94]/20',
   accent: 'from-[#FFFFFF] via-[#E8ECF2] to-[#2F4C73]/18',
@@ -16,9 +16,9 @@ export const THEMES = {
 };
 
 const SIZES = {
-  sm: 'min-h-56 h-auto md:h-64',
-  md: 'min-h-64 h-auto md:h-80',
-  lg: 'min-h-72 h-auto md:h-96',
+  sm: 'min-h-52 h-auto md:h-64',
+  md: 'min-h-60 h-auto md:h-80',
+  lg: 'min-h-64 h-auto md:h-96',
 };
 
 const VARIANTS = {
@@ -57,20 +57,21 @@ export const Card3D = React.forwardRef(function Card3D(
     disabled = false,
     loading = false,
     exploreLabel = 'Explore',
+    enableTilt = true,
     ...props
   },
   ref,
 ) {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [hovered, setHovered] = useState(false);
-  const [tiltEnabled, setTiltEnabled] = useState(true);
+  const [tiltEnabled, setTiltEnabled] = useState(enableTilt);
 
   useEffect(() => {
-    const sync = () => setTiltEnabled(!isCompactViewport());
+    const sync = () => setTiltEnabled(enableTilt && !isCompactViewport());
     sync();
     window.addEventListener('resize', sync);
     return () => window.removeEventListener('resize', sync);
-  }, []);
+  }, [enableTilt]);
 
   const finalGradient = useMemo(() => gradient || THEMES[theme] || THEMES.primary, [gradient, theme]);
   const patternId = useMemo(
@@ -299,6 +300,7 @@ export function Card3DList({
   variant = 'default',
   animated = true,
   staggerDelay = 0.08,
+  enableTilt = true,
 }) {
   const gridClass = useMemo(() => GRIDS[columns], [columns]);
   const gapClass = useMemo(() => GAPS[gap], [gap]);
@@ -330,7 +332,7 @@ export function Card3DList({
         variants={animated ? customVariants : undefined}
         initial={animated ? 'hidden' : false}
         animate={animated ? 'visible' : undefined}
-        style={{ perspective: '1500px', transformStyle: 'preserve-3d' }}
+        style={{ perspective: enableTilt ? '1500px' : undefined, transformStyle: enableTilt ? 'preserve-3d' : undefined }}
       >
         {cards.map((card) => (
           <motion.div
@@ -347,7 +349,7 @@ export function Card3DList({
                   }
                 : undefined
             }
-            style={{ transformStyle: 'preserve-3d' }}
+            style={{ transformStyle: enableTilt ? 'preserve-3d' : undefined }}
           >
             <Card3D
               title={card.title}
@@ -362,6 +364,7 @@ export function Card3DList({
               disabled={card.disabled}
               loading={card.loading}
               exploreLabel={card.exploreLabel}
+              enableTilt={enableTilt}
             />
           </motion.div>
         ))}

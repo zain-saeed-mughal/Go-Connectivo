@@ -1,4 +1,4 @@
-import { ease, START, prefersReducedMotion } from '../../motion/config';
+import { canEnhanceMotion, ease, gsap, START } from '../../motion/config';
 import { createReveal } from '../../motion/reveal';
 import { useGsapContext } from '../../motion/useGsapContext';
 
@@ -20,43 +20,59 @@ export default function ImageReveal({
   duration = 1.05,
   start = START,
   zoomOnHover = false,
+  parallax = true,
 }) {
-  const reduced = prefersReducedMotion();
-
   const scope = useGsapContext(() => {
     const container = scope.current;
+    if (!container) return;
     const inner = container.querySelector('[data-reveal-inner]');
+    const enhance = canEnhanceMotion();
 
     createReveal({
       targets: container,
       trigger: container,
-      from: { clipPath: clipFrom[direction] || clipFrom.up, autoAlpha: 0 },
+      from: {
+        clipPath: clipFrom[direction] || clipFrom.up,
+        autoAlpha: enhance ? 1 : 0,
+      },
       to: { clipPath: OPEN, autoAlpha: 1 },
       duration,
       delay,
       start,
       ease: ease.reveal,
+      safe: false,
     });
 
     if (inner) {
       createReveal({
         targets: inner,
         trigger: container,
-        from: { scale: 1.06 },
-        to: { scale: 1 },
-        duration: duration * 1.2,
+        from: { scale: enhance ? 1.1 : 1.04, yPercent: enhance ? 4 : 0 },
+        to: { scale: 1, yPercent: 0 },
+        duration: duration * 1.15,
         delay,
         start,
         ease: ease.soft,
+        safe: false,
       });
+
+      if (parallax && enhance) {
+        gsap.to(inner, {
+          yPercent: -6,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: container,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 0.45,
+          },
+        });
+      }
     }
-  }, [direction, delay, duration, start]);
+  }, [direction, delay, duration, start, parallax]);
 
   return (
-    <div
-      ref={scope}
-      className={`${reduced ? '' : 'gc-will-reveal'} overflow-hidden ${className}`.trim()}
-    >
+    <div ref={scope} className={`overflow-hidden ${className}`.trim()} data-cursor="hover">
       <div
         data-reveal-inner
         className={`h-full w-full will-change-transform ${

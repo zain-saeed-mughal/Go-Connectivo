@@ -13,8 +13,8 @@ function initials(name) {
 
 export default function Testimonials() {
   return (
-    <section className="px-4 py-12 sm:px-6 sm:py-16 md:py-20">
-      <div className="mx-auto max-w-6xl">
+    <section className="gc-section">
+      <div className="gc-container">
         <SectionHeading
           eyebrow="Testimonials"
           title="What our clients say."
@@ -26,7 +26,7 @@ export default function Testimonials() {
             <RevealCard
               key={item.name}
               as="blockquote"
-              className="group relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-[rgba(47,76,115,0.1)] bg-[#FFFFFF] p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#4A6B94]/35 hover:shadow-[0_20px_60px_rgba(74,107,148,0.1)]"
+              className="group relative flex h-full flex-col justify-between p-6"
             >
               <Quote
                 className="absolute top-5 right-5 text-[#4A6B94]/20 transition-all duration-500 group-hover:scale-110 group-hover:text-[#4A6B94]/35"

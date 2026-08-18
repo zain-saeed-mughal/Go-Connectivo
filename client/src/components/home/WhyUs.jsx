@@ -1,21 +1,22 @@
 import { Check } from 'lucide-react';
 import { whyUs } from '../../data/content';
 import SectionHeading from '../ui/SectionHeading';
+import TelecomScene3DLazy from '../ui/TelecomScene3DLazy';
 import { ImageReveal, StaggerContainer } from '../motion';
 
 const featureChips = [
   'Predictive dialer',
   'Hosted PBX',
-  'Inbound queues',
-  'Wholesale termination',
-  'Click-to-call',
-  'Call recording',
+  'SIP Trunking',
+  'VoIP Termination',
+  'Local DIDs',
+  'Call analytics',
 ];
 
 export default function WhyUs() {
   return (
-    <section className="px-4 py-12 sm:px-6 sm:py-16 md:py-20">
-      <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-2 lg:items-center lg:gap-10">
+    <section className="gc-section">
+      <div className="gc-container grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-10">
         <div>
           <SectionHeading
             eyebrow="Why Businesses Choose Us"
@@ -40,19 +41,22 @@ export default function WhyUs() {
 
         <ImageReveal
           direction="up"
-          className="rounded-[2rem] border border-[rgba(47,76,115,0.12)]"
+          className="gc-card"
           innerClassName="relative bg-gradient-to-br from-[#E8ECF2] via-[#E0E5ED] to-[#FFFFFF] p-8"
         >
+          <div className="pointer-events-none absolute inset-0 hidden opacity-70 lg:block">
+            <TelecomScene3DLazy variant="tower" className="min-h-full" interactive scrollScrub />
+          </div>
           <div className="pointer-events-none absolute -top-10 -right-10 h-40 w-40 rounded-full bg-[#2F4C73]/25 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-12 -left-8 h-44 w-44 rounded-full bg-[#4A6B94]/20 blur-3xl" />
 
           <div className="relative space-y-4">
-            <div className="rounded-2xl border border-[rgba(47,76,115,0.1)] bg-[#FFFFFF] p-5">
+            <div className="gc-card rounded-2xl p-5">
               <p className="text-sm font-medium text-[#8d8da8]">Traditional phone systems</p>
               <p className="mt-1.5 text-sm text-[#6B7C8F]">High cost · Slow setup</p>
             </div>
 
-            <div className="rounded-2xl border border-[#4A6B94]/40 bg-[#4A6B94]/10 p-5">
+            <div className="gc-card gc-card-accent rounded-2xl p-5">
               <p className="text-sm font-medium text-[#2F4C73]">Go Connectivo</p>
               <p className="mt-1.5 text-sm text-[#6B8AB0]">
                 Up to 60% savings · Minutes to launch
@@ -63,7 +67,7 @@ export default function WhyUs() {
               {featureChips.map((feature) => (
                 <span
                   key={feature}
-                  className="rounded-xl border border-[rgba(47,76,115,0.1)] bg-[#FFFFFF] px-3 py-2 text-center text-[11px] leading-tight text-[#6B7C8F] transition-colors duration-300 hover:border-[#4A6B94]/30 hover:text-[#2F4C73]"
+                  className="gc-card-sm px-3 py-2 text-center text-[11px] leading-tight text-[#6B7C8F]"
                 >
                   {feature}
                 </span>

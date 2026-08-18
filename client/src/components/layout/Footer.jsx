@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
-import { Clock3, Mail, MapPin } from 'lucide-react';
 import Logo from '../ui/Logo';
-import { contactInfo, navLinks, services } from '../../data/content';
+import TopographyCanvas from '../ui/TopographyCanvas';
+import { contactInfo, getCatalogServices, navLinks } from '../../data/content';
 import { AnimatedSection, StaggerContainer } from '../motion';
 
 const linkClass =
-  'group inline-flex items-center text-sm text-[#D7E2E8] transition-colors duration-300 hover:text-[#F7F9FC]';
+  'group inline-flex items-center text-sm text-[#D7E2E8] transition-colors duration-300 hover:text-[#FFFFFF]';
 
 function FooterLink({ to, children }) {
   return (
@@ -19,40 +19,37 @@ function FooterLink({ to, children }) {
 }
 
 export default function Footer() {
+  const footerServices = [
+    'auto-dialer',
+    'hosted-pbx',
+    'voip-termination',
+    'call-center-software',
+    'sip-trunking',
+    'did-services',
+  ]
+    .map((id) => getCatalogServices().find((service) => service.id === id))
+    .filter(Boolean);
+
   return (
-    <footer className="relative overflow-hidden border-t border-[#6B8AB0]/25 bg-[#2F4C73]">
-      <div className="pointer-events-none absolute top-0 -left-20 h-64 w-64 rounded-full bg-[#4A6B94]/18 blur-3xl" />
-      <div className="pointer-events-none absolute -right-16 bottom-0 h-56 w-56 rounded-full bg-[#6B8AB0]/18 blur-3xl" />
+    <footer className="relative overflow-hidden border-t border-[#6B8AB0]/30 bg-[#1C314F] text-[#D7E2E8]">
+      <TopographyCanvas />
 
       <StaggerContainer
-        className="relative mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 sm:py-16 md:grid-cols-2 lg:grid-cols-4 lg:gap-8"
+        className="gc-container relative z-10 grid gap-8 py-12 sm:gap-10 sm:py-16 md:grid-cols-2 lg:grid-cols-4 lg:gap-8 lg:py-16"
         stagger={0.09}
         start="top 95%"
       >
         <div className="space-y-4 lg:col-span-1">
           <Logo />
           <p className="max-w-xs text-sm leading-relaxed text-[#B8C9D1]">
-            Leading provider of premium VoIP solutions for businesses of all sizes. Reliable,
-            scalable, and cost-effective communication services.
+            A mixed-use voice infrastructure bringing together dialers, business voice, carrier
+            termination, contact-center tools, and APIs.
           </p>
         </div>
 
         <div>
-          <h3 className="mb-4 font-display text-sm font-semibold tracking-[0.08em] text-[#8BA3C4] uppercase">
-            Services
-          </h3>
-          <ul className="space-y-2.5">
-            {services.slice(0, 5).map((service) => (
-              <li key={service.id}>
-                <FooterLink to={`/services/${service.id}`}>{service.title}</FooterLink>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="mb-4 font-display text-sm font-semibold tracking-[0.08em] text-[#8BA3C4] uppercase">
-            Company
+          <h3 className="mb-4 font-mono text-xs font-bold tracking-[0.2em] text-[#8BA3C4] uppercase">
+            NAVIGATION
           </h3>
           <ul className="space-y-2.5">
             {navLinks.map((link) => (
@@ -60,6 +57,19 @@ export default function Footer() {
                 <FooterLink to={link.path}>{link.label}</FooterLink>
               </li>
             ))}
+            <li>
+              <FooterLink to="/contact">Contact</FooterLink>
+            </li>
+            <li>
+              <FooterLink to="/compliance/robocall-mitigation-plan">
+                Robocall Mitigation Plan
+              </FooterLink>
+            </li>
+            <li>
+              <FooterLink to="/compliance/acceptable-use-policy">
+                Acceptable Use &amp; Calling Policy
+              </FooterLink>
+            </li>
             <li>
               <FooterLink to="/privacy">Privacy Policy</FooterLink>
             </li>
@@ -70,36 +80,36 @@ export default function Footer() {
         </div>
 
         <div>
-          <h3 className="mb-4 font-display text-sm font-semibold tracking-[0.08em] text-[#8BA3C4] uppercase">
-            Contact
+          <h3 className="mb-4 font-mono text-xs font-bold tracking-[0.2em] text-[#8BA3C4] uppercase">
+            SOLUTIONS
           </h3>
-          <ul className="space-y-3 text-sm text-[#B8C9D1]">
-            <li className="flex items-start gap-3">
-              <Mail size={16} className="mt-0.5 text-[#4A6B94]" />
-              <a
-                href={`mailto:${contactInfo.email}`}
-                className="transition-colors duration-300 hover:text-[#4A6B94]"
-              >
-                {contactInfo.email}
-              </a>
-            </li>
-            <li className="flex items-start gap-3">
-              <MapPin size={16} className="mt-0.5 text-[#4A6B94]" />
-              <span>{contactInfo.address}</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <Clock3 size={16} className="mt-0.5 text-[#4A6B94]" />
-              <span>{contactInfo.support}</span>
-            </li>
+          <ul className="space-y-2.5">
+            {footerServices.map((service) => (
+              <li key={service.id}>
+                <FooterLink to={`/services/${service.id}`}>{service.title}</FooterLink>
+              </li>
+            ))}
           </ul>
+        </div>
+
+        <div>
+          <h3 className="mb-4 font-mono text-xs font-bold tracking-[0.2em] text-[#8BA3C4] uppercase">
+            INQUIRIES
+          </h3>
+          <p className="text-sm leading-relaxed text-[#B8C9D1]">{contactInfo.address}</p>
+          <a
+            href={`mailto:${contactInfo.email}`}
+            className="mt-3 inline-block text-sm font-medium text-[#D7E2E8] transition-colors duration-300 hover:text-[#FFFFFF]"
+          >
+            {contactInfo.email}
+          </a>
         </div>
       </StaggerContainer>
 
       <AnimatedSection from="none" duration={0.7} start="top 98%">
-        <div className="relative border-t border-white/10">
-          <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-5 text-xs text-[#9BB0BA] sm:flex-row sm:items-center sm:justify-between sm:px-6">
-            <p>© {new Date().getFullYear()} Go Connectivo. All rights reserved.</p>
-            <p>Built for clarity, performance, and long-term products.</p>
+        <div className="relative z-10 border-t border-[#6B8AB0]/20">
+          <div className="gc-container py-5 font-mono text-[11px] tracking-wider text-[#9BB0BA] sm:text-xs">
+            <p>© {new Date().getFullYear()} GO CONNECTIVO LLC. ALL RIGHTS RESERVED.</p>
           </div>
         </div>
       </AnimatedSection>

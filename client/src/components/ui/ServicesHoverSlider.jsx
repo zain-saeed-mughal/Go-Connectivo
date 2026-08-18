@@ -6,24 +6,24 @@ import {
 } from './animated-slideshow';
 import { AnimatedSection } from '../motion';
 import { featuredServices } from '../../data/content';
-import autoDialersImg from '../../assets/services/auto-dialers.jpg';
-import cloudPbxImg from '../../assets/services/cloud-pbx.jpg';
-import callCenterSoftwareImg from '../../assets/services/call-center-software.jpg';
-import inboundVoiceImg from '../../assets/services/inbound-voice.jpg';
-import outboundVoiceImg from '../../assets/services/outbound-voice.jpg';
-import wholesaleVoiceImg from '../../assets/services/wholesale-voice.jpg';
+import autoDialersImg from '../../assets/services/auto-dialers.webp';
+import cloudPbxImg from '../../assets/services/cloud-pbx.webp';
+import callCenterSoftwareImg from '../../assets/services/call-center-software.webp';
+import inboundVoiceImg from '../../assets/services/inbound-voice.webp';
+import outboundVoiceImg from '../../assets/services/outbound-voice.webp';
+import voipVoiceImg from '../../assets/services/voip-voice.webp';
 
 /**
  * Featured service titles + imagery (local assets where provided).
  */
-export const SERVICE_SLIDES = featuredServices.map((service) => {
+const SERVICE_SLIDES = featuredServices.map((service) => {
   const images = {
     'auto-dialer': autoDialersImg,
     'hosted-pbx': cloudPbxImg,
     'call-center-software': callCenterSoftwareImg,
     'inbound-services': inboundVoiceImg,
     'outbound-services': outboundVoiceImg,
-    'wholesale-termination': wholesaleVoiceImg,
+    'voip-termination': voipVoiceImg,
   };
 
   return {
@@ -36,7 +36,7 @@ export const SERVICE_SLIDES = featuredServices.map((service) => {
 export default function ServicesHoverSlider() {
   return (
     <AnimatedSection from="up" duration={0.9}>
-      <HoverSlider className="mx-auto max-w-6xl overflow-hidden rounded-[1.5rem] border border-[rgba(47,76,115,0.1)] bg-[#FFFFFF] px-4 py-8 sm:rounded-[2rem] sm:px-6 sm:py-10 md:px-10 md:py-12 lg:px-12 lg:py-14">
+      <HoverSlider className="gc-card gc-card-panel gc-container overflow-hidden px-4 py-7 sm:px-6 sm:py-10 md:px-10 md:py-12 lg:px-12 lg:py-14">
         <p className="mb-5 text-xs font-semibold tracking-[0.22em] text-[#4A6B94] uppercase sm:mb-6">
           / our services
         </p>
@@ -54,15 +54,15 @@ export default function ServicesHoverSlider() {
             ))}
           </div>
 
-          <HoverSliderImageWrap className="relative order-1 mx-auto aspect-square w-full max-w-[min(100%,22rem)] overflow-hidden rounded-2xl border border-[rgba(47,76,115,0.12)] bg-[#E8ECF2] sm:max-w-md lg:order-2 lg:mx-0 lg:max-w-none lg:justify-self-end">
+          <HoverSliderImageWrap className="relative order-1 mx-auto aspect-square w-full max-w-[min(100%,22rem)] overflow-hidden rounded-2xl border border-[rgba(47,76,115,0.12)] bg-[#E8ECF2] shadow-[0_16px_40px_rgba(47,76,115,0.12)] sm:max-w-md lg:order-2 lg:mx-0 lg:max-w-none lg:justify-self-end">
             {SERVICE_SLIDES.map((slide, index) => (
-              <div key={slide.id} className="size-full">
+              <div key={slide.id} className="size-full overflow-hidden rounded-2xl">
                 <HoverSliderImage
                   index={index}
                   imageUrl={slide.imageUrl}
                   src={slide.imageUrl}
                   alt={slide.title}
-                  className="h-full w-full object-cover object-center"
+                  className="h-full w-full rounded-2xl object-cover object-center"
                   loading={index === 0 ? 'eager' : 'lazy'}
                   decoding="async"
                 />

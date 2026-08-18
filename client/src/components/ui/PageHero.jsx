@@ -1,4 +1,9 @@
-import { AnimatedSection, ParallaxElement, TextReveal } from '../motion';
+import { motion, useReducedMotion } from 'motion/react';
+import MotionReveal from '../motion/MotionReveal';
+import MotionParallax from '../motion/MotionParallax';
+import SlideUpOnView from '../motion/SlideUpOnView';
+import { motionEase } from '../../motion/motionPresets';
+import { cn } from '../../lib/utils';
 
 export default function PageHero({
   eyebrow,
@@ -8,80 +13,118 @@ export default function PageHero({
   children,
   image,
   imageAlt = '',
+  aside,
+  detail,
+  animated = true,
+  className = '',
 }) {
   const hasImage = Boolean(image);
+  const hasAside = Boolean(aside);
+  const twoCol = hasImage || hasAside;
+  const reduced = useReducedMotion();
+  const motionOn = animated && !reduced;
+
+  const heading = (
+    <>
+      {eyebrow ? (
+        <p className="mb-3 text-[11px] font-semibold tracking-[0.2em] text-[#4A6B94] uppercase sm:mb-4 sm:text-xs sm:tracking-[0.22em]">
+          {eyebrow}
+        </p>
+      ) : null}
+
+      <h1 className="font-display max-w-xl text-[clamp(1.7rem,5.5vw,3.75rem)] leading-[1.1] font-extrabold tracking-[-0.03em] break-words text-[#2F4C73] text-balance">
+        {title}
+        {highlight ? (
+          <>
+            {' '}
+            <span className="gradient-text-brand">{highlight}</span>
+          </>
+        ) : null}
+      </h1>
+
+      {description ? (
+        <p className="gc-prose-muted mt-4 max-w-lg sm:mt-5">{description}</p>
+      ) : null}
+
+      {detail ? <div className="mt-8 w-full max-w-xl">{detail}</div> : null}
+
+      {children ? (
+        <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap">{children}</div>
+      ) : null}
+    </>
+  );
 
   return (
-    <section className="relative overflow-x-clip overflow-y-hidden px-5 pt-28 pb-12 sm:px-6 sm:pt-36 sm:pb-16">
-      <div className="grid-fade pointer-events-none absolute inset-0 opacity-60" />
-      <ParallaxElement
-        speed={14}
-        className="pointer-events-none absolute top-16 left-1/4 h-64 w-64 rounded-full bg-[#4A6B94]/20 blur-[110px]"
-      />
-      <ParallaxElement
-        speed={-12}
-        className="pointer-events-none absolute top-32 right-10 h-56 w-56 rounded-full bg-[#6B8AB0]/15 blur-[110px]"
-      />
+    <section
+      className={cn(
+        'relative z-10 overflow-x-clip pt-28 pb-10 sm:pt-32 sm:pb-14 md:pt-36 md:pb-16',
+        className,
+      )}
+    >
+      <div className="grid-fade pointer-events-none absolute inset-0 opacity-40 sm:opacity-50" aria-hidden="true" />
+      {motionOn ? (
+        <>
+          <MotionParallax
+            speed={24}
+            className="gc-glow pointer-events-none absolute top-16 left-1/4 h-44 w-44 bg-[#4A6B94]/16 sm:h-64 sm:w-64 sm:bg-[#4A6B94]/18"
+          >
+            <span className="block h-full w-full" aria-hidden="true" />
+          </MotionParallax>
+          <MotionParallax
+            speed={-18}
+            className="gc-glow pointer-events-none absolute top-28 right-4 h-40 w-40 bg-[#6B8AB0]/10 sm:right-10 sm:h-56 sm:w-56 sm:bg-[#6B8AB0]/12"
+          >
+            <span className="block h-full w-full" aria-hidden="true" />
+          </MotionParallax>
+        </>
+      ) : null}
 
       <div
-        className={`relative mx-auto w-full min-w-0 max-w-6xl ${
-          hasImage ? 'grid items-center gap-8 lg:grid-cols-[1.15fr_0.75fr] lg:gap-10' : ''
-        }`}
+        className={`gc-container relative z-10 grid w-full min-w-0 gap-8 sm:gap-10 ${
+          twoCol ? 'lg:grid-cols-2 lg:gap-12' : ''
+        } ${hasAside ? 'lg:items-start' : 'items-center'}`}
       >
-        <div className={hasImage ? 'min-w-0' : ''}>
-          {eyebrow && (
-            <AnimatedSection from="up" duration={0.7}>
-              <p className="mb-3 text-xs font-semibold tracking-[0.22em] text-[#4A6B94] uppercase">
-                {eyebrow}
-              </p>
-            </AnimatedSection>
-          )}
+        {motionOn ? (
+          <MotionReveal preset="up" className="relative z-10 min-w-0">
+            {heading}
+          </MotionReveal>
+        ) : (
+          <div className="relative z-10 min-w-0">{heading}</div>
+        )}
 
-          <TextReveal
-            as="h1"
-            className={`font-display text-[1.75rem] leading-[1.12] font-extrabold tracking-[-0.03em] break-words text-[#2F4C73] sm:text-5xl sm:leading-none sm:tracking-[-0.04em] md:text-6xl ${
-              hasImage ? 'max-w-xl' : 'max-w-3xl'
-            }`}
-            parts={[
-              { text: title },
-              ...(highlight ? [{ text: highlight, className: 'gradient-text-brand' }] : []),
-            ]}
-            duration={0.95}
-          />
-
-          {description && (
-            <AnimatedSection from="up" delay={0.1} duration={0.85}>
-              <p
-                className={`mt-5 text-base leading-relaxed text-[#8A9AA8] md:text-lg ${
-                  hasImage ? 'max-w-lg' : 'max-w-2xl'
-                }`}
-              >
-                {description}
-              </p>
-            </AnimatedSection>
-          )}
-
-          {children && (
-            <AnimatedSection from="up" delay={0.16} duration={0.8}>
-              <div className="mt-8">{children}</div>
-            </AnimatedSection>
-          )}
-        </div>
-
-        {hasImage ? (
-          <AnimatedSection from="right" delay={0.12} duration={0.9} className="relative">
-            <div className="pointer-events-none absolute -inset-3 rounded-[2rem] bg-[#4A6B94]/10 blur-3xl sm:-inset-5" />
-            <div className="relative mx-auto w-full max-w-[280px] overflow-hidden rounded-2xl border border-[rgba(47,76,115,0.12)] bg-[#FFFFFF] shadow-[0_14px_36px_rgba(47,76,115,0.1)] sm:max-w-[320px] sm:rounded-[1.25rem] md:ml-auto md:max-w-[340px]">
+        {hasAside ? (
+          motionOn ? (
+            <motion.div
+              className="relative z-10 w-full min-w-0 lg:pt-1"
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, ease: motionEase, delay: 0.1 }}
+            >
+              {aside}
+            </motion.div>
+          ) : (
+            <div className="relative z-10 w-full min-w-0 lg:pt-1">{aside}</div>
+          )
+        ) : hasImage ? (
+          <SlideUpOnView
+            className="relative z-10 mx-auto w-full min-w-0 max-w-md lg:ml-auto lg:max-w-[420px]"
+            distance={88}
+            delay={0.12}
+          >
+            <div
+              className="gc-glow pointer-events-none absolute -inset-3 bg-[#4A6B94]/10 sm:-inset-5"
+              aria-hidden="true"
+            />
+            <div className="gc-card relative w-full overflow-hidden">
               <img
                 src={image}
                 alt={imageAlt || title || 'Service illustration'}
-                className="aspect-[3/2] w-full object-cover object-center"
+                className="aspect-[16/10] h-auto w-full object-cover object-center sm:aspect-[3/2]"
                 loading="eager"
                 decoding="async"
               />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#F4F6F9]/40 via-transparent to-transparent" />
             </div>
-          </AnimatedSection>
+          </SlideUpOnView>
         ) : null}
       </div>
     </section>

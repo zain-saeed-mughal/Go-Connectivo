@@ -3,8 +3,8 @@ import { StaggerContainer } from '../components/motion';
 
 export default function Terms() {
   return (
-    <section className="px-4 sm:px-6 pt-36 pb-24">
-      <div className="mx-auto max-w-3xl">
+    <section className="pt-32 pb-20 sm:pt-36 sm:pb-24">
+      <div className="gc-prose-width">
         <SectionHeading
           eyebrow="Legal"
           title="Terms & Conditions"
@@ -26,8 +26,8 @@ export default function Terms() {
           </p>
           <p>
             Questions about these terms can be sent to{' '}
-            <a className="text-[#6B8AB0] hover:text-[#2F4C73]" href="mailto:compliance@goconnectivo.com">
-              compliance@goconnectivo.com
+            <a className="text-[#6B8AB0] hover:text-[#2F4C73]" href="mailto:support@goconnectivo.com">
+              support@goconnectivo.com
             </a>
             .
           </p>

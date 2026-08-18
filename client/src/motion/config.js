@@ -13,6 +13,11 @@ export function registerGsap() {
     overwrite: 'auto',
     ease: 'power3.out',
   });
+  // Drop late frames instead of compounding lag during heavy scroll.
+  gsap.ticker.lagSmoothing(500, 33);
+  // ignoreMobileResize stops the mobile URL-bar show/hide from re-measuring
+  // every trigger mid-scroll; limitCallbacks trims redundant callback fires.
+  ScrollTrigger.config({ ignoreMobileResize: true, limitCallbacks: true });
   registered = true;
 }
 
@@ -50,6 +55,27 @@ export function prefersReducedMotion() {
 export function isCompactViewport() {
   if (typeof window === 'undefined') return false;
   return window.matchMedia('(max-width: 1023px)').matches;
+}
+
+/** Fine pointer + hover = desktop-class interaction (cursor, tilt, magnets). */
+export function hasFinePointer() {
+  if (typeof window === 'undefined') return false;
+  return window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+}
+
+/**
+ * Full cinematic layer: desktop, motion OK, and not a low-end / data-saver device.
+ * Mobile and reduced-motion get readable static states instead.
+ */
+export function canEnhanceMotion() {
+  if (typeof window === 'undefined') return false;
+  if (prefersReducedMotion() || isCompactViewport() || !hasFinePointer()) return false;
+  const nav = window.navigator;
+  if (nav?.connection?.saveData) return false;
+  if (typeof nav?.hardwareConcurrency === 'number' && nav.hardwareConcurrency > 0 && nav.hardwareConcurrency < 4) {
+    return false;
+  }
+  return true;
 }
 
 export { gsap, ScrollTrigger };

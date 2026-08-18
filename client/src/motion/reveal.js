@@ -1,8 +1,5 @@
 import { gsap, ease as easeTokens, START, prefersReducedMotion } from './config';
 
-/**
- * Shared reveal engine — buttery, one-shot, never flashes before play.
- */
 const unfinished = new Map();
 
 function settle(el) {
@@ -31,16 +28,20 @@ export function pendingElements() {
 }
 
 export function forceVisible(el) {
+  if (!el) return;
   gsap.killTweensOf(el);
-  el.classList.remove('gc-will-reveal');
+  el.classList.remove('gc-will-reveal', 'gc-stagger-pending', 'gc-revealing');
   gsap.set(el, {
     autoAlpha: 1,
+    opacity: 1,
+    visibility: 'visible',
     x: 0,
     y: 0,
     xPercent: 0,
     yPercent: 0,
     scale: 1,
-    // Avoid clearProps:"transform" — it warns when sibling rotate/x/y were touched.
+    filter: 'none',
+    clearProps: 'clipPath',
   });
   settle(el);
 }
@@ -59,14 +60,22 @@ const finishClean = (el) => () => {
   el.classList.remove('gc-will-reveal');
   gsap.set(el, {
     autoAlpha: 1,
+    opacity: 1,
+    visibility: 'visible',
     x: 0,
     y: 0,
     xPercent: 0,
     yPercent: 0,
     scale: 1,
+    filter: 'none',
   });
 };
 
+/**
+ * Safe Lusion-style reveal:
+ * - Prefer transform/blur over hard opacity:0 when possible
+ * - Always failsafe to visible
+ */
 export function createReveal({
   targets,
   trigger,
@@ -77,28 +86,37 @@ export function createReveal({
   delay = 0,
   duration = 0.9,
   ease = easeTokens.soft,
+  safe = true,
 }) {
   const items = gsap.utils.toArray(targets).filter(Boolean);
   if (!items.length) return null;
 
   if (prefersReducedMotion()) {
-    items.forEach((el) => el.classList.remove('gc-will-reveal'));
+    items.forEach((el) => forceVisible(el));
     if (trigger) trigger.classList?.remove('gc-stagger-pending');
-    gsap.set(items, { autoAlpha: 1 });
     return null;
   }
 
   items.forEach((el) => markPending(el, finishClean(el)));
 
-  const fromVars = { ...from };
-  if (from.opacity !== undefined && from.autoAlpha === undefined) {
-    fromVars.autoAlpha = from.opacity;
+  let fromVars = { ...from };
+  let toVars = { ...to };
+
+  // Safe mode: soft rise only — no tilt/blur that skews text alignment
+  if (safe && fromVars.autoAlpha === 0) {
+    delete fromVars.autoAlpha;
+    if (fromVars.opacity === 0) delete fromVars.opacity;
+    fromVars = { y: fromVars.y ?? 24, ...fromVars, opacity: 0.001 };
+    toVars = { y: 0, opacity: 1, autoAlpha: 1, ...toVars };
+  }
+
+  if (fromVars.opacity !== undefined && fromVars.autoAlpha === undefined && !safe) {
+    fromVars.autoAlpha = fromVars.opacity;
     delete fromVars.opacity;
   }
 
-  const toVars = { ...to };
-  if (to.opacity !== undefined) {
-    toVars.autoAlpha = to.opacity;
+  if (toVars.opacity !== undefined && toVars.autoAlpha === undefined) {
+    toVars.autoAlpha = toVars.opacity;
     delete toVars.opacity;
   } else if (toVars.autoAlpha === undefined) {
     toVars.autoAlpha = 1;
@@ -108,12 +126,18 @@ export function createReveal({
   items.forEach((el) => el.classList.remove('gc-will-reveal'));
   if (trigger) trigger.classList?.remove('gc-stagger-pending');
 
+  const failsafe = window.setTimeout(() => {
+    items.forEach((el) => {
+      if (!el.isConnected) return;
+      const opacity = Number(gsap.getProperty(el, 'opacity'));
+      if (opacity < 0.15) forceVisible(el);
+    });
+  }, 1100);
+
   return gsap.to(items, {
     ...toVars,
     duration,
     delay,
-    // Soft cascade — later cards ease into the stagger so it feels fluid,
-    // not like a metronome.
     stagger: stagger
       ? { each: stagger, from: 'start', ease: 'power1.in' }
       : 0,
@@ -121,6 +145,7 @@ export function createReveal({
     overwrite: true,
     immediateRender: false,
     onComplete() {
+      window.clearTimeout(failsafe);
       this.targets().forEach(settle);
     },
     scrollTrigger: trigger
@@ -129,7 +154,6 @@ export function createReveal({
           start,
           once: true,
           toggleActions: 'play none none none',
-          fastScrollEnd: true,
         }
       : undefined,
   });

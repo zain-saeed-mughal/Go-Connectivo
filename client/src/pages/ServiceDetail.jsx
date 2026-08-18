@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { ArrowLeft, Check } from 'lucide-react';
 import PageHero from '../components/ui/PageHero';
@@ -5,6 +6,15 @@ import SectionHeading from '../components/ui/SectionHeading';
 import ServiceIcon from '../components/ui/ServiceIcon';
 import MagneticButton from '../components/ui/MagneticButton';
 import CTA from '../components/home/CTA';
+import {
+  ServiceSeoBenefits,
+  ServiceSeoCardSection,
+  ServiceSeoClosing,
+  ServiceSeoFaqs,
+  ServiceSeoHowItWorks,
+  ServiceSeoOverview,
+  ServiceSeoUseCases,
+} from '../components/services/ServiceSeoBlocks';
 import { RevealCard, StaggerContainer } from '../components/motion';
 import {
   getCategoryById,
@@ -13,6 +23,11 @@ import {
   services,
 } from '../data/content';
 import { getServiceHeroImage } from '../data/serviceImages';
+import { getServiceSeoContent } from '../data/serviceSeoContent';
+import {
+  buildServiceSeoCardSections,
+  shuffleSeoBlockOrder,
+} from '../data/serviceSeoCards';
 
 export default function ServiceDetail() {
   const { slug } = useParams();
@@ -20,8 +35,32 @@ export default function ServiceDetail() {
     .trim()
     .toLowerCase();
   const service = getServiceById(serviceId);
+  const seo = service ? getServiceSeoContent(service) : null;
 
-  if (!service) {
+  useEffect(() => {
+    if (!seo) return undefined;
+
+    const previousTitle = document.title;
+    const meta =
+      document.querySelector('meta[name="description"]') ||
+      (() => {
+        const tag = document.createElement('meta');
+        tag.setAttribute('name', 'description');
+        document.head.appendChild(tag);
+        return tag;
+      })();
+    const previousDescription = meta.getAttribute('content');
+
+    document.title = seo.metaTitle;
+    meta.setAttribute('content', seo.metaDescription);
+
+    return () => {
+      document.title = previousTitle;
+      if (previousDescription != null) meta.setAttribute('content', previousDescription);
+    };
+  }, [seo]);
+
+  if (!service || !seo) {
     return <Navigate to="/services" replace />;
   }
 
@@ -30,8 +69,34 @@ export default function ServiceDetail() {
     .filter((item) => item.id !== service.id)
     .slice(0, 3);
 
-  const moreServices = services.filter((item) => item.id !== service.id).slice(0, 6);
+  const moreServices = services
+    .filter((item) => item.id !== service.id && !item.hiddenFromCatalog)
+    .slice(0, 6);
   const heroImage = getServiceHeroImage(service.id);
+  const seoCardSections = buildServiceSeoCardSections(service);
+  const midBlockOrder = shuffleSeoBlockOrder(service.id, [
+    'benefits',
+    'cards-0',
+    'howItWorks',
+    'cards-1',
+    'useCases',
+    'cards-2',
+  ]);
+
+  const midBlocks = {
+    benefits: <ServiceSeoBenefits key="benefits" seo={seo} serviceId={service.id} />,
+    howItWorks: <ServiceSeoHowItWorks key="howItWorks" seo={seo} />,
+    useCases: <ServiceSeoUseCases key="useCases" seo={seo} />,
+    'cards-0': seoCardSections[0] ? (
+      <ServiceSeoCardSection key="cards-0" section={seoCardSections[0]} />
+    ) : null,
+    'cards-1': seoCardSections[1] ? (
+      <ServiceSeoCardSection key="cards-1" section={seoCardSections[1]} />
+    ) : null,
+    'cards-2': seoCardSections[2] ? (
+      <ServiceSeoCardSection key="cards-2" section={seoCardSections[2]} />
+    ) : null,
+  };
 
   return (
     <>
@@ -53,9 +118,12 @@ export default function ServiceDetail() {
         </div>
       </PageHero>
 
-      <section className="px-4 sm:px-6 pb-16">
-        <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-          <RevealCard className="rounded-3xl border border-[rgba(47,76,115,0.1)] bg-[#FFFFFF] p-5 sm:p-7 md:p-9">
+      {/* SEO block 1 — overview (after hero) */}
+      <ServiceSeoOverview seo={seo} />
+
+      <section className="gc-section">
+        <div className="gc-container grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+          <RevealCard className="p-5 sm:p-7 md:p-9">
             <div className="mb-6 flex items-center gap-4">
               <span className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-[#4A6B94] to-[#2F4C73] text-[#FFFFFF] shadow-[0_12px_32px_rgba(74,107,148,0.35)]">
                 <ServiceIcon name={service.icon} size={26} />
@@ -86,7 +154,7 @@ export default function ServiceDetail() {
           </RevealCard>
 
           <div className="space-y-4">
-            <RevealCard className="rounded-3xl border border-[rgba(47,76,115,0.1)] bg-[#FFFFFF] p-6">
+            <RevealCard className="p-6">
               <h3 className="font-display text-lg font-semibold text-[#2F4C73]">Ready to deploy?</h3>
               <p className="mt-2 text-sm leading-relaxed text-[#6B7C8F]">
                 Tell us about your seats, call volume, and markets — we’ll map {service.title} into
@@ -100,7 +168,7 @@ export default function ServiceDetail() {
             </RevealCard>
 
             {related.length > 0 ? (
-              <RevealCard className="rounded-3xl border border-[rgba(47,76,115,0.1)] bg-[#FFFFFF] p-6">
+              <RevealCard className="p-6">
                 <h3 className="font-display text-lg font-semibold text-[#2F4C73]">
                   More in {category?.title}
                 </h3>
@@ -109,7 +177,7 @@ export default function ServiceDetail() {
                     <li key={item.id}>
                       <Link
                         to={`/services/${item.id}`}
-                        className="group flex items-center gap-3 rounded-xl px-2 py-2 transition-colors hover:bg-white/[0.04]"
+                        className="group flex min-h-11 items-center gap-3 rounded-xl px-2 py-2 transition-colors hover:bg-[#E8ECF2]"
                       >
                         <span className="grid h-9 w-9 place-items-center rounded-lg bg-[#4A6B94]/15 text-[#6B8AB0]">
                           <ServiceIcon name={item.icon} size={16} />
@@ -135,19 +203,23 @@ export default function ServiceDetail() {
         </div>
       </section>
 
-      <section className="px-4 sm:px-6 pb-20">
-        <div className="mx-auto max-w-6xl">
+      {/* SEO mid blocks — order + card sets vary by service (seeded, SEO-stable) */}
+      {midBlockOrder.map((key) => midBlocks[key])}
+
+      <section className="gc-section">
+        <div className="gc-container">
           <SectionHeading
             eyebrow="Explore more"
             title="Other capabilities on the platform."
-            description="Jump into another dialer, PBX, or voice service."
+            description="Explore another dialer, voice, number, termination, or contact-center service."
           />
           <StaggerContainer className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3" stagger={0.06}>
             {moreServices.map((item) => (
               <Link
                 key={item.id}
                 to={`/services/${item.id}`}
-                className="group rounded-2xl border border-[rgba(47,76,115,0.1)] bg-[#FFFFFF] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#4A6B94]/35"
+                className="gc-card group block p-5"
+                data-cursor="hover"
               >
                 <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#4A6B94]/15 text-[#6B8AB0] transition-transform group-hover:scale-105">
                   <ServiceIcon name={item.icon} />
@@ -159,6 +231,10 @@ export default function ServiceDetail() {
           </StaggerContainer>
         </div>
       </section>
+
+      {/* SEO blocks 5–6 — before CTA */}
+      <ServiceSeoFaqs seo={seo} />
+      <ServiceSeoClosing seo={seo} serviceTitle={service.title} />
 
       <CTA />
     </>

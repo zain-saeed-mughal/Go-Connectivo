@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import logo from '../../assets/logo.png';
+import logo from '../../assets/logo.webp';
 
 export default function Logo({ compact = false, to = '/' }) {
   return (
@@ -11,8 +11,10 @@ export default function Logo({ compact = false, to = '/' }) {
       <img
         src={logo}
         alt="Go Connectivo"
-        className={`w-auto object-contain drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)] transition-transform duration-500 group-hover:scale-[1.03] ${
-          compact ? 'h-9 sm:h-10' : 'h-11 sm:h-12'
+        decoding="async"
+        fetchPriority="high"
+        className={`w-auto max-h-full object-contain drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)] transition-transform duration-500 group-hover:scale-[1.03] ${
+          compact ? 'h-8 sm:h-9' : 'h-10 sm:h-11'
         }`}
       />
     </Link>

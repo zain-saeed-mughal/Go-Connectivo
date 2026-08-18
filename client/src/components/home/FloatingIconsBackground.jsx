@@ -42,7 +42,7 @@ const ICONS = [
 ];
 
 /**
- * Floating VoIP icons — desktop only so mobile stays clean and fast.
+ * Floating VoIP icons — desktop only; scattered across the viewport like the original.
  */
 export default function FloatingIconsBackground() {
   const ref = useRef(null);
@@ -99,7 +99,7 @@ export default function FloatingIconsBackground() {
         <span
           key={`float-icon-${index}`}
           data-float-icon
-          className="absolute text-[#6B8AB0]/70 drop-shadow-none will-change-transform"
+          className="absolute text-[#6B8AB0]/70 will-change-transform"
           style={{
             left: `${x}%`,
             top: `${y}%`,

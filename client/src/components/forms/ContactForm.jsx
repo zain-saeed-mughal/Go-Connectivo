@@ -1,9 +1,8 @@
 import { useRef, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'motion/react';
 import { CheckCircle2, LoaderCircle, Send, TriangleAlert } from 'lucide-react';
 import MagneticButton from '../ui/MagneticButton';
 import { submitContact } from '../../lib/api';
-import { gsap, prefersReducedMotion } from '../../motion/config';
 
 const initialState = {
   name: '',
@@ -14,7 +13,7 @@ const initialState = {
 };
 
 const fieldClass =
-  'peer w-full rounded-2xl border border-[rgba(47,76,115,0.12)] bg-[#FFFFFF]/80 px-4 py-3 text-sm text-[#2F4C73] outline-none transition-all duration-300 placeholder:text-[#6B7C8F] focus:border-[#4A6B94]/60 focus:bg-[#E8ECF2] focus:shadow-[0_0_0_4px_rgba(74,107,148,0.15)]';
+  'peer w-full min-h-11 rounded-xl border border-[rgba(47,76,115,0.12)] bg-[#FFFFFF] px-4 py-3 text-sm text-[#2F4C73] outline-none transition-all duration-300 placeholder:text-[#6B7C8F] focus:border-[#4A6B94]/60 focus:bg-[#F8FAFC] focus:shadow-[0_0_0_4px_rgba(74,107,148,0.12)] sm:rounded-2xl';
 
 function Field({ label, error, children }) {
   return (
@@ -31,7 +30,7 @@ function Field({ label, error, children }) {
             animate={{ opacity: 1, y: 0, height: 'auto' }}
             exit={{ opacity: 0, y: -4, height: 0 }}
             transition={{ duration: 0.25 }}
-            className="block text-xs text-rose-300"
+            className="block text-xs text-rose-600"
           >
             {error}
           </motion.span>
@@ -67,15 +66,6 @@ export default function ContactForm() {
     return errors;
   };
 
-  const shake = () => {
-    if (!formRef.current || prefersReducedMotion()) return;
-    gsap.fromTo(
-      formRef.current,
-      { x: -6 },
-      { x: 0, duration: 0.5, ease: 'elastic.out(1, 0.35)' },
-    );
-  };
-
   const onSubmit = async (event) => {
     event.preventDefault();
     setStatus({ type: 'idle', message: '' });
@@ -84,7 +74,6 @@ export default function ContactForm() {
     if (Object.keys(errors).length) {
       setFieldErrors(errors);
       setStatus({ type: 'error', message: 'Please fix the highlighted fields.' });
-      shake();
       return;
     }
 
@@ -102,7 +91,6 @@ export default function ContactForm() {
         type: 'error',
         message: error.message || 'Unable to send your message.',
       });
-      shake();
     } finally {
       setLoading(false);
     }
@@ -165,8 +153,8 @@ export default function ContactForm() {
           name="message"
           value={form.message}
           onChange={onChange}
-          rows={5}
-          className={`${fieldClass} resize-y`}
+          rows={8}
+          className={`${fieldClass} min-h-[12.5rem] resize-y sm:min-h-[14rem]`}
           placeholder="Tell us about your business needs and we’ll recommend the right setup."
         />
       </Field>
@@ -179,10 +167,10 @@ export default function ContactForm() {
             animate={{ opacity: 1, y: 0, height: 'auto' }}
             exit={{ opacity: 0, y: -8, height: 0 }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className={`flex items-center gap-2.5 overflow-hidden rounded-2xl border px-4 py-3 text-sm ${
+            className={`flex items-center gap-2.5 overflow-hidden rounded-2xl border px-4 py-3 text-sm font-medium ${
               status.type === 'success'
-                ? 'border-emerald-400/30 bg-emerald-400/10 text-emerald-200'
-                : 'border-rose-400/30 bg-rose-400/10 text-rose-200'
+                ? 'border-emerald-300 bg-emerald-50 text-emerald-800'
+                : 'border-rose-300 bg-rose-50 text-rose-800'
             }`}
           >
             {status.type === 'success' ? (
@@ -195,7 +183,7 @@ export default function ContactForm() {
         )}
       </AnimatePresence>
 
-      <MagneticButton type="submit" disabled={loading} className="w-full">
+      <MagneticButton type="submit" disabled={loading} magnetic={false} motionFx={false} className="w-full">
         {loading ? (
           <>
             <LoaderCircle size={16} className="animate-spin" /> Sending…

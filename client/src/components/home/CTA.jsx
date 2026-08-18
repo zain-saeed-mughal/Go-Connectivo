@@ -1,5 +1,6 @@
 import { ArrowRight } from 'lucide-react';
 import MagneticButton from '../ui/MagneticButton';
+import HolographicHub3D from '../ui/HolographicHub3DLazy';
 import { AnimatedSection, ParallaxElement, TextReveal } from '../motion';
 import { ease } from '../../motion/config';
 import { createReveal } from '../../motion/reveal';
@@ -19,12 +20,15 @@ export default function CTA() {
   }, []);
 
   return (
-    <section className="px-4 py-12 sm:px-6 sm:py-16 md:py-20">
+    <section className="gc-section">
       <div
         ref={scope}
-        className="gc-will-reveal relative mx-auto max-w-6xl overflow-hidden rounded-[1.5rem] border border-[rgba(47,76,115,0.12)] px-5 py-10 sm:rounded-[2rem] sm:px-10 sm:py-14 md:px-16"
+        className="gc-card gc-container relative overflow-hidden px-5 py-9 sm:px-10 sm:py-14 md:px-16"
       >
         <div className="absolute inset-0 bg-gradient-to-br from-[#E8ECF2] via-[#FFFFFF] to-[#F4F6F9]" />
+        <div className="pointer-events-none absolute top-1/2 right-[-8%] hidden h-[320px] w-[320px] -translate-y-1/2 opacity-55 md:block lg:right-0 lg:h-[380px] lg:w-[380px]">
+          <HolographicHub3D className="h-full min-h-full w-full" />
+        </div>
         <ParallaxElement
           speed={16}
           className="absolute top-0 -left-10 h-48 w-48 rounded-full bg-[#4A6B94]/30 blur-3xl"
@@ -54,7 +58,8 @@ export default function CTA() {
 
           <AnimatedSection from="up" delay={0.08}>
             <p className="mt-4 text-base leading-relaxed text-[#4A5D73]">
-              Get started with Go Connectivo today and experience the difference.
+              Talk to us about dialers, VoIP Termination, hosted PBX, numbers, or contact-center
+              tools — and get a stack that fits how your floor works.
             </p>
           </AnimatedSection>
 

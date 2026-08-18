@@ -23,3 +23,26 @@ export async function submitContact(payload) {
 
   return data;
 }
+
+export async function submitKyc(payload) {
+  const response = await fetch(`${API_BASE}/api/kyc/submit`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  });
+
+  let data;
+  try {
+    data = await response.json();
+  } catch {
+    throw new Error('Unexpected server response. Please try again.');
+  }
+
+  if (!response.ok) {
+    throw new Error(data?.message || 'Unable to submit KYC application.');
+  }
+
+  return data;
+}

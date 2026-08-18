@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import { Plus } from 'lucide-react';
 import PageHero from '../components/ui/PageHero';
 import MagneticButton from '../components/ui/MagneticButton';
@@ -16,11 +16,11 @@ export default function Faqs() {
         eyebrow="Frequently Asked Questions"
         title="Got Questions?"
         highlight="We’ve Got Answers"
-        description="Everything you need to know about our dialers, cloud PBX, inbound/outbound voice, and support."
+        description="Everything you need to know about dialers, business voice, numbers, VoIP Termination, contact-center tools, APIs, and support."
       />
 
-      <section className="px-4 sm:px-6 pb-16">
-        <div className="mx-auto max-w-3xl space-y-12">
+      <section className="gc-section">
+        <div className="gc-prose-width space-y-12">
           {faqCategories.map((group, groupIndex) => (
             <div key={group.category}>
               <AnimatedSection from="up" duration={0.7}>
@@ -42,19 +42,19 @@ export default function Faqs() {
                   return (
                     <div
                       key={item.q}
-                      className={`overflow-hidden rounded-2xl border transition-[border-color,background-color,box-shadow] duration-500 ${
-                        open
-                          ? 'border-[#4A6B94]/35 bg-white/[0.05] shadow-[0_10px_40px_rgba(74,107,148,0.08)]'
-                          : 'border-[rgba(47,76,115,0.1)] bg-[#FFFFFF] hover:border-[rgba(47,76,115,0.16)]'
+                      className={`gc-card-sm overflow-hidden ${
+                        open ? 'border-[#4A6B94]/40 shadow-[0_12px_36px_rgba(74,107,148,0.1)]' : ''
                       }`}
                     >
                       <button
                         type="button"
-                        className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
+                        className="flex min-h-12 w-full items-center justify-between gap-3 px-4 py-3.5 text-left sm:gap-4 sm:px-5 sm:py-4"
                         onClick={() => setOpenId(open ? null : id)}
                         aria-expanded={open}
                       >
-                        <span className="min-w-0 flex-1 font-medium text-[#2F4C73]">{item.q}</span>
+                        <span className="min-w-0 flex-1 text-sm font-medium leading-snug text-[#2F4C73] sm:text-[15px]">
+                          {item.q}
+                        </span>
                         <span
                           className={`grid h-7 w-7 shrink-0 place-items-center rounded-full border transition-[transform,border-color,background-color] duration-500 ${
                             open
@@ -93,7 +93,7 @@ export default function Faqs() {
           ))}
 
           <AnimatedSection from="scale">
-            <div className="relative overflow-hidden rounded-[1.5rem] border border-[rgba(47,76,115,0.12)] bg-gradient-to-br from-[#E8ECF2] via-[#E0E5ED] to-[#FFFFFF] px-4 py-10 text-center sm:rounded-[2rem] sm:px-6 sm:py-12">
+            <div className="gc-card relative overflow-hidden bg-gradient-to-br from-[#E8ECF2] via-[#E0E5ED] to-[#FFFFFF] px-4 py-10 text-center sm:px-6 sm:py-12">
               <div className="pointer-events-none absolute -top-12 left-1/4 h-40 w-40 rounded-full bg-[#2F4C73]/25 blur-3xl" />
               <div className="pointer-events-none absolute right-1/4 -bottom-12 h-44 w-44 rounded-full bg-[#4A6B94]/20 blur-3xl" />
 

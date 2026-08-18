@@ -4,12 +4,12 @@ import { gsap, isCompactViewport, prefersReducedMotion } from '../motion/config'
 /**
  * Soft magnetic pull — follows the cursor with a long settle so it never feels snappy.
  */
-export function useMagnetic(strength = 0.28) {
+export function useMagnetic(strength = 0.34) {
   const ref = useRef(null);
 
   useEffect(() => {
     const el = ref.current;
-    if (!el || prefersReducedMotion() || isCompactViewport()) return undefined;
+    if (!el || strength <= 0 || prefersReducedMotion() || isCompactViewport()) return undefined;
 
     const parent = el.parentElement || el;
 
