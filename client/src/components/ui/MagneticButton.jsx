@@ -39,22 +39,30 @@ export default function MagneticButton({
   const reduced = useReducedMotion();
   const interactive = motionFx && magnetic && !reduced && hasFinePointer();
 
-  const classes = `${base} ${variants[variant] || variants.primary} ${
-    disabled ? 'cursor-not-allowed opacity-60' : ''
-  } ${className}`;
-
+  // CSS hover only — Motion y/scale + GSAP magnetic x/y fight and spam
+  // "x/y not eligible for reset" in the console.
   const gesture = interactive
     ? {
-        whileHover: { y: -2, scale: 1.02, boxShadow: '0 16px 40px rgba(47,76,115,0.34)' },
-        whileTap: { scale: 0.98, y: 0 },
+        whileTap: { scale: 0.98 },
         transition: springSnappy,
       }
     : {};
 
+  const hoverClass = interactive
+    ? 'transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-[0_16px_40px_rgba(47,76,115,0.34)]'
+    : '';
+
+  const classes = `${base} ${variants[variant] || variants.primary} ${hoverClass} ${
+    disabled ? 'cursor-not-allowed opacity-60' : ''
+  } ${className}`;
+
   const content = (
     <>
       <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 group-hover/btn:translate-x-full" />
-      <span ref={magnetic ? ref : undefined} className="relative inline-flex items-center gap-2 will-change-transform">
+      <span
+        ref={magnetic ? ref : undefined}
+        className="relative inline-flex items-center gap-2 will-change-transform"
+      >
         {children}
       </span>
     </>

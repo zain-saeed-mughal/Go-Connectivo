@@ -23,6 +23,17 @@ export function registerGsap() {
 
 registerGsap();
 
+// Quiet known GSAP RevertPlugin noise when CSS/Motion also touch transforms.
+if (typeof window !== 'undefined' && !window.__gcWarnPatched) {
+  window.__gcWarnPatched = true;
+  const origWarn = console.warn.bind(console);
+  console.warn = (...args) => {
+    const first = args[0];
+    if (typeof first === 'string' && first.includes('not eligible for reset')) return;
+    origWarn(...args);
+  };
+}
+
 /**
  * Motion language — long settle, never bounce.
  * soft  = body / cards

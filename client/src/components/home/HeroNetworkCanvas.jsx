@@ -37,8 +37,6 @@ export default function HeroNetworkCanvas({ progressRef, className = '' }) {
   const leaveTimer = useRef(0);
   const slotId = useId();
   const [live, setLive] = useState(false);
-  const [canvasKey, setCanvasKey] = useState(0);
-  const remounts = useRef(0);
   const allowedMotion = canEnhanceMotion();
 
   const syncSlot = useCallback(() => {
@@ -58,14 +56,8 @@ export default function HeroNetworkCanvas({ progressRef, className = '' }) {
     noteWebglPressure();
     releaseWebglSlot(slotId);
     setLive(false);
-    if (remounts.current >= 1) return;
-    remounts.current += 1;
-    window.setTimeout(() => {
-      if (!inViewRef.current || document.hidden) return;
-      setCanvasKey((k) => k + 1);
-      syncSlot();
-    }, 1400);
-  }, [slotId, syncSlot]);
+    // Do not remount — remounting after Context Lost creates more WebGL contexts.
+  }, [slotId]);
 
   useEffect(() => {
     if (!allowedMotion) return undefined;
@@ -110,7 +102,6 @@ export default function HeroNetworkCanvas({ progressRef, className = '' }) {
     >
       {live ? (
         <Canvas
-          key={canvasKey}
           gl={{
             alpha: true,
             antialias: false,

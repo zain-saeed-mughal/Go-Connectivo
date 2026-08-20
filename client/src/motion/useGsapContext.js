@@ -17,7 +17,9 @@ export function useGsapContext(setup, deps = []) {
     const ctx = gsap.context(setup, el);
 
     return () => {
-      ctx.revert();
+      // kill(true) clears animations without RevertPlugin fighting CSS/Motion transforms
+      // (avoids "x/y not eligible for reset" console spam).
+      ctx.kill(true);
       dropPendingWithin(el);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps

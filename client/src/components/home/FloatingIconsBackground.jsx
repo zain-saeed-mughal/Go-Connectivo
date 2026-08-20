@@ -42,7 +42,8 @@ const ICONS = [
 ];
 
 /**
- * Floating VoIP icons — desktop only; scattered across the viewport like the original.
+ * Floating VoIP icons — desktop only.
+ * GSAP alone owns transforms (no CSS transform) so context.revert() stays quiet.
  */
 export default function FloatingIconsBackground() {
   const ref = useRef(null);
@@ -55,13 +56,22 @@ export default function FloatingIconsBackground() {
     const tweens = [];
     const ctx = gsap.context(() => {
       nodes.forEach((node, index) => {
-        gsap.set(node, { xPercent: -50, yPercent: -50 });
+        const rotate = Number(node.getAttribute('data-rotate') || 0);
+        // Only GSAP transform props — never mix with CSS transform shorthand.
+        gsap.set(node, {
+          xPercent: -50,
+          yPercent: -50,
+          rotation: rotate,
+          x: 0,
+          y: 0,
+          force3D: true,
+        });
 
         tweens.push(
           gsap.to(node, {
             y: index % 2 === 0 ? -18 : 16,
             x: index % 3 === 0 ? 12 : -10,
-            rotation: index % 2 === 0 ? '+=12' : '-=12',
+            rotation: rotate + (index % 2 === 0 ? 12 : -12),
             duration: 5.5 + (index % 6) * 0.9,
             repeat: -1,
             yoyo: true,
@@ -82,7 +92,9 @@ export default function FloatingIconsBackground() {
 
     return () => {
       document.removeEventListener('visibilitychange', onVisibility);
-      ctx.revert();
+      tweens.forEach((tween) => tween.kill());
+      // Kill only — full revert fights leftover CSS/Motion transforms.
+      ctx.kill(true);
     };
   }, []);
 
@@ -99,12 +111,12 @@ export default function FloatingIconsBackground() {
         <span
           key={`float-icon-${index}`}
           data-float-icon
+          data-rotate={rotate}
           className="absolute text-[#6B8AB0]/70 will-change-transform"
           style={{
             left: `${x}%`,
             top: `${y}%`,
             opacity,
-            transform: `translate(-50%, -50%) rotate(${rotate}deg)`,
           }}
         >
           <Icon size={size} strokeWidth={1.75} />

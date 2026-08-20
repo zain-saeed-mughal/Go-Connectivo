@@ -48,7 +48,7 @@ export default function HolographicHub3DLazy(props) {
           setInView(false);
         }, 1600);
       },
-      { rootMargin: '280px 0px 280px 0px', threshold: 0 },
+      { rootMargin: '120px 0px 120px 0px', threshold: 0 },
     );
     observer.observe(el);
 

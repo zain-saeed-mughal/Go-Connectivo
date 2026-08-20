@@ -35,13 +35,7 @@ export function forceVisible(el) {
     autoAlpha: 1,
     opacity: 1,
     visibility: 'visible',
-    x: 0,
-    y: 0,
-    xPercent: 0,
-    yPercent: 0,
-    scale: 1,
-    filter: 'none',
-    clearProps: 'clipPath',
+    clearProps: 'x,y,xPercent,yPercent,scale,filter,clipPath,transform',
   });
   settle(el);
 }
@@ -62,12 +56,7 @@ const finishClean = (el) => () => {
     autoAlpha: 1,
     opacity: 1,
     visibility: 'visible',
-    x: 0,
-    y: 0,
-    xPercent: 0,
-    yPercent: 0,
-    scale: 1,
-    filter: 'none',
+    clearProps: 'x,y,xPercent,yPercent,scale,filter,transform',
   });
 };
 
