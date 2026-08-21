@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { gsap, isCompactViewport, prefersReducedMotion } from '../motion/config';
 
 /**
- * Soft magnetic pull — follows the cursor with a long settle so it never feels snappy.
+ * Soft magnetic pull, follows the cursor with a long settle so it never feels snappy.
  */
 export function useMagnetic(strength = 0.34) {
   const ref = useRef(null);

@@ -1,7 +1,7 @@
 import ServiceIcon from './ServiceIcon';
 
 /**
- * Service card icons — Lucide only (no per-card WebGL).
+ * Service card icons, Lucide only (no per-card WebGL).
  * Keeps a single WebGL budget for section scenes + hero globe so canvases
  * don't go blank from browser context limits.
  */

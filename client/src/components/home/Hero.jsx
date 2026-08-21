@@ -33,7 +33,7 @@ function splitFccBody(body) {
 }
 
 /**
- * Hero — original two-column alignment.
+ * Hero, original two-column alignment.
  * Desktop: sticky track (not GSAP pin) so FCC lines reveal on scroll.
  */
 export default function Hero() {
@@ -131,7 +131,7 @@ export default function Hero() {
       textTl.progress(textProgress);
     };
 
-    // Scrub against real page scroll — no pin, no extra track height.
+    // Scrub against real page scroll, no pin, no extra track height.
     const st = ScrollTrigger.create({
       trigger: heroEl,
       start: 'top top',

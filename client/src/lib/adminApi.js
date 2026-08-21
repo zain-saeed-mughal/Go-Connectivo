@@ -1,7 +1,7 @@
 const API_BASE = import.meta.env.VITE_API_URL || '';
 
 /**
- * Professional admin API client — clear errors when the API is down or returns HTML.
+ * Professional admin API client, clear errors when the API is down or returns HTML.
  */
 async function adminFetch(path, options = {}) {
   const { headers: extraHeaders, ...rest } = options;

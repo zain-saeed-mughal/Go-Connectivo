@@ -5,7 +5,7 @@ import { disposeRenderer } from '../../motion/webglSlots';
 
 /**
  * Compact interactive holographic hub for section accents.
- * Brand navy only — scroll-scrubbed when inside a chapter.
+ * Brand navy only, scroll-scrubbed when inside a chapter.
  */
 export default function HolographicHub3D({ className = '', interactive = true, onContextLost }) {
   const containerRef = useRef(null);

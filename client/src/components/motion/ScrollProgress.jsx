@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap, ScrollTrigger, prefersReducedMotion } from '../../motion/config';
 
-/** Thin top progress bar — Lusion-like scroll feedback, brand navy. */
+/** Thin top progress bar, Lusion-like scroll feedback, brand navy. */
 export default function ScrollProgress() {
   const barRef = useRef(null);
 

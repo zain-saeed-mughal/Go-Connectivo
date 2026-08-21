@@ -8,7 +8,7 @@ const presets = {
 };
 
 /**
- * Motion.dev scroll-triggered reveal — whileInView + once (no tilt).
+ * Motion.dev scroll-triggered reveal, whileInView + once (no tilt).
  */
 export default function MotionReveal({
   children,

@@ -5,7 +5,7 @@ import { motionEase } from '../../motion/motionPresets';
 import { scrollToTop } from './SmoothScroll';
 
 /**
- * Route handoff — opacity only.
+ * Route handoff, opacity only.
  * Never leave a translate/transform on the wrapper: that creates a containing
  * block and breaks position:fixed navbar + ScrollTrigger pin after scrolling.
  */

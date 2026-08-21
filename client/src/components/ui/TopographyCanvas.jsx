@@ -3,7 +3,7 @@ import { prefersReducedMotion } from '../../motion/config';
 
 /**
  * Footer backdrop. Only paints while the footer is on screen and the tab is
- * visible — otherwise it burns a full RAF loop on every page.
+ * visible, otherwise it burns a full RAF loop on every page.
  */
 export default function TopographyCanvas({ className = '' }) {
   const canvasRef = useRef(null);

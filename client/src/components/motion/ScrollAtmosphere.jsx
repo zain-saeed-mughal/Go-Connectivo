@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { canEnhanceMotion, gsap, ScrollTrigger } from '../../motion/config';
 
 /**
- * Scroll-drawn network lines — begin at first section below Hero (#home-next).
+ * Scroll-drawn network lines, begin at first section below Hero (#home-next).
  * Lightweight: cached path lengths, no per-frame getTotalLength / gsap.set.
  */
 export default function ScrollAtmosphere() {

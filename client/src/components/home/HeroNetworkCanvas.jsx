@@ -29,7 +29,7 @@ function ContextGuard({ onLost }) {
 }
 
 /**
- * Hero globe — high-priority WebGL slot; fully unmounts off-screen to free GPU.
+ * Hero globe, high-priority WebGL slot; fully unmounts off-screen to free GPU.
  */
 export default function HeroNetworkCanvas({ progressRef, className = '' }) {
   const hostRef = useRef(null);
@@ -56,7 +56,7 @@ export default function HeroNetworkCanvas({ progressRef, className = '' }) {
     noteWebglPressure();
     releaseWebglSlot(slotId);
     setLive(false);
-    // Do not remount — remounting after Context Lost creates more WebGL contexts.
+    // Do not remount, remounting after Context Lost creates more WebGL contexts.
   }, [slotId]);
 
   useEffect(() => {

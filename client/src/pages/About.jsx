@@ -16,7 +16,7 @@ export default function About() {
         eyebrow="About Go Connectivo"
         title="Your Trusted"
         highlight="VoIP Partner"
-        description="Reliable dialers, business voice, numbers, VoIP Termination, contact-center platforms, and APIs — built to scale with your team."
+        description="Reliable dialers, business voice, numbers, VoIP Termination, contact-center platforms, and APIs, built to scale with your team."
         image={voipHeadset}
         imageAlt="Professional headset for VoIP and contact center support"
       >
@@ -86,7 +86,7 @@ export default function About() {
           <SectionHeading
             eyebrow="What we do"
             title="Our complete range of services."
-            description="Browse the full catalog — dialers, business voice, numbers, carrier outbound, contact center, and APIs."
+            description="Browse the full catalog, dialers, business voice, numbers, carrier outbound, contact center, and APIs."
           />
           <StaggerContainer className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4" stagger={0.06}>
             {getCatalogServices().map((service) => (

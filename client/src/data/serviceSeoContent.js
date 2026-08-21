@@ -51,7 +51,7 @@ export const SERVICE_SEO = {
 
   'predictive-dialer': {
     metaTitle: 'Predictive Dialer Software | Go Connectivo',
-    metaDescription: 'Boost connects per hour with Go Connectivo predictive dialer — adaptive ratios, abandon safeguards, skill routing, and live dashboards for US call centers.',
+    metaDescription: 'Boost connects per hour with Go Connectivo predictive dialer, adaptive ratios, abandon safeguards, skill routing, and live dashboards for US call centers.',
     overview: {
       heading: 'Predictive dialer for high-connect outbound floors',
       paragraphs: [
@@ -97,12 +97,12 @@ export const SERVICE_SEO = {
 
   'power-dialer': {
     metaTitle: 'Power Dialer for Sales Teams | Go Connectivo',
-    metaDescription: 'One-to-one power dialer from Go Connectivo — click-next dialing, local presence, scripting hooks, and supervisor listen for high-touch sales floors.',
+    metaDescription: 'One-to-one power dialer from Go Connectivo, click-next dialing, local presence, scripting hooks, and supervisor listen for high-touch sales floors.',
     overview: {
       heading: 'Power dialer for controlled, high-touch outbound',
       paragraphs: [
         'Go Connectivo power dialer keeps one-to-one control while cutting dead time between calls. Agents click next, hear the ring, and stay focused on conversation quality.',
-        'Local presence, scripting hooks, wrap-up timers, and supervisor listen/whisper support coaching without slowing dials — ideal when predictive is too aggressive.',
+        'Local presence, scripting hooks, wrap-up timers, and supervisor listen/whisper support coaching without slowing dials, ideal when predictive is too aggressive.',
       ],
     },
     benefits: {
@@ -143,7 +143,7 @@ export const SERVICE_SEO = {
 
   'progressive-dialer': {
     metaTitle: 'Progressive Dialer Solutions | Go Connectivo',
-    metaDescription: 'Progressive dialer from Go Connectivo dials only when agents are free — preview, priority queues, DNC enforcement, and detailed outcomes for quality-first floors.',
+    metaDescription: 'Progressive dialer from Go Connectivo dials only when agents are free, preview, priority queues, DNC enforcement, and detailed outcomes for quality-first floors.',
     overview: {
       heading: 'Progressive dialer when quality beats raw volume',
       paragraphs: [
@@ -154,7 +154,7 @@ export const SERVICE_SEO = {
     benefits: {
       heading: 'Progressive dialer strengths',
       items: [
-        { title: 'Agent-ready dialing', text: 'No orphaned connects — dials fire only when a rep can take the call.' },
+        { title: 'Agent-ready dialing', text: 'No orphaned connects, dials fire only when a rep can take the call.' },
         { title: 'Preview before connect', text: 'Agents review lead context before the customer answers.' },
         { title: 'Priority queues', text: 'Hot leads and VIP lists jump ahead of cold volume.' },
         { title: 'DNC enforcement', text: 'Do-not-call lists stay enforced across progressive campaigns.' },
@@ -189,7 +189,7 @@ export const SERVICE_SEO = {
 
   'business-voip': {
     metaTitle: 'Business VoIP Phone Systems | Go Connectivo',
-    metaDescription: 'Enterprise-ready business VoIP from Go Connectivo — HD voice, multi-device softphones, flexible seats, and numbers that travel with your US team.',
+    metaDescription: 'Enterprise-ready business VoIP from Go Connectivo, HD voice, multi-device softphones, flexible seats, and numbers that travel with your US team.',
     overview: {
       heading: 'Business VoIP for clear, flexible team calling',
       paragraphs: [
@@ -235,7 +235,7 @@ export const SERVICE_SEO = {
 
   'hosted-pbx': {
     metaTitle: 'Hosted Cloud PBX | Go Connectivo',
-    metaDescription: 'Hosted cloud PBX from Go Connectivo — extensions, IVR, ring groups, recording options, and softphones managed in the browser for growing offices.',
+    metaDescription: 'Hosted cloud PBX from Go Connectivo, extensions, IVR, ring groups, recording options, and softphones managed in the browser for growing offices.',
     overview: {
       heading: 'Hosted cloud PBX without on-site hardware',
       paragraphs: [
@@ -249,7 +249,7 @@ export const SERVICE_SEO = {
         { title: 'Extensions & ring groups', text: 'Route by team or department without physical cross-connects.' },
         { title: 'Auto-attendant / IVR', text: 'Greet and route callers professionally after hours and peak times.' },
         { title: 'Call recording options', text: 'Enable recording where training or compliance requires it.' },
-        { title: 'Voicemail-to-email', text: 'Capture messages where staff already work — the inbox.' },
+        { title: 'Voicemail-to-email', text: 'Capture messages where staff already work, the inbox.' },
       ],
     },
     howItWorks: {
@@ -281,7 +281,7 @@ export const SERVICE_SEO = {
 
   'sip-trunking': {
     metaTitle: 'SIP Trunking Services | Go Connectivo',
-    metaDescription: 'Elastic SIP trunking from Go Connectivo — replace PRI with concurrent channels, failover trunks, codec flexibility, and transparent rate decks for PBX platforms.',
+    metaDescription: 'Elastic SIP trunking from Go Connectivo, replace PRI with concurrent channels, failover trunks, codec flexibility, and transparent rate decks for PBX platforms.',
     overview: {
       heading: 'SIP trunking that scales with concurrent demand',
       paragraphs: [
@@ -327,7 +327,7 @@ export const SERVICE_SEO = {
 
   'mobile-voip': {
     metaTitle: 'Mobile VoIP App for Business | Go Connectivo',
-    metaDescription: 'Mobile VoIP from Go Connectivo — make and receive business calls on your smartphone with business caller ID, transfer, voicemail, and WiFi calling.',
+    metaDescription: 'Mobile VoIP from Go Connectivo, make and receive business calls on your smartphone with business caller ID, transfer, voicemail, and WiFi calling.',
     overview: {
       heading: 'Business calls from your smartphone',
       paragraphs: [
@@ -373,11 +373,11 @@ export const SERVICE_SEO = {
 
   'click-to-call': {
     metaTitle: 'Click-to-Call for CRM & Web | Go Connectivo',
-    metaDescription: 'Click-to-call from Go Connectivo launches outbound VoIP calls from CRM or browser — fewer misdials, caller ID control, notes capture, and agent activity logs.',
+    metaDescription: 'Click-to-call from Go Connectivo launches outbound VoIP calls from CRM or browser, fewer misdials, caller ID control, notes capture, and agent activity logs.',
     overview: {
       heading: 'One-click outbound from CRM and web panels',
       paragraphs: [
-        'Go Connectivo click-to-call lets agents launch outbound VoIP from CRM records or browser panels — fewer misdials, faster follow-ups, cleaner notes.',
+        'Go Connectivo click-to-call lets agents launch outbound VoIP from CRM records or browser panels, fewer misdials, faster follow-ups, cleaner notes.',
         'Caller ID control, webhook hooks, and activity logs give ops visibility. Use alone or alongside power and auto dialers.',
       ],
     },
@@ -419,7 +419,7 @@ export const SERVICE_SEO = {
 
   'inbound-services': {
     metaTitle: 'Inbound Voice Services | Go Connectivo',
-    metaDescription: 'Inbound voice from Go Connectivo — IVR, skill queues, time-based routing, overflow, recording, and missed-call recovery for US customer lines.',
+    metaDescription: 'Inbound voice from Go Connectivo, IVR, skill queues, time-based routing, overflow, recording, and missed-call recovery for US customer lines.',
     overview: {
       heading: 'Inbound voice that finds the right desk',
       paragraphs: [
@@ -465,7 +465,7 @@ export const SERVICE_SEO = {
 
   'toll-free-origination': {
     metaTitle: 'Toll-Free Origination (8xx) | Go Connectivo',
-    metaDescription: 'Toll-free origination from Go Connectivo — 800/888/877 numbers that land on IVR, agents, or cloud PBX with provisioning, routing, and usage reporting.',
+    metaDescription: 'Toll-free origination from Go Connectivo, 800/888/877 numbers that land on IVR, agents, or cloud PBX with provisioning, routing, and usage reporting.',
     overview: {
       heading: 'Toll-free numbers that land where you work',
       paragraphs: [
@@ -511,7 +511,7 @@ export const SERVICE_SEO = {
 
   'did-services': {
     metaTitle: 'Local DID Number Solutions | Go Connectivo',
-    metaDescription: 'Local DID services from Go Connectivo — area codes, number portability, virtual presence, and forwarding so you look local while operating centrally.',
+    metaDescription: 'Local DID services from Go Connectivo, area codes, number portability, virtual presence, and forwarding so you look local while operating centrally.',
     overview: {
       heading: 'Local presence with Direct Inward Dialing',
       paragraphs: [
@@ -557,11 +557,11 @@ export const SERVICE_SEO = {
 
   'virtual-numbers': {
     metaTitle: 'Virtual Phone Numbers | Go Connectivo',
-    metaDescription: 'Virtual numbers from Go Connectivo — instant inventory, forward to SIP or PSTN, campaign pools, easy activate/release, and CDR visibility for marketers.',
+    metaDescription: 'Virtual numbers from Go Connectivo, instant inventory, forward to SIP or PSTN, campaign pools, easy activate/release, and CDR visibility for marketers.',
     overview: {
       heading: 'Virtual numbers for campaigns and departments',
       paragraphs: [
-        'Go Connectivo virtual numbers ring to your PBX, apps, or agents — ideal for campaigns, departments, and multi-market presence without hardware.',
+        'Go Connectivo virtual numbers ring to your PBX, apps, or agents, ideal for campaigns, departments, and multi-market presence without hardware.',
         'Instant inventory, SIP/PSTN forwarding, campaign pools, and CDR visibility keep number ops agile and attributable.',
       ],
     },
@@ -603,7 +603,7 @@ export const SERVICE_SEO = {
 
   'outbound-services': {
     metaTitle: 'Outbound Voice Services | Go Connectivo',
-    metaDescription: 'Campaign-ready outbound voice from Go Connectivo — clear audio, flexible caller ID, concurrent scaling, quality monitoring, and usage analytics for dialers.',
+    metaDescription: 'Campaign-ready outbound voice from Go Connectivo, clear audio, flexible caller ID, concurrent scaling, quality monitoring, and usage analytics for dialers.',
     overview: {
       heading: 'Outbound voice built for sustained connect rates',
       paragraphs: [
@@ -649,7 +649,7 @@ export const SERVICE_SEO = {
 
   'toll-free-termination': {
     metaTitle: 'Toll-Free Termination Services | Go Connectivo',
-    metaDescription: 'Toll-free termination from Go Connectivo — stable 8xx routes, competitive rate decks, failover carriers, CDR access, and quality monitoring for outbound traffic.',
+    metaDescription: 'Toll-free termination from Go Connectivo, stable 8xx routes, competitive rate decks, failover carriers, CDR access, and quality monitoring for outbound traffic.',
     overview: {
       heading: 'Terminate outbound traffic to toll-free destinations',
       paragraphs: [
@@ -695,7 +695,7 @@ export const SERVICE_SEO = {
 
   'wholesale-termination': {
     metaTitle: 'Wholesale Voice Termination | Go Connectivo',
-    metaDescription: 'Wholesale voice termination from Go Connectivo — domestic and international routes, SIP interconnect, high concurrency, tiered rates, and 24/7 NOC support.',
+    metaDescription: 'Wholesale voice termination from Go Connectivo, domestic and international routes, SIP interconnect, high concurrency, tiered rates, and 24/7 NOC support.',
     overview: {
       heading: 'Wholesale termination at partner scale',
       paragraphs: [
@@ -741,7 +741,7 @@ export const SERVICE_SEO = {
 
   'voip-termination': {
     metaTitle: 'VoIP Termination Services | Go Connectivo',
-    metaDescription: 'Reliable VoIP termination from Go Connectivo — domestic and international routes, competitive rates, high call quality, and 24/7 technical support for call centers.',
+    metaDescription: 'Reliable VoIP termination from Go Connectivo, domestic and international routes, competitive rates, high call quality, and 24/7 technical support for call centers.',
     overview: {
       heading: 'VoIP termination with clear audio and competitive rates',
       paragraphs: [
@@ -787,7 +787,7 @@ export const SERVICE_SEO = {
 
   'call-center-software': {
     metaTitle: 'Call Center Software Platform | Go Connectivo',
-    metaDescription: 'Call center software from Go Connectivo — ACD queues, agent and supervisor tools, live monitoring, SLA metrics, and a voice core ready for omnichannel growth.',
+    metaDescription: 'Call center software from Go Connectivo, ACD queues, agent and supervisor tools, live monitoring, SLA metrics, and a voice core ready for omnichannel growth.',
     overview: {
       heading: 'Run inbound and outbound desks from one console',
       paragraphs: [
@@ -833,11 +833,11 @@ export const SERVICE_SEO = {
 
   'virtual-contact-center': {
     metaTitle: 'Virtual Contact Center | Go Connectivo',
-    metaDescription: 'Virtual contact center from Go Connectivo — remote agent login, unified queues, supervisor dashboards, secure softphones, and multi-site routing for hybrid teams.',
+    metaDescription: 'Virtual contact center from Go Connectivo, remote agent login, unified queues, supervisor dashboards, secure softphones, and multi-site routing for hybrid teams.',
     overview: {
       heading: 'A contact center that works from any location',
       paragraphs: [
-        'Go Connectivo virtual contact center stands up distributed agent floors for remote or hybrid teams — same queues, same quality, any location.',
+        'Go Connectivo virtual contact center stands up distributed agent floors for remote or hybrid teams, same queues, same quality, any location.',
         'Remote login, unified queues, supervisor dashboards, and secure softphones keep coaching and SLAs intact off-site.',
       ],
     },
@@ -879,7 +879,7 @@ export const SERVICE_SEO = {
 
   'ivr-auto-attendant': {
     metaTitle: 'IVR & Auto Attendant | Go Connectivo',
-    metaDescription: 'IVR and auto attendant from Go Connectivo — multi-level menus, business-hours routing, DTMF/speech options, custom prompts, and overflow to voicemail or queues.',
+    metaDescription: 'IVR and auto attendant from Go Connectivo, multi-level menus, business-hours routing, DTMF/speech options, custom prompts, and overflow to voicemail or queues.',
     overview: {
       heading: 'Guide callers with professional IVR menus',
       paragraphs: [
@@ -925,7 +925,7 @@ export const SERVICE_SEO = {
 
   'call-routing-queues': {
     metaTitle: 'Call Routing & Queues | Go Connectivo',
-    metaDescription: 'Call routing and queues from Go Connectivo — skill and priority queues, time-of-day rules, overflow, callbacks, announcements, and supervisor override.',
+    metaDescription: 'Call routing and queues from Go Connectivo, skill and priority queues, time-of-day rules, overflow, callbacks, announcements, and supervisor override.',
     overview: {
       heading: 'Skill-based routing that protects wait times',
       paragraphs: [
@@ -971,7 +971,7 @@ export const SERVICE_SEO = {
 
   'call-recording': {
     metaTitle: 'Call Recording for Contact Centers | Go Connectivo',
-    metaDescription: 'Secure call recording from Go Connectivo — on-demand or always-on capture, cloud storage, role-based playback, retention policies, and quality review workflows.',
+    metaDescription: 'Secure call recording from Go Connectivo, on-demand or always-on capture, cloud storage, role-based playback, retention policies, and quality review workflows.',
     overview: {
       heading: 'Secure recording for training, compliance, and QA',
       paragraphs: [
@@ -1017,7 +1017,7 @@ export const SERVICE_SEO = {
 
   'call-analytics': {
     metaTitle: 'Call Analytics & Reporting | Go Connectivo',
-    metaDescription: 'Call analytics from Go Connectivo — real-time wallboards, campaign and queue reports, agent scorecards, exportable CDRs, and custom date ranges for ops coaching.',
+    metaDescription: 'Call analytics from Go Connectivo, real-time wallboards, campaign and queue reports, agent scorecards, exportable CDRs, and custom date ranges for ops coaching.',
     overview: {
       heading: 'Live and historical insight for voice ops',
       paragraphs: [
@@ -1063,7 +1063,7 @@ export const SERVICE_SEO = {
 
   'voice-api': {
     metaTitle: 'Voice API & Programmable Voice | Go Connectivo',
-    metaDescription: 'Voice API from Go Connectivo — embed inbound and outbound calling with REST, webhooks, programmable IVR, SIP control, and sandbox keys for developers.',
+    metaDescription: 'Voice API from Go Connectivo, embed inbound and outbound calling with REST, webhooks, programmable IVR, SIP control, and sandbox keys for developers.',
     overview: {
       heading: 'Programmable voice for product and platform teams',
       paragraphs: [
@@ -1109,7 +1109,7 @@ export const SERVICE_SEO = {
 
   'sms-solutions': {
     metaTitle: 'Business SMS/A2P Solutionss | Go Connectivo',
-    metaDescription: 'SMS/A2P Solutionss from Go Connectivo — A2P messaging, two-way conversations, delivery receipts, API and portal send, plus number and brand registration help.',
+    metaDescription: 'SMS/A2P Solutionss from Go Connectivo, A2P messaging, two-way conversations, delivery receipts, API and portal send, plus number and brand registration help.',
     overview: {
       heading: 'Business SMS beside your voice stack',
       paragraphs: [
@@ -1155,7 +1155,7 @@ export const SERVICE_SEO = {
 
   'ringless-voicemail': {
     metaTitle: 'Ringless Voicemail Drop | Go Connectivo',
-    metaDescription: 'Ringless voicemail from Go Connectivo — compliant inbox drops, bulk campaigns, audio templates, schedule windows, delivery reporting, and list segmentation.',
+    metaDescription: 'Ringless voicemail from Go Connectivo, compliant inbox drops, bulk campaigns, audio templates, schedule windows, delivery reporting, and list segmentation.',
     overview: {
       heading: 'Land voicemail without interrupting the day',
       paragraphs: [
@@ -1210,7 +1210,7 @@ export function getServiceSeoContent(service) {
   const name = title || 'Voice Service';
   const desc =
     description ||
-    `${name} from Go Connectivo — carrier-minded VoIP and call-center infrastructure for US businesses.`;
+    `${name} from Go Connectivo, carrier-minded VoIP and call-center infrastructure for US businesses.`;
   const caps = Array.isArray(capabilities) ? capabilities.filter(Boolean) : [];
   const categoryLabel = category ? String(category).replace(/-/g, ' ') : 'telecom';
 
@@ -1231,7 +1231,7 @@ export function getServiceSeoContent(service) {
   const metaDescription =
     desc.length >= 140 && desc.length <= 160
       ? desc
-      : `${name} from Go Connectivo — VoIP and call-center tools with clear audio, flexible capacity, and support for US business teams.`.slice(0, 160);
+      : `${name} from Go Connectivo, VoIP and call-center tools with clear audio, flexible capacity, and support for US business teams.`.slice(0, 160);
 
   return {
     metaTitle: `${name} | Go Connectivo`,
@@ -1271,7 +1271,7 @@ export function getServiceSeoContent(service) {
       items: [
         { q: `What is ${name}?`, a: desc },
         { q: 'Who is this for?', a: `${name} is built for US call centers, sales floors, and businesses that need practical telecom infrastructure from Go Connectivo.` },
-        { q: 'How do we get started?', a: 'Contact Go Connectivo with your volume, numbers, and integration needs — we will recommend the right voice path.' },
+        { q: 'How do we get started?', a: 'Contact Go Connectivo with your volume, numbers, and integration needs, we will recommend the right voice path.' },
       ],
     },
     closing: {

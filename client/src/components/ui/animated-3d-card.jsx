@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { cn } from '@/lib/utils';
 import { isCompactViewport } from '../../motion/config';
 
-/** Theme surfaces — Luxe Navy professional gradients */
+/** Theme surfaces, Luxe Navy professional gradients */
 const THEMES = {
   primary: 'from-[#FFFFFF] via-[#E8ECF2] to-[#6B8AB0]/25',
   secondary: 'from-[#F4F6F9] via-[#E0E5ED] to-[#4A6B94]/20',
@@ -159,7 +159,7 @@ export const Card3D = React.forwardRef(function Card3D(
       transition={{ type: 'spring', stiffness: 400, damping: 35, mass: 0.8 }}
       style={{ transformStyle: 'preserve-3d', perspective: '1200px' }}
       role={onClick ? 'link' : 'article'}
-      aria-label={onClick ? `${title} — ${exploreLabel}` : undefined}
+      aria-label={onClick ? `${title}, ${exploreLabel}` : undefined}
       {...props}
     >
       <motion.div

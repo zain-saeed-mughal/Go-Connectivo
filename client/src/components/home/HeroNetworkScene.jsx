@@ -2,7 +2,7 @@ import { useMemo, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
-/** Brand navy — matches Go Connectivo UI */
+/** Brand navy, matches Go Connectivo UI */
 const NAVY = '#2F4C73';
 const MID = '#4A6B94';
 const LIGHT = '#6B8AB0';
@@ -64,7 +64,7 @@ function Parallels({ radius = 1.35, count = 7 }) {
 }
 
 /**
- * World globe — elegant scale-in on page open, then scroll-driven motion.
+ * World globe, elegant scale-in on page open, then scroll-driven motion.
  */
 export default function HeroNetworkScene({ progressRef }) {
   const root = useRef(null);
@@ -80,7 +80,7 @@ export default function HeroNetworkScene({ progressRef }) {
     const g = root.current;
     if (!g) return;
 
-    // Entrance once — then stay fully visible
+    // Entrance once, then stay fully visible
     intro.current = Math.min(1, intro.current + delta / 0.85);
     const t = intro.current;
     const enter = 1 - (1 - t) ** 3;

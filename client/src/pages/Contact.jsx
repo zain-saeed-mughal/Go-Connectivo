@@ -25,13 +25,13 @@ const details = [
 const nextSteps = [
   {
     icon: MessageSquareText,
-    title: 'Tell us the floor',
-    copy: 'Seats, call volume, and whether you need dialers, numbers, or carrier reach.',
+    title: 'Tell us',
+    copy: 'The floor, seats, call volume, and whether you need dialers, numbers, or carrier reach.',
   },
   {
     icon: Timer,
     title: 'Reply in one business day',
-    copy: 'Sales reviews the note and comes back with a clear path — not a generic brochure.',
+    copy: 'Sales reviews the note and comes back with a clear path, not a generic brochure.',
   },
   {
     icon: Headset,
@@ -70,7 +70,7 @@ function GetInTouchCard() {
         Get In Touch
       </h2>
       <p className="mt-2 text-sm leading-relaxed text-[#6B7C8F]">
-        Questions on dialers, voice, numbers, termination, or APIs — our team will point you to the
+        Questions on dialers, voice, numbers, termination, or APIs, our team will point you to the
         right setup.
       </p>
 
@@ -123,7 +123,7 @@ export default function Contact() {
         eyebrow="Contact Us"
         title="Get in touch with"
         highlight="our team."
-        description="Questions about dialers, Business VoIP, SIP trunks, numbers, VoIP Termination, contact-center tools, or APIs — we’re here to help."
+        description="Questions about dialers, Business VoIP, SIP trunks, numbers, VoIP Termination, contact-center tools, or APIs, we’re here to help."
         detail={<ContactBrief />}
         aside={<GetInTouchCard />}
       />

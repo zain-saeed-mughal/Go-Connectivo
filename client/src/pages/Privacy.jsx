@@ -15,8 +15,8 @@ export default function Privacy() {
           stagger={0.1}
         >
           <p>
-            When you contact us through our inquiry form, we collect the details you provide —
-            such as name, email, phone, subject, and message — solely to respond to your request
+            When you contact us through our inquiry form, we collect the details you provide ,
+            such as name, email, phone, subject, and message, solely to respond to your request
             and evaluate potential collaboration.
           </p>
           <p>

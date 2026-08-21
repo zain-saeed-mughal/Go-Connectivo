@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { canEnhanceMotion, gsap } from '../../motion/config';
 
 /**
- * Soft morphing cursor — desktop fine-pointer only.
+ * Soft morphing cursor, desktop fine-pointer only.
  * Position lives on an outer wrapper; size/scale on the inner ring so GSAP
  * never fights the translate (that was sticking the circle on the navbar).
  */
@@ -46,7 +46,7 @@ export default function CustomCursor() {
     gsap.set([wrap, dot], { xPercent: -50, yPercent: -50, force3D: true });
     gsap.set(ring, { scale: 1, force3D: true });
 
-    // quickTo keeps GSAP as the single owner of transforms — no stuck frames.
+    // quickTo keeps GSAP as the single owner of transforms, no stuck frames.
     const moveWrapX = gsap.quickTo(wrap, 'x', { duration: 0.18, ease: 'power3.out' });
     const moveWrapY = gsap.quickTo(wrap, 'y', { duration: 0.18, ease: 'power3.out' });
     const moveDotX = gsap.quickTo(dot, 'x', { duration: 0.01, ease: 'none' });

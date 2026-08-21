@@ -149,7 +149,7 @@ export const services = [
     icon: 'PhoneCall',
     category: 'dialer-solutions',
     description:
-      'Automate outbound lists with paced dialing, answer detection, and agent-ready handoff so your team spends time talking — not punching numbers.',
+      'Automate outbound lists with paced dialing, answer detection, and agent-ready handoff so your team spends time talking, not punching numbers.',
     capabilities: [
       'List pacing controls',
       'Live answer detection',
@@ -197,7 +197,7 @@ export const services = [
     icon: 'ListOrdered',
     category: 'dialer-solutions',
     description:
-      'Progressive mode dials the next lead only when an agent is free — ideal when quality beats raw volume.',
+      'Progressive mode dials the next lead only when an agent is free, ideal when quality beats raw volume.',
     capabilities: [
       'Agent-ready dialing',
       'Preview before connect',
@@ -229,7 +229,7 @@ export const services = [
     icon: 'Cloud',
     category: 'business-voice',
     description:
-      'A full cloud PBX for extensions, IVR, and office calling — managed in the browser and ready to grow with your seats.',
+      'A full cloud PBX for extensions, IVR, and office calling, managed in the browser and ready to grow with your seats.',
     capabilities: [
       'Extensions & ring groups',
       'Auto-attendant / IVR',
@@ -245,7 +245,7 @@ export const services = [
     icon: 'Cable',
     category: 'business-voice',
     description:
-      'Replace PRI and legacy trunks with elastic SIP capacity — connect your PBX or platform to carrier-grade voice routes.',
+      'Replace PRI and legacy trunks with elastic SIP capacity, connect your PBX or platform to carrier-grade voice routes.',
     capabilities: [
       'Elastic concurrent channels',
       'BYO or hosted PBX interconnect',
@@ -277,7 +277,7 @@ export const services = [
     icon: 'MousePointerClick',
     category: 'business-voice',
     description:
-      'Launch outbound calls from your CRM or web panel with one click — fewer misdials, faster follow-ups.',
+      'Launch outbound calls from your CRM or web panel with one click, fewer misdials, faster follow-ups.',
     capabilities: [
       'Browser / CRM click launch',
       'Caller ID control',
@@ -340,7 +340,7 @@ export const services = [
     icon: 'Hash',
     category: 'inbound-numbers',
     description:
-      'Provision virtual numbers that ring to your PBX, apps, or agents — ideal for campaigns, departments, and multi-market presence.',
+      'Provision virtual numbers that ring to your PBX, apps, or agents, ideal for campaigns, departments, and multi-market presence.',
     capabilities: [
       'Instant number inventory',
       'Forward to SIP / PSTN',
@@ -420,7 +420,7 @@ export const services = [
     icon: 'Headset',
     category: 'contact-center',
     description:
-      'Run inbound and outbound desks from one console — queues, agents, supervisors, and live wallboards included.',
+      'Run inbound and outbound desks from one console, queues, agents, supervisors, and live wallboards included.',
     capabilities: [
       'ACD queues',
       'Agent & supervisor tools',
@@ -436,7 +436,7 @@ export const services = [
     icon: 'Monitor',
     category: 'contact-center',
     description:
-      'Stand up a distributed contact center for remote or hybrid teams — same queues, same quality, any location.',
+      'Stand up a distributed contact center for remote or hybrid teams, same queues, same quality, any location.',
     capabilities: [
       'Remote agent login',
       'Unified queues',
@@ -484,7 +484,7 @@ export const services = [
     icon: 'Disc',
     category: 'contact-center',
     description:
-      'Secure call recording for training, compliance, and quality — with access controls built for supervisors and ops.',
+      'Secure call recording for training, compliance, and quality, with access controls built for supervisors and ops.',
     capabilities: [
       'On-demand or always-on',
       'Secure cloud storage',
@@ -500,7 +500,7 @@ export const services = [
     icon: 'BarChart3',
     category: 'contact-center',
     description:
-      'Live and historical reporting on answer rates, handle time, campaigns, and agent performance — so ops can coach with data.',
+      'Live and historical reporting on answer rates, handle time, campaigns, and agent performance, so ops can coach with data.',
     capabilities: [
       'Real-time wallboards',
       'Campaign & queue reports',
@@ -516,7 +516,7 @@ export const services = [
     icon: 'Code2',
     category: 'api-messaging',
     description:
-      'Embed outbound and inbound calling into your apps with programmable voice APIs — webhooks, SIP, and developer-friendly docs.',
+      'Embed outbound and inbound calling into your apps with programmable voice APIs, webhooks, SIP, and developer-friendly docs.',
     capabilities: [
       'REST & webhook events',
       'Click-to-call & notifications',
@@ -542,7 +542,7 @@ export const services = [
     ],
     span: '',
   },
-  /** Legacy URL kept for existing bookmarks — not listed in menus. */
+  /** Legacy URL kept for existing bookmarks, not listed in menus. */
   {
     id: 'ringless-voicemail',
     title: 'Ringless Voicemail',
@@ -570,7 +570,7 @@ export const companyStats = [
 ];
 
 export const aboutIntro = [
-  'Go Connectivo helps contact centers, sales teams, and service desks run on a complete voice stack — dialer solutions, business VoIP and hosted PBX, inbound numbers, outbound and carrier termination (including VoIP Termination), contact-center tools, plus voice API and SMS.',
+  'Go Connectivo helps contact centers, sales teams, and service desks run on a complete voice stack, dialer solutions, business VoIP and hosted PBX, inbound numbers, outbound and carrier termination (including VoIP Termination), contact-center tools, plus voice API and SMS.',
   'Our focus is practical telecom infrastructure: clear audio, predictable rates, and platforms that keep agents productive whether they sit on one floor or across many locations.',
 ];
 
@@ -727,7 +727,7 @@ export const whyUs = [
   {
     title: 'Full Voice Stack',
     description:
-      'From dialers and contact-center tools to carrier voice, numbers, APIs, and SMS — one partner.',
+      'From dialers and contact-center tools to carrier voice, numbers, APIs, and SMS, one partner.',
   },
 ];
 
@@ -741,7 +741,7 @@ export const processSteps = [
   {
     step: '02',
     title: 'Provision Access',
-    description: 'We create accounts, trunks, and agent logins — no heavy hardware rollout.',
+    description: 'We create accounts, trunks, and agent logins, no heavy hardware rollout.',
   },
   {
     step: '03',
@@ -751,7 +751,7 @@ export const processSteps = [
   {
     step: '04',
     title: 'Configure & Launch',
-    description: 'IVR, queues, campaigns, and caller ID are tuned — most teams go live in 24–48 hours.',
+    description: 'IVR, queues, campaigns, and caller ID are tuned, most teams go live in 24–48 hours.',
   },
   {
     step: '05',
@@ -812,7 +812,7 @@ export const testimonials = [
   },
   {
     quote:
-      'We stood up a virtual contact center for remote agents in under a week. Inbound queues and hosted PBX just worked — support stayed with us through cutover.',
+      'We stood up a virtual contact center for remote agents in under a week. Inbound queues and hosted PBX just worked, support stayed with us through cutover.',
     name: 'Michael Chen',
     role: 'Operations Director, GlobalTech',
   },
@@ -830,7 +830,7 @@ export const faqCategories = [
     items: [
       {
         q: 'How do I get started with Go Connectivo?',
-        a: 'Tell us whether you need dialers, business voice (PBX / SIP / Mobile VoIP), inbound numbers, VoIP Termination or wholesale routes, contact-center tools, or Voice API / SMS — or a mix. We’ll scope seats and capacity, provision access, and most teams are live within 24–48 hours.',
+        a: 'Tell us whether you need dialers, business voice (PBX / SIP / Mobile VoIP), inbound numbers, VoIP Termination or wholesale routes, contact-center tools, or Voice API / SMS, or a mix. We’ll scope seats and capacity, provision access, and most teams are live within 24–48 hours.',
       },
       {
         q: 'What equipment do I need?',
@@ -863,7 +863,7 @@ export const faqCategories = [
       },
       {
         q: 'Is call recording available?',
-        a: 'Yes — Call Recording is a dedicated Contact Center service, and recording can also be enabled on PBX seats where your plan and compliance needs allow.',
+        a: 'Yes, Call Recording is a dedicated Contact Center service, and recording can also be enabled on PBX seats where your plan and compliance needs allow.',
       },
     ],
   },
@@ -880,7 +880,7 @@ export const faqCategories = [
       },
       {
         q: 'Is there a contract or commitment?',
-        a: 'Many seats are month-to-month. Wholesale termination and enterprise packages may include volume commitments — we’ll outline terms clearly before you sign.',
+        a: 'Many seats are month-to-month. Wholesale termination and enterprise packages may include volume commitments, we’ll outline terms clearly before you sign.',
       },
       {
         q: 'Do you offer a free trial?',
@@ -905,7 +905,7 @@ export const faqCategories = [
       },
       {
         q: 'Do you offer training for my team?',
-        a: 'Yes — onboarding covers agent consoles, supervisor tools, and campaign setup, plus documentation your ops leads can reuse for new hires.',
+        a: 'Yes, onboarding covers agent consoles, supervisor tools, and campaign setup, plus documentation your ops leads can reuse for new hires.',
       },
     ],
   },

@@ -41,11 +41,11 @@ export default function KycWizard() {
       const time = new Date(result.savedAt).toLocaleTimeString();
       setDraftMsg(
         result.filesStripped
-          ? `Draft saved ${time} (text fields kept — re-attach documents before submit)`
+          ? `Draft saved ${time} (text fields kept, re-attach documents before submit)`
           : `Draft saved ${time}`,
       );
     } catch {
-      setDraftMsg('Could not save draft in this browser. Continue filling — submit still works.');
+      setDraftMsg('Could not save draft in this browser. Continue filling, submit still works.');
     }
   };
 
@@ -124,7 +124,7 @@ export default function KycWizard() {
       <div className="mb-6 rounded-2xl border border-[rgba(47,76,115,0.12)] bg-white/95 p-4 shadow-sm sm:p-5">
         <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
           <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#4A6B94]">
-            Step {step.short} — {step.label}
+            Step {step.short}, {step.label}
           </p>
           <p className="text-xs text-[#6B7C8F]">{Math.round(progress)}% complete</p>
         </div>

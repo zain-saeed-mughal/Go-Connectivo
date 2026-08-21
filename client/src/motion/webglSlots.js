@@ -4,7 +4,7 @@
  */
 import * as THREE from 'three';
 
-/** Keep a single live canvas — browsers only allow ~8 WebGL contexts total. */
+/** Keep a single live canvas, browsers only allow ~8 WebGL contexts total. */
 const MAX_LIVE = 1;
 const live = new Map(); // id -> { priority, onEvict }
 let cooldownUntil = 0;
@@ -42,7 +42,7 @@ function installThreeGuards() {
       origWarn(...args);
       return;
     }
-    // Noise from intentional unmount / GPU budget swaps — not actionable.
+    // Noise from intentional unmount / GPU budget swaps, not actionable.
     if (first.includes('THREE.Clock')) return;
     if (first.includes('THREE.WebGLRenderer: Context Lost')) return;
     if (first.includes('not eligible for reset')) return;
@@ -109,7 +109,7 @@ export function hasWebglSlot(id) {
 
 /**
  * Release GPU resources on unmount.
- * Do NOT forceContextLoss here — that logs "Context Lost" and can race R3F cleanup.
+ * Do NOT forceContextLoss here, that logs "Context Lost" and can race R3F cleanup.
  * Removing the canvas + dispose() frees the browser slot.
  */
 export function disposeRenderer(renderer) {

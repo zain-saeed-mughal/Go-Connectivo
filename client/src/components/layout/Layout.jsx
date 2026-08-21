@@ -56,7 +56,7 @@ export default function Layout() {
   return (
     /*
       Fixed chrome stays in its own stacking layer above page pins.
-      Do not put overflow-x clip on a page ancestor — it breaks pin + header
+      Do not put overflow-x clip on a page ancestor, it breaks pin + header
       when scrolling back from the bottom of the page.
     */
     <div className="relative min-h-screen bg-[#F4F6F9] text-[#2F4C73]">
@@ -73,7 +73,7 @@ export default function Layout() {
       </div>
 
       {/*
-        No overflow-x clip here — it becomes a containing block for fixed/pin
+        No overflow-x clip here, it becomes a containing block for fixed/pin
         and forces GSAP pinReparent, which fights the header on reverse scroll.
         Horizontal clip stays on body (#root / body overflow-x).
       */}

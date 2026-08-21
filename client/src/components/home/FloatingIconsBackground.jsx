@@ -42,7 +42,7 @@ const ICONS = [
 ];
 
 /**
- * Floating VoIP icons — desktop only.
+ * Floating VoIP icons, desktop only.
  * GSAP alone owns transforms (no CSS transform) so context.revert() stays quiet.
  */
 export default function FloatingIconsBackground() {
@@ -57,7 +57,7 @@ export default function FloatingIconsBackground() {
     const ctx = gsap.context(() => {
       nodes.forEach((node, index) => {
         const rotate = Number(node.getAttribute('data-rotate') || 0);
-        // Only GSAP transform props — never mix with CSS transform shorthand.
+        // Only GSAP transform props, never mix with CSS transform shorthand.
         gsap.set(node, {
           xPercent: -50,
           yPercent: -50,
@@ -93,7 +93,7 @@ export default function FloatingIconsBackground() {
     return () => {
       document.removeEventListener('visibilitychange', onVisibility);
       tweens.forEach((tween) => tween.kill());
-      // Kill only — full revert fights leftover CSS/Motion transforms.
+      // Kill only, full revert fights leftover CSS/Motion transforms.
       ctx.kill(true);
     };
   }, []);

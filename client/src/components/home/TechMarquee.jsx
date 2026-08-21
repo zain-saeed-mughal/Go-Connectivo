@@ -4,7 +4,7 @@ import { techMarquee } from '../../data/content';
 import { gsap, prefersReducedMotion } from '../../motion/config';
 
 /**
- * Compliance trust ribbon — continuous loop + light snake wave.
+ * Compliance trust ribbon, continuous loop + light snake wave.
  * Pauses when off-screen; uses direct DOM transforms (no gsap.set spam).
  */
 export default function TechMarquee() {

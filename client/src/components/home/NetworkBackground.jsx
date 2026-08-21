@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap, isCompactViewport, prefersReducedMotion } from '../../motion/config';
 
-// Right-side cluster — keeps clear of hero copy on the left.
+// Right-side cluster, keeps clear of hero copy on the left.
 const nodes = [
   { x: 64, y: 22, label: 'Cloud PBX', depth: 1 },
   { x: 84, y: 16, label: 'SIP', depth: 0.6 },

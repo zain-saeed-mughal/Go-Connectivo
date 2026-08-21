@@ -25,7 +25,7 @@ const PLATFORM_MODELS = [
 ];
 
 /**
- * Platform stack — Lusion-inspired glass stage + orbit rings + staggered tiles.
+ * Platform stack, Lusion-inspired glass stage + orbit rings + staggered tiles.
  */
 export default function Technologies() {
   const [platformFocus, setPlatformFocus] = useState('voice');
@@ -123,7 +123,7 @@ export default function Technologies() {
         <SectionHeading
           eyebrow="Platform"
           title="Every feature your business communication needs."
-          description="Dialers, business voice, inbound numbers, outbound & carrier voice, contact center, and API & messaging — one coherent stack."
+          description="Dialers, business voice, inbound numbers, outbound & carrier voice, contact center, and API & messaging, one coherent stack."
         />
 
         {/* Glass 3D stage */}

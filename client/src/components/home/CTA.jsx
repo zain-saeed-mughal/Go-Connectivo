@@ -59,7 +59,7 @@ export default function CTA() {
           <AnimatedSection from="up" delay={0.08}>
             <p className="mt-4 text-base leading-relaxed text-[#4A5D73]">
               Talk to us about dialers, VoIP Termination, hosted PBX, numbers, or contact-center
-              tools — and get a stack that fits how your floor works.
+              tools, and get a stack that fits how your floor works.
             </p>
           </AnimatedSection>
 

@@ -2,7 +2,7 @@ import { motion, useReducedMotion } from 'motion/react';
 import { viewportOnce, fadeUp, useMotionSafe } from '../../motion/motionPresets';
 
 /**
- * Section heading — clean fade-up, no tilt / word-split (keeps text alignment).
+ * Section heading, clean fade-up, no tilt / word-split (keeps text alignment).
  */
 export default function SectionHeading({
   eyebrow,

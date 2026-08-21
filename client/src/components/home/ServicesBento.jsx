@@ -20,7 +20,7 @@ const SERVICE_MODELS = [
 ];
 
 /**
- * Services — glass 3D stage (phone / headset / tower) + staggered service cards.
+ * Services, glass 3D stage (phone / headset / tower) + staggered service cards.
  */
 export default function ServicesBento() {
   const navigate = useNavigate();
@@ -126,8 +126,8 @@ export default function ServicesBento() {
           <SlideUpOnView>
             <SectionHeading
               eyebrow="Services"
-              title="Dialers, voice, numbers, and carrier reach — built for production floors."
-              description="From predictive dialing and hosted PBX to DIDs, VoIP Termination, contact-center tools, and APIs — Go Connectivo covers the stack contact centers actually use."
+              title="Dialers, voice, numbers, and carrier reach, built for production floors."
+              description="From predictive dialing and hosted PBX to DIDs, VoIP Termination, contact-center tools, and APIs, Go Connectivo covers the stack contact centers actually use."
               className="!mb-0"
               animated={false}
             />

@@ -21,7 +21,7 @@ export default function WhyChoose() {
             <SectionHeading
               eyebrow="Why Choose Go Connectivo?"
               title="Enterprise-grade voice built for modern floors."
-              description="Dialers, trunks, numbers, and contact-center tools — with reliability and support baked in."
+              description="Dialers, trunks, numbers, and contact-center tools, with reliability and support baked in."
               className="!mb-0 min-w-0"
               animated={false}
             />

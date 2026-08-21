@@ -44,7 +44,7 @@ function fill(tpl, ctx) {
     .replaceAll('{brand}', 'Go Connectivo');
 }
 
-/** Shared banks — titles/text are keyword-aware with {title} / {category} placeholders. */
+/** Shared banks, titles/text are keyword-aware with {title} / {category} placeholders. */
 const FEATURE_BANK = [
   {
     title: 'Campaign-ready controls',
@@ -64,7 +64,7 @@ const FEATURE_BANK = [
   },
   {
     title: 'Live operational visibility',
-    text: 'Track connects, occupancy, and outcomes while {title} is running so coaching happens the same day—not next week.',
+    text: 'Track connects, occupancy, and outcomes while {title} is running so coaching happens the same day,not next week.',
   },
   {
     title: 'Scalable capacity',
@@ -84,7 +84,7 @@ const FEATURE_BANK = [
   },
   {
     title: 'Reporting you can act on',
-    text: 'Export and dashboard views for {title} help ops refine lists, scripts, and staffing with evidence—not guesswork.',
+    text: 'Export and dashboard views for {title} help ops refine lists, scripts, and staffing with evidence,not guesswork.',
   },
 ];
 
@@ -161,7 +161,7 @@ const OUTCOME_BANK = [
 const GUIDE_BANK = [
   {
     title: 'Define success metrics first',
-    text: 'Before go-live, decide what {title} must improve—connect rate, ASA, talk time, or conversion—so reporting stays honest.',
+    text: 'Before go-live, decide what {title} must improve,connect rate, ASA, talk time, or conversion,so reporting stays honest.',
   },
   {
     title: 'Align lists and skills',
@@ -189,7 +189,7 @@ const GUIDE_BANK = [
   },
   {
     title: 'Iterate in small batches',
-    text: 'Change one {title} variable at a time—list, window, or script—so wins are easy to prove.',
+    text: 'Change one {title} variable at a time,list, window, or script,so wins are easy to prove.',
   },
 ];
 
@@ -197,7 +197,7 @@ const SECTION_DEFS = [
   {
     key: 'features',
     heading: 'Key capabilities of {title}',
-    intro: 'Practical building blocks that make {title} useful on real {category} floors—not just on a feature checklist.',
+    intro: 'Practical building blocks that make {title} useful on real {category} floors,not just on a feature checklist.',
     bank: FEATURE_BANK,
     count: 4,
   },

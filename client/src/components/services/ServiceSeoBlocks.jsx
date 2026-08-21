@@ -4,7 +4,7 @@ import { RevealCard } from '../motion';
 import { shuffleSeoBlockOrder } from '../../data/serviceSeoCards';
 
 /**
- * SEO long-form blocks for ServiceDetail only — keeps Home/About/etc. unchanged.
+ * SEO long-form blocks for ServiceDetail only, keeps Home/About/etc. unchanged.
  * Semantic HTML (article, section, h2–h3, p, ul, ol) for crawlers.
  */
 export function ServiceSeoOverview({ seo }) {
@@ -173,7 +173,7 @@ export function ServiceSeoClosing({ seo, serviceTitle }) {
   );
 }
 
-/** Extra SEO card grids — each section has an h2 header + card h3 titles for crawlers. */
+/** Extra SEO card grids, each section has an h2 header + card h3 titles for crawlers. */
 export function ServiceSeoCardSection({ section }) {
   if (!section?.cards?.length) return null;
   const headingId = `seo-cards-${section.key}-heading`;

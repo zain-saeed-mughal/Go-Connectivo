@@ -8,7 +8,7 @@ const NODE_X = [40, 280, 520, 760, 960];
 const NODE_Y = [100, 95, 92, 78, 90];
 
 /**
- * Onboarding journey — Lusion-style scroll path (SVG + GSAP, no WebGL).
+ * Onboarding journey, Lusion-style scroll path (SVG + GSAP, no WebGL).
  */
 export default function Process() {
   const scope = useGsapContext(() => {

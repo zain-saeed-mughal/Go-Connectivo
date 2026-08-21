@@ -5,7 +5,7 @@ import { noteWebglPressure, releaseWebglSlot, requestWebglSlot } from '../../mot
 const Hub = lazy(() => import('./HolographicHub3D'));
 
 /**
- * CTA hub — live only in view; shares the global WebGL budget.
+ * CTA hub, live only in view; shares the global WebGL budget.
  */
 export default function HolographicHub3DLazy(props) {
   const holderRef = useRef(null);

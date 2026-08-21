@@ -89,7 +89,7 @@ export default function App() {
           }
         />
 
-        {/* Hidden KYC portal — not linked from public nav/footer; noindex */}
+        {/* Hidden KYC portal, not linked from public nav/footer; noindex */}
         <Route
           path="kyc"
           element={

@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import KycWizard from '../components/kyc/KycWizard';
 
 /**
- * Hidden Go Connectivo KYC portal — not linked from public navigation.
+ * Hidden Go Connectivo KYC portal, not linked from public navigation.
  */
 export default function Kyc() {
   useEffect(() => {

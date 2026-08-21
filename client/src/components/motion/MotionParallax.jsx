@@ -40,7 +40,7 @@ export default function MotionParallax({
 }
 
 /**
- * Image entrance — fade + rise once. Clip-path was leaving photos stuck at
+ * Image entrance, fade + rise once. Clip-path was leaving photos stuck at
  * opacity 0 when whileInView never committed.
  */
 export function MotionImageMask({ children, className = '', delay = 0 }) {
@@ -88,7 +88,7 @@ export function MotionImageMask({ children, className = '', delay = 0 }) {
   );
 }
 
-/** Page reading progress — direct scrub (no spring lag on the main thread). */
+/** Page reading progress, direct scrub (no spring lag on the main thread). */
 export function MotionScrollProgress() {
   const { scrollYProgress } = useScroll();
   const reduced = useReducedMotion();

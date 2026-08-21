@@ -58,7 +58,7 @@ export const robocallMitigationPlan = {
     {
       id: 'kyc',
       number: '3',
-      title: 'Know Your Customer — KYC',
+      title: 'Know Your Customer (KYC)',
       paragraphs: [
         'Go Connectivo performs reasonable due diligence before activating or materially expanding customer voice services.',
         'Depending on the customer, service, traffic profile, jurisdiction, and risk level, Go Connectivo may request and verify information including:',

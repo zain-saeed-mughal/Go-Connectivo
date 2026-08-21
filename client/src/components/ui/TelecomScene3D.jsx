@@ -476,7 +476,7 @@ function buildServiceWorld(focus, compact) {
     return root;
   }
 
-  // Dialers — default live model
+  // Dialers, default live model
   for (let i = 0; i < n; i += 1) {
     const phone = makePhone();
     const mid = (n - 1) / 2;

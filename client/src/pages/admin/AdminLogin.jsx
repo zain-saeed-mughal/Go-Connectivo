@@ -95,7 +95,7 @@ export default function AdminLogin() {
           )}
           <span>
             {apiOnline === false
-              ? 'API offline — start the backend: cd server && npm run dev (port 5000)'
+              ? 'API offline, start the backend: cd server && npm run dev (port 5000)'
               : apiOnline
                 ? 'Secure API connected'
                 : 'Checking API connection…'}

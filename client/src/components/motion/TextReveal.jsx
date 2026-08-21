@@ -4,7 +4,7 @@ import { createReveal } from '../../motion/reveal';
 import { useGsapContext } from '../../motion/useGsapContext';
 
 /**
- * Soft masked line reveal — rise only, no tilt.
+ * Soft masked line reveal, rise only, no tilt.
  */
 export default function TextReveal({
   as: Tag = 'p',

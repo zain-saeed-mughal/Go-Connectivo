@@ -35,7 +35,7 @@ export default function Services() {
         eyebrow="Our Services"
         title="Complete Voice Stack,"
         highlight="Built for Teams"
-        description="Dialer solutions, business voice, inbound numbers, outbound & carrier voice (including VoIP Termination), contact-center platforms, and API & messaging — engineered for call centers and teams that live on the phone."
+        description="Dialer solutions, business voice, inbound numbers, outbound & carrier voice (including VoIP Termination), contact-center platforms, and API & messaging, engineered for call centers and teams that live on the phone."
         image={voipVisual}
         imageAlt="VoIP desk phone and cloud telephony interface"
       />
@@ -45,7 +45,7 @@ export default function Services() {
           <SectionHeading
             eyebrow="Service pillars"
             title="Organized for how voice teams buy."
-            description="Dialers, business voice, numbers, carrier outbound, contact center, and APIs — clear categories, no guessing."
+            description="Dialers, business voice, numbers, carrier outbound, contact center, and APIs, clear categories, no guessing."
           />
           <StaggerContainer className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" stagger={0.06}>
             {serviceCategories.map((category) => (
@@ -89,7 +89,7 @@ export default function Services() {
           <SectionHeading
             eyebrow="Full catalog"
             title="Every capability on one floor."
-            description="Browse dialers, business voice, numbers, carrier termination, contact-center tools, and APIs — tap any card for full details."
+            description="Browse dialers, business voice, numbers, carrier termination, contact-center tools, and APIs, tap any card for full details."
           />
           <div className="mt-6 flex justify-center">
             <div className="relative w-full max-w-md">

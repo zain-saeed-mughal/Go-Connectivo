@@ -1,6 +1,6 @@
 /**
  * Marks a Home scroll chapter for story atmosphere + reveal sync.
- * Layout/copy unchanged — attributes + optional rail only.
+ * Layout/copy unchanged, attributes + optional rail only.
  */
 export default function ScrollChapter({ id, line = 'a', className = '', children }) {
   return (

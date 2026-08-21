@@ -39,7 +39,7 @@ export default function MagneticButton({
   const reduced = useReducedMotion();
   const interactive = motionFx && magnetic && !reduced && hasFinePointer();
 
-  // CSS hover only — Motion y/scale + GSAP magnetic x/y fight and spam
+  // CSS hover only, Motion y/scale + GSAP magnetic x/y fight and spam
   // "x/y not eligible for reset" in the console.
   const gesture = interactive
     ? {

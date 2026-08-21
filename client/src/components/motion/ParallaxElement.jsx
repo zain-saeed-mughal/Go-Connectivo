@@ -2,7 +2,7 @@ import { gsap, isCompactViewport, prefersReducedMotion, canEnhanceMotion } from 
 import { useGsapContext } from '../../motion/useGsapContext';
 
 /**
- * Soft scroll-linked drift — desktop enhance only; higher scrub = silkier follow.
+ * Soft scroll-linked drift, desktop enhance only; higher scrub = silkier follow.
  */
 export default function ParallaxElement({
   children,

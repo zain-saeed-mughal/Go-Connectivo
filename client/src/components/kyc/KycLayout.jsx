@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 import logo from '../../assets/logo.webp';
 
 /**
- * Isolated KYC shell — no public Navbar/Footer/mega-menu.
+ * Isolated KYC shell, no public Navbar/Footer/mega-menu.
  * Accessible only via direct /kyc URL.
  */
 export default function KycLayout() {

@@ -119,7 +119,7 @@ export default function Navbar() {
     return () => window.removeEventListener('keydown', onKey);
   }, []);
 
-  // Pointer outside the desktop cluster always closes — reliable after long scrolls.
+  // Pointer outside the desktop cluster always closes, reliable after long scrolls.
   useEffect(() => {
     if (!anyMenuOpen) return undefined;
     const onPointerDown = (event) => {

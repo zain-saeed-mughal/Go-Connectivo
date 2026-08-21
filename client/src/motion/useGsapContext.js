@@ -4,7 +4,7 @@ import { dropPendingWithin } from './reveal';
 
 /**
  * Scopes GSAP work to a ref and reverts it on unmount, which also kills any
- * ScrollTriggers created inside — the main source of duplicate triggers and
+ * ScrollTriggers created inside, the main source of duplicate triggers and
  * leaks when routes change.
  */
 export function useGsapContext(setup, deps = []) {

@@ -306,7 +306,7 @@ export default function AdminApplication() {
           {(app.ubos || []).map((u) => (
             <div key={u.id} className="rounded-xl border border-[rgba(47,76,115,0.08)] p-3 text-sm">
               <p className="font-semibold text-[#1C314F]">
-                {u.name} — {u.ownershipPercent}% · {u.title}
+                {u.name}, {u.ownershipPercent}% · {u.title}
               </p>
               <p className="text-[#5A6F86]">ID / Passport: {u.idPassport}</p>
             </div>
@@ -470,7 +470,7 @@ export default function AdminApplication() {
               ) : (
                 <div className="grid h-64 place-items-center text-sm text-[#5A6F86]">
                   <FileText className="mb-2 h-8 w-8" />
-                  Preview not available — use Download
+                  Preview not available, use Download
                 </div>
               )}
             </div>

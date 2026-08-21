@@ -1,4 +1,4 @@
-/** Go Connectivo KYC — form aligned to official Go Connectivo KYC application */
+/** Go Connectivo KYC, form aligned to official Go Connectivo KYC application */
 
 export const KYC_STEPS = [
   { id: 'company', label: 'Company', short: '01' },

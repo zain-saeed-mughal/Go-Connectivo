@@ -712,7 +712,7 @@ export function StepReview({ form }) {
 
 export function StepSubmitSuccess({ result }) {
   return (
-    <SectionCard title="Application received" subtitle="Thank you — your KYC package is with our compliance team.">
+    <SectionCard title="Application received" subtitle="Thank you, your KYC package is with our compliance team.">
       <div className="rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-6 text-center">
         <p className="font-display text-xl font-bold text-[#1C314F]">Submission successful</p>
         <p className="mt-2 text-sm text-[#4A5D73]">

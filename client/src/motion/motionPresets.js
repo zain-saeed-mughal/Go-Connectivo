@@ -1,6 +1,6 @@
 import { useReducedMotion } from 'motion/react';
 
-/** Shared Motion language — springs + easings (no text tilt). */
+/** Shared Motion language, springs + easings (no text tilt). */
 export const motionEase = [0.22, 1, 0.36, 1];
 
 export const springSoft = { type: 'spring', stiffness: 280, damping: 28, mass: 0.85 };
@@ -12,7 +12,7 @@ export const fadeUp = {
   visible: { opacity: 1, y: 0 },
 };
 
-/** @deprecated use fadeUp — kept as alias so old imports don't break */
+/** @deprecated use fadeUp, kept as alias so old imports don't break */
 export const fadeUpTilt = fadeUp;
 
 export const scaleIn = {
@@ -32,7 +32,7 @@ export const staggerContainer = {
   },
 };
 
-/** Soft rise only — no rotate/tilt. */
+/** Soft rise only, no rotate/tilt. */
 export const wordReveal = {
   hidden: { y: '100%' },
   visible: { y: '0%' },

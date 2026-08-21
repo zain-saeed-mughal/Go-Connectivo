@@ -6,7 +6,7 @@ let registered = false;
 export function registerGsap() {
   if (registered) return;
   gsap.registerPlugin(ScrollTrigger);
-  // force3D belongs in config — NOT defaults (defaults apply to every tween,
+  // force3D belongs in config, NOT defaults (defaults apply to every tween,
   // including plain-object counters, which triggers "Missing plugin?" spam).
   gsap.config({ force3D: 'auto', nullTargetWarn: false });
   gsap.defaults({
@@ -35,7 +35,7 @@ if (typeof window !== 'undefined' && !window.__gcWarnPatched) {
 }
 
 /**
- * Motion language — long settle, never bounce.
+ * Motion language, long settle, never bounce.
  * soft  = body / cards
  * reveal = headlines
  * out   = decisive CTAs / counters
@@ -55,7 +55,7 @@ export const duration = {
   reveal: 0.95,
 };
 
-/** Fire while the section is still entering — motion finishes as you read. */
+/** Fire while the section is still entering, motion finishes as you read. */
 export const START = 'top 88%';
 
 export function prefersReducedMotion() {

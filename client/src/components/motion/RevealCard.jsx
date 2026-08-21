@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { canEnhanceMotion, prefersReducedMotion, isCompactViewport } from '../../motion/config';
 
 /**
- * Cinematic 3D tilt card — glare + depth on fine-pointer desktops only.
+ * Cinematic 3D tilt card, glare + depth on fine-pointer desktops only.
  */
 export default function RevealCard({
   children,

@@ -91,7 +91,7 @@ export function createReveal({
   let fromVars = { ...from };
   let toVars = { ...to };
 
-  // Safe mode: soft rise only — no tilt/blur that skews text alignment
+  // Safe mode: soft rise only, no tilt/blur that skews text alignment
   if (safe && fromVars.autoAlpha === 0) {
     delete fromVars.autoAlpha;
     if (fromVars.opacity === 0) delete fromVars.opacity;

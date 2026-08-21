@@ -118,7 +118,7 @@ export default function ServiceDetail() {
         </div>
       </PageHero>
 
-      {/* SEO block 1 — overview (after hero) */}
+      {/* SEO block 1, overview (after hero) */}
       <ServiceSeoOverview seo={seo} />
 
       <section className="gc-section">
@@ -157,7 +157,7 @@ export default function ServiceDetail() {
             <RevealCard className="p-6">
               <h3 className="font-display text-lg font-semibold text-[#2F4C73]">Ready to deploy?</h3>
               <p className="mt-2 text-sm leading-relaxed text-[#6B7C8F]">
-                Tell us about your seats, call volume, and markets — we’ll map {service.title} into
+                Tell us about your seats, call volume, and markets, we’ll map {service.title} into
                 your stack and share next steps.
               </p>
               <div className="mt-5">
@@ -203,7 +203,7 @@ export default function ServiceDetail() {
         </div>
       </section>
 
-      {/* SEO mid blocks — order + card sets vary by service (seeded, SEO-stable) */}
+      {/* SEO mid blocks, order + card sets vary by service (seeded, SEO-stable) */}
       {midBlockOrder.map((key) => midBlocks[key])}
 
       <section className="gc-section">
@@ -232,7 +232,7 @@ export default function ServiceDetail() {
         </div>
       </section>
 
-      {/* SEO blocks 5–6 — before CTA */}
+      {/* SEO blocks 5–6, before CTA */}
       <ServiceSeoFaqs seo={seo} />
       <ServiceSeoClosing seo={seo} serviceTitle={service.title} />
 
