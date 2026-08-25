@@ -1,8 +1,10 @@
 /**
  * Browser WebGL context budget is tiny (~8 including extensions).
- * Home can try to mount hero + several section scenes; only a few may live.
+ * Home can try to mount several section scenes; only a few may live.
+ *
+ * Intentionally does NOT import `three` — that kept Three in the critical path
+ * via main.jsx. Pass THREE into installThreeGuards() once a scene loads.
  */
-import * as THREE from 'three';
 
 /** Desktop glass stages can stay warm together; browsers allow ~8 contexts. */
 const MAX_LIVE = 3;
@@ -20,8 +22,8 @@ function contextIsLost(renderer) {
 }
 
 /** Skip loseContext when GPU already dropped the canvas (R3F + our cleanup). */
-function installThreeGuards() {
-  if (guardsInstalled || typeof THREE.WebGLRenderer !== 'function') return;
+export function installThreeGuards(THREE) {
+  if (guardsInstalled || typeof THREE?.WebGLRenderer !== 'function') return;
   guardsInstalled = true;
 
   const proto = THREE.WebGLRenderer.prototype;
@@ -42,15 +44,12 @@ function installThreeGuards() {
       origWarn(...args);
       return;
     }
-    // Noise from intentional unmount / GPU budget swaps, not actionable.
     if (first.includes('THREE.Clock')) return;
     if (first.includes('THREE.WebGLRenderer: Context Lost')) return;
     if (first.includes('not eligible for reset')) return;
     origWarn(...args);
   };
 }
-
-installThreeGuards();
 
 export function noteWebglPressure() {
   cooldownUntil = Date.now() + 400;

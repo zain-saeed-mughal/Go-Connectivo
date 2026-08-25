@@ -1,16 +1,42 @@
+import { lazy, Suspense, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import voipHeadset from '../assets/services/voip-2.webp';
 import SectionHeading from '../components/ui/SectionHeading';
 import PageHero from '../components/ui/PageHero';
-import StatsBand from '../components/ui/StatsBand';
 import MagneticButton from '../components/ui/MagneticButton';
 import ServiceIcon from '../components/ui/ServiceIcon';
-import CTA from '../components/home/CTA';
 import { RevealCard, StaggerContainer } from '../components/motion';
 import { aboutIntro, coreValues, getCatalogServices, processSteps, whyUs } from '../data/content';
 import { PageSeo } from '../components/seo/PageSeo';
 
+const StatsBand = lazy(() => import('../components/ui/StatsBand'));
+const CTA = lazy(() => import('../components/home/CTA'));
+
+/** Shared with preload — one cache entry for LCP. */
+const ABOUT_HERO = '/about-hero.webp';
+
+function SectionFallback({ minHeight = '36vh' }) {
+  return <div className="w-full" style={{ minHeight }} aria-hidden />;
+}
+
 export default function About() {
+  useEffect(() => {
+    const existing = document.querySelector('link[data-about-hero-preload]');
+    if (existing) return undefined;
+
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.as = 'image';
+    link.href = ABOUT_HERO;
+    link.type = 'image/webp';
+    link.setAttribute('fetchpriority', 'high');
+    link.dataset.aboutHeroPreload = '1';
+    document.head.appendChild(link);
+
+    return () => {
+      link.remove();
+    };
+  }, []);
+
   return (
     <>
       <PageSeo
@@ -25,8 +51,10 @@ export default function About() {
         title="Your Trusted"
         highlight="VoIP Partner"
         description="Reliable dialers, business voice, numbers, VoIP Termination, contact-center platforms, and APIs, built to scale with your team."
-        image={voipHeadset}
+        image={ABOUT_HERO}
         imageAlt="Professional headset for VoIP and contact center support"
+        imageWidth={735}
+        imageHeight={490}
       >
         <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           <MagneticButton to="/contact" className="w-full justify-center sm:w-auto">
@@ -54,11 +82,13 @@ export default function About() {
         </div>
       </section>
 
-      <section className="gc-section">
-        <div className="gc-container">
-          <StatsBand />
-        </div>
-      </section>
+      <Suspense fallback={<SectionFallback />}>
+        <section className="gc-section">
+          <div className="gc-container">
+            <StatsBand />
+          </div>
+        </section>
+      </Suspense>
 
       <section className="gc-section">
         <div className="gc-container">
@@ -157,7 +187,9 @@ export default function About() {
         </div>
       </section>
 
-      <CTA />
+      <Suspense fallback={<SectionFallback minHeight="40vh" />}>
+        <CTA />
+      </Suspense>
     </>
   );
 }

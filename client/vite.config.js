@@ -28,6 +28,8 @@ export default defineConfig({
           if (/[\\/]node_modules[\\/](framer-motion|motion|motion-dom|motion-utils)[\\/]/.test(id)) {
             return 'motion';
           }
+          if (/[\\/]node_modules[\\/]three[\\/]/.test(id)) return 'three';
+          if (/[\\/]node_modules[\\/]@react-three[\\/]/.test(id)) return 'r3f';
           return undefined;
         },
         entryFileNames: 'assets/js/[name]-[hash].js',

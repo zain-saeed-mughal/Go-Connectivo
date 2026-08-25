@@ -36,6 +36,11 @@ export default function ServiceDetail() {
     .trim()
     .toLowerCase();
   const service = getServiceById(serviceId);
+
+  if (service?.redirectTo) {
+    return <Navigate to={`/services/${service.redirectTo}`} replace />;
+  }
+
   const seo = service ? getServiceSeoContent(service) : null;
 
   if (!service || !seo) {

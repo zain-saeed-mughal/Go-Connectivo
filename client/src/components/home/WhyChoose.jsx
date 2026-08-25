@@ -1,10 +1,12 @@
 import voipCloud from '../../assets/services/voip-1.webp';
 import { whyChoose } from '../../data/content';
-import SectionHeading from '../ui/SectionHeading';
 import ServiceIcon from '../ui/ServiceIcon';
 import { RevealCard, SlideUpOnView, StaggerContainer } from '../motion';
 import MotionParallax from '../motion/MotionParallax';
 
+/**
+ * Why Choose — reliability, support, go-live, pricing (distinct from About / WhyUs).
+ */
 export default function WhyChoose() {
   return (
     <section className="gc-section relative overflow-x-clip">
@@ -16,42 +18,52 @@ export default function WhyChoose() {
       </MotionParallax>
 
       <div className="gc-container relative">
-        <div className="mb-8 grid items-center gap-6 md:mb-10 md:grid-cols-[1.15fr_0.75fr] md:gap-8 lg:items-center lg:gap-10">
-          <SlideUpOnView>
-            <SectionHeading
-              eyebrow="Why Choose Go Connectivo?"
-              title="Enterprise-grade voice built for modern floors."
-              description="Dialers, trunks, numbers, and contact-center tools, with reliability and support baked in."
-              className="!mb-0 min-w-0"
-              animated={false}
-            />
-          </SlideUpOnView>
+        <SlideUpOnView className="mb-8 grid items-center gap-6 md:mb-10 md:grid-cols-[1.2fr_0.8fr] md:gap-10 lg:gap-12">
+          <div className="min-w-0">
+            <p className="text-[11px] font-semibold tracking-[0.2em] text-[#4A6B94] uppercase sm:text-xs sm:tracking-[0.22em]">
+              Why Choose Go Connectivo
+            </p>
+            <h2 className="font-display mt-2.5 max-w-xl text-[clamp(1.35rem,4.2vw,2.75rem)] leading-[1.15] font-bold tracking-[-0.03em] text-[#2F4C73] text-balance">
+              Built for reliability, support, and a clean go-live.
+            </h2>
+            <p className="gc-prose-muted mt-3 max-w-lg text-[15px] leading-relaxed">
+              Infrastructure and specialist help that keep voice floors productive after launch.
+            </p>
+          </div>
 
-          <SlideUpOnView delay={0.12}>
-            <div className="gc-card mx-auto w-full max-w-[280px] overflow-hidden sm:max-w-[320px] md:ml-auto md:max-w-[340px]">
-              <img
-                src={voipCloud}
-                alt="Cloud VoIP connecting desk phones, mobiles, and softphones"
-                className="aspect-[735/490] h-auto w-full object-cover"
-                loading="eager"
-                decoding="async"
-              />
-            </div>
-          </SlideUpOnView>
-        </div>
+          <div className="gc-card mx-auto w-full max-w-[240px] overflow-hidden sm:max-w-[280px] md:ml-auto md:max-w-[300px]">
+            <img
+              src={voipCloud}
+              alt="Cloud VoIP connecting desk phones, mobiles, and softphones"
+              className="aspect-[735/490] h-auto w-full object-cover"
+              width={735}
+              height={490}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </SlideUpOnView>
 
         <StaggerContainer
-          className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
-          stagger={0.1}
+          className="grid auto-rows-fr gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4"
+          stagger={0.08}
           from="up"
         >
           {whyChoose.map((item) => (
-            <RevealCard key={item.title} as="article" className="group h-full p-6 text-center">
-              <span className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-[#4A6B94] to-[#2F4C73] text-[#FFFFFF] shadow-[0_10px_30px_rgba(47,76,115,0.35)] transition-all duration-500 group-hover:scale-105">
-                <ServiceIcon name={item.icon} size={24} />
+            <RevealCard
+              key={item.title}
+              as="article"
+              className="group flex h-full flex-col border border-[rgba(47,76,115,0.1)] px-4 py-5 text-left transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:border-[#4A6B94]/35 hover:shadow-[0_12px_32px_rgba(47,76,115,0.09)] sm:px-5 sm:py-5"
+            >
+              <span className="grid h-10 w-10 place-items-center rounded-xl border border-[rgba(47,76,115,0.1)] bg-[#4A6B94]/12 text-[#2F4C73] transition-colors duration-300 group-hover:bg-[#4A6B94]/18">
+                <ServiceIcon name={item.icon} size={18} />
               </span>
-              <h3 className="mt-5 font-display text-lg font-semibold text-[#2F4C73]">{item.title}</h3>
-              <p className="mt-2.5 text-sm leading-relaxed text-[#6B7C8F]">{item.description}</p>
+              <h3 className="font-display mt-4 text-[15px] font-semibold leading-snug text-[#2F4C73] sm:text-base">
+                {item.title}
+              </h3>
+              <p className="mt-1.5 flex-1 text-sm leading-relaxed text-[#5A6B7D] sm:text-[0.9375rem]">
+                {item.description}
+              </p>
             </RevealCard>
           ))}
         </StaggerContainer>

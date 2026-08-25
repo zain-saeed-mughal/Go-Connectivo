@@ -49,8 +49,8 @@ export default function CTA() {
             as="h2"
             className="mt-3 font-display text-[1.65rem] font-bold tracking-[-0.03em] break-words text-[#2F4C73] sm:text-4xl md:text-5xl"
             parts={[
-              { text: 'Ready to transform your business' },
-              { text: 'communication?', className: 'gradient-text-brand' },
+              { text: 'Ready to launch your' },
+              { text: 'voice stack?', className: 'gradient-text-brand' },
             ]}
             delay={0.04}
             duration={0.65}
@@ -58,22 +58,22 @@ export default function CTA() {
 
           <AnimatedSection from="up" delay={0.08}>
             <p className="mt-4 text-base leading-relaxed text-[#4A5D73]">
-              Talk to us about dialers, VoIP Termination, hosted PBX, numbers, or contact-center
-              tools, and get a stack that fits how your floor works.
+              Tell us whether you need Business VoIP, contact center, SIP trunking, or VoIP
+              Termination, and we will scope a stack that fits how your floor works.
             </p>
           </AnimatedSection>
 
           <AnimatedSection from="up" delay={0.12}>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <MagneticButton to="/contact" className="w-full justify-center sm:w-auto">
-                Start Free Trial
+                Get Started
                 <ArrowRight
                   size={16}
                   className="transition-transform duration-500 group-hover/btn:translate-x-1"
                 />
               </MagneticButton>
               <MagneticButton to="/services" variant="secondary" className="w-full justify-center sm:w-auto">
-                View Services
+                Explore Services
               </MagneticButton>
             </div>
           </AnimatedSection>

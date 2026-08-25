@@ -35,7 +35,7 @@ export function PageSeo({
           urlPath: path,
         }),
       );
-    } else if (path !== '/') {
+    } else {
       blocks.push(
         buildWebPageSchema({
           name: finalTitle,

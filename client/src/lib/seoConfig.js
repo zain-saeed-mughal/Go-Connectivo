@@ -25,9 +25,9 @@ export const organization = {
 /** Static marketing pages (service details added from catalog at runtime). */
 export const staticPages = {
   '/': {
-    title: 'Business VoIP, Dialers & Voice APIs | Go Connectivo',
+    title: 'Go Connectivo | Business VoIP, Contact Center, SIP & VoIP Termination',
     description:
-      'Go Connectivo delivers Business VoIP, dialers, hosted PBX, SIP trunking, DID numbers, VoIP termination, call center platforms, and voice APIs for modern teams.',
+      'Go Connectivo delivers Business VoIP, contact center platforms, SIP trunking, DID numbers, and VoIP termination for call centers and growing teams. FCC RMD certified.',
     h1: 'Transform Your Business Communication',
   },
   '/about': {

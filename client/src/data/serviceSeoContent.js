@@ -4,7 +4,7 @@
 
 export const SERVICE_SEO = {
   'auto-dialer': {
-    metaTitle: 'Smart Auto Dialer for Call Centers | Go Connectivo',
+    metaTitle: 'Auto Dialer Software for Call Centers | Go Connectivo',
     metaDescription: 'Go Connectivo auto dialer paces outbound lists, detects live answers, and queues agents so sales floors dial less and talk more. Campaign reporting included.',
     overview: {
       heading: 'Auto dialer built for paced outbound campaigns',
@@ -234,7 +234,7 @@ export const SERVICE_SEO = {
   },
 
   'hosted-pbx': {
-    metaTitle: 'Hosted Cloud PBX | Go Connectivo',
+    metaTitle: 'Cloud PBX | Go Connectivo',
     metaDescription: 'Hosted cloud PBX from Go Connectivo, extensions, IVR, ring groups, recording options, and softphones managed in the browser for growing offices.',
     overview: {
       heading: 'Hosted cloud PBX without on-site hardware',
@@ -510,12 +510,13 @@ export const SERVICE_SEO = {
   },
 
   'did-services': {
-    metaTitle: 'Local DID Number Solutions | Go Connectivo',
-    metaDescription: 'Local DID services from Go Connectivo, area codes, number portability, virtual presence, and forwarding so you look local while operating centrally.',
+    metaTitle: 'DID & Virtual Numbers | Go Connectivo',
+    metaDescription:
+      'DID and virtual numbers from Go Connectivo, local area codes, number portability, virtual presence, and forwarding for multi-market teams.',
     overview: {
-      heading: 'Local presence with Direct Inward Dialing',
+      heading: 'Local and virtual number presence',
       paragraphs: [
-        'Go Connectivo DID services put local numbers in the markets you serve. Establish local identity while keeping operations centralized.',
+        'Go Connectivo DID & Virtual Numbers put local and virtual inventory in the markets you serve while keeping routing centralized.',
         'Area-code inventory, portability, virtual presence, and forwarding support sales, support, and multi-location brands.',
       ],
     },
@@ -878,7 +879,7 @@ export const SERVICE_SEO = {
   },
 
   'call-center-software': {
-    metaTitle: 'Call Center Software Platform | Go Connectivo',
+    metaTitle: 'Contact Center Software Platform | Go Connectivo',
     metaDescription: 'Call center software from Go Connectivo, ACD queues, agent and supervisor tools, live monitoring, SLA metrics, and a voice core ready for omnichannel growth.',
     overview: {
       heading: 'Run inbound and outbound desks from one console',
@@ -1154,9 +1155,9 @@ export const SERVICE_SEO = {
   },
 
   'voice-api': {
-    metaTitle: 'Voice API & Programmable Voice | Go Connectivo',
+    metaTitle: 'Programmable Voice API | Go Connectivo',
     metaDescription:
-      'Voice API from Go Connectivo, embed inbound and outbound calling with REST, webhooks, programmable IVR, and SIP. Docs and credentials shared during technical onboarding.',
+      'Programmable Voice API from Go Connectivo, embed inbound and outbound calling with REST, webhooks, click-to-call, programmable IVR, and SIP. Docs shared during onboarding.',
     overview: {
       heading: 'Programmable voice for product and platform teams',
       paragraphs: [
@@ -1207,17 +1208,18 @@ export const SERVICE_SEO = {
   },
 
   'sms-solutions': {
-    metaTitle: 'Business SMS/A2P Solutionss | Go Connectivo',
-    metaDescription: 'SMS/A2P Solutionss from Go Connectivo, A2P messaging, two-way conversations, delivery receipts, API and portal send, plus number and brand registration help.',
+    metaTitle: 'A2P SMS Messaging | Go Connectivo',
+    metaDescription:
+      'A2P SMS Messaging from Go Connectivo, A2P messaging, two-way conversations, delivery receipts, API and portal send, plus number and brand registration help.',
     overview: {
       heading: 'Business SMS beside your voice stack',
       paragraphs: [
-        'Go Connectivo SMS/A2P Solutionss cover alerts, OTP, campaign follow-ups, and agent messaging alongside your VoIP and dialer platforms.',
+        'Go Connectivo A2P SMS Messaging covers alerts, OTP, campaign follow-ups, and agent messaging alongside your VoIP and dialer platforms.',
         'A2P support, two-way conversations, delivery receipts, and registration help keep customer messaging accountable.',
       ],
     },
     benefits: {
-      heading: 'SMS/A2P Solutions benefits',
+      heading: 'A2P SMS Messaging benefits',
       items: [
         { title: 'A2P messaging support', text: 'Business-to-consumer traffic paths designed for application messaging.' },
         { title: 'Two-way conversations', text: 'Let customers reply into agent or automated workflows.' },
@@ -1239,7 +1241,7 @@ export const SERVICE_SEO = {
       items: ['OTP and security codes', 'Appointment and shipping alerts', 'Dialer campaign follow-up texts', 'Two-way agent SMS desks', 'Abandoned-cart or win-back nudges'],
     },
     faqs: {
-      heading: 'SMS/A2P Solutionss FAQs',
+      heading: 'A2P SMS Messaging FAQs',
       items: [
         { q: 'Do you help with brand registration?', a: 'Number and brand registration help is available for compliant A2P messaging.' },
         { q: 'Can messaging be two-way?', a: 'Two-way conversations support customer replies into your workflows.' },
@@ -1248,7 +1250,7 @@ export const SERVICE_SEO = {
     },
     closing: {
       heading: 'Add SMS to the same Go Connectivo relationship',
-      paragraphs: ['Ask about SMS/A2P Solutionss that sit next to your voice, dialer, and API stack.'],
+      paragraphs: ['Ask about A2P SMS Messaging that sits next to your voice, dialer, and API stack.'],
     },
   },
 

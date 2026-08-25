@@ -1,25 +1,34 @@
-import { useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import Hero from '../components/home/Hero';
 import TechMarquee from '../components/home/TechMarquee';
-import AboutPreview from '../components/home/AboutPreview';
-import WhyChoose from '../components/home/WhyChoose';
-import ServicesBento from '../components/home/ServicesBento';
-import WhyUs from '../components/home/WhyUs';
-import Process from '../components/home/Process';
-import Technologies from '../components/home/Technologies';
-import Testimonials from '../components/home/Testimonials';
-import CTA from '../components/home/CTA';
 import ScrollChapter from '../components/motion/ScrollChapter';
 import { ScrollTrigger } from '../motion/config';
 import { prefetchHome3d } from '../motion/prefetchHome3d';
 import { PageSeo } from '../components/seo/PageSeo';
 
+const AboutPreview = lazy(() => import('../components/home/AboutPreview'));
+const WhyChoose = lazy(() => import('../components/home/WhyChoose'));
+const ServicesBento = lazy(() => import('../components/home/ServicesBento'));
+const WhyUs = lazy(() => import('../components/home/WhyUs'));
+const Process = lazy(() => import('../components/home/Process'));
+const Technologies = lazy(() => import('../components/home/Technologies'));
+const Testimonials = lazy(() => import('../components/home/Testimonials'));
+const CTA = lazy(() => import('../components/home/CTA'));
+
+function SectionFallback({ tall = false }) {
+  return (
+    <div
+      className={tall ? 'min-h-[50vh] w-full' : 'min-h-[36vh] w-full'}
+      aria-hidden
+    />
+  );
+}
+
 export default function Home() {
   useEffect(() => {
     prefetchHome3d();
 
-    const t1 = window.setTimeout(() => ScrollTrigger.refresh(), 120);
-    const t2 = window.setTimeout(() => ScrollTrigger.refresh(), 480);
+    const raf = window.requestAnimationFrame(() => ScrollTrigger.refresh());
 
     let resizeTimer = 0;
     const onResize = () => {
@@ -33,8 +42,7 @@ export default function Home() {
     }
 
     return () => {
-      window.clearTimeout(t1);
-      window.clearTimeout(t2);
+      window.cancelAnimationFrame(raf);
       window.clearTimeout(resizeTimer);
       window.removeEventListener('resize', onResize);
     };
@@ -47,37 +55,53 @@ export default function Home() {
 
       <TechMarquee />
 
-      <ScrollChapter id="about" line="a">
-        <AboutPreview />
-      </ScrollChapter>
+      <Suspense fallback={<SectionFallback />}>
+        <ScrollChapter id="about" line="a">
+          <AboutPreview />
+        </ScrollChapter>
+      </Suspense>
 
-      <ScrollChapter id="why-choose" line="b">
-        <WhyChoose />
-      </ScrollChapter>
+      <Suspense fallback={<SectionFallback />}>
+        <ScrollChapter id="why-choose" line="b">
+          <WhyChoose />
+        </ScrollChapter>
+      </Suspense>
 
-      <ScrollChapter id="services" line="c">
-        <ServicesBento />
-      </ScrollChapter>
+      <Suspense fallback={<SectionFallback tall />}>
+        <ScrollChapter id="services" line="c">
+          <ServicesBento />
+        </ScrollChapter>
+      </Suspense>
 
-      <ScrollChapter id="why-us" line="b">
-        <WhyUs />
-      </ScrollChapter>
+      <Suspense fallback={<SectionFallback />}>
+        <ScrollChapter id="why-us" line="b">
+          <WhyUs />
+        </ScrollChapter>
+      </Suspense>
 
-      <ScrollChapter id="process" line="a">
-        <Process />
-      </ScrollChapter>
+      <Suspense fallback={<SectionFallback />}>
+        <ScrollChapter id="process" line="a">
+          <Process />
+        </ScrollChapter>
+      </Suspense>
 
-      <ScrollChapter id="platform" line="c">
-        <Technologies />
-      </ScrollChapter>
+      <Suspense fallback={<SectionFallback tall />}>
+        <ScrollChapter id="platform" line="c">
+          <Technologies />
+        </ScrollChapter>
+      </Suspense>
 
-      <ScrollChapter id="testimonials" line="b">
-        <Testimonials />
-      </ScrollChapter>
+      <Suspense fallback={<SectionFallback />}>
+        <ScrollChapter id="testimonials" line="b">
+          <Testimonials />
+        </ScrollChapter>
+      </Suspense>
 
-      <ScrollChapter id="cta" line="a">
-        <CTA />
-      </ScrollChapter>
+      <Suspense fallback={<SectionFallback />}>
+        <ScrollChapter id="cta" line="a">
+          <CTA />
+        </ScrollChapter>
+      </Suspense>
     </div>
   );
 }

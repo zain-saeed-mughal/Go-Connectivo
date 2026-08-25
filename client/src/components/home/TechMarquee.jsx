@@ -116,7 +116,7 @@ export default function TechMarquee() {
             >
               <Link
                 to="/compliance"
-                className="font-display text-[0.92rem] font-bold tracking-[-0.015em] whitespace-nowrap text-[#2F4C73] transition-colors duration-300 hover:text-[#4A6B94] sm:text-[1.02rem] md:text-[1.1rem]"
+                className="font-display text-[1.02rem] font-bold tracking-[-0.015em] whitespace-nowrap text-[#2F4C73] transition-colors duration-300 hover:text-[#4A6B94] sm:text-[1.12rem] md:text-[1.2rem]"
               >
                 {item}
               </Link>

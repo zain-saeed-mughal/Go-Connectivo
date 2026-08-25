@@ -34,7 +34,7 @@ const guides = [
 
 const topicLinks = [
   { label: 'Auto dialer', to: '/services/auto-dialer' },
-  { label: 'Hosted PBX', to: '/services/hosted-pbx' },
+      { label: 'Cloud PBX', to: '/services/hosted-pbx' },
   { label: 'SIP trunking', to: '/services/sip-trunking' },
   { label: 'VoIP termination', to: '/services/voip-termination' },
   { label: 'Wholesale termination', to: '/services/wholesale-termination' },

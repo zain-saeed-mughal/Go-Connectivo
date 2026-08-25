@@ -1,12 +1,12 @@
 {
   "siteUrl": "https://www.goconnectivo.com",
-  "generatedAt": "2026-08-25T15:44:51.367Z",
+  "generatedAt": "2026-08-25T19:38:28.662Z",
   "routes": [
     {
       "path": "/",
-      "title": "Business VoIP, Dialers & Voice APIs | Go Connectivo",
-      "description": "Go Connectivo delivers Business VoIP, dialers, hosted PBX, SIP trunking, DID numbers, VoIP termination, call center platforms, and voice APIs for modern teams.",
-      "h1": "Transform Your Business Communication",
+      "title": "Business VoIP, Contact Center, SIP & VoIP Termination | Go Connectivo",
+      "description": "Go Connectivo delivers Business VoIP, contact center platforms, SIP trunking, DID numbers, and VoIP termination for call centers and growing teams. FCC RMD certified.",
+      "h1": "Business VoIP, Contact Center, SIP & VoIP Termination",
       "noindex": false,
       "jsonLd": [
         {
@@ -453,15 +453,15 @@
     },
     {
       "path": "/services/auto-dialer",
-      "title": "Smart Auto Dialer for Call Centers | Go Connectivo",
+      "title": "Auto Dialer Software for Call Centers | Go Connectivo",
       "description": "Go Connectivo auto dialer paces outbound lists, detects live answers, and queues agents so sales floors dial less and talk more. Campaign reporting included.",
-      "h1": "Smart Auto Dialer",
+      "h1": "Auto Dialer Software",
       "noindex": false,
       "jsonLd": [
         {
           "@context": "https://schema.org",
           "@type": "Service",
-          "name": "Smart Auto Dialer",
+          "name": "Auto Dialer Software",
           "description": "Go Connectivo auto dialer paces outbound lists, detects live answers, and queues agents so sales floors dial less and talk more. Campaign reporting included.",
           "url": "https://www.goconnectivo.com/services/auto-dialer",
           "provider": {
@@ -493,7 +493,7 @@
             {
               "@type": "ListItem",
               "position": 3,
-              "name": "Smart Auto Dialer",
+              "name": "Auto Dialer Software",
               "item": "https://www.goconnectivo.com/services/auto-dialer"
             }
           ]
@@ -698,15 +698,15 @@
     },
     {
       "path": "/services/hosted-pbx",
-      "title": "Hosted Cloud PBX | Go Connectivo",
+      "title": "Cloud PBX | Go Connectivo",
       "description": "Hosted cloud PBX from Go Connectivo, extensions, IVR, ring groups, recording options, and softphones managed in the browser for growing offices.",
-      "h1": "Hosted Cloud PBX",
+      "h1": "Cloud PBX",
       "noindex": false,
       "jsonLd": [
         {
           "@context": "https://schema.org",
           "@type": "Service",
-          "name": "Hosted Cloud PBX",
+          "name": "Cloud PBX",
           "description": "Hosted cloud PBX from Go Connectivo, extensions, IVR, ring groups, recording options, and softphones managed in the browser for growing offices.",
           "url": "https://www.goconnectivo.com/services/hosted-pbx",
           "provider": {
@@ -738,7 +738,7 @@
             {
               "@type": "ListItem",
               "position": 3,
-              "name": "Hosted Cloud PBX",
+              "name": "Cloud PBX",
               "item": "https://www.goconnectivo.com/services/hosted-pbx"
             }
           ]
@@ -844,55 +844,6 @@
       ]
     },
     {
-      "path": "/services/click-to-call",
-      "title": "Click-to-Call for CRM & Web | Go Connectivo",
-      "description": "Click-to-call from Go Connectivo launches outbound VoIP calls from CRM or browser, fewer misdials, caller ID control, notes capture, and agent activity logs.",
-      "h1": "Click-to-Call",
-      "noindex": false,
-      "jsonLd": [
-        {
-          "@context": "https://schema.org",
-          "@type": "Service",
-          "name": "Click-to-Call",
-          "description": "Click-to-call from Go Connectivo launches outbound VoIP calls from CRM or browser, fewer misdials, caller ID control, notes capture, and agent activity logs.",
-          "url": "https://www.goconnectivo.com/services/click-to-call",
-          "provider": {
-            "@type": "Organization",
-            "name": "GO CONNECTIVO LLC",
-            "url": "https://www.goconnectivo.com"
-          },
-          "areaServed": {
-            "@type": "Country",
-            "name": "United States"
-          }
-        },
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.goconnectivo.com/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Services",
-              "item": "https://www.goconnectivo.com/services"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Click-to-Call",
-              "item": "https://www.goconnectivo.com/services/click-to-call"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "path": "/services/inbound-services",
       "title": "Inbound Voice Services | Go Connectivo",
       "description": "Inbound voice from Go Connectivo, IVR, skill queues, time-based routing, overflow, recording, and missed-call recovery for US customer lines.",
@@ -992,16 +943,16 @@
     },
     {
       "path": "/services/did-services",
-      "title": "Local DID Number Solutions | Go Connectivo",
-      "description": "Local DID services from Go Connectivo, area codes, number portability, virtual presence, and forwarding so you look local while operating centrally.",
-      "h1": "Local Numbers (DID Solutions)",
+      "title": "DID & Virtual Numbers | Go Connectivo",
+      "description": "DID and virtual numbers from Go Connectivo, local area codes, number portability, virtual presence, and forwarding for multi-market teams.",
+      "h1": "DID & Virtual Numbers",
       "noindex": false,
       "jsonLd": [
         {
           "@context": "https://schema.org",
           "@type": "Service",
-          "name": "Local Numbers (DID Solutions)",
-          "description": "Local DID services from Go Connectivo, area codes, number portability, virtual presence, and forwarding so you look local while operating centrally.",
+          "name": "DID & Virtual Numbers",
+          "description": "DID and virtual numbers from Go Connectivo, local area codes, number portability, virtual presence, and forwarding for multi-market teams.",
           "url": "https://www.goconnectivo.com/services/did-services",
           "provider": {
             "@type": "Organization",
@@ -1032,57 +983,8 @@
             {
               "@type": "ListItem",
               "position": 3,
-              "name": "Local Numbers (DID Solutions)",
+              "name": "DID & Virtual Numbers",
               "item": "https://www.goconnectivo.com/services/did-services"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "path": "/services/virtual-numbers",
-      "title": "Virtual Phone Numbers | Go Connectivo",
-      "description": "Virtual numbers from Go Connectivo, instant inventory, forward to SIP or PSTN, campaign pools, easy activate/release, and CDR visibility for marketers.",
-      "h1": "Virtual Numbers",
-      "noindex": false,
-      "jsonLd": [
-        {
-          "@context": "https://schema.org",
-          "@type": "Service",
-          "name": "Virtual Numbers",
-          "description": "Virtual numbers from Go Connectivo, instant inventory, forward to SIP or PSTN, campaign pools, easy activate/release, and CDR visibility for marketers.",
-          "url": "https://www.goconnectivo.com/services/virtual-numbers",
-          "provider": {
-            "@type": "Organization",
-            "name": "GO CONNECTIVO LLC",
-            "url": "https://www.goconnectivo.com"
-          },
-          "areaServed": {
-            "@type": "Country",
-            "name": "United States"
-          }
-        },
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.goconnectivo.com/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Services",
-              "item": "https://www.goconnectivo.com/services"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Virtual Numbers",
-              "item": "https://www.goconnectivo.com/services/virtual-numbers"
             }
           ]
         }
@@ -1190,13 +1092,13 @@
       "path": "/services/wholesale-termination",
       "title": "Wholesale Voice Termination for Platforms | Go Connectivo",
       "description": "Wholesale voice termination for platforms and resellers: domestic/international routes, SIP interconnect, concurrency, and tiered rates, not single-floor dialer trunks or 8xx-only TF termination.",
-      "h1": "Wholesale Voice Termination",
+      "h1": "Wholesale Voice",
       "noindex": false,
       "jsonLd": [
         {
           "@context": "https://schema.org",
           "@type": "Service",
-          "name": "Wholesale Voice Termination",
+          "name": "Wholesale Voice",
           "description": "Wholesale voice termination for platforms and resellers: domestic/international routes, SIP interconnect, concurrency, and tiered rates, not single-floor dialer trunks or 8xx-only TF termination.",
           "url": "https://www.goconnectivo.com/services/wholesale-termination",
           "provider": {
@@ -1228,7 +1130,7 @@
             {
               "@type": "ListItem",
               "position": 3,
-              "name": "Wholesale Voice Termination",
+              "name": "Wholesale Voice",
               "item": "https://www.goconnectivo.com/services/wholesale-termination"
             }
           ]
@@ -1286,15 +1188,15 @@
     },
     {
       "path": "/services/call-center-software",
-      "title": "Call Center Software Platform | Go Connectivo",
+      "title": "Contact Center Software Platform | Go Connectivo",
       "description": "Call center software from Go Connectivo, ACD queues, agent and supervisor tools, live monitoring, SLA metrics, and a voice core ready for omnichannel growth.",
-      "h1": "Call Center Software",
+      "h1": "Contact Center Software",
       "noindex": false,
       "jsonLd": [
         {
           "@context": "https://schema.org",
           "@type": "Service",
-          "name": "Call Center Software",
+          "name": "Contact Center Software",
           "description": "Call center software from Go Connectivo, ACD queues, agent and supervisor tools, live monitoring, SLA metrics, and a voice core ready for omnichannel growth.",
           "url": "https://www.goconnectivo.com/services/call-center-software",
           "provider": {
@@ -1326,57 +1228,8 @@
             {
               "@type": "ListItem",
               "position": 3,
-              "name": "Call Center Software",
+              "name": "Contact Center Software",
               "item": "https://www.goconnectivo.com/services/call-center-software"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "path": "/services/virtual-contact-center",
-      "title": "Virtual Contact Center | Go Connectivo",
-      "description": "Virtual contact center from Go Connectivo, remote agent login, unified queues, supervisor dashboards, secure softphones, and multi-site routing for hybrid teams.",
-      "h1": "Virtual Contact Center",
-      "noindex": false,
-      "jsonLd": [
-        {
-          "@context": "https://schema.org",
-          "@type": "Service",
-          "name": "Virtual Contact Center",
-          "description": "Virtual contact center from Go Connectivo, remote agent login, unified queues, supervisor dashboards, secure softphones, and multi-site routing for hybrid teams.",
-          "url": "https://www.goconnectivo.com/services/virtual-contact-center",
-          "provider": {
-            "@type": "Organization",
-            "name": "GO CONNECTIVO LLC",
-            "url": "https://www.goconnectivo.com"
-          },
-          "areaServed": {
-            "@type": "Country",
-            "name": "United States"
-          }
-        },
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.goconnectivo.com/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Services",
-              "item": "https://www.goconnectivo.com/services"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "Virtual Contact Center",
-              "item": "https://www.goconnectivo.com/services/virtual-contact-center"
             }
           ]
         }
@@ -1580,16 +1433,16 @@
     },
     {
       "path": "/services/voice-api",
-      "title": "Voice API & Programmable Voice | Go Connectivo",
-      "description": "Voice API from Go Connectivo, embed inbound and outbound calling with REST, webhooks, programmable IVR, and SIP. Docs and credentials shared during technical onboarding.",
-      "h1": "Voice API / Programmable Voice",
+      "title": "Programmable Voice API | Go Connectivo",
+      "description": "Programmable Voice API from Go Connectivo, embed inbound and outbound calling with REST, webhooks, click-to-call, programmable IVR, and SIP. Docs shared during onboarding.",
+      "h1": "Programmable Voice API",
       "noindex": false,
       "jsonLd": [
         {
           "@context": "https://schema.org",
           "@type": "Service",
-          "name": "Voice API / Programmable Voice",
-          "description": "Voice API from Go Connectivo, embed inbound and outbound calling with REST, webhooks, programmable IVR, and SIP. Docs and credentials shared during technical onboarding.",
+          "name": "Programmable Voice API",
+          "description": "Programmable Voice API from Go Connectivo, embed inbound and outbound calling with REST, webhooks, click-to-call, programmable IVR, and SIP. Docs shared during onboarding.",
           "url": "https://www.goconnectivo.com/services/voice-api",
           "provider": {
             "@type": "Organization",
@@ -1620,7 +1473,7 @@
             {
               "@type": "ListItem",
               "position": 3,
-              "name": "Voice API / Programmable Voice",
+              "name": "Programmable Voice API",
               "item": "https://www.goconnectivo.com/services/voice-api"
             }
           ]
@@ -1629,16 +1482,16 @@
     },
     {
       "path": "/services/sms-solutions",
-      "title": "Business SMS/A2P Solutionss | Go Connectivo",
-      "description": "SMS/A2P Solutionss from Go Connectivo, A2P messaging, two-way conversations, delivery receipts, API and portal send, plus number and brand registration help.",
-      "h1": "SMS/A2P Solutions",
+      "title": "A2P SMS Messaging | Go Connectivo",
+      "description": "A2P SMS Messaging from Go Connectivo, A2P messaging, two-way conversations, delivery receipts, API and portal send, plus number and brand registration help.",
+      "h1": "A2P SMS Messaging",
       "noindex": false,
       "jsonLd": [
         {
           "@context": "https://schema.org",
           "@type": "Service",
-          "name": "SMS/A2P Solutions",
-          "description": "SMS/A2P Solutionss from Go Connectivo, A2P messaging, two-way conversations, delivery receipts, API and portal send, plus number and brand registration help.",
+          "name": "A2P SMS Messaging",
+          "description": "A2P SMS Messaging from Go Connectivo, A2P messaging, two-way conversations, delivery receipts, API and portal send, plus number and brand registration help.",
           "url": "https://www.goconnectivo.com/services/sms-solutions",
           "provider": {
             "@type": "Organization",
@@ -1669,12 +1522,36 @@
             {
               "@type": "ListItem",
               "position": 3,
-              "name": "SMS/A2P Solutions",
+              "name": "A2P SMS Messaging",
               "item": "https://www.goconnectivo.com/services/sms-solutions"
             }
           ]
         }
       ]
+    },
+    {
+      "path": "/services/click-to-call",
+      "title": "Click-to-Call for CRM & Web | Go Connectivo",
+      "description": "Click-to-call from Go Connectivo launches outbound VoIP calls from CRM or browser, fewer misdials, caller ID control, notes capture, and agent activity logs.",
+      "h1": "Click-to-Call",
+      "noindex": true,
+      "jsonLd": []
+    },
+    {
+      "path": "/services/virtual-numbers",
+      "title": "Virtual Phone Numbers | Go Connectivo",
+      "description": "Virtual numbers from Go Connectivo, instant inventory, forward to SIP or PSTN, campaign pools, easy activate/release, and CDR visibility for marketers.",
+      "h1": "Virtual Numbers",
+      "noindex": true,
+      "jsonLd": []
+    },
+    {
+      "path": "/services/virtual-contact-center",
+      "title": "Virtual Contact Center | Go Connectivo",
+      "description": "Virtual contact center from Go Connectivo, remote agent login, unified queues, supervisor dashboards, secure softphones, and multi-site routing for hybrid teams.",
+      "h1": "Virtual Contact Center",
+      "noindex": true,
+      "jsonLd": []
     },
     {
       "path": "/services/ringless-voicemail",
@@ -1733,23 +1610,23 @@
     "/services/hosted-pbx",
     "/services/sip-trunking",
     "/services/mobile-voip",
-    "/services/click-to-call",
     "/services/inbound-services",
     "/services/toll-free-origination",
     "/services/did-services",
-    "/services/virtual-numbers",
     "/services/outbound-services",
     "/services/toll-free-termination",
     "/services/wholesale-termination",
     "/services/voip-termination",
     "/services/call-center-software",
-    "/services/virtual-contact-center",
     "/services/ivr-auto-attendant",
     "/services/call-routing-queues",
     "/services/call-recording",
     "/services/call-analytics",
     "/services/voice-api",
     "/services/sms-solutions",
+    "/services/click-to-call",
+    "/services/virtual-numbers",
+    "/services/virtual-contact-center",
     "/services/ringless-voicemail",
     "/admin",
     "/admin/login",

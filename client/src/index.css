@@ -36,8 +36,8 @@
   --color-brand-bright: #4a6b94;
   --color-accent: #4a6b94;
   --color-cyan: #6b8ab0;
-  --font-display: "Outfit", "Montserrat", system-ui, sans-serif;
-  --font-body: "Plus Jakarta Sans", "DM Sans", system-ui, sans-serif;
+  --font-display: "Outfit", system-ui, sans-serif;
+  --font-body: "Plus Jakarta Sans", system-ui, sans-serif;
 }
 
 * {
@@ -156,6 +156,23 @@ video {
 @media (min-width: 768px) {
   .gc-section {
     padding-block: 5rem;
+  }
+}
+
+/* Homepage only — slightly tighter section rhythm */
+#home-scroll-root .gc-section {
+  padding-block: 2.15rem;
+}
+
+@media (min-width: 640px) {
+  #home-scroll-root .gc-section {
+    padding-block: 3rem;
+  }
+}
+
+@media (min-width: 768px) {
+  #home-scroll-root .gc-section {
+    padding-block: 4.25rem;
   }
 }
 
@@ -470,16 +487,16 @@ html::-webkit-scrollbar-corner {
 }
 
 .hero-video {
-  opacity: 0.72;
-  filter: brightness(0.72) contrast(1.05) saturate(0.82);
+  opacity: 0.68;
+  filter: brightness(0.68) contrast(1.08) saturate(0.8);
 }
 
 .hero-overlay-directional {
   background: linear-gradient(
     90deg,
-    rgba(47, 76, 115, 0.78) 0%,
-    rgba(47, 76, 115, 0.48) 38%,
-    rgba(47, 76, 115, 0.18) 65%,
+    rgba(28, 49, 79, 0.86) 0%,
+    rgba(47, 76, 115, 0.58) 36%,
+    rgba(47, 76, 115, 0.22) 62%,
     transparent 100%
   );
 }
@@ -489,15 +506,15 @@ html::-webkit-scrollbar-corner {
     background:
       linear-gradient(
         180deg,
-        rgba(47, 76, 115, 0.42) 0%,
-        rgba(47, 76, 115, 0.55) 48%,
-        rgba(47, 76, 115, 0.28) 100%
+        rgba(28, 49, 79, 0.5) 0%,
+        rgba(47, 76, 115, 0.62) 48%,
+        rgba(47, 76, 115, 0.34) 100%
       ),
       linear-gradient(
         90deg,
-        rgba(47, 76, 115, 0.72) 0%,
-        rgba(47, 76, 115, 0.4) 50%,
-        rgba(47, 76, 115, 0.12) 100%
+        rgba(28, 49, 79, 0.8) 0%,
+        rgba(47, 76, 115, 0.46) 50%,
+        rgba(47, 76, 115, 0.16) 100%
       );
   }
 }
@@ -505,20 +522,21 @@ html::-webkit-scrollbar-corner {
 .hero-overlay-vignette {
   background: radial-gradient(
     ellipse 95% 85% at 50% 45%,
-    transparent 42%,
-    rgba(47, 76, 115, 0.28) 100%
+    transparent 40%,
+    rgba(28, 49, 79, 0.34) 100%
   );
 }
 
 .hero-title {
-  font-size: clamp(1.75rem, 7.2vw, 3.35rem);
-  line-height: 1.08;
-  letter-spacing: -0.03em;
+  font-size: clamp(2.05rem, 8.2vw, 2.85rem);
+  line-height: 1.06;
+  letter-spacing: -0.035em;
   max-width: 100%;
   min-width: 0;
   overflow-wrap: anywhere;
   word-break: break-word;
   hyphens: auto;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
 }
 
 .hero-title-highlight {
@@ -532,24 +550,26 @@ html::-webkit-scrollbar-corner {
 
 @media (min-width: 640px) {
   .hero-title {
-    font-size: clamp(2.35rem, 4.4vw, 3.75rem);
-    line-height: 1.05;
-    letter-spacing: -0.04em;
+    font-size: clamp(2.85rem, 5.6vw, 4.35rem);
+    line-height: 1.04;
+    letter-spacing: -0.045em;
   }
 }
 
 @media (min-width: 1024px) {
   .hero-title {
-    font-size: clamp(2.2rem, 3.1vw, 3.35rem);
-    line-height: 1.06;
+    font-size: clamp(3.15rem, 4.2vw, 4.65rem);
+    line-height: 1.03;
   }
 }
 
 .hero-copy {
   max-width: 620px;
   width: 100%;
-  font-size: clamp(0.95rem, 2.8vw, 1.25rem);
-  line-height: 1.6;
+  font-size: clamp(0.98rem, 2.8vw, 1.25rem);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.94);
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.4);
 }
 
 .hero-cta-row > a,
@@ -585,33 +605,15 @@ html::-webkit-scrollbar-corner {
 }
 
 .hero-fcc-panel {
-  background:
-    linear-gradient(
-      145deg,
-      rgba(28, 49, 79, 0.16) 0%,
-      rgba(36, 60, 92, 0.1) 55%,
-      rgba(28, 49, 79, 0.14) 100%
-    );
+  background: rgba(28, 49, 79, 0.22);
   box-shadow:
-    inset 0 0 0 1px rgba(107, 138, 176, 0.3),
-    0 18px 44px rgba(28, 49, 79, 0.12);
-  backdrop-filter: blur(2.5px) saturate(110%);
-  -webkit-backdrop-filter: blur(2.5px) saturate(110%);
+    inset 0 0 0 1px rgba(107, 138, 176, 0.28),
+    0 18px 44px rgba(28, 49, 79, 0.14);
+  backdrop-filter: blur(8px) saturate(115%);
+  -webkit-backdrop-filter: blur(8px) saturate(115%);
 }
 
-.hero-fcc-panel[data-fcc-enhanced] {
-  background:
-    linear-gradient(
-      145deg,
-      rgba(28, 49, 79, 0.12) 0%,
-      rgba(47, 76, 115, 0.07) 50%,
-      rgba(28, 49, 79, 0.1) 100%
-    );
-  backdrop-filter: blur(2px) saturate(108%);
-  -webkit-backdrop-filter: blur(2px) saturate(108%);
-}
-
-/* FCC card copy — readable over transparent glass + network */
+/* FCC card copy — readable over plain panel */
 .hero-fcc-eyebrow {
   color: #c5d6ea;
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55);

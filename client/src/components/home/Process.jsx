@@ -32,22 +32,24 @@ export default function Process() {
 
     gsap.set(nodes, { scale: 0.6, autoAlpha: 0.3 });
     gsap.set(cards, { y: 28, autoAlpha: 0 });
+    if (progress) gsap.set(progress, { scaleX: 0 });
 
-    const tl = gsap.timeline({
+    // Draw the launch line fully to the last step once the section enters view
+    // (avoid scrub leaving the path stuck mid-way while reading the stage).
+    const pathTl = gsap.timeline({
       scrollTrigger: {
         trigger: chapter,
-        start: 'top 70%',
-        end: 'bottom 55%',
-        scrub: 0.65,
+        start: 'top 72%',
+        once: true,
         invalidateOnRefresh: true,
       },
     });
 
     if (path) {
-      tl.to(path, { strokeDashoffset: 0, ease: 'none', duration: 1 }, 0);
+      pathTl.to(path, { strokeDashoffset: 0, ease: ease.soft, duration: 1.35 }, 0);
     }
     if (progress) {
-      tl.fromTo(progress, { scaleX: 0 }, { scaleX: 1, ease: 'none', duration: 1 }, 0);
+      pathTl.to(progress, { scaleX: 1, ease: ease.soft, duration: 1.35 }, 0);
     }
 
     gsap.to(nodes, {
@@ -130,9 +132,9 @@ export default function Process() {
     <section className="gc-section relative overflow-x-clip">
       <div ref={scope} className="gc-container relative">
         <SectionHeading
-          eyebrow="Onboarding"
+          eyebrow="Process"
           title="A clear path from sign-up to launch."
-          description="Most customers are up and running within 24–48 hours."
+          description="Most customers are live within 24–48 hours with guided provisioning."
         />
 
         <div
@@ -252,7 +254,7 @@ export default function Process() {
               <h3 className="font-display text-lg font-semibold tracking-[-0.02em] text-[#2F4C73]">
                 {step.title}
               </h3>
-              <p className="mt-2 flex-1 text-sm leading-relaxed text-[#6B7C8F]">{step.description}</p>
+              <p className="mt-2 flex-1 text-[0.9375rem] leading-relaxed text-[#5A6B7D] sm:text-sm">{step.description}</p>
               <div className="mt-5 h-px w-full origin-left scale-x-0 bg-gradient-to-r from-[#4A6B94]/50 to-transparent transition-transform duration-500 group-hover:scale-x-100" />
             </article>
           ))}

@@ -115,12 +115,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.goconnectivo.com/services/click-to-call</loc>
-    <lastmod>2026-08-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.goconnectivo.com/services/inbound-services</loc>
     <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
@@ -134,12 +128,6 @@
   </url>
   <url>
     <loc>https://www.goconnectivo.com/services/did-services</loc>
-    <lastmod>2026-08-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.goconnectivo.com/services/virtual-numbers</loc>
     <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -170,12 +158,6 @@
   </url>
   <url>
     <loc>https://www.goconnectivo.com/services/call-center-software</loc>
-    <lastmod>2026-08-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.goconnectivo.com/services/virtual-contact-center</loc>
     <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

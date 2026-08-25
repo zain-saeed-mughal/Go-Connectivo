@@ -7,10 +7,10 @@ import {
 import { AnimatedSection } from '../motion';
 import { featuredServices } from '../../data/content';
 import autoDialersImg from '../../assets/services/auto-dialers.webp';
-import cloudPbxImg from '../../assets/services/cloud-pbx.webp';
+import businessVoipImg from '../../assets/services/illustrations/business-voip.webp';
 import callCenterSoftwareImg from '../../assets/services/call-center-software.webp';
-import inboundVoiceImg from '../../assets/services/inbound-voice.webp';
-import outboundVoiceImg from '../../assets/services/outbound-voice.webp';
+import sipTrunkingImg from '../../assets/services/illustrations/sip-trunking.webp';
+import didServicesImg from '../../assets/services/illustrations/did-services.webp';
 import voipVoiceImg from '../../assets/services/voip-voice.webp';
 
 /**
@@ -18,12 +18,12 @@ import voipVoiceImg from '../../assets/services/voip-voice.webp';
  */
 const SERVICE_SLIDES = featuredServices.map((service) => {
   const images = {
-    'auto-dialer': autoDialersImg,
-    'hosted-pbx': cloudPbxImg,
+    'business-voip': businessVoipImg,
+    'sip-trunking': sipTrunkingImg,
     'call-center-software': callCenterSoftwareImg,
-    'inbound-services': inboundVoiceImg,
-    'outbound-services': outboundVoiceImg,
     'voip-termination': voipVoiceImg,
+    'auto-dialer': autoDialersImg,
+    'did-services': didServicesImg,
   };
 
   return {

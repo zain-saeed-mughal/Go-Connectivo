@@ -1,8 +1,9 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { ScrollTrigger, prefersReducedMotion, isCompactViewport } from '../../motion/config';
-import { disposeRenderer } from '../../motion/webglSlots';
+import { disposeRenderer, installThreeGuards } from '../../motion/webglSlots';
 
+installThreeGuards(THREE);
 /**
  * Compact interactive holographic hub for section accents.
  * Brand navy only, scroll-scrubbed when inside a chapter.

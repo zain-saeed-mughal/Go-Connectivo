@@ -45,6 +45,12 @@ function PrefetchRoutes() {
     let cancelled = false;
     const queue = Object.values(loaders);
 
+    // Don't fight LCP / mobile audits: wait longer, and skip on data-saver / 2g.
+    const nav = typeof navigator !== 'undefined' ? navigator : null;
+    const conn = nav?.connection;
+    if (conn?.saveData) return undefined;
+    if (conn?.effectiveType && /2g/.test(conn.effectiveType)) return undefined;
+
     const runNext = () => {
       if (cancelled) return;
       const next = queue.shift();
@@ -60,13 +66,13 @@ function PrefetchRoutes() {
     const schedule = () => {
       if (cancelled || queue.length === 0) return;
       if (typeof window.requestIdleCallback === 'function') {
-        window.requestIdleCallback(runNext, { timeout: 2000 });
+        window.requestIdleCallback(runNext, { timeout: 4000 });
       } else {
-        window.setTimeout(runNext, 200);
+        window.setTimeout(runNext, 600);
       }
     };
 
-    const startTimer = window.setTimeout(schedule, 400);
+    const startTimer = window.setTimeout(schedule, 2500);
 
     return () => {
       cancelled = true;

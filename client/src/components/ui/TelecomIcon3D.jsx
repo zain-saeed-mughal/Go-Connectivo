@@ -1,8 +1,9 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { prefersReducedMotion, isCompactViewport } from '../../motion/config';
-import { disposeRenderer } from '../../motion/webglSlots';
+import { disposeRenderer, installThreeGuards } from '../../motion/webglSlots';
 
+installThreeGuards(THREE);
 const MID = 0x4a6b94;
 const LIGHT = 0x6b8ab0;
 const NAVY = 0x2f4c73;

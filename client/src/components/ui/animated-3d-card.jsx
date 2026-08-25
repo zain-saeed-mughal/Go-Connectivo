@@ -2,30 +2,33 @@ import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { cn } from '@/lib/utils';
 import { isCompactViewport } from '../../motion/config';
+import ServiceCardArt from './ServiceCardArt';
 
-/** Theme surfaces, Luxe Navy professional gradients */
+/** Soft white → blue enterprise surfaces */
 const THEMES = {
-  primary: 'from-[#FFFFFF] via-[#E8ECF2] to-[#6B8AB0]/25',
-  secondary: 'from-[#F4F6F9] via-[#E0E5ED] to-[#4A6B94]/20',
-  accent: 'from-[#FFFFFF] via-[#E8ECF2] to-[#2F4C73]/18',
-  success: 'from-[#FFFFFF] via-[#F4F6F9] to-[#6B8AB0]/22',
-  warning: 'from-[#F4F6F9] via-[#E8ECF2] to-[#4A6B94]/28',
-  danger: 'from-[#FFFFFF] via-[#E8ECF2] to-[#2F4C73]/15',
-  info: 'from-[#FFFFFF] via-[#E8ECF2] to-[#6B8AB0]/30',
-  neutral: 'from-[#FFFFFF] via-[#F4F6F9] to-[#4A6B94]/16',
+  primary: 'from-[#FFFFFF] via-[#F7F9FC] to-[#E8EEF6]',
+  secondary: 'from-[#FFFFFF] via-[#F5F8FC] to-[#E6EDF5]',
+  accent: 'from-[#FFFFFF] via-[#F8FAFC] to-[#E9EFF7]',
+  success: 'from-[#FFFFFF] via-[#F7F9FC] to-[#E7EEF6]',
+  warning: 'from-[#FFFFFF] via-[#F6F9FC] to-[#E8EFF7]',
+  danger: 'from-[#FFFFFF] via-[#F8FAFC] to-[#EAEFF6]',
+  info: 'from-[#FFFFFF] via-[#F7F9FC] to-[#E6EDF6]',
+  neutral: 'from-[#FFFFFF] via-[#F8FAFC] to-[#E9EFF6]',
 };
 
 const SIZES = {
-  sm: 'min-h-52 h-auto md:h-64',
-  md: 'min-h-60 h-auto md:h-80',
-  lg: 'min-h-64 h-auto md:h-96',
+  sm: 'min-h-0',
+  md: 'min-h-0',
+  lg: 'min-h-0',
 };
 
 const VARIANTS = {
-  default: 'border border-[rgba(47,76,115,0.12)] shadow-[0_14px_40px_rgba(47,76,115,0.08)] hover:border-[#6B8AB0]/40 hover:shadow-[0_20px_50px_rgba(47,76,115,0.12)]',
-  minimal: 'border border-[rgba(47,76,115,0.12)] shadow-md hover:shadow-lg',
+  default:
+    'border border-[rgba(47,76,115,0.12)] shadow-[0_10px_28px_rgba(47,76,115,0.06)] hover:border-[#4A6B94]/55 hover:shadow-[0_16px_40px_rgba(47,76,115,0.12)]',
+  minimal:
+    'border border-[rgba(47,76,115,0.12)] shadow-sm hover:border-[#4A6B94]/45 hover:shadow-md',
   premium:
-    'border border-[rgba(47,76,115,0.14)] shadow-[0_16px_40px_rgba(47,76,115,0.1)] ring-1 ring-white/50 hover:border-[#4A6B94]/35 hover:shadow-[0_20px_50px_rgba(47,76,115,0.12)]',
+    'border border-[rgba(47,76,115,0.13)] shadow-[0_12px_32px_rgba(47,76,115,0.07)] hover:border-[#4A6B94]/60 hover:shadow-[0_18px_44px_rgba(47,76,115,0.13)]',
 };
 
 const GRIDS = {
@@ -37,10 +40,15 @@ const GRIDS = {
 
 const GAPS = {
   sm: 'gap-4',
-  md: 'gap-6',
-  lg: 'gap-8',
-  xl: 'gap-10',
+  md: 'gap-5',
+  lg: 'gap-6',
+  xl: 'gap-8',
 };
+
+function formatMarker(index) {
+  if (typeof index !== 'number' || index < 0) return null;
+  return String(index + 1).padStart(2, '0');
+}
 
 export const Card3D = React.forwardRef(function Card3D(
   {
@@ -48,6 +56,9 @@ export const Card3D = React.forwardRef(function Card3D(
     description,
     image,
     icon,
+    artKey,
+    index,
+    marker,
     theme = 'primary',
     gradient,
     onClick,
@@ -74,10 +85,7 @@ export const Card3D = React.forwardRef(function Card3D(
   }, [enableTilt]);
 
   const finalGradient = useMemo(() => gradient || THEMES[theme] || THEMES.primary, [gradient, theme]);
-  const patternId = useMemo(
-    () => `pattern-${theme}-${String(title).replace(/\s+/g, '-').toLowerCase()}`,
-    [theme, title],
-  );
+  const displayMarker = marker ?? formatMarker(index);
 
   const handleMove = useCallback(
     (e) => {
@@ -86,8 +94,8 @@ export const Card3D = React.forwardRef(function Card3D(
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
       setMousePos({
-        x: (x / rect.width - 0.5) * 25,
-        y: (y / rect.height - 0.5) * -25,
+        x: (x / rect.width - 0.5) * 18,
+        y: (y / rect.height - 0.5) * -18,
       });
     },
     [disabled, tiltEnabled],
@@ -137,10 +145,11 @@ export const Card3D = React.forwardRef(function Card3D(
     <motion.div
       ref={ref}
       className={cn(
-        'group relative w-full min-w-0 overflow-hidden rounded-2xl transform-gpu transition-all duration-500 ease-out',
+        'group relative flex h-full w-full min-w-0 flex-col overflow-hidden rounded-2xl bg-gradient-to-br transform-gpu transition-[transform,box-shadow,border-color] duration-300 ease-out',
+        finalGradient,
         SIZES[size],
         VARIANTS[variant],
-        onClick && !disabled && 'cursor-pointer',
+        onClick && !disabled && 'cursor-pointer hover:-translate-y-1',
         disabled && 'cursor-not-allowed opacity-50',
         loading && 'pointer-events-none',
         className,
@@ -154,7 +163,7 @@ export const Card3D = React.forwardRef(function Card3D(
       animate={{
         rotateX: disabled || !tiltEnabled ? 0 : mousePos.y,
         rotateY: disabled || !tiltEnabled ? 0 : mousePos.x,
-        z: disabled || !tiltEnabled ? 0 : hovered ? 30 : 0,
+        z: disabled || !tiltEnabled ? 0 : hovered ? 20 : 0,
       }}
       transition={{ type: 'spring', stiffness: 400, damping: 35, mass: 0.8 }}
       style={{ transformStyle: 'preserve-3d', perspective: '1200px' }}
@@ -162,128 +171,69 @@ export const Card3D = React.forwardRef(function Card3D(
       aria-label={onClick ? `${title}, ${exploreLabel}` : undefined}
       {...props}
     >
-      <motion.div
-        className={cn('absolute inset-0 rounded-2xl', image ? '' : `bg-gradient-to-br ${finalGradient}`)}
-        animate={{ scale: hovered ? 1.02 : 1 }}
-        transition={{ duration: 0.4 }}
-        style={{ transform: 'translateZ(-10px)' }}
-      >
-        {image ? (
-          <img
-            src={image}
-            alt={title}
-            className="h-full w-full object-cover transition-transform duration-500"
-            loading="lazy"
-          />
-        ) : null}
-      </motion.div>
+      {image ? (
+        <div className="absolute inset-0">
+          <img src={image} alt={title} className="h-full w-full object-cover" loading="lazy" />
+          <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-[#F7F9FC]/85 to-[#E8EEF6]/8" />
+        </div>
+      ) : null}
 
-      <div className="absolute inset-0 overflow-hidden rounded-2xl opacity-20">
-        <svg className="absolute -top-4 -right-4 h-32 w-32 text-[#2F4C73]/30" viewBox="0 0 100 100" aria-hidden>
-          <defs>
-            <pattern id={patternId} x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-              <circle cx="10" cy="10" r="1" fill="currentColor" opacity="0.3" />
-            </pattern>
-          </defs>
-          <rect width="100" height="100" fill={`url(#${patternId})`} />
-        </svg>
-
-        <motion.div
-          className="absolute -bottom-4 -left-4 h-24 w-24 opacity-30"
-          animate={{ rotate: hovered ? 180 : 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <svg viewBox="0 0 100 100" className="h-full w-full text-[#2F4C73]/40" aria-hidden>
-            <rect x="20" y="20" width="60" height="60" fill="none" stroke="currentColor" strokeWidth="1" rx="8" />
-            <rect x="35" y="35" width="30" height="30" fill="none" stroke="currentColor" strokeWidth="0.5" rx="4" />
-          </svg>
-        </motion.div>
-      </div>
-
-      <motion.div
-        className="absolute inset-0 rounded-2xl"
-        style={{
-          background:
-            'linear-gradient(160deg, rgba(255,255,255,0.72) 0%, rgba(232,236,242,0.4) 45%, rgba(47,76,115,0.12) 100%)',
-          transform: 'translateZ(5px)',
-        }}
-        animate={{ opacity: hovered ? 0.8 : 1 }}
-        transition={{ duration: 0.3 }}
+      <ServiceCardArt
+        name={artKey}
+        className="pointer-events-none absolute -right-2 -bottom-1 h-[7.5rem] w-[7.5rem] text-[#2F4C73] opacity-[0.07] transition-opacity duration-300 group-hover:opacity-[0.11] sm:h-32 sm:w-32"
       />
 
-      <motion.div
-        className="relative z-20 flex h-full flex-col justify-between p-6 text-[#2F4C73]"
-        style={{ transform: 'translateZ(20px)' }}
-      >
-        <div className="flex items-start justify-between">
+      <div className="relative z-10 flex h-full flex-col p-5 sm:p-[1.15rem]">
+        <div className="mb-3.5 flex items-start justify-between gap-3">
           {icon ? (
-            <motion.div
-              className="relative"
-              whileHover={{ scale: 1.1 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-            >
-              <motion.div
-                className="text-3xl opacity-90 drop-shadow-lg filter"
-                animate={{
-                  rotateZ: hovered ? 5 : 0,
-                  y: hovered ? -2 : 0,
-                }}
-                transition={{ duration: 0.3 }}
-              >
-                {icon}
-              </motion.div>
-            </motion.div>
+            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#4A6B94]/12 text-[#2F4C73] ring-1 ring-[#4A6B94]/10 transition-colors duration-300 group-hover:bg-[#4A6B94]/18 group-hover:ring-[#4A6B94]/22 sm:h-11 sm:w-11">
+              {icon}
+            </span>
           ) : (
             <span />
           )}
 
-          <div className="h-2.5 w-2.5 rounded-full bg-white/35 backdrop-blur-sm" />
+          {displayMarker ? (
+            <span
+              className="font-display text-[11px] font-semibold tracking-[0.14em] text-[#6B8AB0]/80 tabular-nums"
+              aria-hidden
+            >
+              {displayMarker}
+            </span>
+          ) : null}
         </div>
 
-        <motion.div className="space-y-3" animate={{ y: hovered ? -3 : 0 }} transition={{ duration: 0.3 }}>
-          <motion.h3
-            className="font-display text-lg font-semibold tracking-tight break-words drop-shadow-md sm:text-xl"
-            animate={{ scale: hovered ? 1.02 : 1 }}
-            transition={{ duration: 0.3 }}
-          >
-            {title}
-          </motion.h3>
+        <h3 className="font-display text-base font-semibold tracking-tight text-[#2F4C73] sm:text-[1.05rem]">
+          {title}
+        </h3>
 
-          <motion.p
-            className="line-clamp-3 text-sm leading-relaxed text-[#2F4C73]/85 drop-shadow-sm"
-            animate={{ opacity: hovered ? 1 : 0.85 }}
-            transition={{ duration: 0.3 }}
-          >
-            {description}
-          </motion.p>
+        <p className="mt-2 line-clamp-3 flex-1 text-[0.9375rem] leading-relaxed text-[#5A6B7D] sm:text-sm">{description}</p>
 
-          {onClick && !disabled ? (
-            <button
-              type="button"
-              onClick={handleCtaClick}
-              className="inline-flex min-h-11 cursor-pointer items-center gap-2 pt-1 text-sm font-medium text-[#6B8AB0] transition-colors hover:text-[#2F4C73] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4A6B94]/50 sm:min-h-0 sm:text-xs"
+        {onClick && !disabled ? (
+          <button
+            type="button"
+            onClick={handleCtaClick}
+            className="mt-4 inline-flex min-h-10 w-fit items-center gap-1.5 text-sm font-semibold text-[#2F4C73] transition-colors duration-300 hover:text-[#4A6B94] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4A6B94]/45 sm:min-h-0"
+          >
+            {loading ? 'Loading...' : exploreLabel}
+            <span
+              aria-hidden
+              className="inline-block transition-transform duration-300 group-hover:translate-x-1"
             >
-              <span className="h-0.5 w-4 rounded-full bg-current" />
-              {loading ? 'Loading...' : exploreLabel}
-            </button>
-          ) : null}
-        </motion.div>
-      </motion.div>
+              →
+            </span>
+          </button>
+        ) : null}
+      </div>
 
       {loading ? (
-        <motion.div
-          className="absolute inset-0 flex items-center justify-center rounded-2xl bg-[#2F4C73]/25 backdrop-blur-sm"
-          style={{ transform: 'translateZ(30px)' }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3 }}
-        >
+        <div className="absolute inset-0 z-20 flex items-center justify-center rounded-2xl bg-[#2F4C73]/20 backdrop-blur-sm">
           <motion.div
             className="h-6 w-6 rounded-full border-2 border-white/30 border-t-[#4A6B94]"
             animate={{ rotate: 360 }}
             transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
           />
-        </motion.div>
+        </div>
       ) : null}
     </motion.div>
   );
@@ -334,13 +284,14 @@ export function Card3DList({
         animate={animated ? 'visible' : undefined}
         style={{ perspective: enableTilt ? '1500px' : undefined, transformStyle: enableTilt ? 'preserve-3d' : undefined }}
       >
-        {cards.map((card) => (
+        {cards.map((card, cardIndex) => (
           <motion.div
             key={card.id}
+            className="h-full"
             variants={
               animated
                 ? {
-                    hidden: { opacity: 0, y: 28 },
+                    hidden: { opacity: 0, y: 20 },
                     visible: {
                       opacity: 1,
                       y: 0,
@@ -356,6 +307,9 @@ export function Card3DList({
               description={card.description}
               image={card.image}
               icon={card.icon}
+              artKey={card.artKey}
+              index={card.index ?? cardIndex}
+              marker={card.marker}
               theme={card.theme}
               gradient={card.gradient}
               onClick={card.onClick}

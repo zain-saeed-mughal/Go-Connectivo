@@ -6,6 +6,7 @@ import SectionHeading from '../components/ui/SectionHeading';
 import PageHero from '../components/ui/PageHero';
 import StatsBand from '../components/ui/StatsBand';
 import ServiceIcon from '../components/ui/ServiceIcon';
+import ServiceCardArt from '../components/ui/ServiceCardArt';
 import ServicesHoverSlider from '../components/ui/ServicesHoverSlider';
 import CTA from '../components/home/CTA';
 import { RevealCard, StaggerContainer } from '../components/motion';
@@ -124,25 +125,41 @@ export default function Services() {
           </div>
         </div>
 
-        <div className="gc-container grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
+        <div className="gc-container grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
           {filteredServices.length > 0 ? (
-            filteredServices.map((service) => (
+            filteredServices.map((service, index) => (
               <Link
                 key={service.id}
                 to={`/services/${service.id}`}
-                className="gc-card group flex h-full flex-col p-5 sm:p-6"
+                className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-[rgba(47,76,115,0.13)] bg-gradient-to-br from-[#FFFFFF] via-[#F7F9FC] to-[#E8EEF6] p-5 shadow-[0_12px_32px_rgba(47,76,115,0.07)] transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-[#4A6B94]/60 hover:shadow-[0_18px_44px_rgba(47,76,115,0.13)] sm:p-[1.15rem]"
                 data-cursor="hover"
               >
-                <span className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-[#4A6B94] to-[#2F4C73] text-[#FFFFFF] shadow-[0_10px_28px_rgba(74,107,148,0.3)] transition-transform duration-300 group-hover:scale-105 sm:h-12 sm:w-12 sm:rounded-2xl">
-                  <ServiceIcon name={service.icon} size={20} />
-                </span>
-                <h3 className="mt-4 font-display text-base font-semibold tracking-[-0.02em] text-[#2F4C73] sm:mt-5 sm:text-lg">
+                <ServiceCardArt
+                  name={service.icon}
+                  className="pointer-events-none absolute -right-2 -bottom-1 h-[7.5rem] w-[7.5rem] text-[#2F4C73] opacity-[0.07] transition-opacity duration-300 group-hover:opacity-[0.11] sm:h-32 sm:w-32"
+                />
+
+                <div className="relative z-10 mb-3.5 flex items-start justify-between gap-3">
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#4A6B94]/12 text-[#2F4C73] ring-1 ring-[#4A6B94]/10 transition-colors duration-300 group-hover:bg-[#4A6B94]/18 group-hover:ring-[#4A6B94]/22 sm:h-11 sm:w-11">
+                    <ServiceIcon name={service.icon} size={20} />
+                  </span>
+                  <span
+                    className="font-display text-[11px] font-semibold tracking-[0.14em] text-[#6B8AB0]/80 tabular-nums"
+                    aria-hidden
+                  >
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                </div>
+
+                <h3 className="relative z-10 font-display text-base font-semibold tracking-tight text-[#2F4C73] sm:text-[1.05rem]">
                   {service.title}
                 </h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-[#6B7C8F]">{service.description}</p>
-                <span className="mt-4 inline-flex min-h-10 items-center gap-2 text-sm font-medium text-[#6B8AB0] transition-colors group-hover:text-[#2F4C73] sm:mt-5">
+                <p className="relative z-10 mt-2 flex-1 text-sm leading-relaxed text-[#5A6B7D]">
+                  {service.description}
+                </p>
+                <span className="relative z-10 mt-4 inline-flex min-h-10 items-center gap-1.5 text-sm font-semibold text-[#2F4C73] transition-colors duration-300 group-hover:text-[#4A6B94] sm:min-h-0">
                   Learn More
-                  <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-0.5">
+                  <span aria-hidden className="inline-block transition-transform duration-300 group-hover:translate-x-1">
                     →
                   </span>
                 </span>

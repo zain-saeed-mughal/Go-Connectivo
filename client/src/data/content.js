@@ -21,134 +21,121 @@ export const heroContent = {
   description:
     'Enterprise dialers, business voice, inbound numbers, carrier termination, contact-center tools, and APIs built for call centers and growing teams that live on the phone.',
   primaryCta: { label: 'Get Started', to: '/contact' },
-  secondaryCta: { label: 'Contact Us', to: '/contact' },
+  secondaryCta: { label: 'Explore Services', to: '/services' },
+  pillars: [
+    { label: 'Business VoIP', to: '/services/business-voip' },
+    { label: 'Contact Center', to: '/services/call-center-software' },
+    { label: 'SIP Trunking', to: '/services/sip-trunking' },
+    { label: 'VoIP Termination', to: '/services/voip-termination' },
+  ],
   fcc: {
     eyebrow: 'FCC COMPLIANT / RMD CERTIFIED',
     highlight: 'FCC Compliant.',
     body: 'Go Connectivo is 100% compliant with FCC regulations and fully certified in the FCC Robocall Mitigation Database (RMD). We are committed to maintaining the highest level of network integrity, protecting consumers, and eliminating illegal robocalls and caller ID spoofing.',
-    cta: { label: 'Get Started', to: '/contact' },
+    cta: { label: 'Talk to Sales', to: '/contact' },
   },
 };
 
 export const whyChoose = [
   {
-    title: 'Redundant voice paths',
+    title: 'Reliable Voice Infrastructure',
     icon: 'ShieldCheck',
-    description:
-      'Carrier-minded routing and monitored trunks so agents stay reachable when a single path fails.',
+    description: 'Monitored trunks and redundant routes designed to keep agents reachable.',
   },
   {
-    title: 'Scalable dialers',
-    icon: 'Maximize2',
-    description: 'Grow from a small floor to high-volume outbound without ripping out your stack.',
-  },
-  {
-    title: 'Voice specialist support',
+    title: 'Clear Technical Support',
     icon: 'Headphones',
-    description:
-      'Support that understands trunks, campaigns, IVR, and PBX, not only generic ticket queues.',
+    description: 'Specialists who understand SIP, dialers, IVR, and PBX, not only ticket queues.',
   },
   {
-    title: 'Practical rate design',
+    title: 'Practical Go-Live',
+    icon: 'Maximize2',
+    description: 'Scoped onboarding so seats, trunks, and numbers reach production quickly.',
+  },
+  {
+    title: 'Flexible Business Pricing',
     icon: 'DollarSign',
-    description:
-      'Origination and termination pricing scoped to how your floor actually dials and answers.',
+    description: 'Origination and termination options aligned to how your floor actually dials.',
   },
 ];
 
 /** Service pillars for mega menu, Services page, and related navigation. */
 export const serviceCategories = [
   {
-    id: 'dialer-solutions',
-    title: 'Dialer Solutions',
-    icon: 'PhoneCall',
-    description: 'Multi-mode dialers that keep agents talking and campaigns connecting.',
-    serviceIds: ['auto-dialer', 'predictive-dialer', 'power-dialer', 'progressive-dialer'],
-  },
-  {
-    id: 'business-voice',
-    title: 'Business Voice',
+    id: 'business-communications',
+    title: 'Business Communications',
     icon: 'Cloud',
-    description: 'Hosted calling, SIP trunks, and mobile voice for modern offices.',
-    serviceIds: ['business-voip', 'hosted-pbx', 'sip-trunking', 'mobile-voip', 'click-to-call'],
-  },
-  {
-    id: 'inbound-numbers',
-    title: 'Inbound & Numbers',
-    icon: 'PhoneIncoming',
-    description: 'Local, toll-free, and virtual numbers with clean inbound routing.',
-    serviceIds: [
-      'inbound-services',
-      'toll-free-origination',
-      'did-services',
-      'virtual-numbers',
-    ],
-  },
-  {
-    id: 'outbound-carrier',
-    title: 'Outbound & Carrier Voice',
-    icon: 'PhoneOutgoing',
-    description: 'Campaign outbound plus wholesale and VoIP termination at scale.',
-    serviceIds: [
-      'outbound-services',
-      'toll-free-termination',
-      'wholesale-termination',
-      'voip-termination',
-    ],
+    description: 'Hosted calling, PBX, SIP trunks, and mobile voice for modern teams.',
+    serviceIds: ['business-voip', 'hosted-pbx', 'sip-trunking', 'mobile-voip'],
   },
   {
     id: 'contact-center',
     title: 'Contact Center',
     icon: 'Headset',
-    description: 'Agent tools, IVR, queues, recording, and analytics for live floors.',
+    description: 'Dialers, agent platforms, IVR, queues, recording, and analytics.',
     serviceIds: [
+      'auto-dialer',
+      'predictive-dialer',
+      'power-dialer',
+      'progressive-dialer',
       'call-center-software',
-      'virtual-contact-center',
       'ivr-auto-attendant',
       'call-routing-queues',
       'call-recording',
       'call-analytics',
+      'outbound-services',
     ],
   },
   {
-    id: 'api-messaging',
-    title: 'API & Messaging',
+    id: 'numbers-inbound',
+    title: 'Numbers & Inbound',
+    icon: 'PhoneIncoming',
+    description: 'Local, virtual, and toll-free numbers with clean inbound routing.',
+    serviceIds: ['did-services', 'inbound-services', 'toll-free-origination'],
+  },
+  {
+    id: 'carrier-voice',
+    title: 'Carrier Voice',
+    icon: 'Globe',
+    description: 'VoIP termination, wholesale routes, and toll-free termination.',
+    serviceIds: ['voip-termination', 'wholesale-termination', 'toll-free-termination'],
+  },
+  {
+    id: 'apis-messaging',
+    title: 'APIs & Messaging',
     icon: 'Code2',
-    description: 'Programmable voice and SMS to embed calling into your product.',
+    description: 'Programmable voice and A2P SMS for product and platform teams.',
     serviceIds: ['voice-api', 'sms-solutions'],
   },
 ];
 
 export const voipSolutions = [
   {
-    id: 'dialer-solutions',
-    title: 'Dialer Solutions',
-    icon: 'PhoneCall',
-    description:
-      'Smart auto, predictive, power, and progressive dialing built for high-volume sales floors.',
-  },
-  {
-    id: 'business-voice',
-    title: 'Business Voice',
+    id: 'business-communications',
+    title: 'Business Communications',
     icon: 'Cloud',
-    description:
-      'Business VoIP, hosted PBX, SIP trunking, and Mobile VoIP without on-site hardware.',
+    description: 'Business VoIP, cloud PBX, SIP trunking, and Mobile VoIP without on-site hardware.',
   },
   {
-    id: 'outbound-carrier',
-    title: 'Outbound & Carrier Voice',
-    icon: 'PhoneOutgoing',
-    description:
-      'Outbound voice plus toll-free, wholesale, and dedicated VoIP Termination routes.',
+    id: 'contact-center',
+    title: 'Contact Center',
+    icon: 'Headset',
+    description: 'Auto, predictive, power, and progressive dialers plus contact-center software.',
+  },
+  {
+    id: 'carrier-voice',
+    title: 'Carrier Voice',
+    icon: 'Globe',
+    description: 'VoIP termination and wholesale voice for high-volume and carrier traffic.',
   },
 ];
 
 export const services = [
   {
     id: 'auto-dialer',
-    title: 'Smart Auto Dialer',
+    title: 'Auto Dialer Software',
     icon: 'PhoneCall',
-    category: 'dialer-solutions',
+    category: 'contact-center',
     description:
       'Automate outbound lists with paced dialing, answer detection, and agent-ready handoff so your team spends time talking, not punching numbers.',
     capabilities: [
@@ -164,7 +151,7 @@ export const services = [
     id: 'predictive-dialer',
     title: 'Predictive Dialer',
     icon: 'Activity',
-    category: 'dialer-solutions',
+    category: 'contact-center',
     description:
       'Increase connects per hour with predictive algorithms that balance abandon risk against agent availability.',
     capabilities: [
@@ -180,7 +167,7 @@ export const services = [
     id: 'power-dialer',
     title: 'Power Dialer',
     icon: 'Zap',
-    category: 'dialer-solutions',
+    category: 'contact-center',
     description:
       'One-to-one power dialing for high-touch sales floors that need control without sacrificing speed.',
     capabilities: [
@@ -196,7 +183,7 @@ export const services = [
     id: 'progressive-dialer',
     title: 'Progressive Dialer',
     icon: 'ListOrdered',
-    category: 'dialer-solutions',
+    category: 'contact-center',
     description:
       'Progressive mode dials the next lead only when an agent is free, ideal when quality beats raw volume.',
     capabilities: [
@@ -212,7 +199,7 @@ export const services = [
     id: 'business-voip',
     title: 'Business VoIP',
     icon: 'Phone',
-    category: 'business-voice',
+    category: 'business-communications',
     description:
       'Enterprise-ready VoIP calling for teams that need clear audio, flexible seats, and numbers that travel with the business.',
     capabilities: [
@@ -226,9 +213,9 @@ export const services = [
   },
   {
     id: 'hosted-pbx',
-    title: 'Hosted Cloud PBX',
+    title: 'Cloud PBX',
     icon: 'Cloud',
-    category: 'business-voice',
+    category: 'business-communications',
     description:
       'A full cloud PBX for extensions, IVR, and office calling, managed in the browser and ready to grow with your seats.',
     capabilities: [
@@ -244,7 +231,7 @@ export const services = [
     id: 'sip-trunking',
     title: 'SIP Trunking',
     icon: 'Cable',
-    category: 'business-voice',
+    category: 'business-communications',
     description:
       'Replace PRI and legacy trunks with elastic SIP capacity, connect your PBX or platform to carrier-grade voice routes.',
     capabilities: [
@@ -260,7 +247,7 @@ export const services = [
     id: 'mobile-voip',
     title: 'Mobile VoIP',
     icon: 'Smartphone',
-    category: 'business-voice',
+    category: 'business-communications',
     description:
       'Stay connected anywhere with our mobile VoIP app. Make and receive business calls from your smartphone using your business number.',
     capabilities: [
@@ -276,7 +263,7 @@ export const services = [
     id: 'click-to-call',
     title: 'Click-to-Call',
     icon: 'MousePointerClick',
-    category: 'business-voice',
+    category: 'apis-messaging',
     description:
       'Launch outbound calls from your CRM or web panel with one click, fewer misdials, faster follow-ups.',
     capabilities: [
@@ -287,12 +274,14 @@ export const services = [
       'Agent activity logs',
     ],
     span: '',
+    hiddenFromCatalog: true,
+    redirectTo: 'voice-api',
   },
   {
     id: 'inbound-services',
     title: 'Inbound Voice',
     icon: 'PhoneIncoming',
-    category: 'inbound-numbers',
+    category: 'numbers-inbound',
     description:
       'Route customer calls with intelligent queues, time-of-day rules, and failover so every inquiry finds the right desk.',
     capabilities: [
@@ -308,7 +297,7 @@ export const services = [
     id: 'toll-free-origination',
     title: 'Toll-Free Origination',
     icon: 'PhoneForwarded',
-    category: 'inbound-numbers',
+    category: 'numbers-inbound',
     description:
       'Give customers a free way in with 8xx origination that lands on your IVR, agents, or cloud PBX.',
     capabilities: [
@@ -322,16 +311,17 @@ export const services = [
   },
   {
     id: 'did-services',
-    title: 'Local Numbers (DID Solutions)',
+    title: 'DID & Virtual Numbers',
     icon: 'MapPin',
-    category: 'inbound-numbers',
+    category: 'numbers-inbound',
     description:
-      'Get local presence in any market with our Direct Inward Dialing solutions. Establish local identity while maintaining centralized operations.',
+      'Local DIDs and virtual numbers for market presence, campaigns, and centralized routing to PBX, apps, or agents.',
     capabilities: [
       'Local area codes',
+      'Virtual number inventory',
       'Number portability',
-      'Virtual presence',
-      'Call forwarding',
+      'Forward to SIP / PSTN',
+      'Campaign number pools',
     ],
     span: '',
   },
@@ -339,7 +329,7 @@ export const services = [
     id: 'virtual-numbers',
     title: 'Virtual Numbers',
     icon: 'Hash',
-    category: 'inbound-numbers',
+    category: 'numbers-inbound',
     description:
       'Provision virtual numbers that ring to your PBX, apps, or agents, ideal for campaigns, departments, and multi-market presence.',
     capabilities: [
@@ -350,12 +340,14 @@ export const services = [
       'Usage & CDR visibility',
     ],
     span: '',
+    hiddenFromCatalog: true,
+    redirectTo: 'did-services',
   },
   {
     id: 'outbound-services',
     title: 'Outbound Voice',
     icon: 'PhoneOutgoing',
-    category: 'outbound-carrier',
+    category: 'contact-center',
     description:
       'Campaign-ready outbound voice with clear audio, flexible caller ID, and routes built for sustained connect rates.',
     capabilities: [
@@ -371,7 +363,7 @@ export const services = [
     id: 'toll-free-termination',
     title: 'Toll-Free Termination',
     icon: 'ArrowUpRight',
-    category: 'outbound-carrier',
+    category: 'carrier-voice',
     description:
       'Terminate outbound traffic to toll-free destinations with stable routes and transparent pricing.',
     capabilities: [
@@ -385,9 +377,9 @@ export const services = [
   },
   {
     id: 'wholesale-termination',
-    title: 'Wholesale Voice Termination',
+    title: 'Wholesale Voice',
     icon: 'Globe',
-    category: 'outbound-carrier',
+    category: 'carrier-voice',
     description:
       'Domestic and international wholesale termination for platforms and partners that need scale without surprises.',
     capabilities: [
@@ -403,7 +395,7 @@ export const services = [
     id: 'voip-termination',
     title: 'VoIP Termination',
     icon: 'Radio',
-    category: 'outbound-carrier',
+    category: 'carrier-voice',
     description:
       'Reliable domestic and international VoIP termination with competitive rates and monitored call quality.',
     capabilities: [
@@ -417,17 +409,17 @@ export const services = [
   },
   {
     id: 'call-center-software',
-    title: 'Call Center Software',
+    title: 'Contact Center Software',
     icon: 'Headset',
     category: 'contact-center',
     description:
-      'Run inbound and outbound desks from one console, queues, agents, supervisors, and live wallboards included.',
+      'Run inbound and outbound desks, on-site or remote, from one console with queues, agents, supervisors, and live wallboards.',
     capabilities: [
       'ACD queues',
-      'Agent & supervisor tools',
+      'Remote & on-site agents',
+      'Supervisor dashboards',
       'Live monitoring',
       'SLA & occupancy metrics',
-      'Omnichannel-ready voice core',
     ],
     span: '',
   },
@@ -446,6 +438,8 @@ export const services = [
       'Multi-site routing',
     ],
     span: '',
+    hiddenFromCatalog: true,
+    redirectTo: 'call-center-software',
   },
   {
     id: 'ivr-auto-attendant',
@@ -513,9 +507,9 @@ export const services = [
   },
   {
     id: 'voice-api',
-    title: 'Voice API / Programmable Voice',
+    title: 'Programmable Voice API',
     icon: 'Code2',
-    category: 'api-messaging',
+    category: 'apis-messaging',
     description:
       'Embed outbound and inbound calling into your apps with programmable voice APIs, webhooks, and SIP. Technical docs are shared during onboarding.',
     capabilities: [
@@ -529,9 +523,9 @@ export const services = [
   },
   {
     id: 'sms-solutions',
-    title: 'SMS/A2P Solutions',
+    title: 'A2P SMS Messaging',
     icon: 'MessageSquare',
-    category: 'api-messaging',
+    category: 'apis-messaging',
     description:
       'Two-way business SMS for alerts, OTP, campaign follow-ups, and agent messaging alongside your voice stack.',
     capabilities: [
@@ -548,7 +542,7 @@ export const services = [
     id: 'ringless-voicemail',
     title: 'Ringless Voicemail',
     icon: 'Voicemail',
-    category: 'business-voice',
+    category: 'business-communications',
     description:
       'Drop compliant voicemail messages into inboxes so your outreach lands without interrupting the recipient’s day.',
     capabilities: [
@@ -564,10 +558,10 @@ export const services = [
 ];
 
 export const companyStats = [
-  { display: 'VoIP', label: 'Business calling & hosted PBX' },
-  { display: 'DID', label: 'Local, virtual & toll-free numbers' },
-  { display: 'SIP', label: 'Trunks & voice termination' },
-  { display: 'CC', label: 'Contact-center platforms' },
+  { display: 'Business VoIP', label: 'Business calling & cloud PBX' },
+  { display: 'DID & Numbers', label: 'Local, virtual & toll-free numbers' },
+  { display: 'SIP & Carrier Voice', label: 'SIP trunks & VoIP termination' },
+  { display: 'Contact Center', label: 'Contact center & dialer solutions' },
 ];
 
 export const aboutIntro = [
@@ -713,22 +707,22 @@ export const legalNavItems = [
 
 export const whyUs = [
   {
-    title: 'Lower Voice Costs',
+    title: 'Competitive Voice Rates',
     description:
-      'Competitive origination, VoIP Termination, and wholesale rates versus legacy carriers.',
+      'Transparent origination, VoIP Termination, and wholesale options versus legacy carriers.',
   },
   {
     title: 'Faster Go-Live',
-    description: 'Dialers, PBX seats, SIP trunks, and numbers provisioned quickly with guided onboarding.',
+    description: 'Dialers, PBX seats, SIP trunks, and numbers provisioned with guided onboarding.',
   },
   {
     title: '24/7 Voice Support',
     description: 'Round-the-clock help for trunks, campaigns, IVR, and routing issues.',
   },
   {
-    title: 'Full Voice Stack',
+    title: 'One Accountable Partner',
     description:
-      'From dialers and contact-center tools to carrier voice, numbers, APIs, and SMS, one partner.',
+      'Business VoIP, contact center, SIP, numbers, and termination under one operating relationship.',
   },
 ];
 
@@ -763,44 +757,31 @@ export const processSteps = [
 
 export const technologies = [
   {
-    group: 'Business Voice',
-    items: ['Business VoIP', 'Hosted Cloud PBX', 'SIP trunking', 'Mobile VoIP', 'Click-to-call'],
-  },
-  {
-    group: 'Inbound & Numbers',
-    items: [
-      'Inbound voice',
-      'Toll-free origination',
-      'Local Numbers (DID)',
-      'Virtual numbers',
-    ],
-  },
-  {
-    group: 'Outbound & Carrier',
-    items: [
-      'Outbound voice',
-      'Toll-free termination',
-      'Wholesale voice termination',
-      'VoIP termination',
-    ],
+    group: 'Business Communications',
+    items: ['Business VoIP', 'Cloud PBX', 'SIP trunking', 'Mobile VoIP'],
   },
   {
     group: 'Contact Center',
     items: [
-      'Call center software',
+      'Auto dialer software',
+      'Predictive dialer',
+      'Power dialer',
+      'Progressive dialer',
+      'Contact center software',
       'IVR & auto attendant',
-      'Routing & queues',
-      'Call recording',
-      'Analytics',
     ],
   },
   {
-    group: 'API & Messaging',
-    items: ['Voice API', 'Programmable voice', 'SMS/A2P Solutions', 'Webhooks'],
+    group: 'Numbers & Inbound',
+    items: ['DID & virtual numbers', 'Inbound voice', 'Toll-free origination'],
   },
   {
-    group: 'Dialer Solutions',
-    items: ['Smart auto dialer', 'Predictive dialer', 'Power dialer', 'Progressive dialer'],
+    group: 'Carrier Voice',
+    items: ['VoIP termination', 'Wholesale voice', 'Toll-free termination'],
+  },
+  {
+    group: 'APIs & Messaging',
+    items: ['Programmable Voice API', 'A2P SMS Messaging', 'Click-to-call', 'Webhooks'],
   },
 ];
 
@@ -819,9 +800,9 @@ export const homeProofPoints = [
     to: '/services/business-voip',
   },
   {
-    title: 'Contact-center ops',
-    text: 'Queues, IVR, recording, and agent tools connected to the same voice infrastructure.',
-    to: '/services/call-center-software',
+    title: 'Carrier voice teams',
+    text: 'VoIP Termination and wholesale routes for high-volume outbound and partner traffic.',
+    to: '/services/voip-termination',
   },
 ];
 
@@ -970,12 +951,12 @@ export const serviceOptions = services
 
 /** Flagship cards for home + hover slider (subset of full catalog). */
 export const featuredServiceIds = [
-  'auto-dialer',
-  'hosted-pbx',
+  'business-voip',
+  'sip-trunking',
   'call-center-software',
-  'inbound-services',
-  'outbound-services',
   'voip-termination',
+  'auto-dialer',
+  'did-services',
 ];
 
 export const featuredServices = featuredServiceIds
@@ -993,7 +974,9 @@ export function getCategoryById(id) {
 export function getServicesForCategory(categoryId) {
   const category = getCategoryById(categoryId);
   if (!category) return [];
-  return category.serviceIds.map((id) => getServiceById(id)).filter(Boolean);
+  return category.serviceIds
+    .map((id) => getServiceById(id))
+    .filter((service) => service && !service.hiddenFromCatalog);
 }
 
 /** Services shown on /services catalog (excludes legacy hidden entries). */

@@ -1,7 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
-import './motion/webglSlots';
 import App from './App.jsx';
 
 if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {

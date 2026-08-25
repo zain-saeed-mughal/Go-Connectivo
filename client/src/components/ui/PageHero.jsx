@@ -1,8 +1,8 @@
 import { motion, useReducedMotion } from 'motion/react';
 import MotionReveal from '../motion/MotionReveal';
 import MotionParallax from '../motion/MotionParallax';
-import SlideUpOnView from '../motion/SlideUpOnView';
 import { motionEase } from '../../motion/motionPresets';
+import { canEnhanceMotion } from '../../motion/config';
 import { cn } from '../../lib/utils';
 
 export default function PageHero({
@@ -13,6 +13,8 @@ export default function PageHero({
   children,
   image,
   imageAlt = '',
+  imageWidth = 840,
+  imageHeight = 560,
   aside,
   detail,
   animated = true,
@@ -22,7 +24,10 @@ export default function PageHero({
   const hasAside = Boolean(aside);
   const twoCol = hasImage || hasAside;
   const reduced = useReducedMotion();
+  const enhance = typeof window === 'undefined' ? false : canEnhanceMotion();
   const motionOn = animated && !reduced;
+  // Keep hero media visible from first paint — opacity animations tank LCP.
+  const animateChrome = motionOn && enhance;
 
   const heading = (
     <>
@@ -54,6 +59,27 @@ export default function PageHero({
     </>
   );
 
+  const heroImage = hasImage ? (
+    <div className="relative z-10 mx-auto w-full min-w-0 max-w-md lg:ml-auto lg:max-w-[420px]">
+      <div
+        className="gc-glow pointer-events-none absolute -inset-3 bg-[#4A6B94]/10 sm:-inset-5"
+        aria-hidden="true"
+      />
+      <div className="gc-card relative w-full overflow-hidden">
+        <img
+          src={image}
+          alt={imageAlt || title || 'Service illustration'}
+          className="aspect-[16/10] h-auto w-full object-cover object-center sm:aspect-[3/2]"
+          width={imageWidth}
+          height={imageHeight}
+          loading="eager"
+          decoding="async"
+          fetchPriority="high"
+        />
+      </div>
+    </div>
+  ) : null;
+
   return (
     <section
       className={cn(
@@ -62,7 +88,7 @@ export default function PageHero({
       )}
     >
       <div className="grid-fade pointer-events-none absolute inset-0 opacity-40 sm:opacity-50" aria-hidden="true" />
-      {motionOn ? (
+      {animateChrome ? (
         <>
           <MotionParallax
             speed={24}
@@ -105,27 +131,9 @@ export default function PageHero({
           ) : (
             <div className="relative z-10 w-full min-w-0 lg:pt-1">{aside}</div>
           )
-        ) : hasImage ? (
-          <SlideUpOnView
-            className="relative z-10 mx-auto w-full min-w-0 max-w-md lg:ml-auto lg:max-w-[420px]"
-            distance={88}
-            delay={0.12}
-          >
-            <div
-              className="gc-glow pointer-events-none absolute -inset-3 bg-[#4A6B94]/10 sm:-inset-5"
-              aria-hidden="true"
-            />
-            <div className="gc-card relative w-full overflow-hidden">
-              <img
-                src={image}
-                alt={imageAlt || title || 'Service illustration'}
-                className="aspect-[16/10] h-auto w-full object-cover object-center sm:aspect-[3/2]"
-                loading="eager"
-                decoding="async"
-              />
-            </div>
-          </SlideUpOnView>
-        ) : null}
+        ) : (
+          heroImage
+        )}
       </div>
     </section>
   );

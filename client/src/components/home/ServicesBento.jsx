@@ -1,6 +1,5 @@
 import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import voipVisual from '../../assets/services/voip-3.webp';
 import { featuredServices } from '../../data/content';
 import SectionHeading from '../ui/SectionHeading';
 import TelecomIcon3DLazy from '../ui/TelecomIcon3DLazy';
@@ -34,7 +33,9 @@ export default function ServicesBento() {
           id: service.id,
           title: service.title,
           description: service.description,
-          icon: <TelecomIcon3DLazy name={service.icon} size={28} />,
+          icon: <TelecomIcon3DLazy name={service.icon} size={22} />,
+          artKey: service.icon,
+          index,
           theme: themes[index % themes.length],
           exploreLabel: 'Learn More',
           onClick: () => navigate(`/services/${service.id}`),
@@ -122,29 +123,15 @@ export default function ServicesBento() {
       />
 
       <div ref={scope} className="gc-container relative">
-        <div className="mb-8 grid items-center gap-6 md:mb-10 md:grid-cols-[1.15fr_0.75fr] md:gap-8 lg:items-center lg:gap-10">
-          <SlideUpOnView>
-            <SectionHeading
-              eyebrow="Services"
-              title="Dialers, voice, numbers, and carrier reach, built for production floors."
-              description="From predictive dialing and hosted PBX to DIDs, VoIP Termination, contact-center tools, and APIs, Go Connectivo covers the stack contact centers actually use."
-              className="!mb-0"
-              animated={false}
-            />
-          </SlideUpOnView>
-
-          <SlideUpOnView delay={0.12}>
-            <div className="gc-card mx-auto w-full max-w-[280px] overflow-hidden sm:max-w-[320px] md:ml-auto md:max-w-[340px]">
-              <img
-                src={voipVisual}
-                alt="Business voice, dialers, and VoIP network"
-                className="aspect-[735/490] h-auto w-full object-cover"
-                loading="eager"
-                decoding="async"
-              />
-            </div>
-          </SlideUpOnView>
-        </div>
+        <SlideUpOnView className="mb-8 md:mb-10">
+          <SectionHeading
+            eyebrow="Solutions"
+            title="Services your floor can buy and deploy."
+            description="Flagship capabilities across Business VoIP, contact center, SIP, numbers, and VoIP Termination."
+            className="!mb-0"
+            animated={false}
+          />
+        </SlideUpOnView>
 
         {/* Glass 3D services stage */}
         <div

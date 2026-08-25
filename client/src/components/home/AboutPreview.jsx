@@ -1,24 +1,13 @@
 import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
+import voipVisual from '../../assets/services/voip-3.webp';
 import SectionHeading from '../ui/SectionHeading';
 import StatsBand from '../ui/StatsBand';
-import { RevealCard, SlideUpOnView, StaggerContainer } from '../motion';
+import { SlideUpOnView } from '../motion';
 
-const pillars = [
-  {
-    title: 'Infrastructure that holds',
-      copy: 'Redundant routes and monitored trunks so agents stay reachable when a path fails.',
-  },
-  {
-    title: 'Scales with your team',
-    copy: 'Grow from 5 to 5,000 users seamlessly on our cloud-based architecture.',
-  },
-  {
-    title: 'Support that responds',
-    copy: '24/7 expert technical support via phone, email, and live chat.',
-  },
-];
-
+/**
+ * About teaser — company positioning + capability strip + visual.
+ */
 export default function AboutPreview() {
   return (
     <section className="gc-section relative">
@@ -26,39 +15,41 @@ export default function AboutPreview() {
         <StatsBand />
       </div>
 
-      <div className="gc-container grid items-start gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10">
-        <SlideUpOnView className="min-w-0">
-          <SectionHeading
-            eyebrow="About"
-            title="Your trusted partner in business communication."
-            description="Go Connectivo delivers dialers, business voice, inbound numbers, carrier termination, contact-center tools, and APIs so contact centers and growing teams stay connected."
-            className="!mb-4"
-            animated={false}
-          />
-          <Link
-            to="/about"
-            className="group inline-flex items-center gap-2 text-sm font-semibold text-[#6B8AB0] transition-colors duration-300 hover:text-[#2F4C73]"
-          >
-            Learn more about us
-            <ArrowUpRight
-              size={16}
-              className="transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+      <div className="gc-container">
+        <SlideUpOnView className="grid items-center gap-6 md:grid-cols-[1.15fr_0.85fr] md:gap-8 lg:gap-10">
+          <div className="min-w-0">
+            <SectionHeading
+              eyebrow="About"
+              title="A practical voice partner for production floors."
+              description="Go Connectivo helps contact centers and growing teams run Business VoIP, contact-center tools, SIP trunks, numbers, and VoIP Termination with clear support and guided onboarding."
+              className="!mb-5 lg:!mb-6"
+              animated={false}
             />
-          </Link>
-        </SlideUpOnView>
-
-        <StaggerContainer className="grid min-w-0 gap-4" stagger={0.12} from="up">
-          {pillars.map((item) => (
-            <RevealCard
-              key={item.title}
-              as="article"
-              className="p-5"
+            <Link
+              to="/about"
+              className="group inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[#4A6B94] transition-colors duration-300 hover:text-[#2F4C73] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4A6B94]/45"
             >
-              <h3 className="font-display text-lg font-semibold text-[#2F4C73]">{item.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-[#6B7C8F]">{item.copy}</p>
-            </RevealCard>
-          ))}
-        </StaggerContainer>
+              Learn more about us
+              <ArrowUpRight
+                size={16}
+                className="transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                aria-hidden
+              />
+            </Link>
+          </div>
+
+          <div className="gc-card mx-auto w-full max-w-[240px] overflow-hidden sm:max-w-[280px] md:ml-auto md:max-w-[300px]">
+            <img
+              src={voipVisual}
+              alt="Business voice, dialers, and VoIP network"
+              className="aspect-[735/490] h-auto w-full object-cover"
+              width={735}
+              height={490}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </SlideUpOnView>
       </div>
     </section>
   );
