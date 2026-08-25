@@ -1,8 +1,7 @@
-import { lazy, Suspense, useCallback, useEffect, useId, useRef, useState } from 'react';
+import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import { isCompactViewport, prefersReducedMotion } from '../../motion/config';
+import { prefetchTelecomScene } from '../../motion/prefetchHome3d';
 import { noteWebglPressure, releaseWebglSlot, requestWebglSlot } from '../../motion/webglSlots';
-
-const Scene = lazy(() => import('./TelecomScene3D'));
 
 const Fallback = () => (
   <div
@@ -12,32 +11,62 @@ const Fallback = () => (
 );
 
 /**
- * Mounts Three only while near viewport; releases WebGL slot when leaving
- * so browsers don't hit Context Lost from too many live canvases.
+ * Glass-stage Three models (Services / Platform / WhyUs).
+ *
+ * - `eager`: start WebGL off-screen after a short delay so scroll-in is instant
+ * - `keepAlive`: once mounted, stay mounted until another scene steals the slot
  */
-export default function TelecomScene3DLazy(props) {
+export default function TelecomScene3DLazy({
+  eager = false,
+  keepAlive = true,
+  warmDelay = 500,
+  slotPriority = 12,
+  ...props
+}) {
   const holderRef = useRef(null);
   const leaveTimer = useRef(0);
   const slotId = useId();
   const [inView, setInView] = useState(false);
   const [allowed, setAllowed] = useState(false);
+  const [SceneComp, setSceneComp] = useState(null);
   const [blocked, setBlocked] = useState(
     () => typeof window !== 'undefined' && (prefersReducedMotion() || isCompactViewport()),
   );
 
   const tryAcquire = useCallback(() => {
     const ok = requestWebglSlot(slotId, {
-      priority: 1,
+      priority: slotPriority,
       onEvict: () => setAllowed(false),
     });
     setAllowed(ok);
-  }, [slotId]);
+  }, [slotId, slotPriority]);
 
   const onContextLost = useCallback(() => {
     noteWebglPressure();
     releaseWebglSlot(slotId);
     setAllowed(false);
   }, [slotId]);
+
+  // Resolve the chunk into a real component (avoids Suspense flash on scroll).
+  useEffect(() => {
+    if (blocked) return undefined;
+    let cancelled = false;
+    prefetchTelecomScene().then((results) => {
+      if (cancelled) return;
+      const mod = results?.[1];
+      if (mod?.default) setSceneComp(() => mod.default);
+      else {
+        import('./TelecomScene3D')
+          .then((m) => {
+            if (!cancelled) setSceneComp(() => m.default);
+          })
+          .catch(() => {});
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [blocked]);
 
   useEffect(() => {
     const sync = () => setBlocked(prefersReducedMotion() || isCompactViewport());
@@ -56,6 +85,16 @@ export default function TelecomScene3DLazy(props) {
     const el = holderRef.current;
     if (!el) return undefined;
 
+    prefetchTelecomScene();
+
+    let warmTimer = 0;
+    if (eager) {
+      warmTimer = window.setTimeout(() => {
+        setInView(true);
+        tryAcquire();
+      }, warmDelay);
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         const near = entry.isIntersecting;
@@ -65,41 +104,39 @@ export default function TelecomScene3DLazy(props) {
           tryAcquire();
           return;
         }
-        // Delay unmount so scroll-back does not flash the gradient fallback.
+        if (keepAlive) {
+          // Stay mounted; only yield if another stage steals the WebGL slot.
+          return;
+        }
         leaveTimer.current = window.setTimeout(() => {
           releaseWebglSlot(slotId);
           setAllowed(false);
           setInView(false);
-        }, 1600);
+        }, 800);
       },
-      { rootMargin: '120px 0px 120px 0px', threshold: 0 },
+      { rootMargin: '200% 0px 200% 0px', threshold: 0 },
     );
     observer.observe(el);
+
     return () => {
+      window.clearTimeout(warmTimer);
       window.clearTimeout(leaveTimer.current);
       observer.disconnect();
       releaseWebglSlot(slotId);
     };
-  }, [blocked, slotId, tryAcquire]);
+  }, [blocked, slotId, tryAcquire, eager, warmDelay, keepAlive]);
 
-  // Retry if we were in view but the budget was full (e.g. hero still held a slot)
   useEffect(() => {
     if (blocked || !inView || allowed) return undefined;
-    const id = window.setInterval(tryAcquire, 900);
+    const id = window.setInterval(tryAcquire, 40);
     return () => window.clearInterval(id);
   }, [blocked, inView, allowed, tryAcquire]);
 
-  const show = !blocked && allowed;
+  const show = !blocked && allowed && SceneComp;
 
   return (
     <div ref={holderRef} className="h-full w-full">
-      {show ? (
-        <Suspense fallback={<Fallback />}>
-          <Scene {...props} onContextLost={onContextLost} />
-        </Suspense>
-      ) : (
-        <Fallback />
-      )}
+      {show ? <SceneComp {...props} onContextLost={onContextLost} /> : <Fallback />}
     </div>
   );
 }

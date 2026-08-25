@@ -4,8 +4,8 @@
  */
 import * as THREE from 'three';
 
-/** Keep a single live canvas, browsers only allow ~8 WebGL contexts total. */
-const MAX_LIVE = 1;
+/** Desktop glass stages can stay warm together; browsers allow ~8 contexts. */
+const MAX_LIVE = 3;
 const live = new Map(); // id -> { priority, onEvict }
 let cooldownUntil = 0;
 let guardsInstalled = false;
@@ -53,7 +53,7 @@ function installThreeGuards() {
 installThreeGuards();
 
 export function noteWebglPressure() {
-  cooldownUntil = Date.now() + 1200;
+  cooldownUntil = Date.now() + 400;
 }
 
 export function isWebglCoolingDown() {

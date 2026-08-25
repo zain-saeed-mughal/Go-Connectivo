@@ -15,6 +15,7 @@ import {
   processSteps,
   serviceCategories,
 } from '../data/content';
+import { PageSeo } from '../components/seo/PageSeo';
 
 export default function Services() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -31,10 +32,17 @@ export default function Services() {
   });
   return (
     <>
+      <PageSeo
+        path="/services"
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Services', path: '/services' },
+        ]}
+      />
       <PageHero
         eyebrow="Our Services"
-        title="Complete Voice Stack,"
-        highlight="Built for Teams"
+        title="VoIP, Dialer & Contact Center Services"
+        highlight=""
         description="Dialer solutions, business voice, inbound numbers, outbound & carrier voice (including VoIP Termination), contact-center platforms, and API & messaging, engineered for call centers and teams that live on the phone."
         image={voipVisual}
         imageAlt="VoIP desk phone and cloud telephony interface"

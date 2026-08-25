@@ -190,6 +190,10 @@ export default function ServicesBento() {
                 className="min-h-full"
                 interactive
                 scrollScrub
+                eager
+                keepAlive
+                warmDelay={280}
+                slotPriority={13}
               />
             </div>
 

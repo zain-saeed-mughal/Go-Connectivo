@@ -3,6 +3,7 @@ export const navLinks = [
   { label: 'About', path: '/about' },
   { label: 'Services', path: '/services' },
   { label: 'Legal Compliance', path: '/compliance' },
+  { label: 'Resources', path: '/resources' },
   { label: 'FAQs', path: '/faqs' },
 ];
 
@@ -31,27 +32,27 @@ export const heroContent = {
 
 export const whyChoose = [
   {
-    title: '99.9% Uptime',
+    title: 'Redundant voice paths',
     icon: 'ShieldCheck',
     description:
-      'Carrier-grade routes and redundant voice infrastructure so your agents stay on the line.',
+      'Carrier-minded routing and monitored trunks so agents stay reachable when a single path fails.',
   },
   {
-    title: 'Scalable Dialers',
+    title: 'Scalable dialers',
     icon: 'Maximize2',
     description: 'Grow from a small floor to high-volume outbound without ripping out your stack.',
   },
   {
-    title: '24/7 Support',
+    title: 'Voice specialist support',
     icon: 'Headphones',
     description:
-      'Voice specialists available around the clock when campaigns, trunks, or PBX need attention.',
+      'Support that understands trunks, campaigns, IVR, and PBX, not only generic ticket queues.',
   },
   {
-    title: 'Cost Effective',
+    title: 'Practical rate design',
     icon: 'DollarSign',
     description:
-      'Competitive origination and termination rates that cut traditional telephony spend.',
+      'Origination and termination pricing scoped to how your floor actually dials and answers.',
   },
 ];
 
@@ -404,7 +405,7 @@ export const services = [
     icon: 'Radio',
     category: 'outbound-carrier',
     description:
-      'Reliable domestic and international VoIP termination services with competitive rates and crystal-clear call quality.',
+      'Reliable domestic and international VoIP termination with competitive rates and monitored call quality.',
     capabilities: [
       'Domestic termination',
       'International termination',
@@ -516,13 +517,13 @@ export const services = [
     icon: 'Code2',
     category: 'api-messaging',
     description:
-      'Embed outbound and inbound calling into your apps with programmable voice APIs, webhooks, SIP, and developer-friendly docs.',
+      'Embed outbound and inbound calling into your apps with programmable voice APIs, webhooks, and SIP. Technical docs are shared during onboarding.',
     capabilities: [
       'REST & webhook events',
       'Click-to-call & notifications',
       'Programmable IVR flows',
       'SIP & media control',
-      'Sandbox & production keys',
+      'Onboarding-shared API docs',
     ],
     span: '',
   },
@@ -563,10 +564,10 @@ export const services = [
 ];
 
 export const companyStats = [
-  { value: 5000, suffix: '+', label: 'Businesses Served' },
-  { value: 99.9, suffix: '%', label: 'Uptime Guarantee' },
-  { value: 24, suffix: '/7', label: 'Support Available' },
-  { value: 60, suffix: '%', label: 'Average Cost Savings' },
+  { display: 'VoIP', label: 'Business calling & hosted PBX' },
+  { display: 'DID', label: 'Local, virtual & toll-free numbers' },
+  { display: 'SIP', label: 'Trunks & voice termination' },
+  { display: 'CC', label: 'Contact-center platforms' },
 ];
 
 export const aboutIntro = [
@@ -577,7 +578,7 @@ export const aboutIntro = [
 export const coreValues = [
   {
     title: 'Reliability',
-    description: '99.9% uptime mindset with redundant routes and monitored voice paths.',
+    description: 'Redundant routes and monitored voice paths with a reliability-first operating mindset.',
   },
   {
     title: 'Innovation',
@@ -803,24 +804,24 @@ export const technologies = [
   },
 ];
 
-export const testimonials = [
+export const testimonials = [];
+
+/** Homepage proof cards — use cases only, no fabricated customer quotes. */
+export const homeProofPoints = [
   {
-    quote:
-      'Go Connectivo gave our outbound team a dialer stack we could trust. Connect rates improved and supervisors finally had visibility they needed on one floor.',
-    name: 'Sarah Johnson',
-    role: 'CEO, TechStart Inc.',
+    title: 'Outbound sales floors',
+    text: 'Dialer modes, campaign trunks, and termination paths for teams measured on talk time.',
+    to: '/services/auto-dialer',
   },
   {
-    quote:
-      'We stood up a virtual contact center for remote agents in under a week. Inbound queues and hosted PBX just worked, support stayed with us through cutover.',
-    name: 'Michael Chen',
-    role: 'Operations Director, GlobalTech',
+    title: 'Distributed offices',
+    text: 'Business VoIP, hosted PBX, and SIP trunking for desks that need clear, managed calling.',
+    to: '/services/business-voip',
   },
   {
-    quote:
-      'Wholesale termination and VoIP Termination quality have been consistent and the rate deck is straightforward. We’ve cut voice spend while keeping campaign audio clear.',
-    name: 'Jennifer Martinez',
-    role: 'CTO, Innovate Solutions',
+    title: 'Contact-center ops',
+    text: 'Queues, IVR, recording, and agent tools connected to the same voice infrastructure.',
+    to: '/services/call-center-software',
   },
 ];
 
@@ -830,15 +831,27 @@ export const faqCategories = [
     items: [
       {
         q: 'How do I get started with Go Connectivo?',
-        a: 'Tell us whether you need dialers, business voice (PBX / SIP / Mobile VoIP), inbound numbers, VoIP Termination or wholesale routes, contact-center tools, or Voice API / SMS, or a mix. We’ll scope seats and capacity, provision access, and most teams are live within 24–48 hours.',
+        a: 'Tell us whether you need dialers, business voice (PBX / SIP / Mobile VoIP), inbound numbers, VoIP Termination or wholesale routes, contact-center tools, or Voice API / SMS, or a mix. We scope seats and capacity, then provision access with guided onboarding.',
+        related: [
+          { label: 'Contact sales', to: '/contact' },
+          { label: 'Browse services', to: '/services' },
+        ],
       },
       {
         q: 'What equipment do I need?',
         a: 'A stable internet connection and headsets or softphones for agents. Desk phones are optional; many floors run entirely in the browser or with SIP softphones we can help you choose.',
+        related: [
+          { label: 'Business VoIP', to: '/services/business-voip' },
+          { label: 'Hosted PBX', to: '/services/hosted-pbx' },
+        ],
       },
       {
         q: 'Can I keep my existing phone numbers?',
         a: 'Yes. We support porting for most DIDs and toll-free numbers. Port windows typically take 7–10 business days, and we coordinate paperwork so your lines stay reachable.',
+        related: [
+          { label: 'DID services', to: '/services/did-services' },
+          { label: 'Toll-free origination', to: '/services/toll-free-origination' },
+        ],
       },
     ],
   },
@@ -848,22 +861,43 @@ export const faqCategories = [
       {
         q: 'Which dialer modes do you support?',
         a: 'Go Connectivo supports smart auto, predictive, power, and progressive dialing so agents stay productive and campaigns keep connecting.',
+        related: [
+          { label: 'Smart auto dialer', to: '/services/auto-dialer' },
+          { label: 'Predictive dialer', to: '/services/predictive-dialer' },
+        ],
       },
       {
         q: 'Do you offer hosted PBX and call center tools?',
         a: 'Yes. Business Voice covers Business VoIP, hosted cloud PBX, SIP trunking, and Mobile VoIP. Contact Center adds call center software, IVR, queues, recording, and analytics.',
+        related: [
+          { label: 'Hosted PBX', to: '/services/hosted-pbx' },
+          { label: 'Call center software', to: '/services/call-center-software' },
+        ],
       },
       {
         q: 'What inbound and outbound voice services are available?',
-        a: 'Inbound & Numbers includes inbound voice, toll-free origination, Local Numbers (DID Solutions), and virtual numbers. Outbound & Carrier Voice covers outbound voice, toll-free termination, wholesale voice termination, and VoIP Termination as a separate service.',
+        a: 'Inbound & Numbers includes inbound voice, toll-free origination, Local Numbers (DID Solutions), and virtual numbers. Outbound & Carrier Voice covers campaign outbound, toll-free termination, wholesale voice termination, and dedicated VoIP Termination, each with a distinct buying intent.',
+        related: [
+          { label: 'Outbound voice', to: '/services/outbound-services' },
+          { label: 'VoIP termination', to: '/services/voip-termination' },
+          { label: 'Wholesale termination', to: '/services/wholesale-termination' },
+        ],
       },
       {
         q: 'Do you offer APIs or SMS?',
-        a: 'Yes. API & Messaging includes Voice API / Programmable Voice for embedding calling in your apps, plus SMS/A2P Solutions for alerts, OTP, and two-way business messaging.',
+        a: 'Yes. API & Messaging includes Voice API / Programmable Voice for embedding calling in your apps, plus SMS/A2P Solutions for alerts, OTP, and two-way business messaging. Detailed endpoint documentation is shared during onboarding.',
+        related: [
+          { label: 'Voice API', to: '/services/voice-api' },
+          { label: 'SMS solutions', to: '/services/sms-solutions' },
+        ],
       },
       {
         q: 'Is call recording available?',
         a: 'Yes, Call Recording is a dedicated Contact Center service, and recording can also be enabled on PBX seats where your plan and compliance needs allow.',
+        related: [
+          { label: 'Call recording', to: '/services/call-recording' },
+          { label: 'Acceptable use policy', to: '/compliance/acceptable-use-policy' },
+        ],
       },
     ],
   },
@@ -873,18 +907,25 @@ export const faqCategories = [
       {
         q: 'Are there any setup fees?',
         a: 'Standard cloud telephony and dialer seats typically have no setup fees. Custom interconnect or enterprise cutovers are quoted transparently before work begins.',
+        related: [{ label: 'Request a quote', to: '/contact' }],
       },
       {
         q: 'What payment methods do you accept?',
         a: 'We accept major credit cards and ACH bank transfers. Larger wholesale and enterprise accounts can arrange monthly invoicing.',
+        related: [{ label: 'Contact billing', to: '/contact' }],
       },
       {
         q: 'Is there a contract or commitment?',
-        a: 'Many seats are month-to-month. Wholesale termination and enterprise packages may include volume commitments, we’ll outline terms clearly before you sign.',
+        a: 'Many seats are month-to-month. Wholesale termination and enterprise packages may include volume commitments; we outline terms clearly before you sign.',
+        related: [
+          { label: 'Wholesale termination', to: '/services/wholesale-termination' },
+          { label: 'Talk to sales', to: '/contact' },
+        ],
       },
       {
         q: 'Do you offer a free trial?',
         a: 'We offer a 14-day evaluation for eligible dialer and PBX seats so your team can test call quality and workflows before committing.',
+        related: [{ label: 'Start evaluation', to: '/contact' }],
       },
     ],
   },
@@ -894,18 +935,28 @@ export const faqCategories = [
       {
         q: 'What internet speed do I need?',
         a: 'Plan roughly 100 kbps up and down per concurrent call, plus headroom for your office apps. Contact-center floors should use wired connections where possible.',
+        related: [{ label: 'SIP trunking', to: '/services/sip-trunking' }],
       },
       {
         q: 'What happens if my internet goes down?',
         a: 'We can configure failover forwarding, backup SIP paths, and overflow rules so inbound calls still reach a reachable destination when a site drops offline.',
+        related: [
+          { label: 'Call routing & queues', to: '/services/call-routing-queues' },
+          { label: 'Inbound services', to: '/services/inbound-services' },
+        ],
       },
       {
         q: 'How do I get technical support?',
-        a: '24/7 support is available by phone, email, and chat, with a knowledge base for self-serve guides on dialers, PBX, and trunks.',
+        a: 'Voice specialist support is available by phone, email, and chat for trunks, campaigns, IVR, and PBX issues. Business-hours coverage is listed on the Contact page; extended coverage can be scoped for wholesale and enterprise accounts.',
+        related: [{ label: 'Contact support', to: '/contact' }],
       },
       {
         q: 'Do you offer training for my team?',
         a: 'Yes, onboarding covers agent consoles, supervisor tools, and campaign setup, plus documentation your ops leads can reuse for new hires.',
+        related: [
+          { label: 'Call center software', to: '/services/call-center-software' },
+          { label: 'Resources', to: '/resources' },
+        ],
       },
     ],
   },

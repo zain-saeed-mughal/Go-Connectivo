@@ -1,9 +1,17 @@
 import SectionHeading from '../components/ui/SectionHeading';
 import { StaggerContainer } from '../components/motion';
+import { PageSeo } from '../components/seo/PageSeo';
 
 export default function Privacy() {
   return (
     <section className="pt-32 pb-20 sm:pt-36 sm:pb-24">
+      <PageSeo
+        path="/privacy"
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Privacy Policy', path: '/privacy' },
+        ]}
+      />
       <div className="gc-prose-width">
         <SectionHeading
           eyebrow="Legal"

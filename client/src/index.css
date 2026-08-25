@@ -465,7 +465,12 @@ html::-webkit-scrollbar-corner {
 }
 
 /* Hero polish — uses existing brand blues only; does not alter palette tokens */
+.hero-media {
+  background: #1c314f;
+}
+
 .hero-video {
+  opacity: 0.72;
   filter: brightness(0.72) contrast(1.05) saturate(0.82);
 }
 

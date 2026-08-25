@@ -13,6 +13,12 @@ import adminRoutes from './routes/admin.js';
 import { migrate } from './db/index.js';
 import { ensureStorageRoot } from './services/storage.js';
 import { cleanupExpiredSessions } from './services/adminAuth.js';
+import {
+  injectSeoIntoHtml,
+  isSpaRoute,
+  loadSeoManifest,
+  normalizePathname,
+} from './seo.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -25,6 +31,7 @@ const CLIENT_DIST = process.env.CLIENT_DIST || path.resolve(__dirname, '../clien
 migrate();
 ensureStorageRoot();
 cleanupExpiredSessions();
+loadSeoManifest();
 
 const allowedOrigins = [
   ...String(CLIENT_URL)
@@ -98,18 +105,55 @@ app.get('/api/health', (_req, res) => {
 
 app.use('/api/contact', contactLimiter, contactRoutes);
 app.use('/api/kyc', kycLimiter, kycRoutes);
-
-// Login attempts limited inside the admin router; general admin API limited here
 app.use('/api/admin', adminApiLimiter, adminRoutes);
 
 if (isProd && fs.existsSync(CLIENT_DIST)) {
-  app.use(express.static(CLIENT_DIST, { index: false, maxAge: '7d' }));
+  const sendPlain = (file, type) => (_req, res, next) => {
+    const full = path.join(CLIENT_DIST, file);
+    if (!fs.existsSync(full)) return next();
+    res.type(type);
+    res.setHeader('Cache-Control', 'public, max-age=3600');
+    return res.sendFile(full);
+  };
+  app.get('/robots.txt', sendPlain('robots.txt', 'text/plain; charset=utf-8'));
+  app.get('/sitemap.xml', sendPlain('sitemap.xml', 'application/xml; charset=utf-8'));
+
+  app.use(
+    express.static(CLIENT_DIST, {
+      index: false,
+      maxAge: '7d',
+      setHeaders(res, filePath) {
+        if (filePath.endsWith('index.html')) {
+          res.setHeader('Cache-Control', 'no-cache');
+        }
+      },
+    }),
+  );
+
+  let indexHtmlCache = null;
+  const readIndexHtml = () => {
+    const indexPath = path.join(CLIENT_DIST, 'index.html');
+    if (!fs.existsSync(indexPath)) return null;
+    // Always read fresh in case dist was rebuilt without process restart
+    indexHtmlCache = fs.readFileSync(indexPath, 'utf8');
+    return indexHtmlCache;
+  };
+
   app.use((req, res, next) => {
     if (req.path.startsWith('/api')) return next();
     if (req.method !== 'GET' && req.method !== 'HEAD') return next();
-    return res.sendFile(path.join(CLIENT_DIST, 'index.html'), (err) => {
-      if (err) next(err);
-    });
+
+    const pathname = normalizePathname(req.path);
+    const known = isSpaRoute(pathname);
+    const html = readIndexHtml();
+    if (!html) return next();
+
+    const status = known ? 200 : 404;
+    const body = injectSeoIntoHtml(html, { pathname, status });
+    res.status(status);
+    res.type('html');
+    res.setHeader('Cache-Control', 'no-cache');
+    return res.send(body);
   });
 }
 

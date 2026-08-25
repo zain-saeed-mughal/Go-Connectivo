@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Check } from 'lucide-react';
 import MagneticButton from '../ui/MagneticButton';
 import { RevealCard } from '../motion';
@@ -110,6 +111,34 @@ export function ServiceSeoUseCases({ seo }) {
                 <Check size={12} strokeWidth={3} aria-hidden />
               </span>
               <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+export function ServiceSeoRelated({ seo }) {
+  if (!seo?.related?.length) return null;
+  return (
+    <section className="gc-section-tight" aria-labelledby="seo-related-heading">
+      <div className="gc-container">
+        <h2
+          id="seo-related-heading"
+          className="font-display text-xl font-semibold tracking-[-0.02em] text-[#2F4C73] sm:text-2xl"
+        >
+          Related pages
+        </h2>
+        <ul className="mt-5 flex flex-wrap gap-2">
+          {seo.related.map((link) => (
+            <li key={link.to}>
+              <Link
+                to={link.to}
+                className="inline-flex min-h-11 items-center rounded-xl border border-[rgba(47,76,115,0.12)] bg-white px-4 text-sm font-medium text-[#2F4C73] transition-colors hover:border-[#4A6B94]/40"
+              >
+                {link.label}
+              </Link>
             </li>
           ))}
         </ul>

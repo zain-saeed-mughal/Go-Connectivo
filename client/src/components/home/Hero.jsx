@@ -12,9 +12,9 @@ import { canEnhanceMotion, gsap, ScrollTrigger } from '../../motion/config';
 const HeroNetworkCanvas = lazy(() => import('./HeroNetworkCanvas'));
 
 const trustBits = [
-  { label: '99.9% uptime' },
-  { label: '24/7 voice support' },
-  { label: 'Go-live in 24–48h' },
+  { label: 'Business VoIP & SIP' },
+  { label: 'Voice specialist support' },
+  { label: 'Practical onboarding' },
 ];
 
 const container = {
@@ -56,14 +56,11 @@ export default function Hero() {
     }
   }, []);
 
+  const showVideo = enhance && !reduced;
+
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) return undefined;
-
-    if (reduced) {
-      video.pause();
-      return undefined;
-    }
+    if (!video || !showVideo) return undefined;
 
     const play = () => {
       video.play().catch(() => {});
@@ -90,7 +87,7 @@ export default function Hero() {
       document.removeEventListener('visibilitychange', onVisibility);
       observer.disconnect();
     };
-  }, [reduced]);
+  }, [showVideo]);
 
   useEffect(() => {
     const heroEl = heroRef.current;
@@ -108,18 +105,18 @@ export default function Hero() {
     const lines = gsap.utils.toArray('[data-fcc-line]', fccRoot);
     const cta = fccRoot.querySelector('[data-fcc="cta"]');
 
-    gsap.set([eyebrow, ...lines, cta], { autoAlpha: 0, y: 18 });
-    gsap.set(heading, { autoAlpha: 1, y: 0 });
+    // Eyebrow + heading stay visible from first paint; body lines + CTA scrub in on scroll.
+    gsap.set([eyebrow, heading], { autoAlpha: 1, y: 0 });
+    gsap.set([...lines, cta], { autoAlpha: 0, y: 18 });
 
     const textTl = gsap.timeline({ paused: true });
-    textTl.to(eyebrow, { autoAlpha: 1, y: 0, duration: 0.08, ease: 'none' }, 0.03);
     lines.forEach((line, i) => {
-      textTl.to(line, { autoAlpha: 1, y: 0, duration: 0.12, ease: 'none' }, 0.12 + i * 0.13);
+      textTl.to(line, { autoAlpha: 1, y: 0, duration: 0.12, ease: 'none' }, 0.08 + i * 0.13);
     });
     textTl.to(
       cta,
       { autoAlpha: 1, y: 0, duration: 0.1, ease: 'none' },
-      0.12 + lines.length * 0.13 + 0.04,
+      0.08 + lines.length * 0.13 + 0.04,
     );
     textTl.to({}, { duration: 0.12 }, 0.88);
 
@@ -158,19 +155,29 @@ export default function Hero() {
   return (
     <div ref={heroRef} className="gc-hero relative w-full">
           <section className="relative flex min-h-[100svh] max-w-[100vw] items-start overflow-x-hidden px-5 pt-24 pb-16 sm:items-center sm:px-6 sm:pt-28 sm:pb-24">
-            <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
-              <video
-                ref={videoRef}
-                className="hero-video absolute inset-0 h-full w-full object-cover object-[center_35%] sm:object-center"
-                src={heroVideo}
-                poster={heroPoster}
-                autoPlay={!reduced}
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                disablePictureInPicture
-              />
+            <div className="hero-media pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
+              {showVideo ? (
+                <video
+                  ref={videoRef}
+                  className="hero-video absolute inset-0 h-full w-full object-cover object-[center_35%] sm:object-center"
+                  src={heroVideo}
+                  poster={heroPoster}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  disablePictureInPicture
+                />
+              ) : (
+                <img
+                  src={heroPoster}
+                  alt=""
+                  className="hero-video absolute inset-0 h-full w-full object-cover object-[center_35%] sm:object-center"
+                  decoding="async"
+                  fetchPriority="high"
+                />
+              )}
               <div className="hero-overlay-directional absolute inset-0 z-[1]" />
               <div className="hero-overlay-vignette absolute inset-0 z-[1]" />
             </div>
@@ -204,8 +211,8 @@ export default function Hero() {
                     <span className="block drop-shadow-[0_2px_18px_rgba(0,0,0,0.28)]">
                       {heroContent.titleStart}
                     </span>
-                    <span className="hero-title-highlight relative mt-1.5 block min-w-0 max-w-full">
-                      <span className="gradient-text-brand">{heroContent.titleHighlight}</span>
+                    <span className="hero-title-highlight relative mt-1.5 block min-w-0 max-w-full text-[#FFFFFF]">
+                      {heroContent.titleHighlight}
                     </span>
                   </motion.h1>
 

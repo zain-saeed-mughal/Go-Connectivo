@@ -7,7 +7,7 @@ import { RevealCard, SlideUpOnView, StaggerContainer } from '../motion';
 const pillars = [
   {
     title: 'Infrastructure that holds',
-    copy: 'Redundant systems and a 99.9% uptime guarantee so you never miss a call.',
+      copy: 'Redundant routes and monitored trunks so agents stay reachable when a path fails.',
   },
   {
     title: 'Scales with your team',

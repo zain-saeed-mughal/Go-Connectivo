@@ -1,11 +1,12 @@
 import { lazy, Suspense, useCallback, useEffect, useId, useRef, useState } from 'react';
 import { isCompactViewport, prefersReducedMotion } from '../../motion/config';
+import { prefetchHolographicHub } from '../../motion/prefetchHome3d';
 import { noteWebglPressure, releaseWebglSlot, requestWebglSlot } from '../../motion/webglSlots';
 
 const Hub = lazy(() => import('./HolographicHub3D'));
 
 /**
- * CTA hub, live only in view; shares the global WebGL budget.
+ * CTA hub — mounts when approaching; yields to main stage scenes if needed.
  */
 export default function HolographicHub3DLazy(props) {
   const holderRef = useRef(null);
@@ -16,7 +17,7 @@ export default function HolographicHub3DLazy(props) {
 
   const tryAcquire = useCallback(() => {
     const ok = requestWebglSlot(slotId, {
-      priority: 1,
+      priority: 8,
       onEvict: () => setAllowed(false),
     });
     setAllowed(ok);
@@ -33,11 +34,14 @@ export default function HolographicHub3DLazy(props) {
     const el = holderRef.current;
     if (!el) return undefined;
 
+    prefetchHolographicHub();
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         const near = entry.isIntersecting;
         if (near) {
           window.clearTimeout(leaveTimer.current);
+          prefetchHolographicHub();
           setInView(true);
           tryAcquire();
           return;
@@ -46,9 +50,9 @@ export default function HolographicHub3DLazy(props) {
           releaseWebglSlot(slotId);
           setAllowed(false);
           setInView(false);
-        }, 1600);
+        }, 1800);
       },
-      { rootMargin: '120px 0px 120px 0px', threshold: 0 },
+      { rootMargin: '120% 0px 120% 0px', threshold: 0 },
     );
     observer.observe(el);
 
@@ -62,7 +66,7 @@ export default function HolographicHub3DLazy(props) {
   useEffect(() => {
     if (!inView || allowed) return undefined;
     if (prefersReducedMotion() || isCompactViewport()) return undefined;
-    const id = window.setInterval(tryAcquire, 900);
+    const id = window.setInterval(tryAcquire, 50);
     return () => window.clearInterval(id);
   }, [inView, allowed, tryAcquire]);
 

@@ -1,9 +1,17 @@
 import SectionHeading from '../components/ui/SectionHeading';
 import { StaggerContainer } from '../components/motion';
+import { PageSeo } from '../components/seo/PageSeo';
 
 export default function Terms() {
   return (
     <section className="pt-32 pb-20 sm:pt-36 sm:pb-24">
+      <PageSeo
+        path="/terms"
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Terms & Conditions', path: '/terms' },
+        ]}
+      />
       <div className="gc-prose-width">
         <SectionHeading
           eyebrow="Legal"

@@ -9,17 +9,18 @@ import Process from '../components/home/Process';
 import Technologies from '../components/home/Technologies';
 import Testimonials from '../components/home/Testimonials';
 import CTA from '../components/home/CTA';
-import FloatingIconsBackground from '../components/home/FloatingIconsBackground';
 import ScrollChapter from '../components/motion/ScrollChapter';
 import { ScrollTrigger } from '../motion/config';
+import { prefetchHome3d } from '../motion/prefetchHome3d';
+import { PageSeo } from '../components/seo/PageSeo';
 
 export default function Home() {
   useEffect(() => {
+    prefetchHome3d();
+
     const t1 = window.setTimeout(() => ScrollTrigger.refresh(), 120);
     const t2 = window.setTimeout(() => ScrollTrigger.refresh(), 480);
 
-    // resize fires dozens of times per drag and each refresh re-measures every
-    // trigger on the page, so only run once the user settles.
     let resizeTimer = 0;
     const onResize = () => {
       window.clearTimeout(resizeTimer);
@@ -41,9 +42,8 @@ export default function Home() {
 
   return (
     <div id="home-scroll-root" data-home-scroll className="relative">
+      <PageSeo path="/" includeOrg />
       <Hero />
-
-      <FloatingIconsBackground />
 
       <TechMarquee />
 

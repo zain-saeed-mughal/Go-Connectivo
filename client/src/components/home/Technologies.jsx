@@ -167,6 +167,10 @@ export default function Technologies() {
                 className="min-h-full"
                 interactive
                 scrollScrub
+                eager
+                keepAlive
+                warmDelay={550}
+                slotPriority={14}
               />
             </div>
 

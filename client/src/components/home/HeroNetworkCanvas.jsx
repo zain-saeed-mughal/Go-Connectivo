@@ -46,7 +46,8 @@ export default function HeroNetworkCanvas({ progressRef, className = '' }) {
       return;
     }
     const ok = requestWebglSlot(slotId, {
-      priority: 10,
+      // Lower than section stages so Services/Platform can take GPU on scroll.
+      priority: 3,
       onEvict: () => setLive(false),
     });
     setLive(ok);
@@ -67,18 +68,18 @@ export default function HeroNetworkCanvas({ progressRef, className = '' }) {
 
     const io = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && entry.intersectionRatio > 0.12) {
           window.clearTimeout(leaveTimer.current);
           inViewRef.current = true;
           syncSlot();
           return;
         }
-        leaveTimer.current = window.setTimeout(() => {
-          inViewRef.current = false;
-          syncSlot();
-        }, 1800);
+        // Free immediately so glass-stage 3D below can mount without delay.
+        window.clearTimeout(leaveTimer.current);
+        inViewRef.current = false;
+        syncSlot();
       },
-      { threshold: 0, rootMargin: '50% 0px 80% 0px' },
+      { threshold: [0, 0.12, 0.25], rootMargin: '0px' },
     );
     if (hostRef.current) io.observe(hostRef.current);
     syncSlot();

@@ -8,10 +8,18 @@ import ServiceIcon from '../components/ui/ServiceIcon';
 import CTA from '../components/home/CTA';
 import { RevealCard, StaggerContainer } from '../components/motion';
 import { aboutIntro, coreValues, getCatalogServices, processSteps, whyUs } from '../data/content';
+import { PageSeo } from '../components/seo/PageSeo';
 
 export default function About() {
   return (
     <>
+      <PageSeo
+        path="/about"
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'About', path: '/about' },
+        ]}
+      />
       <PageHero
         eyebrow="About Go Connectivo"
         title="Your Trusted"

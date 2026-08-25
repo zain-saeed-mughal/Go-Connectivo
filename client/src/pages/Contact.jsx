@@ -2,6 +2,7 @@ import { Clock3, Headset, Mail, MapPin, MessageSquareText, Timer } from 'lucide-
 import PageHero from '../components/ui/PageHero';
 import ContactForm from '../components/forms/ContactForm';
 import { contactInfo } from '../data/content';
+import { PageSeo } from '../components/seo/PageSeo';
 
 const details = [
   {
@@ -117,6 +118,13 @@ function GetInTouchCard() {
 export default function Contact() {
   return (
     <>
+      <PageSeo
+        path="/contact"
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Contact', path: '/contact' },
+        ]}
+      />
       <PageHero
         animated={false}
         className="pb-6 sm:pb-8 md:pb-8"

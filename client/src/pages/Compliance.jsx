@@ -3,6 +3,7 @@ import MagneticButton from '../components/ui/MagneticButton';
 import CTA from '../components/home/CTA';
 import { RevealCard, StaggerContainer } from '../components/motion';
 import { complianceItems } from '../data/content';
+import { PageSeo } from '../components/seo/PageSeo';
 
 /**
  * Brand-style lockup: seal mark + wordmark title (VIP compliance rows).
@@ -33,6 +34,13 @@ function ComplianceBrandLockup({ mark, title, index }) {
 export default function Compliance() {
   return (
     <>
+      <PageSeo
+        path="/compliance"
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Compliance', path: '/compliance' },
+        ]}
+      />
       <PageHero
         eyebrow="Trust & governance"
         title="Legal"

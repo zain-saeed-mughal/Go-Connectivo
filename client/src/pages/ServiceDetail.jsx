@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { ArrowLeft, Check } from 'lucide-react';
 import PageHero from '../components/ui/PageHero';
@@ -13,6 +12,7 @@ import {
   ServiceSeoFaqs,
   ServiceSeoHowItWorks,
   ServiceSeoOverview,
+  ServiceSeoRelated,
   ServiceSeoUseCases,
 } from '../components/services/ServiceSeoBlocks';
 import { RevealCard, StaggerContainer } from '../components/motion';
@@ -28,6 +28,7 @@ import {
   buildServiceSeoCardSections,
   shuffleSeoBlockOrder,
 } from '../data/serviceSeoCards';
+import { PageSeo } from '../components/seo/PageSeo';
 
 export default function ServiceDetail() {
   const { slug } = useParams();
@@ -36,29 +37,6 @@ export default function ServiceDetail() {
     .toLowerCase();
   const service = getServiceById(serviceId);
   const seo = service ? getServiceSeoContent(service) : null;
-
-  useEffect(() => {
-    if (!seo) return undefined;
-
-    const previousTitle = document.title;
-    const meta =
-      document.querySelector('meta[name="description"]') ||
-      (() => {
-        const tag = document.createElement('meta');
-        tag.setAttribute('name', 'description');
-        document.head.appendChild(tag);
-        return tag;
-      })();
-    const previousDescription = meta.getAttribute('content');
-
-    document.title = seo.metaTitle;
-    meta.setAttribute('content', seo.metaDescription);
-
-    return () => {
-      document.title = previousTitle;
-      if (previousDescription != null) meta.setAttribute('content', previousDescription);
-    };
-  }, [seo]);
 
   if (!service || !seo) {
     return <Navigate to="/services" replace />;
@@ -82,6 +60,7 @@ export default function ServiceDetail() {
     'useCases',
     'cards-2',
   ]);
+  const path = `/services/${service.id}`;
 
   const midBlocks = {
     benefits: <ServiceSeoBenefits key="benefits" seo={seo} serviceId={service.id} />,
@@ -100,6 +79,18 @@ export default function ServiceDetail() {
 
   return (
     <>
+      <PageSeo
+        path={path}
+        title={seo.metaTitle}
+        description={seo.metaDescription}
+        noindex={Boolean(service.hiddenFromCatalog)}
+        service={{ name: service.title, description: seo.metaDescription }}
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Services', path: '/services' },
+          { name: service.title, path },
+        ]}
+      />
       <PageHero
         eyebrow={category?.title || 'Services'}
         title={service.title}
@@ -233,6 +224,7 @@ export default function ServiceDetail() {
       </section>
 
       {/* SEO blocks 5–6, before CTA */}
+      <ServiceSeoRelated seo={seo} />
       <ServiceSeoFaqs seo={seo} />
       <ServiceSeoClosing seo={seo} serviceTitle={service.title} />
 

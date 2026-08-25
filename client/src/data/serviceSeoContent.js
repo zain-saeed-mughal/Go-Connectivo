@@ -602,22 +602,23 @@ export const SERVICE_SEO = {
   },
 
   'outbound-services': {
-    metaTitle: 'Outbound Voice Services | Go Connectivo',
-    metaDescription: 'Campaign-ready outbound voice from Go Connectivo, clear audio, flexible caller ID, concurrent scaling, quality monitoring, and usage analytics for dialers.',
+    metaTitle: 'Outbound Voice for Dialer Campaigns | Go Connectivo',
+    metaDescription:
+      'Campaign outbound voice from Go Connectivo for dialer floors: SIP campaign trunks, caller ID control, concurrent scaling, and quality monitoring, distinct from wholesale or toll-free termination.',
     overview: {
-      heading: 'Outbound voice built for sustained connect rates',
+      heading: 'Outbound voice for dialer-led campaigns',
       paragraphs: [
-        'Go Connectivo outbound services deliver campaign-ready voice with clear audio, flexible caller ID, and routes designed for sustained connect rates.',
-        'Campaign trunks, concurrent scaling, quality monitoring, and usage analytics keep dialers productive during peak hours.',
+        'Outbound Services is for contact-center and sales floors that need campaign-ready voice trunks behind auto, predictive, power, or progressive dialers.',
+        'This page is about agent-facing outbound capacity and CLI control. If you need carrier wholesale minutes, 8xx termination only, or general VoIP termination for mixed apps, use those dedicated pages instead.',
       ],
     },
     benefits: {
-      heading: 'Outbound voice benefits',
+      heading: 'Outbound campaign benefits',
       items: [
-        { title: 'Campaign trunks', text: 'Dedicated capacity patterns for outbound dialing programs.' },
-        { title: 'Caller ID management', text: 'Control presentation for brand and local presence strategies.' },
-        { title: 'Concurrent scaling', text: 'Grow simultaneous calls as agent headcount rises.' },
-        { title: 'Quality monitoring', text: 'Watch audio and answer performance across routes.' },
+        { title: 'Campaign trunks', text: 'Capacity patterns sized for dialer concurrent call plans.' },
+        { title: 'Caller ID management', text: 'Presentation controls for brand and local presence strategies.' },
+        { title: 'Dialer interconnect', text: 'SIP handoff designed for call-center dialer platforms.' },
+        { title: 'Quality monitoring', text: 'Watch audio and answer performance during peak dialing windows.' },
       ],
     },
     howItWorks: {
@@ -626,89 +627,133 @@ export const SERVICE_SEO = {
         { title: 'Profile traffic', text: 'Share dialer volume, destinations, and CLI needs.' },
         { title: 'Provision trunks', text: 'Stand up SIP capacity sized for peak concurrent calls.' },
         { title: 'Integrate dialer', text: 'Connect auto, predictive, or power dialer platforms.' },
-        { title: 'Optimize routes', text: 'Tune quality and rates using live analytics.' },
+        { title: 'Optimize routes', text: 'Tune quality using live campaign analytics.' },
       ],
     },
     useCases: {
       heading: 'Outbound service use cases',
-      items: ['Sales dialer campaigns', 'Appointment-setting programs', 'Survey and research calling', 'Collections outreach', 'Multi-client BPO outbound floors'],
+      items: [
+        'Sales dialer campaigns',
+        'Appointment-setting programs',
+        'Survey and research calling',
+        'Collections outreach',
+        'Multi-client BPO outbound floors',
+      ],
     },
     faqs: {
       heading: 'Outbound services FAQs',
       items: [
-        { q: 'Will this work with our dialer?', a: 'Outbound trunks are designed for call-center dialer interconnect over SIP.' },
-        { q: 'Can we manage caller ID?', a: 'Caller ID management supports campaign and local presence policies.' },
-        { q: 'How do you monitor quality?', a: 'Quality monitoring and usage analytics help catch issues early.' },
+        {
+          q: 'How is this different from VoIP termination?',
+          a: 'Outbound Services focuses on dialer campaign trunks and CLI. VoIP Termination is the broader termination product for domestic/international call completion across apps and seats.',
+        },
+        {
+          q: 'When should I choose wholesale instead?',
+          a: 'Choose Wholesale Termination when you are a platform or reseller buying minutes at partner scale, not a single dialer floor.',
+        },
+        {
+          q: 'Will this work with our dialer?',
+          a: 'Outbound trunks are designed for call-center dialer interconnect over SIP.',
+        },
       ],
     },
+    related: [
+      { label: 'VoIP termination', to: '/services/voip-termination' },
+      { label: 'Wholesale termination', to: '/services/wholesale-termination' },
+      { label: 'Smart auto dialer', to: '/services/auto-dialer' },
+      { label: 'Robocall mitigation', to: '/compliance/robocall-mitigation-plan' },
+    ],
     closing: {
-      heading: 'Fuel dialers with reliable outbound voice',
-      paragraphs: ['Request outbound voice capacity and rates from Go Connectivo for your next campaign surge.'],
+      heading: 'Fuel dialers with campaign outbound voice',
+      paragraphs: [
+        'Request outbound campaign trunk capacity from Go Connectivo, or compare wholesale and VoIP termination if your buying model is different.',
+      ],
     },
   },
 
   'toll-free-termination': {
-    metaTitle: 'Toll-Free Termination Services | Go Connectivo',
-    metaDescription: 'Toll-free termination from Go Connectivo, stable 8xx routes, competitive rate decks, failover carriers, CDR access, and quality monitoring for outbound traffic.',
+    metaTitle: 'Toll-Free (8xx) Termination | Go Connectivo',
+    metaDescription:
+      'Terminate outbound calls to toll-free 8xx destinations with Go Connectivo: TF-focused routes, rate decks, failover carriers, and CDRs, distinct from dialer trunks or wholesale minutes.',
     overview: {
-      heading: 'Terminate outbound traffic to toll-free destinations',
+      heading: 'Toll-free termination for 8xx destinations',
       paragraphs: [
-        'Go Connectivo toll-free termination delivers outbound traffic to 8xx destinations with stable routes and transparent pricing.',
-        'Competitive rate decks, failover carriers, CDR access, and quality monitoring help platforms and call centers manage cost and continuity.',
+        'Toll-Free Termination completes outbound traffic to 8xx numbers. Use it when your mix is toll-free heavy and you need TF-focused routing and rating.',
+        'It is not a substitute for Wholesale Termination (partner-scale minutes) or Outbound Services (dialer campaign trunks).',
       ],
     },
     benefits: {
       heading: 'Toll-free termination benefits',
       items: [
-        { title: '8xx termination routes', text: 'Reach toll-free destinations with purpose-built paths.' },
-        { title: 'Competitive rate decks', text: 'Price outbound TF traffic with clearer forecasting.' },
-        { title: 'Failover carriers', text: 'Secondary routes reduce single-path risk.' },
+        { title: '8xx-focused routes', text: 'Paths built for toll-free destination completion.' },
+        { title: 'Transparent TF rates', text: 'Price decks scoped to toll-free termination usage.' },
+        { title: 'Failover carriers', text: 'Secondary paths reduce single-route risk on TF traffic.' },
         { title: 'CDR access', text: 'Reconcile usage and investigate anomalies quickly.' },
       ],
     },
     howItWorks: {
       heading: 'Toll-free termination setup',
       steps: [
-        { title: 'Share traffic profile', text: 'Outline volumes and destination mix for TF termination.' },
-        { title: 'Enable routes', text: 'Activate 8xx termination with agreed rates.' },
+        { title: 'Share TF profile', text: 'Outline volumes and destination mix for 8xx termination.' },
+        { title: 'Enable routes', text: 'Activate toll-free termination with agreed rates.' },
         { title: 'Test quality', text: 'Validate audio and completion before full cutover.' },
         { title: 'Operate with CDRs', text: 'Use reporting and monitoring for ongoing control.' },
       ],
     },
     useCases: {
       heading: 'Toll-free termination use cases',
-      items: ['Platforms sending traffic to 8xx endpoints', 'Contact centers calling partner hotlines', 'Wholesale partners needing TF coverage', 'Enterprises consolidating TF outbound spend', 'Failover scenarios for primary TF carriers'],
+      items: [
+        'Customer-care callbacks to 8xx lines',
+        'Platforms terminating TF-heavy traffic',
+        'Overflow TF routes beside primary carriers',
+        'Campaigns that must reach toll-free endpoints',
+      ],
     },
     faqs: {
       heading: 'Toll-free termination FAQs',
       items: [
-        { q: 'Is pricing transparent?', a: 'Rate decks are designed to be clear for budgeting and reconciliation.' },
-        { q: 'Do you provide CDRs?', a: 'CDR access supports finance and troubleshooting workflows.' },
-        { q: 'What about failover?', a: 'Failover carriers help maintain completion if a path degrades.' },
+        {
+          q: 'Is this the same as outbound dialer voice?',
+          a: 'No. Outbound Services covers dialer campaign trunks. Toll-free Termination completes calls to 8xx destinations.',
+        },
+        {
+          q: 'Do you also sell wholesale minutes?',
+          a: 'Wholesale Termination is a separate product for partner-scale domestic/international minute buying.',
+        },
+        { q: 'Can we see CDRs?', a: 'CDR access is part of operating toll-free termination with Go Connectivo.' },
       ],
     },
+    related: [
+      { label: 'Outbound voice (dialers)', to: '/services/outbound-services' },
+      { label: 'VoIP termination', to: '/services/voip-termination' },
+      { label: 'Wholesale termination', to: '/services/wholesale-termination' },
+      { label: 'Acceptable use', to: '/compliance/acceptable-use-policy' },
+    ],
     closing: {
       heading: 'Stabilize your 8xx termination',
-      paragraphs: ['Talk with Go Connectivo about toll-free termination rates, routes, and monitoring.'],
+      paragraphs: [
+        'Talk with Go Connectivo about toll-free termination routes and rates, or review wholesale and VoIP termination if your needs are wider than 8xx.',
+      ],
     },
   },
 
   'wholesale-termination': {
-    metaTitle: 'Wholesale Voice Termination | Go Connectivo',
-    metaDescription: 'Wholesale voice termination from Go Connectivo, domestic and international routes, SIP interconnect, high concurrency, tiered rates, and 24/7 NOC support.',
+    metaTitle: 'Wholesale Voice Termination for Platforms | Go Connectivo',
+    metaDescription:
+      'Wholesale voice termination for platforms and resellers: domestic/international routes, SIP interconnect, concurrency, and tiered rates, not single-floor dialer trunks or 8xx-only TF termination.',
     overview: {
       heading: 'Wholesale termination at partner scale',
       paragraphs: [
-        'Go Connectivo wholesale voice termination serves platforms and partners that need domestic and international reach without surprises.',
-        'SIP interconnect, high concurrent capacity, tiered rates, and 24/7 NOC support keep wholesale voice accountable when minutes spike.',
+        'Wholesale Termination is for platforms, resellers, and aggregators buying domestic and international minutes at partner scale over SIP interconnect.',
+        'Choose Outbound Services for a single dialer floor, Toll-Free Termination for 8xx-only completion, or VoIP Termination when you need a general termination product for seats and apps.',
       ],
     },
     benefits: {
       heading: 'Wholesale termination benefits',
       items: [
-        { title: 'Domestic & intl routes', text: 'Broad coverage for multi-market traffic mixes.' },
+        { title: 'Domestic & intl routes', text: 'Coverage for multi-market wholesale traffic mixes.' },
         { title: 'SIP interconnect', text: 'Standard SIP trunk handoff for platforms and carriers.' },
-        { title: 'High concurrency', text: 'Capacity for bursty wholesale and campaign loads.' },
+        { title: 'High concurrency', text: 'Capacity for bursty wholesale and aggregator loads.' },
         { title: 'Tiered rates', text: 'Options that fit volume commitments and route quality needs.' },
       ],
     },
@@ -718,35 +763,59 @@ export const SERVICE_SEO = {
         { title: 'Traffic discovery', text: 'Review destinations, ACD, and concurrency requirements.' },
         { title: 'Interconnect', text: 'Establish SIP trunks and authentication.' },
         { title: 'Route & rate', text: 'Assign decks and quality tiers to your profile.' },
-        { title: 'NOC-backed ops', text: 'Monitor with 24/7 support for incidents and growth.' },
+        { title: 'Operate with NOC support', text: 'Monitor incidents and growth with voice operations support.' },
       ],
     },
     useCases: {
       heading: 'Wholesale termination use cases',
-      items: ['CPaaS and UCaaS platforms', 'Reseller voice partners', 'International calling products', 'High-volume dialer aggregators', 'Backup wholesale routes for primary carriers'],
+      items: [
+        'CPaaS and UCaaS platforms',
+        'Reseller voice partners',
+        'International calling products',
+        'High-volume dialer aggregators',
+        'Backup wholesale routes for primary carriers',
+      ],
     },
     faqs: {
       heading: 'Wholesale termination FAQs',
       items: [
-        { q: 'Do you support international termination?', a: 'Domestic and international wholesale routes are part of the offer.' },
-        { q: 'Is NOC support included?', a: '24/7 NOC support is available for wholesale voice operations.' },
-        { q: 'Can rates be tiered by volume?', a: 'Tiered rate options help align pricing with committed traffic.' },
+        {
+          q: 'Is wholesale the same as VoIP termination?',
+          a: 'Wholesale is partner-scale minute buying. VoIP Termination is the general termination product for call centers, seats, and application-originated calls.',
+        },
+        {
+          q: 'Do you support international termination?',
+          a: 'Domestic and international wholesale routes are part of the offer.',
+        },
+        {
+          q: 'Can rates be tiered by volume?',
+          a: 'Tiered rate options help align pricing with committed traffic.',
+        },
       ],
     },
+    related: [
+      { label: 'VoIP termination', to: '/services/voip-termination' },
+      { label: 'Outbound voice (dialers)', to: '/services/outbound-services' },
+      { label: 'Toll-free termination', to: '/services/toll-free-termination' },
+      { label: 'Compliance hub', to: '/compliance' },
+    ],
     closing: {
-      heading: 'Scale wholesale minutes with confidence',
-      paragraphs: ['Contact Go Connectivo for wholesale termination interconnect, rates, and capacity planning.'],
+      heading: 'Scale wholesale minutes with clear interconnect',
+      paragraphs: [
+        'Contact Go Connectivo for wholesale termination interconnect, rates, and capacity planning.',
+      ],
     },
   },
 
   'voip-termination': {
-    metaTitle: 'VoIP Termination Services | Go Connectivo',
-    metaDescription: 'Reliable VoIP termination from Go Connectivo, domestic and international routes, competitive rates, high call quality, and 24/7 technical support for call centers.',
+    metaTitle: 'VoIP Termination for Call Centers & Apps | Go Connectivo',
+    metaDescription:
+      'VoIP termination for call centers, PBX seats, and application-originated calls: domestic/international completion with monitored routes, distinct from wholesale partner minutes or 8xx-only TF termination.',
     overview: {
-      heading: 'VoIP termination with clear audio and competitive rates',
+      heading: 'VoIP termination for mixed business traffic',
       paragraphs: [
-        'Go Connectivo VoIP termination delivers domestic and international calling with competitive rates and crystal-clear quality for call centers and platforms.',
-        'Routes are monitored for completion and audio integrity. 24/7 technical support helps when codecs, CLI, or destination quality need attention.',
+        'VoIP Termination is the general call-completion product for dialers, hosted PBX seats, and application-originated calling across domestic and international destinations.',
+        'Audio quality and completion are monitored for business traffic. For partner-scale minute buying use Wholesale; for 8xx-only use Toll-Free Termination; for dialer campaign trunks use Outbound Services.',
       ],
     },
     benefits: {
@@ -754,34 +823,57 @@ export const SERVICE_SEO = {
       items: [
         { title: 'Domestic termination', text: 'US-focused routes tuned for business and contact-center traffic.' },
         { title: 'International termination', text: 'Reach global destinations from the same interconnect model.' },
-        { title: 'Competitive rates', text: 'Control spend without sacrificing usable audio quality.' },
-        { title: '24/7 technical support', text: 'Specialists available when termination issues cannot wait.' },
+        { title: 'Practical rate design', text: 'Control spend without unsupported “lowest rate” claims.' },
+        { title: 'Technical support', text: 'Specialists available when codecs, CLI, or destination quality need attention.' },
       ],
     },
     howItWorks: {
       heading: 'VoIP termination path',
       steps: [
         { title: 'Connect via SIP', text: 'Hand off calls over SIP trunks to Go Connectivo.' },
-        { title: 'Route selection', text: 'Traffic follows quality-aware domestic or intl paths.' },
+        { title: 'Route selection', text: 'Traffic follows quality-aware domestic or international paths.' },
         { title: 'Complete the call', text: 'PSTN or downstream carriers deliver to the destination.' },
         { title: 'Review & optimize', text: 'Use support and reporting to refine quality and cost.' },
       ],
     },
     useCases: {
       heading: 'VoIP termination use cases',
-      items: ['Call-center outbound termination', 'Business VoIP seat outbound minutes', 'Application and API-originated calls', 'International customer outreach', 'Backup termination for primary carriers'],
+      items: [
+        'Call-center outbound termination',
+        'Business VoIP seat outbound minutes',
+        'Application and API-originated calls',
+        'International customer outreach',
+        'Backup termination for primary carriers',
+      ],
     },
     faqs: {
       heading: 'VoIP termination FAQs',
       items: [
-        { q: 'Is quality monitored?', a: 'Routes are operated with attention to call quality and completion for business traffic.' },
-        { q: 'Do you cover international?', a: 'International termination is available alongside domestic routes.' },
-        { q: 'Who do we call for issues?', a: '24/7 technical support is available for termination troubleshooting.' },
+        {
+          q: 'How is this different from wholesale?',
+          a: 'Wholesale targets platforms buying minutes at partner scale. VoIP Termination serves call centers, seats, and apps that need completion routes.',
+        },
+        {
+          q: 'Do you cover international?',
+          a: 'International termination is available alongside domestic routes.',
+        },
+        {
+          q: 'Who do we call for issues?',
+          a: 'Voice technical support is available for termination troubleshooting.',
+        },
       ],
     },
+    related: [
+      { label: 'Wholesale termination', to: '/services/wholesale-termination' },
+      { label: 'Outbound voice (dialers)', to: '/services/outbound-services' },
+      { label: 'Toll-free termination', to: '/services/toll-free-termination' },
+      { label: 'Robocall mitigation', to: '/compliance/robocall-mitigation-plan' },
+    ],
     closing: {
       heading: 'Terminate with Go Connectivo',
-      paragraphs: ['Get VoIP termination rates and interconnect details tailored to your dialer or platform traffic.'],
+      paragraphs: [
+        'Get VoIP termination interconnect details tailored to your dialer, PBX, or application traffic.',
+      ],
     },
   },
 
@@ -1063,12 +1155,13 @@ export const SERVICE_SEO = {
 
   'voice-api': {
     metaTitle: 'Voice API & Programmable Voice | Go Connectivo',
-    metaDescription: 'Voice API from Go Connectivo, embed inbound and outbound calling with REST, webhooks, programmable IVR, SIP control, and sandbox keys for developers.',
+    metaDescription:
+      'Voice API from Go Connectivo, embed inbound and outbound calling with REST, webhooks, programmable IVR, and SIP. Docs and credentials shared during technical onboarding.',
     overview: {
       heading: 'Programmable voice for product and platform teams',
       paragraphs: [
-        'Go Connectivo voice API embeds outbound and inbound calling into your apps with REST, webhooks, SIP, and developer-friendly docs.',
-        'Build click-to-call, notifications, and programmable IVR without standing up a full carrier stack. Sandbox and production keys included.',
+        'Go Connectivo voice API is designed to embed outbound and inbound calling into applications using REST-style control, webhooks, and SIP where required.',
+        'Public self-serve API docs are not published on this website. Endpoint details, sandbox access, and limits are shared during technical onboarding after you contact our team.',
       ],
     },
     benefits: {
@@ -1083,7 +1176,7 @@ export const SERVICE_SEO = {
     howItWorks: {
       heading: 'Voice API development path',
       steps: [
-        { title: 'Get API keys', text: 'Start in sandbox, then promote to production credentials.' },
+        { title: 'Scope & approve access', text: 'Contact our team to define use cases and receive credentials when approved.' },
         { title: 'Wire webhooks', text: 'Receive call events into your application logic.' },
         { title: 'Place or answer calls', text: 'Use REST and SIP controls for media paths.' },
         { title: 'Monitor & scale', text: 'Watch quality and concurrency as usage grows.' },
@@ -1096,14 +1189,20 @@ export const SERVICE_SEO = {
     faqs: {
       heading: 'Voice API FAQs',
       items: [
-        { q: 'Do you provide a sandbox?', a: 'Sandbox and production keys support safe development and go-live.' },
-        { q: 'Can we build programmable IVR?', a: 'Programmable IVR flows are a core API use case.' },
+        { q: 'Do you provide a sandbox?', a: 'Sandbox and production credentials are discussed during onboarding once API access is approved.' },
+        { q: 'Where is the API documentation?', a: 'Detailed endpoint documentation is provided to approved technical contacts rather than as a public portal on this site.' },
         { q: 'Is SIP supported?', a: 'SIP and media control options help integrate with existing telephony assets.' },
       ],
     },
+    related: [
+      { label: 'SIP trunking', to: '/services/sip-trunking' },
+      { label: 'Call center software', to: '/services/call-center-software' },
+      { label: 'SMS solutions', to: '/services/sms-solutions' },
+      { label: 'Contact sales', to: '/contact' },
+    ],
     closing: {
       heading: 'Ship calling features faster',
-      paragraphs: ['Talk to Go Connectivo about voice API access, webhooks, and carrier routes behind your product.'],
+      paragraphs: ['Talk to Go Connectivo about voice API access, webhooks, and the carrier routes behind your product. We will share technical documentation after scoping.'],
     },
   },
 

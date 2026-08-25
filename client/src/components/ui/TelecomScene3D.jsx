@@ -766,7 +766,9 @@ export default function TelecomScene3D({
     resize();
     window.addEventListener('resize', resize);
 
-    let visible = false;
+    let visible = true;
+    // Lazy wrapper already mounts when approaching; keep the loop hot so first
+    // on-screen frame is not waiting on a second, tighter IntersectionObserver.
     const io = new IntersectionObserver(
       ([entry]) => {
         visible = entry.isIntersecting;
@@ -775,9 +777,11 @@ export default function TelecomScene3D({
           renderer.render(scene, camera);
         }
       },
-      { threshold: 0.02, rootMargin: '80px' },
+      { threshold: 0, rootMargin: '120% 0px 120% 0px' },
     );
     io.observe(container);
+    // Paint once immediately so the stage is not blank for a frame.
+    renderer.render(scene, camera);
 
     let animId = 0;
     let lost = false;

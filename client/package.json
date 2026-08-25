@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "node scripts/generate-seo.mjs && vite build",
+    "seo": "node scripts/generate-seo.mjs",
     "lint": "oxlint",
     "optimize:images": "node scripts/optimize-images.mjs",
     "preview": "vite preview"

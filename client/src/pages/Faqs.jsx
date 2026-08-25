@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { Plus } from 'lucide-react';
 import PageHero from '../components/ui/PageHero';
@@ -6,12 +7,20 @@ import MagneticButton from '../components/ui/MagneticButton';
 import CTA from '../components/home/CTA';
 import { AnimatedSection, StaggerContainer } from '../components/motion';
 import { faqCategories } from '../data/content';
+import { PageSeo } from '../components/seo/PageSeo';
 
 export default function Faqs() {
   const [openId, setOpenId] = useState('0-0');
 
   return (
     <>
+      <PageSeo
+        path="/faqs"
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'FAQs', path: '/faqs' },
+        ]}
+      />
       <PageHero
         eyebrow="Frequently Asked Questions"
         title="Got Questions?"
@@ -74,14 +83,28 @@ export default function Faqs() {
                             exit={{ height: 0, opacity: 0 }}
                             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
                           >
-                            <motion.p
+                            <motion.div
                               initial={{ y: -8, opacity: 0 }}
                               animate={{ y: 0, opacity: 1 }}
                               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.05 }}
-                              className="px-5 pb-5 text-sm leading-relaxed text-[#6B7C8F]"
+                              className="px-5 pb-5"
                             >
-                              {item.a}
-                            </motion.p>
+                              <p className="text-sm leading-relaxed text-[#6B7C8F]">{item.a}</p>
+                              {item.related?.length ? (
+                                <ul className="mt-3 flex flex-wrap gap-2">
+                                  {item.related.map((link) => (
+                                    <li key={`${item.q}-${link.to}`}>
+                                      <Link
+                                        to={link.to}
+                                        className="inline-flex min-h-9 items-center rounded-lg border border-[rgba(47,76,115,0.12)] bg-[#F4F6F9] px-3 text-xs font-semibold text-[#2F4C73] transition-colors hover:border-[#4A6B94]/40 hover:bg-white"
+                                      >
+                                        {link.label}
+                                      </Link>
+                                    </li>
+                                  ))}
+                                </ul>
+                              ) : null}
+                            </motion.div>
                           </motion.div>
                         )}
                       </AnimatePresence>
