@@ -51,18 +51,12 @@ export default function Footer() {
         stagger={0.09}
         start="top 95%"
       >
-        <div className="space-y-4 md:col-span-2 lg:col-span-4">
+        <div className="space-y-4 md:col-span-2 lg:col-span-3">
           <Logo />
           <p className="max-w-xs text-sm leading-relaxed text-[#B8C9D1]">
             Business VoIP, contact center, SIP trunking, and VoIP Termination with clear technical
             support.
           </p>
-          <Link
-            to="/contact"
-            className="inline-flex min-h-11 items-center rounded-full border border-[#8BA3C4]/45 px-5 py-2.5 text-sm font-semibold text-[#FFFFFF] transition-colors hover:border-[#FFFFFF]/70 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8BA3C4]/60"
-          >
-            Get Started
-          </Link>
         </div>
 
         <div className="lg:col-span-2">
@@ -91,7 +85,20 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div className="lg:col-span-3">
+        <div className="lg:col-span-2">
+          <h3 className="mb-3.5 font-mono text-[10px] font-bold tracking-[0.2em] text-[#8BA3C4] uppercase sm:text-xs">
+            Legal
+          </h3>
+          <ul className="space-y-2">
+            {legalLinks.map((link) => (
+              <li key={link.path}>
+                <FooterLink to={link.path}>{link.label}</FooterLink>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="lg:col-span-2">
           <h3 className="mb-3.5 font-mono text-[10px] font-bold tracking-[0.2em] text-[#8BA3C4] uppercase sm:text-xs">
             Contact
           </h3>
@@ -108,18 +115,9 @@ export default function Footer() {
 
       <AnimatedSection from="none" duration={0.7} start="top 98%">
         <div className="relative z-10 border-t border-[#6B8AB0]/20">
-          <div className="gc-container flex flex-col gap-3 py-4 sm:py-5">
-            <div className="flex flex-wrap gap-x-4 gap-y-2">
-              {legalLinks.map((link) => (
-                <FooterLink key={link.path} to={link.path}>
-                  {link.label}
-                </FooterLink>
-              ))}
-            </div>
-            <div className="flex flex-col gap-1.5 font-mono text-[11px] tracking-wider text-[#9BB0BA] sm:flex-row sm:items-center sm:justify-between sm:text-xs">
-              <p>© {new Date().getFullYear()} GO CONNECTIVO LLC. ALL RIGHTS RESERVED.</p>
-              <p className="text-[#7A8F99]">FCC RMD certified voice infrastructure</p>
-            </div>
+          <div className="gc-container flex flex-col gap-1.5 py-4 font-mono text-[11px] tracking-wider text-[#9BB0BA] sm:flex-row sm:items-center sm:justify-between sm:py-5 sm:text-xs">
+            <p>© {new Date().getFullYear()} GO CONNECTIVO LLC. ALL RIGHTS RESERVED.</p>
+            <p className="text-[#7A8F99]">FCC RMD certified voice infrastructure</p>
           </div>
         </div>
       </AnimatedSection>

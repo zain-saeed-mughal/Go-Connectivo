@@ -565,30 +565,35 @@ export const companyStats = [
 ];
 
 export const aboutIntro = [
-  'Go Connectivo helps contact centers, sales teams, and service desks run on a complete voice stack, dialer solutions, business VoIP and hosted PBX, inbound numbers, outbound and carrier termination (including VoIP Termination), contact-center tools, plus voice API and SMS.',
-  'Our focus is practical telecom infrastructure: clear audio, predictable rates, and platforms that keep agents productive whether they sit on one floor or across many locations.',
+  'Go Connectivo is a voice infrastructure partner for contact centers and growing teams. We bring dialers, Business VoIP, numbers, carrier termination, and contact-center tools into one practical operating stack.',
+  'Our focus is dependable routes, clear audio, and specialist support so agents stay productive, whether they work on one floor or across locations.',
 ];
 
 export const coreValues = [
   {
     title: 'Reliability',
+    icon: 'ShieldCheck',
     description: 'Redundant routes and monitored voice paths with a reliability-first operating mindset.',
   },
   {
     title: 'Innovation',
+    icon: 'Zap',
     description:
       'Dialers, SIP trunks, IVR, analytics, and programmable voice that keep pace with how modern floors operate.',
   },
   {
     title: 'Support',
-    description: '24/7 specialists who understand trunks, campaigns, and contact-center workflows.',
+    icon: 'Headphones',
+    description: 'Specialists who understand trunks, campaigns, and contact-center workflows.',
   },
   {
     title: 'Transparency',
+    icon: 'ListOrdered',
     description: 'Clear rate decks, honest timelines, and no surprise scope on voice services.',
   },
   {
     title: 'Growth',
+    icon: 'Maximize2',
     description: 'Architecture that scales seats, concurrent calls, and markets without a rip-and-replace.',
   },
 ];

@@ -33,8 +33,8 @@ export const staticPages = {
   '/about': {
     title: 'About Go Connectivo | VoIP & Communications Partner',
     description:
-      'Learn about Go Connectivo, a voice infrastructure partner for dialers, Business VoIP, SIP, numbers, termination, and contact-center platforms.',
-    h1: 'About Go Connectivo',
+      'Learn about Go Connectivo, a voice infrastructure partner for Business VoIP, contact center platforms, SIP, numbers, and VoIP termination.',
+    h1: 'Your Trusted VoIP Partner',
   },
   '/services': {
     title: 'VoIP, Dialer & Contact Center Services | Go Connectivo',
