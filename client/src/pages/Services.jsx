@@ -63,21 +63,21 @@ export default function Services() {
                 as="article"
                 className="p-5 sm:p-6"
               >
-                <span className="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-[#4A6B94]/25 to-[#4A6B94]/15 text-[#6B8AB0]">
+                <span className="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-[var(--accent-soft)]/25 to-[var(--accent-soft)]/15 text-[var(--text-secondary)]">
                   <ServiceIcon name={category.icon} size={22} />
                 </span>
-                <h3 className="mt-4 font-display text-lg font-semibold text-[#2F4C73] sm:text-xl">
+                <h3 className="mt-4 font-display text-lg font-semibold text-[var(--text-primary)] sm:text-xl">
                   {category.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-[#6B7C8F]">{category.description}</p>
+                <p className="mt-2 text-sm leading-relaxed text-[var(--text-secondary)]">{category.description}</p>
                 <ul className="mt-4 space-y-2">
                   {getServicesForCategory(category.id).map((service) => (
                     <li key={service.id}>
                       <Link
                         to={`/services/${service.id}`}
-                        className="flex items-center gap-2 text-sm text-[#4A5D73] transition-colors hover:text-[#2F4C73]"
+                        className="flex items-center gap-2 text-sm text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"
                       >
-                        <span className="h-1 w-1 shrink-0 rounded-full bg-[#4A6B94]" />
+                        <span className="h-1 w-1 shrink-0 rounded-full bg-[var(--accent-soft)]" />
                         <span className="min-w-0 leading-snug">{service.title}</span>
                       </Link>
                     </li>
@@ -107,16 +107,16 @@ export default function Services() {
                 placeholder="Search services (e.g. PBX, Dialer, SIP, SMS...)"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="min-h-11 w-full rounded-full border border-[rgba(47,76,115,0.2)] bg-[#FFFFFF] px-5 py-3 pl-11 text-sm text-[#2F4C73] shadow-sm transition-all focus:border-[#4A6B94] focus:outline-none focus:ring-2 focus:ring-[#4A6B94]/20"
+                className="min-h-11 w-full rounded-full border border-[var(--border)] bg-[var(--surface)] px-5 py-3 pl-11 text-sm text-[var(--text-primary)] shadow-sm transition-all placeholder:text-[var(--text-muted)] focus:border-[var(--accent-soft)] focus:outline-none focus:ring-2 focus:ring-[var(--accent-soft)]/20"
               />
-              <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#6B7C8F]">
+              <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[var(--text-secondary)]">
                 <Search size={16} aria-hidden />
               </span>
               {searchQuery && (
                 <button
                   type="button"
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-semibold text-[#6B7C8F] hover:text-[#2F4C73]"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                 >
                   Clear
                 </button>
@@ -131,33 +131,33 @@ export default function Services() {
               <Link
                 key={service.id}
                 to={`/services/${service.id}`}
-                className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-[rgba(47,76,115,0.13)] bg-gradient-to-br from-[#FFFFFF] via-[#F7F9FC] to-[#E8EEF6] p-5 shadow-[0_12px_32px_rgba(47,76,115,0.07)] transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-[#4A6B94]/60 hover:shadow-[0_18px_44px_rgba(47,76,115,0.13)] sm:p-[1.15rem]"
+                className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-[color:var(--border-soft)] bg-gradient-to-br from-[var(--surface)] via-[var(--surface)] to-[var(--bg-secondary)] p-5 shadow-[var(--shadow-card)] transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-[color:var(--border)] hover:shadow-[var(--shadow-card-hover)] sm:p-[1.15rem]"
                 data-cursor="hover"
               >
                 <ServiceCardArt
                   name={service.icon}
-                  className="pointer-events-none absolute -right-2 -bottom-1 h-[7.5rem] w-[7.5rem] text-[#2F4C73] opacity-[0.07] transition-opacity duration-300 group-hover:opacity-[0.11] sm:h-32 sm:w-32"
+                  className="pointer-events-none absolute -right-2 -bottom-1 h-[7.5rem] w-[7.5rem] text-[var(--text-primary)] opacity-[0.07] transition-opacity duration-300 group-hover:opacity-[0.11] sm:h-32 sm:w-32"
                 />
 
                 <div className="relative z-10 mb-3.5 flex items-start justify-between gap-3">
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#4A6B94]/12 text-[#2F4C73] ring-1 ring-[#4A6B94]/10 transition-colors duration-300 group-hover:bg-[#4A6B94]/18 group-hover:ring-[#4A6B94]/22 sm:h-11 sm:w-11">
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[var(--accent-soft)]/16 text-[var(--text-primary)] ring-1 ring-[var(--accent-soft)]/10 transition-colors duration-300 group-hover:bg-[var(--accent-soft)]/22 group-hover:ring-[var(--accent-soft)]/22 sm:h-11 sm:w-11">
                     <ServiceIcon name={service.icon} size={20} />
                   </span>
                   <span
-                    className="font-display text-[11px] font-semibold tracking-[0.14em] text-[#6B8AB0]/80 tabular-nums"
+                    className="font-display text-[11px] font-semibold tracking-[0.14em] text-[var(--text-secondary)]/80 tabular-nums"
                     aria-hidden
                   >
                     {String(index + 1).padStart(2, '0')}
                   </span>
                 </div>
 
-                <h3 className="relative z-10 font-display text-base font-semibold tracking-tight text-[#2F4C73] sm:text-[1.05rem]">
+                <h3 className="relative z-10 font-display text-base font-semibold tracking-tight text-[var(--text-primary)] sm:text-[1.05rem]">
                   {service.title}
                 </h3>
-                <p className="relative z-10 mt-2 flex-1 text-sm leading-relaxed text-[#5A6B7D]">
+                <p className="relative z-10 mt-2 flex-1 text-sm leading-relaxed text-[var(--text-secondary)]">
                   {service.description}
                 </p>
-                <span className="relative z-10 mt-4 inline-flex min-h-10 items-center gap-1.5 text-sm font-semibold text-[#2F4C73] transition-colors duration-300 group-hover:text-[#4A6B94] sm:min-h-0">
+                <span className="relative z-10 mt-4 inline-flex min-h-10 items-center gap-1.5 text-sm font-semibold text-[var(--text-primary)] transition-colors duration-300 group-hover:text-[var(--text-secondary)] sm:min-h-0">
                   Learn More
                   <span aria-hidden className="inline-block transition-transform duration-300 group-hover:translate-x-1">
                     →
@@ -166,7 +166,7 @@ export default function Services() {
               </Link>
             ))
           ) : (
-            <div className="col-span-full py-12 text-center text-[#6B7C8F]">
+            <div className="col-span-full py-12 text-center text-[var(--text-secondary)]">
               No services match "{searchQuery}". Try searching for dialers, PBX, or termination.
             </div>
           )}
@@ -192,11 +192,11 @@ export default function Services() {
                 key={step.step}
                 className="gc-card h-full p-5"
               >
-                <div className="mb-4 grid h-8 w-8 place-items-center rounded-full border border-[#4A6B94]/40 bg-[#4A6B94]/10 text-xs font-semibold text-[#6B8AB0]">
+                <div className="mb-4 grid h-8 w-8 place-items-center rounded-full border border-[var(--accent-soft)]/40 bg-[var(--accent-soft)]/15 text-xs font-semibold text-[var(--text-secondary)]">
                   {step.step}
                 </div>
-                <h3 className="font-display text-lg font-semibold text-[#2F4C73]">{step.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-[#6B7C8F]">{step.description}</p>
+                <h3 className="font-display text-lg font-semibold text-[var(--text-primary)]">{step.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-[var(--text-secondary)]">{step.description}</p>
               </article>
             ))}
           </StaggerContainer>

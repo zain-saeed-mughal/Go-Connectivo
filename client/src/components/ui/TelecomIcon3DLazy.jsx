@@ -6,5 +6,5 @@ import ServiceIcon from './ServiceIcon';
  * don't go blank from browser context limits.
  */
 export default function TelecomIcon3DLazy({ name, size = 28, className = '' }) {
-  return <ServiceIcon name={name} size={size} className={`text-[#4A6B94] ${className}`} />;
+  return <ServiceIcon name={name} size={size} className={`text-[var(--text-secondary)] ${className}`} />;
 }

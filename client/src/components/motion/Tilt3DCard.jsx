@@ -28,7 +28,7 @@ export default function Tilt3DCard({ children, className = '', maxTilt = 8 }) {
     });
 
     setGlareStyle({
-      background: `radial-gradient(circle at ${glareX}% ${glareY}%, rgba(107, 138, 176, 0.28) 0%, rgba(255, 255, 255, 0.12) 35%, transparent 68%)`,
+      background: `radial-gradient(circle at ${glareX}% ${glareY}%, var(--glare-spot) 0%, var(--glare-b) 35%, transparent 68%)`,
       opacity: 1,
     });
   };

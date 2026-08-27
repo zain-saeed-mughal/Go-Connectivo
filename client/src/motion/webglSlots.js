@@ -1,14 +1,16 @@
 /**
- * Browser WebGL context budget is tiny (~8 including extensions).
+ * Browser WebGL context budget is tiny (~8 including extensions / StrictMode).
  * Home can try to mount several section scenes; only a few may live.
  *
  * Intentionally does NOT import `three` — that kept Three in the critical path
  * via main.jsx. Pass THREE into installThreeGuards() once a scene loads.
  */
 
-/** Desktop glass stages can stay warm together; browsers allow ~8 contexts. */
-const MAX_LIVE = 3;
+/** Keep at most two live stages so StrictMode remounts cannot blow the budget. */
+const MAX_LIVE = 2;
 const live = new Map(); // id -> { priority, onEvict }
+/** After eviction / context-loss, block that id from remounting briefly. */
+const backoffUntil = new Map(); // id -> timestamp
 let cooldownUntil = 0;
 let guardsInstalled = false;
 
@@ -19,6 +21,10 @@ function contextIsLost(renderer) {
   } catch {
     return true;
   }
+}
+
+function setBackoff(id, ms) {
+  backoffUntil.set(id, Date.now() + ms);
 }
 
 /** Skip loseContext when GPU already dropped the canvas (R3F + our cleanup). */
@@ -47,19 +53,25 @@ export function installThreeGuards(THREE) {
     if (first.includes('THREE.Clock')) return;
     if (first.includes('THREE.WebGLRenderer: Context Lost')) return;
     if (first.includes('not eligible for reset')) return;
+    if (first.includes('Too many active WebGL contexts')) return;
     origWarn(...args);
   };
 }
 
 export function noteWebglPressure() {
-  cooldownUntil = Date.now() + 400;
+  cooldownUntil = Date.now() + 1800;
 }
 
 export function isWebglCoolingDown() {
   return Date.now() < cooldownUntil;
 }
 
+export function isWebglBackingOff(id) {
+  return Date.now() < (backoffUntil.get(id) || 0);
+}
+
 export function requestWebglSlot(id, { priority = 0, onEvict } = {}) {
+  if (isWebglBackingOff(id)) return false;
   if (isWebglCoolingDown() && !live.has(id)) return false;
 
   if (live.has(id)) {
@@ -88,6 +100,7 @@ export function requestWebglSlot(id, { priority = 0, onEvict } = {}) {
 
   const victim = live.get(victimId);
   live.delete(victimId);
+  setBackoff(victimId, 1600);
   try {
     victim?.onEvict?.();
   } catch {
@@ -108,8 +121,8 @@ export function hasWebglSlot(id) {
 
 /**
  * Release GPU resources on unmount.
- * Do NOT forceContextLoss here, that logs "Context Lost" and can race R3F cleanup.
- * Removing the canvas + dispose() frees the browser slot.
+ * forceContextLoss after dispose so the browser frees the slot immediately —
+ * without it, rapid remounts hit "Too many active WebGL contexts".
  */
 export function disposeRenderer(renderer) {
   if (!renderer) return;
@@ -121,6 +134,13 @@ export function disposeRenderer(renderer) {
   }
   try {
     renderer.dispose();
+  } catch {
+    /* ignore */
+  }
+  try {
+    if (!contextIsLost(renderer)) {
+      renderer.forceContextLoss();
+    }
   } catch {
     /* ignore */
   }

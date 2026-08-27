@@ -12,18 +12,18 @@ function ComplianceBrandLockup({ mark, title, index }) {
   return (
     <div className="flex min-w-0 flex-wrap items-center gap-3 sm:gap-3.5">
       <span
-        className="inline-flex h-11 min-w-[3.25rem] shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#1C314F] via-[#2F4C73] to-[#4A6B94] px-2.5 shadow-[0_8px_22px_rgba(47,76,115,0.28)] ring-1 ring-white/15"
+        className="inline-flex h-11 min-w-[3.25rem] shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[var(--accent-primary)] via-[var(--accent-secondary)] to-[var(--accent-secondary)] px-2.5 text-[var(--text-on-accent)] shadow-[var(--shadow-card-hover)] ring-1 ring-[color:var(--border-soft)]"
         aria-hidden
       >
-        <span className="font-display text-[11px] font-extrabold tracking-[0.12em] text-[#F4F6F9] uppercase sm:text-xs">
+        <span className="font-display text-[11px] font-extrabold tracking-[0.12em] text-white uppercase sm:text-xs">
           {mark}
         </span>
       </span>
       <div className="min-w-0">
-        <p className="text-[10px] font-semibold tracking-[0.18em] text-[#6B8AB0] uppercase">
+        <p className="text-[10px] font-semibold tracking-[0.18em] text-[var(--text-secondary)] uppercase">
           Credential {String(index + 1).padStart(2, '0')}
         </p>
-        <h2 className="font-display text-lg font-bold tracking-[-0.03em] text-[#1C314F] sm:text-xl md:text-[1.35rem]">
+        <h2 className="font-display text-lg font-bold tracking-[-0.03em] text-[var(--text-primary)] sm:text-xl md:text-[1.35rem]">
           {title}
         </h2>
       </div>
@@ -69,16 +69,16 @@ export default function Compliance() {
                 key={item.title}
                 as="article"
                 id={item.id}
-                className="group relative scroll-mt-28 overflow-hidden border border-[rgba(47,76,115,0.1)] bg-gradient-to-br from-[#FFFFFF] via-[#F8FAFC] to-[#EEF3F8] p-5 shadow-[0_12px_40px_rgba(28,49,79,0.06)] sm:p-6 md:p-7"
+                className="group relative scroll-mt-28 overflow-hidden border border-[var(--border-soft)] bg-gradient-to-br from-[var(--surface)] via-[var(--bg-primary)] to-[var(--surface)] p-5 shadow-[var(--shadow-card)] sm:p-6 md:p-7"
                 data-cursor-label="Read"
               >
                 <div
-                  className="pointer-events-none absolute -right-8 top-0 h-28 w-28 rounded-full bg-[#6B8AB0]/10 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100"
+                  className="pointer-events-none absolute -right-8 top-0 h-28 w-28 rounded-full bg-[var(--accent-soft)]/12 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100"
                   aria-hidden
                 />
                 <div className="relative flex flex-col gap-4">
                   <ComplianceBrandLockup mark={item.mark} title={item.title} index={index} />
-                  <p className="border-t border-[rgba(47,76,115,0.08)] pt-3 text-sm leading-relaxed text-[#5A6F86] sm:text-[0.95rem]">
+                  <p className="text-sm leading-relaxed text-[var(--text-secondary)] sm:text-[0.95rem]">
                     {item.body}
                   </p>
                   {item.id === 'rmp' ? (

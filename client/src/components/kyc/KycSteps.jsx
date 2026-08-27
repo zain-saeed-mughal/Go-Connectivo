@@ -489,9 +489,13 @@ export function StepCompliance({ form, setForm, errors }) {
               >
                 <input
                   type="checkbox"
-                  className="mt-1 h-4 w-4 shrink-0 accent-[#2F4C73]"
+                  className="peer sr-only"
                   checked={Boolean(c[item.key])}
                   onChange={(e) => set(item.key, e.target.checked)}
+                />
+                <span
+                  aria-hidden="true"
+                  className="mt-1 relative h-4 w-4 shrink-0 rounded-[4px] border-2 border-[#6B8AB0] bg-white transition peer-checked:border-[#2F4C73] peer-checked:bg-[#2F4C73] after:absolute after:top-[1px] after:left-[4px] after:h-[9px] after:w-[5px] after:rotate-45 after:border-r-2 after:border-b-2 after:border-white after:opacity-0 after:content-[''] peer-checked:after:opacity-100"
                 />
                 <span className="text-[#4A5D73]">{item.label}</span>
               </label>

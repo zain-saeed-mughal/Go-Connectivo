@@ -3,7 +3,6 @@ export const navLinks = [
   { label: 'About', path: '/about' },
   { label: 'Services', path: '/services' },
   { label: 'Legal Compliance', path: '/compliance' },
-  { label: 'Resources', path: '/resources' },
   { label: 'FAQs', path: '/faqs' },
 ];
 
@@ -941,7 +940,7 @@ export const faqCategories = [
         a: 'Yes, onboarding covers agent consoles, supervisor tools, and campaign setup, plus documentation your ops leads can reuse for new hires.',
         related: [
           { label: 'Call center software', to: '/services/call-center-software' },
-          { label: 'Resources', to: '/resources' },
+          { label: 'Contact support', to: '/contact' },
         ],
       },
     ],

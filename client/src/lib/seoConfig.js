@@ -48,12 +48,6 @@ export const staticPages = {
       'Answers about Go Connectivo dialers, Business VoIP, SIP, numbers, VoIP termination, contact-center tools, APIs, onboarding, and support.',
     h1: 'Frequently Asked Questions',
   },
-  '/resources': {
-    title: 'VoIP Resources & Guides | Go Connectivo',
-    description:
-      'Guides, FAQs, compliance documents, and service explainers from Go Connectivo covering dialers, Business VoIP, SIP, numbers, and termination.',
-    h1: 'Guides, policies, and service explainers',
-  },
   '/compliance': {
     title: 'Voice Compliance & Caller Authentication | Go Connectivo',
     description:

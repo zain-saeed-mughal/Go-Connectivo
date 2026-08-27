@@ -1,0 +1,87 @@
+/* Light theme tokens — navy SaaS (default + explicit light) */
+:root,
+[data-theme='light'] {
+  --luxe-navy: #2f4c73;
+  --luxe-navy-dark: #243c5c;
+  --luxe-navy-deep: #1c314f;
+  --luxe-navy-mid: #4a6b94;
+  --luxe-navy-soft: #6b8ab0;
+  --luxe-navy-mist: #8ba3c4;
+
+  --bg-primary: #f4f6f9;
+  --bg-secondary: #e8ecf2;
+  --bg-surface: #ffffff;
+  --surface: #ffffff;
+  --accent: #2f4c73;
+  --accent-primary: #2f4c73;
+  --accent-secondary: #4a6b94;
+  --accent-bright: #4a6b94;
+  --accent-soft: #6b8ab0;
+  --accent-light: #8ba3c4;
+  --neutral-soft: #9aa8c0;
+  --text-primary: #2f4c73;
+  --text-secondary: #4a5d73;
+  --text-muted: #6b7c8f;
+  --text-on-accent: #f7f9fc;
+  --border: rgba(74, 107, 148, 0.35);
+  --border-soft: rgba(47, 76, 115, 0.14);
+  --gradient-primary: linear-gradient(135deg, #2f4c73 0%, #4a6b94 100%);
+  --gradient-soft: linear-gradient(135deg, #6b8ab0 0%, #8ba3c4 100%);
+  --gradient-heading: linear-gradient(135deg, #6b8ab0 0%, #4a6b94 40%, #2f4c73 100%);
+  --shadow-soft: 0 14px 40px rgba(47, 76, 115, 0.1);
+  --shadow: 0 12px 40px rgba(28, 49, 79, 0.16);
+  --shadow-glow: 0 0 40px rgba(74, 107, 148, 0.12);
+  --shadow-card: 0 10px 28px rgba(47, 76, 115, 0.08);
+  --shadow-card-hover: 0 18px 44px rgba(47, 76, 115, 0.14);
+  --body-glow-a: rgba(74, 107, 148, 0.14);
+  --body-glow-b: rgba(107, 138, 176, 0.1);
+  --body-grad-mid: #f8fafc;
+  --overlay-rgb: 28, 49, 79;
+  --focus-ring: rgba(74, 107, 148, 0.2);
+  --glow-radial: rgba(74, 107, 148, 0.08);
+  --glare-a: rgba(74, 107, 148, 0.1);
+  --glare-b: rgba(47, 76, 115, 0.05);
+  --nav-bg: #2f4c73;
+  --nav-bg-scrolled: rgba(47, 76, 115, 0.97);
+  --nav-border: rgba(107, 138, 176, 0.35);
+  --nav-text: #d7e2e8;
+  --nav-text-active: #ffffff;
+  --radius-pill: 3.125rem;
+  --radius-card: 1.5rem;
+  --radius-card-lg: 2rem;
+  --transition-base: 0.3s ease;
+
+  /* Footer stays deep navy on light pages (original site) */
+  --footer-bg: #1c314f;
+  --footer-bg-mid: #243c5c;
+  --footer-bg-top: #2f4c73;
+  --footer-text: #d7e2e8;
+  --footer-muted: #b8c9d1;
+  --footer-dim: #9bb0ba;
+  --footer-faint: #7a8f99;
+  --footer-heading: #8ba3c4;
+  --footer-border: rgba(107, 138, 176, 0.3);
+  --footer-border-soft: rgba(107, 138, 176, 0.2);
+  --footer-link: #d7e2e8;
+  --footer-link-hover: #ffffff;
+  --footer-underline: #8ba3c4;
+  --footer-particle: rgba(139, 163, 196, 0.55);
+  --footer-contour-a: rgba(107, 138, 176, 0.25);
+  --footer-contour-b: rgba(74, 107, 148, 0.3);
+  --footer-contour-c: rgba(139, 163, 196, 0.28);
+  --scrollbar-thumb: rgba(74, 107, 148, 0.45);
+  --scrollbar-track: rgba(232, 236, 242, 0.98);
+  --cursor-ring: rgba(47, 76, 115, 0.35);
+  --cursor-ring-hover: rgba(74, 107, 148, 0.55);
+  --cursor-ring-text: rgba(47, 76, 115, 0.4);
+  --cursor-fill-hover: rgba(74, 107, 148, 0.1);
+  --glass-bg: rgba(255, 255, 255, 0.86);
+  --glass-bg-strong: rgba(255, 255, 255, 0.95);
+  --selection-bg: rgba(74, 107, 148, 0.28);
+  --line-soft: rgba(74, 107, 148, 0.35);
+  --line-faint: rgba(47, 76, 115, 0.14);
+  --grid-line: rgba(74, 107, 148, 0.08);
+  --shadow-pulse: 0 0 0 12px rgba(74, 107, 148, 0.12);
+  --glare-spot: rgba(74, 107, 148, 0.22);
+  --focus-outline: rgba(74, 107, 148, 0.55);
+}

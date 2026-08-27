@@ -1,0 +1,4 @@
+@import './light/tokens.css';
+@import './dark/tokens.css';
+@import './light/components.css';
+@import './dark/components.css';

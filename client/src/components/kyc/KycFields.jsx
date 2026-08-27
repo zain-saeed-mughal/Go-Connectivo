@@ -76,7 +76,11 @@ export function RadioGroup({ name, options, value, onChange, error, columns = 2 
                 value={opt}
                 checked={checked}
                 onChange={() => onChange(opt)}
-                className="mt-0.5 accent-[#2F4C73]"
+                className="peer sr-only"
+              />
+              <span
+                aria-hidden="true"
+                className="mt-0.5 relative h-4 w-4 shrink-0 rounded-full border-2 border-[#6B8AB0] bg-white transition peer-checked:border-[#2F4C73] peer-focus-visible:ring-2 peer-focus-visible:ring-[#4A6B94]/35 after:absolute after:inset-[3px] after:rounded-full after:bg-[#2F4C73] after:opacity-0 after:transition-opacity peer-checked:after:opacity-100"
               />
               <span>{opt}</span>
             </label>
@@ -127,7 +131,11 @@ export function CheckboxGroup({ options, values = [], onChange, error, columns =
                 type="checkbox"
                 checked={checked}
                 onChange={() => toggle(opt)}
-                className="mt-0.5 accent-[#2F4C73]"
+                className="peer sr-only"
+              />
+              <span
+                aria-hidden="true"
+                className="mt-0.5 relative h-4 w-4 shrink-0 rounded-[4px] border-2 border-[#6B8AB0] bg-white transition peer-checked:border-[#2F4C73] peer-checked:bg-[#2F4C73] peer-focus-visible:ring-2 peer-focus-visible:ring-[#4A6B94]/35 after:absolute after:top-[1px] after:left-[4px] after:h-[9px] after:w-[5px] after:rotate-45 after:border-r-2 after:border-b-2 after:border-white after:opacity-0 after:content-[''] peer-checked:after:opacity-100"
               />
               <span>{opt}</span>
             </label>

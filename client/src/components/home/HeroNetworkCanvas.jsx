@@ -1,7 +1,14 @@
 import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import { Canvas, useThree } from '@react-three/fiber';
 import { canEnhanceMotion } from '../../motion/config';
-import { noteWebglPressure, releaseWebglSlot, requestWebglSlot } from '../../motion/webglSlots';
+import {
+  isWebglBackingOff,
+  isWebglCoolingDown,
+  noteWebglPressure,
+  releaseWebglSlot,
+  requestWebglSlot,
+} from '../../motion/webglSlots';
+import { useTheme } from '../../context/ThemeContext';
 import HeroNetworkScene from './HeroNetworkScene';
 
 function ContextGuard({ onLost }) {
@@ -22,6 +29,18 @@ function ContextGuard({ onLost }) {
     return () => {
       canvas.removeEventListener('webglcontextlost', handleLost);
       canvas.removeEventListener('webglcontextrestored', handleRestored);
+      // Free the browser WebGL slot immediately on R3F unmount.
+      try {
+        gl.dispose();
+      } catch {
+        /* ignore */
+      }
+      try {
+        const ctx = gl.getContext?.();
+        if (!ctx?.isContextLost?.()) gl.forceContextLoss();
+      } catch {
+        /* ignore */
+      }
     };
   }, [gl, invalidate]);
 
@@ -38,6 +57,7 @@ export default function HeroNetworkCanvas({ progressRef, className = '' }) {
   const slotId = useId();
   const [live, setLive] = useState(false);
   const allowedMotion = canEnhanceMotion();
+  const { theme } = useTheme();
 
   const syncSlot = useCallback(() => {
     if (!allowedMotion || document.hidden || !inViewRef.current) {
@@ -45,8 +65,12 @@ export default function HeroNetworkCanvas({ progressRef, className = '' }) {
       setLive(false);
       return;
     }
+    if (isWebglBackingOff(slotId) || isWebglCoolingDown()) {
+      setLive(false);
+      return;
+    }
     const ok = requestWebglSlot(slotId, {
-      // Lower than section stages so Services/Platform can take GPU on scroll.
+      // Lower than section stages so Services can take GPU on scroll.
       priority: 3,
       onEvict: () => setLive(false),
     });
@@ -57,7 +81,7 @@ export default function HeroNetworkCanvas({ progressRef, className = '' }) {
     noteWebglPressure();
     releaseWebglSlot(slotId);
     setLive(false);
-    // Do not remount, remounting after Context Lost creates more WebGL contexts.
+    // Do not remount immediately — remounting after Context Lost creates more WebGL contexts.
   }, [slotId]);
 
   useEffect(() => {
@@ -74,7 +98,6 @@ export default function HeroNetworkCanvas({ progressRef, className = '' }) {
           syncSlot();
           return;
         }
-        // Free immediately so glass-stage 3D below can mount without delay.
         window.clearTimeout(leaveTimer.current);
         inViewRef.current = false;
         syncSlot();
@@ -92,6 +115,13 @@ export default function HeroNetworkCanvas({ progressRef, className = '' }) {
       setLive(false);
     };
   }, [allowedMotion, slotId, syncSlot]);
+
+  // Gentle retry after cooldown / eviction — not a 40ms spam loop.
+  useEffect(() => {
+    if (!allowedMotion || live || !inViewRef.current) return undefined;
+    const id = window.setInterval(syncSlot, 800);
+    return () => window.clearInterval(id);
+  }, [allowedMotion, live, syncSlot]);
 
   if (!allowedMotion) return null;
 
@@ -121,7 +151,7 @@ export default function HeroNetworkCanvas({ progressRef, className = '' }) {
           }}
         >
           <ContextGuard onLost={onLost} />
-          <HeroNetworkScene progressRef={progressRef} />
+          <HeroNetworkScene progressRef={progressRef} theme={theme} />
         </Canvas>
       ) : null}
     </div>

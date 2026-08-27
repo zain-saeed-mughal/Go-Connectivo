@@ -121,25 +121,25 @@ export default function ServiceDetail() {
         <div className="gc-container grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <RevealCard className="p-5 sm:p-7 md:p-9">
             <div className="mb-6 flex items-center gap-4">
-              <span className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-[#4A6B94] to-[#2F4C73] text-[#FFFFFF] shadow-[0_12px_32px_rgba(74,107,148,0.35)]">
+              <span className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)] text-[var(--text-on-accent)] shadow-[var(--shadow-card-hover)]">
                 <ServiceIcon name={service.icon} size={26} />
               </span>
               <div>
-                <p className="text-xs font-semibold tracking-[0.18em] text-[#4A6B94] uppercase">
+                <p className="text-xs font-semibold tracking-[0.18em] text-[var(--text-secondary)] uppercase">
                   {category?.title || 'Service'}
                 </p>
-                <h2 className="font-display text-2xl font-semibold text-[#2F4C73]">{service.title}</h2>
+                <h2 className="font-display gradient-text-brand text-2xl font-semibold">{service.title}</h2>
               </div>
             </div>
 
-            <p className="text-sm leading-relaxed text-[#6B7C8F] md:text-base">{service.description}</p>
+            <p className="text-sm leading-relaxed text-[var(--text-secondary)] md:text-base">{service.description}</p>
 
             <div className="mt-8">
-              <h3 className="font-display text-lg font-semibold text-[#2F4C73]">What you get</h3>
+              <h3 className="font-display text-lg font-semibold text-[var(--text-primary)]">What you get</h3>
               <ul className="mt-4 space-y-3">
                 {service.capabilities.map((capability) => (
-                  <li key={capability} className="flex items-start gap-3 text-sm text-[#4A5D73]">
-                    <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[#4A6B94]/15 text-[#6B8AB0]">
+                  <li key={capability} className="flex items-start gap-3 text-sm text-[var(--text-secondary)]">
+                    <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[var(--accent-soft)]/18 text-[var(--text-secondary)]">
                       <Check size={12} strokeWidth={3} />
                     </span>
                     {capability}
@@ -151,8 +151,8 @@ export default function ServiceDetail() {
 
           <div className="space-y-4">
             <RevealCard className="p-6">
-              <h3 className="font-display text-lg font-semibold text-[#2F4C73]">Ready to deploy?</h3>
-              <p className="mt-2 text-sm leading-relaxed text-[#6B7C8F]">
+              <h3 className="font-display text-lg font-semibold text-[var(--text-primary)]">Ready to deploy?</h3>
+              <p className="mt-2 text-sm leading-relaxed text-[var(--text-secondary)]">
                 Tell us about your seats, call volume, and markets, we’ll map {service.title} into
                 your stack and share next steps.
               </p>
@@ -165,7 +165,7 @@ export default function ServiceDetail() {
 
             {related.length > 0 ? (
               <RevealCard className="p-6">
-                <h3 className="font-display text-lg font-semibold text-[#2F4C73]">
+                <h3 className="font-display text-lg font-semibold text-[var(--text-primary)]">
                   More in {category?.title}
                 </h3>
                 <ul className="mt-4 space-y-2">
@@ -173,12 +173,12 @@ export default function ServiceDetail() {
                     <li key={item.id}>
                       <Link
                         to={`/services/${item.id}`}
-                        className="group flex min-h-11 items-center gap-3 rounded-xl px-2 py-2 transition-colors hover:bg-[#E8ECF2]"
+                        className="group flex min-h-11 items-center gap-3 rounded-xl px-2 py-2 transition-colors hover:bg-[var(--bg-secondary)]"
                       >
-                        <span className="grid h-9 w-9 place-items-center rounded-lg bg-[#4A6B94]/15 text-[#6B8AB0]">
+                        <span className="grid h-9 w-9 place-items-center rounded-lg bg-[var(--accent-soft)]/18 text-[var(--text-secondary)]">
                           <ServiceIcon name={item.icon} size={16} />
                         </span>
-                        <span className="text-sm font-medium text-[#4A5D73] group-hover:text-[#2F4C73]">
+                        <span className="text-sm font-medium text-[var(--text-secondary)] group-hover:text-[var(--text-primary)]">
                           {item.title}
                         </span>
                       </Link>
@@ -190,7 +190,7 @@ export default function ServiceDetail() {
 
             <Link
               to="/services"
-              className="inline-flex items-center gap-2 text-sm font-medium text-[#6B8AB0] transition-colors hover:text-[#2F4C73]"
+              className="inline-flex items-center gap-2 text-sm font-medium text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"
             >
               <ArrowLeft size={16} />
               Back to all services
@@ -217,11 +217,11 @@ export default function ServiceDetail() {
                 className="gc-card group block p-5"
                 data-cursor="hover"
               >
-                <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#4A6B94]/15 text-[#6B8AB0] transition-transform group-hover:scale-105">
+                <span className="grid h-10 w-10 place-items-center rounded-xl bg-[var(--accent-soft)]/18 text-[var(--text-secondary)] transition-transform group-hover:scale-105">
                   <ServiceIcon name={item.icon} />
                 </span>
-                <h3 className="mt-4 font-display text-base font-semibold text-[#2F4C73]">{item.title}</h3>
-                <p className="mt-2 line-clamp-2 text-sm text-[#6B7C8F]">{item.description}</p>
+                <h3 className="mt-4 font-display text-base font-semibold text-[var(--text-primary)]">{item.title}</h3>
+                <p className="mt-2 line-clamp-2 text-sm text-[var(--text-secondary)]">{item.description}</p>
               </Link>
             ))}
           </StaggerContainer>

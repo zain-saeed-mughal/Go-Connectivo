@@ -10,7 +10,6 @@ const loaders = {
   services: () => import('./pages/Services'),
   serviceDetail: () => import('./pages/ServiceDetail'),
   faqs: () => import('./pages/Faqs'),
-  resources: () => import('./pages/Resources'),
   compliance: () => import('./pages/Compliance'),
   robocallPlan: () => import('./pages/RobocallMitigationPlan'),
   acceptableUse: () => import('./pages/AcceptableUsePolicy'),
@@ -28,7 +27,6 @@ const About = lazy(loaders.about);
 const Services = lazy(loaders.services);
 const ServiceDetail = lazy(loaders.serviceDetail);
 const Faqs = lazy(loaders.faqs);
-const Resources = lazy(loaders.resources);
 const Compliance = lazy(loaders.compliance);
 const RobocallMitigationPlan = lazy(loaders.robocallPlan);
 const AcceptableUsePolicy = lazy(loaders.acceptableUse);
@@ -147,14 +145,6 @@ export default function App() {
             element={
               <Suspense fallback={<RouteFallback />}>
                 <Faqs />
-              </Suspense>
-            }
-          />
-          <Route
-            path="resources"
-            element={
-              <Suspense fallback={<RouteFallback />}>
-                <Resources />
               </Suspense>
             }
           />

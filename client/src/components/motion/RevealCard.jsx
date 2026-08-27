@@ -33,7 +33,7 @@ export default function RevealCard({
         const gx = ((event.clientX - rect.left) / rect.width) * 100;
         const gy = ((event.clientY - rect.top) / rect.height) * 100;
         glare.style.opacity = '1';
-        glare.style.background = `radial-gradient(circle at ${gx}% ${gy}%, rgba(255,255,255,0.5) 0%, rgba(107,138,176,0.2) 30%, transparent 60%)`;
+        glare.style.background = `radial-gradient(circle at ${gx}% ${gy}%, var(--glare-a) 0%, var(--glare-b) 30%, transparent 60%)`;
       }
     });
   };

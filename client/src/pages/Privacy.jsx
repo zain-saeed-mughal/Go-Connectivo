@@ -19,7 +19,7 @@ export default function Privacy() {
           description="How Go Connectivo handles information submitted through this website."
         />
         <StaggerContainer
-          className="space-y-5 text-sm leading-relaxed text-[#6B7C8F]"
+          className="space-y-5 text-sm leading-relaxed text-[var(--text-secondary)]"
           stagger={0.1}
         >
           <p>
@@ -33,7 +33,7 @@ export default function Privacy() {
           </p>
           <p>
             For privacy questions, email{' '}
-            <a className="text-[#6B8AB0] hover:text-[#2F4C73]" href="mailto:support@goconnectivo.com">
+            <a className="text-[var(--text-secondary)] hover:text-[var(--text-primary)]" href="mailto:support@goconnectivo.com">
               support@goconnectivo.com
             </a>
             .

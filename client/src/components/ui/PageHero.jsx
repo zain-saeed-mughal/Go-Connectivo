@@ -1,5 +1,4 @@
 import { motion, useReducedMotion } from 'motion/react';
-import MotionReveal from '../motion/MotionReveal';
 import MotionParallax from '../motion/MotionParallax';
 import { motionEase } from '../../motion/motionPresets';
 import { canEnhanceMotion } from '../../motion/config';
@@ -32,23 +31,27 @@ export default function PageHero({
   const heading = (
     <>
       {eyebrow ? (
-        <p className="mb-3 text-[11px] font-semibold tracking-[0.2em] text-[#4A6B94] uppercase sm:mb-4 sm:text-xs sm:tracking-[0.22em]">
+        <p className="mb-3 text-[11px] font-semibold tracking-[0.2em] text-[var(--accent-secondary)] uppercase sm:mb-4 sm:text-xs sm:tracking-[0.22em]">
           {eyebrow}
         </p>
       ) : null}
 
-      <h1 className="font-display max-w-xl text-[clamp(1.7rem,5.5vw,3.75rem)] leading-[1.1] font-extrabold tracking-[-0.03em] break-words text-[#2F4C73] text-balance">
+      <h1 className="font-display max-w-xl text-[clamp(1.7rem,5.5vw,3.75rem)] leading-[1.1] font-extrabold tracking-[-0.03em] break-words text-balance text-[var(--text-primary)]">
         {title}
         {highlight ? (
           <>
             {' '}
-            <span className="gradient-text-brand">{highlight}</span>
+            <span className="page-hero-highlight text-[var(--accent-secondary)] [-webkit-text-fill-color:var(--accent-secondary)]">
+              {highlight}
+            </span>
           </>
         ) : null}
       </h1>
 
       {description ? (
-        <p className="gc-prose-muted mt-4 max-w-lg sm:mt-5">{description}</p>
+        <p className="mt-4 max-w-lg text-sm leading-relaxed text-[var(--text-secondary)] sm:mt-5 sm:text-[0.9375rem]">
+          {description}
+        </p>
       ) : null}
 
       {detail ? <div className="mt-8 w-full max-w-xl">{detail}</div> : null}
@@ -62,7 +65,7 @@ export default function PageHero({
   const heroImage = hasImage ? (
     <div className="relative z-10 mx-auto w-full min-w-0 max-w-md lg:ml-auto lg:max-w-[420px]">
       <div
-        className="gc-glow pointer-events-none absolute -inset-3 bg-[#4A6B94]/10 sm:-inset-5"
+        className="gc-glow pointer-events-none absolute -inset-3 bg-[var(--accent-soft)]/15 sm:-inset-5"
         aria-hidden="true"
       />
       <div className="gc-card relative w-full overflow-hidden">
@@ -92,13 +95,13 @@ export default function PageHero({
         <>
           <MotionParallax
             speed={24}
-            className="gc-glow pointer-events-none absolute top-16 left-1/4 h-44 w-44 bg-[#4A6B94]/16 sm:h-64 sm:w-64 sm:bg-[#4A6B94]/18"
+            className="gc-glow pointer-events-none absolute top-16 left-1/4 h-44 w-44 bg-[var(--accent-soft)]/16 sm:h-64 sm:w-64 sm:bg-[var(--accent-soft)]/22"
           >
             <span className="block h-full w-full" aria-hidden="true" />
           </MotionParallax>
           <MotionParallax
             speed={-18}
-            className="gc-glow pointer-events-none absolute top-28 right-4 h-40 w-40 bg-[#6B8AB0]/10 sm:right-10 sm:h-56 sm:w-56 sm:bg-[#6B8AB0]/12"
+            className="gc-glow pointer-events-none absolute top-28 right-4 h-40 w-40 bg-[var(--accent-soft)]/12 sm:right-10 sm:h-56 sm:w-56 sm:bg-[var(--accent-soft)]/14"
           >
             <span className="block h-full w-full" aria-hidden="true" />
           </MotionParallax>
@@ -111,9 +114,14 @@ export default function PageHero({
         } ${hasAside ? 'lg:items-start' : 'items-center'}`}
       >
         {motionOn ? (
-          <MotionReveal preset="up" className="relative z-10 min-w-0">
+          <motion.div
+            className="relative z-10 min-w-0"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, ease: motionEase }}
+          >
             {heading}
-          </MotionReveal>
+          </motion.div>
         ) : (
           <div className="relative z-10 min-w-0">{heading}</div>
         )}

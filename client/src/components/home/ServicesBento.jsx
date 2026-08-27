@@ -119,7 +119,7 @@ export default function ServicesBento() {
     <section className="gc-section relative overflow-x-clip">
       <ParallaxElement
         speed={12}
-        className="gc-glow pointer-events-none absolute top-20 left-1/2 h-56 w-56 -translate-x-1/2 rounded-full bg-[#2F4C73]/10 sm:h-72 sm:w-72"
+        className="gc-glow pointer-events-none absolute top-20 left-1/2 h-56 w-56 -translate-x-1/2 rounded-full bg-[var(--accent-soft)]/12 sm:h-72 sm:w-72"
       />
 
       <div ref={scope} className="gc-container relative">
@@ -141,31 +141,31 @@ export default function ServicesBento() {
         >
           <div
             data-services-orbit
-            className="pointer-events-none absolute top-1/2 left-1/2 h-[118%] w-[74%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#4A6B94]/15"
+            className="pointer-events-none absolute top-1/2 left-1/2 h-[118%] w-[74%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[var(--accent-soft)]/15"
             aria-hidden
           />
           <div
             data-services-orbit
-            className="pointer-events-none absolute top-1/2 left-1/2 h-[148%] w-[90%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#6B8AB0]/10"
+            className="pointer-events-none absolute top-1/2 left-1/2 h-[148%] w-[90%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[var(--accent-soft)]/10"
             aria-hidden
           />
 
           <div
             data-services-stage
-            className="relative overflow-hidden rounded-[1.75rem] border border-[rgba(47,76,115,0.12)] bg-gradient-to-br from-[#FFFFFF]/95 via-[#F4F6F9]/9 to-[#E8ECF2]/85 shadow-[0_28px_90px_rgba(47,76,115,0.12)] [transform-style:preserve-3d]"
+            className="relative overflow-hidden rounded-[1.75rem] border border-[color:var(--border-soft)] bg-gradient-to-br from-[var(--surface)]/95 via-[var(--bg-secondary)]/90 to-[var(--bg-secondary)]/85 shadow-[var(--shadow)] [transform-style:preserve-3d]"
           >
             <div
               data-services-glow
-              className="pointer-events-none absolute top-1/2 left-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#4A6B94]/20 blur-3xl"
+              className="pointer-events-none absolute top-1/2 left-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--accent-soft)]/20 blur-3xl"
               aria-hidden
             />
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.55),transparent_65%)]" />
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--glow-radial),transparent_65%)]" />
 
             <div className="relative z-[1] flex items-center justify-between gap-4 px-6 pt-5 sm:px-8">
-              <p className="text-[11px] font-semibold tracking-[0.2em] text-[#4A6B94] uppercase">
+              <p className="text-[11px] font-semibold tracking-[0.2em] text-[var(--text-secondary)] uppercase">
                 Production stack
               </p>
-              <p className="text-xs text-[#6B7C8F]">
+              <p className="text-xs text-[var(--text-secondary)]">
                 Live services model · {SERVICE_MODELS.find((s) => s.id === serviceFocus)?.label}
               </p>
             </div>
@@ -178,13 +178,13 @@ export default function ServicesBento() {
                 interactive
                 scrollScrub
                 eager
-                keepAlive
-                warmDelay={280}
+                keepAlive={false}
+                warmDelay={600}
                 slotPriority={13}
               />
             </div>
 
-            <div className="relative z-[1] flex flex-wrap items-center gap-2 border-t border-[rgba(47,76,115,0.08)] px-6 py-4 sm:px-8">
+            <div className="relative z-[1] flex flex-wrap items-center gap-2 border-t border-[color:var(--border-soft)] px-6 py-4 sm:px-8">
               {SERVICE_MODELS.map((item) => {
                 const active = serviceFocus === item.id;
                 return (
@@ -196,8 +196,8 @@ export default function ServicesBento() {
                     onClick={() => setServiceFocus(item.id)}
                     className={`rounded-full border px-3 py-1 text-[11px] font-medium backdrop-blur-sm transition ${
                       active
-                        ? 'border-[#2F4C73] bg-[#2F4C73] text-white'
-                        : 'border-[rgba(47,76,115,0.12)] bg-[#FFFFFF]/70 text-[#4A5D73] hover:border-[#4A6B94] hover:bg-[#FFFFFF]'
+                        ? 'border-transparent bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-[var(--text-on-accent)] shadow-[var(--shadow-card-hover)]'
+                        : 'border-[color:var(--border-soft)] bg-[var(--surface)]/70 text-[var(--text-secondary)] hover:border-[var(--accent-secondary)]/50 hover:bg-[var(--surface)]'
                     }`}
                   >
                     {item.label}

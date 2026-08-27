@@ -15,13 +15,13 @@ export function ServiceSeoOverview({ seo }) {
       <article className="gc-card gc-card-panel gc-container p-5 sm:p-8 md:p-10">
         <h2
           id="seo-overview-heading"
-          className="font-display text-xl font-semibold tracking-[-0.02em] text-[#2F4C73] sm:text-2xl"
+          className="font-display text-xl font-semibold tracking-[-0.02em] text-[var(--text-primary)] sm:text-2xl"
         >
           {seo.overview.heading}
         </h2>
         <div className="mt-4 space-y-4">
           {seo.overview.paragraphs.map((paragraph) => (
-            <p key={paragraph.slice(0, 48)} className="text-sm leading-relaxed text-[#6B7C8F] md:text-base">
+            <p key={paragraph.slice(0, 48)} className="text-sm leading-relaxed text-[var(--text-secondary)] md:text-base">
               {paragraph}
             </p>
           ))}
@@ -43,15 +43,15 @@ export function ServiceSeoBenefits({ seo, serviceId }) {
       <div className="gc-container">
         <h2
           id="seo-benefits-heading"
-          className="font-display text-xl font-semibold tracking-[-0.02em] text-[#2F4C73] sm:text-2xl"
+          className="font-display text-xl font-semibold tracking-[-0.02em] text-[var(--text-primary)] sm:text-2xl"
         >
           {seo.benefits.heading}
         </h2>
         <ul className="mt-6 grid gap-4 sm:grid-cols-2">
           {items.map((item) => (
             <RevealCard key={item.title} as="li" className="p-5 sm:p-6">
-              <h3 className="font-display text-base font-semibold text-[#2F4C73]">{item.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-[#6B7C8F]">{item.text}</p>
+              <h3 className="font-display text-base font-semibold text-[var(--text-primary)]">{item.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-[var(--text-secondary)]">{item.text}</p>
             </RevealCard>
           ))}
         </ul>
@@ -67,21 +67,21 @@ export function ServiceSeoHowItWorks({ seo }) {
       className="gc-section-tight"
       aria-labelledby="seo-how-heading"
     >
-      <div className="gc-card gc-card-panel gc-container bg-[#F8FAFC] p-5 sm:p-8 md:p-10">
+      <div className="gc-card gc-card-panel gc-container bg-[var(--bg-secondary)] p-5 sm:p-8 md:p-10">
         <h2
           id="seo-how-heading"
-          className="font-display text-xl font-semibold tracking-[-0.02em] text-[#2F4C73] sm:text-2xl"
+          className="font-display text-xl font-semibold tracking-[-0.02em] text-[var(--text-primary)] sm:text-2xl"
         >
           {seo.howItWorks.heading}
         </h2>
         <ol className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {seo.howItWorks.steps.map((step, index) => (
             <RevealCard key={step.title} as="li" className="p-5">
-              <span className="grid h-8 w-8 place-items-center rounded-full border border-[#4A6B94]/35 bg-[#4A6B94]/10 text-xs font-semibold text-[#4A6B94]">
+              <span className="grid h-8 w-8 place-items-center rounded-full border border-[var(--accent-soft)]/35 bg-[var(--accent-soft)]/15 text-xs font-semibold text-[var(--text-secondary)]">
                 {String(index + 1).padStart(2, '0')}
               </span>
-              <h3 className="mt-3 font-display text-base font-semibold text-[#2F4C73]">{step.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-[#6B7C8F]">{step.text}</p>
+              <h3 className="mt-3 font-display text-base font-semibold text-[var(--text-primary)]">{step.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-[var(--text-secondary)]">{step.text}</p>
             </RevealCard>
           ))}
         </ol>
@@ -97,7 +97,7 @@ export function ServiceSeoUseCases({ seo }) {
       <div className="gc-container">
         <h2
           id="seo-usecases-heading"
-          className="font-display text-xl font-semibold tracking-[-0.02em] text-[#2F4C73] sm:text-2xl"
+          className="font-display text-xl font-semibold tracking-[-0.02em] text-[var(--text-primary)] sm:text-2xl"
         >
           {seo.useCases.heading}
         </h2>
@@ -105,9 +105,9 @@ export function ServiceSeoUseCases({ seo }) {
           {seo.useCases.items.map((item) => (
             <li
               key={item}
-              className="gc-card-sm flex items-start gap-3 px-4 py-3.5 text-sm leading-snug text-[#4A5D73]"
+              className="gc-card-sm flex items-start gap-3 px-4 py-3.5 text-sm leading-snug text-[var(--text-secondary)]"
             >
-              <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[#4A6B94]/15 text-[#6B8AB0]">
+              <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[var(--accent-soft)]/18 text-[var(--text-secondary)]">
                 <Check size={12} strokeWidth={3} aria-hidden />
               </span>
               <span>{item}</span>
@@ -126,7 +126,7 @@ export function ServiceSeoRelated({ seo }) {
       <div className="gc-container">
         <h2
           id="seo-related-heading"
-          className="font-display text-xl font-semibold tracking-[-0.02em] text-[#2F4C73] sm:text-2xl"
+          className="font-display text-xl font-semibold tracking-[-0.02em] text-[var(--text-primary)] sm:text-2xl"
         >
           Related pages
         </h2>
@@ -135,7 +135,7 @@ export function ServiceSeoRelated({ seo }) {
             <li key={link.to}>
               <Link
                 to={link.to}
-                className="inline-flex min-h-11 items-center rounded-xl border border-[rgba(47,76,115,0.12)] bg-white px-4 text-sm font-medium text-[#2F4C73] transition-colors hover:border-[#4A6B94]/40"
+                className="inline-flex min-h-11 items-center rounded-xl border border-[color:var(--border-soft)] bg-[var(--surface)] px-4 text-sm font-medium text-[var(--text-primary)] transition-colors hover:border-[var(--accent-soft)]/40"
               >
                 {link.label}
               </Link>
@@ -154,7 +154,7 @@ export function ServiceSeoFaqs({ seo }) {
       <div className="gc-container">
         <h2
           id="seo-faq-heading"
-          className="font-display text-xl font-semibold tracking-[-0.02em] text-[#2F4C73] sm:text-2xl"
+          className="font-display text-xl font-semibold tracking-[-0.02em] text-[var(--text-primary)] sm:text-2xl"
         >
           {seo.faqs.heading}
         </h2>
@@ -164,8 +164,8 @@ export function ServiceSeoFaqs({ seo }) {
               key={item.q}
               className="gc-card-sm px-5 py-4 sm:px-6 sm:py-5"
             >
-              <h3 className="font-display text-base font-semibold text-[#2F4C73]">{item.q}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-[#6B7C8F]">{item.a}</p>
+              <h3 className="font-display text-base font-semibold text-[var(--text-primary)]">{item.q}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-[var(--text-secondary)]">{item.a}</p>
             </article>
           ))}
         </div>
@@ -178,16 +178,16 @@ export function ServiceSeoClosing({ seo, serviceTitle }) {
   if (!seo?.closing) return null;
   return (
     <section className="gc-section" aria-labelledby="seo-closing-heading">
-      <div className="gc-card gc-card-panel gc-container overflow-hidden bg-gradient-to-br from-[#E8ECF2] via-[#FFFFFF] to-[#F4F6F9] px-5 py-8 sm:px-8 sm:py-10 md:px-12">
+      <div className="gc-card gc-card-panel gc-container overflow-hidden bg-gradient-to-br from-[var(--bg-secondary)] via-[var(--surface)] to-[var(--bg-primary)] px-5 py-8 sm:px-8 sm:py-10 md:px-12">
         <h2
           id="seo-closing-heading"
-          className="font-display text-xl font-semibold tracking-[-0.02em] text-[#2F4C73] sm:text-2xl"
+          className="font-display text-xl font-semibold tracking-[-0.02em] text-[var(--text-primary)] sm:text-2xl"
         >
           {seo.closing.heading}
         </h2>
         <div className="mt-3 max-w-3xl space-y-3">
           {seo.closing.paragraphs.map((paragraph) => (
-            <p key={paragraph.slice(0, 40)} className="text-sm leading-relaxed text-[#4A5D73] md:text-base">
+            <p key={paragraph.slice(0, 40)} className="text-sm leading-relaxed text-[var(--text-secondary)] md:text-base">
               {paragraph}
             </p>
           ))}
@@ -213,12 +213,12 @@ export function ServiceSeoCardSection({ section }) {
         <header className="max-w-3xl">
           <h2
             id={headingId}
-            className="font-display text-xl font-semibold tracking-[-0.02em] text-[#2F4C73] sm:text-2xl"
+            className="font-display text-xl font-semibold tracking-[-0.02em] text-[var(--text-primary)] sm:text-2xl"
           >
             {section.heading}
           </h2>
           {section.intro ? (
-            <p className="mt-3 text-sm leading-relaxed text-[#6B7C8F] md:text-base">{section.intro}</p>
+            <p className="mt-3 text-sm leading-relaxed text-[var(--text-secondary)] md:text-base">{section.intro}</p>
           ) : null}
         </header>
         <ul
@@ -228,8 +228,8 @@ export function ServiceSeoCardSection({ section }) {
         >
           {section.cards.map((card) => (
             <RevealCard key={`${section.key}-${card.title}`} as="li" className="p-5 sm:p-6">
-              <h3 className="font-display text-base font-semibold text-[#2F4C73]">{card.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-[#6B7C8F]">{card.text}</p>
+              <h3 className="font-display text-base font-semibold text-[var(--text-primary)]">{card.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-[var(--text-secondary)]">{card.text}</p>
             </RevealCard>
           ))}
         </ul>

@@ -9,11 +9,11 @@ const base =
 
 const variants = {
   primary:
-    'bg-gradient-to-r from-[#2F4C73] to-[#4A6B94] text-[#FFFFFF] shadow-[0_12px_32px_rgba(47,76,115,0.28)]',
+    'bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-[var(--text-on-accent)] shadow-[var(--shadow-card-hover)]',
   secondary:
-    'border border-[#6B8AB0]/45 bg-[#FFFFFF] text-[#2F4C73] hover:border-[#6B8AB0] hover:bg-[#E8ECF2]',
+    'border border-[color:var(--border)] bg-transparent text-[var(--text-primary)] hover:border-[var(--accent-secondary)] hover:bg-[color-mix(in_srgb,var(--accent-primary)_12%,transparent)]',
   ghost:
-    'border border-[rgba(47,76,115,0.16)] bg-transparent text-[#4A5D73] hover:border-[#4A6B94]/55 hover:text-[#2F4C73]',
+    'border border-[color:var(--border-soft)] bg-transparent text-[var(--text-primary)] hover:border-[var(--accent-soft)]/70 hover:text-[var(--text-primary)]',
 };
 
 const MotionLink = motion.create(Link);
@@ -49,7 +49,7 @@ export default function MagneticButton({
     : {};
 
   const hoverClass = interactive
-    ? 'transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-[0_16px_40px_rgba(47,76,115,0.34)]'
+    ? 'transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-[var(--shadow-card-hover)]'
     : '';
 
   const classes = `${base} ${variants[variant] || variants.primary} ${hoverClass} ${
@@ -58,7 +58,9 @@ export default function MagneticButton({
 
   const content = (
     <>
-      <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 group-hover/btn:translate-x-full" />
+      {variant === 'primary' ? (
+        <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 group-hover/btn:translate-x-full" />
+      ) : null}
       <span
         ref={magnetic ? ref : undefined}
         className="relative inline-flex items-center gap-2 will-change-transform"

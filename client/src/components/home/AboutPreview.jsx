@@ -10,13 +10,16 @@ import { SlideUpOnView } from '../motion';
  */
 export default function AboutPreview() {
   return (
-    <section className="gc-section relative">
+    <section className="gc-section relative !pt-4 sm:!pt-6 md:!pt-8">
       <div className="gc-container mb-8 sm:mb-10">
         <StatsBand />
       </div>
 
       <div className="gc-container">
-        <SlideUpOnView className="grid items-center gap-6 md:grid-cols-[1.15fr_0.85fr] md:gap-8 lg:gap-10">
+        <SlideUpOnView
+          distance={28}
+          className="grid items-center gap-6 md:grid-cols-[1.15fr_0.85fr] md:gap-8 lg:gap-10"
+        >
           <div className="min-w-0">
             <SectionHeading
               eyebrow="About"
@@ -27,7 +30,7 @@ export default function AboutPreview() {
             />
             <Link
               to="/about"
-              className="group inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[#4A6B94] transition-colors duration-300 hover:text-[#2F4C73] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4A6B94]/45"
+              className="group inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[var(--text-secondary)] transition-colors duration-300 hover:text-[var(--text-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-soft)]/45"
             >
               Learn more about us
               <ArrowUpRight

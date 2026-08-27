@@ -23,7 +23,7 @@ export default function Layout() {
     }
   }, []);
 
-  // Before paint: pin scroll at top so Home does not "fly up".
+  // Before paint: pin scroll at top so pages (esp. About) open from the top.
   // Do NOT kill ScrollTriggers here — child layout effects run first; killing
   // afterward would destroy Hero FCC scrub and leave body copy stuck hidden.
   useLayoutEffect(() => {
@@ -58,16 +58,27 @@ export default function Layout() {
       };
     }
 
+    // Retries: AnimatePresence mode="wait" unmounts the tall previous page after
+    // ~180ms; without late scrolls, Y can stay mid-document on shorter routes.
     scrollToTop();
     const raf = window.requestAnimationFrame(() => {
       scrollToTop();
       ScrollTrigger.refresh();
     });
-    return () => window.cancelAnimationFrame(raf);
+    const t1 = window.setTimeout(() => scrollToTop(), 200);
+    const t2 = window.setTimeout(() => {
+      scrollToTop();
+      ScrollTrigger.refresh();
+    }, 380);
+    return () => {
+      window.cancelAnimationFrame(raf);
+      window.clearTimeout(t1);
+      window.clearTimeout(t2);
+    };
   }, [location.pathname, location.hash, location.search]);
 
   return (
-    <div className="relative min-h-screen bg-[#F4F6F9] text-[#2F4C73]">
+    <div className="relative min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)]">
       <MotionScrollProgress />
       <div className="noise" aria-hidden="true" />
       <div className="pointer-events-none fixed inset-0 z-[100]">

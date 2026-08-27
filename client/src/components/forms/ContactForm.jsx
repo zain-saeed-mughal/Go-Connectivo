@@ -13,15 +13,15 @@ const initialState = {
 };
 
 const fieldClass =
-  'peer w-full min-h-11 rounded-xl border border-[rgba(47,76,115,0.12)] bg-[#FFFFFF] px-4 py-3 text-sm text-[#2F4C73] outline-none transition-all duration-300 placeholder:text-[#6B7C8F] focus:border-[#4A6B94]/60 focus:bg-[#F8FAFC] focus:shadow-[0_0_0_4px_rgba(74,107,148,0.12)] sm:rounded-2xl';
+  'peer gc-input w-full min-h-11 rounded-xl border border-[color:var(--border)] bg-[var(--surface)] px-4 py-3 text-sm text-[var(--text-primary)] shadow-sm outline-none transition-all duration-300 placeholder:text-[var(--text-muted)] focus:border-[var(--accent-secondary)] focus:bg-[var(--surface)] focus:shadow-[0_0_0_4px_var(--focus-ring)] sm:rounded-2xl';
 
 function Field({ label, error, children }) {
   return (
     <label className="block space-y-2 text-sm">
-      <span className="text-[#6B7C8F] transition-colors duration-300">{label}</span>
+      <span className="font-medium text-[var(--text-secondary)] transition-colors duration-300">{label}</span>
       <span className="relative block">
         {children}
-        <span className="pointer-events-none absolute bottom-0 left-1/2 h-px w-[calc(100%-2rem)] -translate-x-1/2 origin-center scale-x-0 bg-gradient-to-r from-transparent via-[#4A6B94] to-transparent transition-transform duration-400 peer-focus:scale-x-100" />
+        <span className="pointer-events-none absolute bottom-0 left-1/2 h-px w-[calc(100%-2rem)] -translate-x-1/2 origin-center scale-x-0 bg-gradient-to-r from-transparent via-[var(--accent-secondary)] to-transparent transition-transform duration-400 peer-focus:scale-x-100" />
       </span>
       <AnimatePresence initial={false}>
         {error && (
@@ -169,14 +169,14 @@ export default function ContactForm() {
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
             className={`flex items-center gap-2.5 overflow-hidden rounded-2xl border px-4 py-3 text-sm font-medium ${
               status.type === 'success'
-                ? 'border-emerald-300 bg-emerald-50 text-emerald-800'
-                : 'border-rose-300 bg-rose-50 text-rose-800'
+                ? 'border-emerald-400/40 bg-emerald-500/12 text-[var(--text-primary)]'
+                : 'border-rose-400/40 bg-rose-500/12 text-[var(--text-primary)]'
             }`}
           >
             {status.type === 'success' ? (
-              <CheckCircle2 size={16} className="shrink-0" />
+              <CheckCircle2 size={16} className="shrink-0 text-emerald-500" />
             ) : (
-              <TriangleAlert size={16} className="shrink-0" />
+              <TriangleAlert size={16} className="shrink-0 text-rose-500" />
             )}
             {status.message}
           </motion.div>

@@ -10,7 +10,7 @@ export default function StatsBand() {
           <p className="gradient-text-brand relative z-[2] font-display text-[1.15rem] leading-tight font-bold tracking-[-0.02em] text-balance sm:text-xl md:text-[1.35rem] lg:text-[1.45rem]">
             {stat.display}
           </p>
-          <p className="relative z-[2] mt-2 text-xs leading-snug text-[#6B7C8F] sm:text-sm">
+          <p className="relative z-[2] mt-2 text-xs leading-snug text-[var(--text-secondary)] sm:text-sm">
             {stat.label}
           </p>
         </RevealCard>

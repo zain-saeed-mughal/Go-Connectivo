@@ -4,16 +4,16 @@ import { cn } from '@/lib/utils';
 import { isCompactViewport } from '../../motion/config';
 import ServiceCardArt from './ServiceCardArt';
 
-/** Soft white → blue enterprise surfaces */
+/** Dark purple premium card surfaces — no light wash */
 const THEMES = {
-  primary: 'from-[#FFFFFF] via-[#F7F9FC] to-[#E8EEF6]',
-  secondary: 'from-[#FFFFFF] via-[#F5F8FC] to-[#E6EDF5]',
-  accent: 'from-[#FFFFFF] via-[#F8FAFC] to-[#E9EFF7]',
-  success: 'from-[#FFFFFF] via-[#F7F9FC] to-[#E7EEF6]',
-  warning: 'from-[#FFFFFF] via-[#F6F9FC] to-[#E8EFF7]',
-  danger: 'from-[#FFFFFF] via-[#F8FAFC] to-[#EAEFF6]',
-  info: 'from-[#FFFFFF] via-[#F7F9FC] to-[#E6EDF6]',
-  neutral: 'from-[#FFFFFF] via-[#F8FAFC] to-[#E9EFF6]',
+  primary: 'from-[var(--surface)] via-[var(--surface)] to-[var(--bg-secondary)]',
+  secondary: 'from-[var(--surface)] via-[var(--bg-secondary)] to-[var(--bg-primary)]',
+  accent: 'from-[var(--surface)] via-[var(--bg-secondary)] to-[var(--bg-primary)]',
+  success: 'from-[var(--surface)] via-[var(--surface)] to-[var(--bg-secondary)]',
+  warning: 'from-[var(--surface)] via-[var(--bg-secondary)] to-[var(--bg-primary)]',
+  danger: 'from-[var(--surface)] via-[var(--bg-secondary)] to-[var(--bg-primary)]',
+  info: 'from-[var(--surface)] via-[var(--surface)] to-[var(--bg-secondary)]',
+  neutral: 'from-[var(--surface)] via-[var(--bg-secondary)] to-[var(--bg-primary)]',
 };
 
 const SIZES = {
@@ -24,11 +24,11 @@ const SIZES = {
 
 const VARIANTS = {
   default:
-    'border border-[rgba(47,76,115,0.12)] shadow-[0_10px_28px_rgba(47,76,115,0.06)] hover:border-[#4A6B94]/55 hover:shadow-[0_16px_40px_rgba(47,76,115,0.12)]',
+    'border border-[color:var(--border-soft)] shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)]',
   minimal:
-    'border border-[rgba(47,76,115,0.12)] shadow-sm hover:border-[#4A6B94]/45 hover:shadow-md',
+    'border border-[color:var(--border-soft)] shadow-sm hover:shadow-md',
   premium:
-    'border border-[rgba(47,76,115,0.13)] shadow-[0_12px_32px_rgba(47,76,115,0.07)] hover:border-[#4A6B94]/60 hover:shadow-[0_18px_44px_rgba(47,76,115,0.13)]',
+    'border border-[color:var(--border-soft)] shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)]',
 };
 
 const GRIDS = {
@@ -174,19 +174,19 @@ export const Card3D = React.forwardRef(function Card3D(
       {image ? (
         <div className="absolute inset-0">
           <img src={image} alt={title} className="h-full w-full object-cover" loading="lazy" />
-          <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-[#F7F9FC]/85 to-[#E8EEF6]/8" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[var(--bg-primary)]/95 via-[var(--bg-secondary)]/92 to-[var(--surface)]/88" />
         </div>
       ) : null}
 
       <ServiceCardArt
         name={artKey}
-        className="pointer-events-none absolute -right-2 -bottom-1 h-[7.5rem] w-[7.5rem] text-[#2F4C73] opacity-[0.07] transition-opacity duration-300 group-hover:opacity-[0.11] sm:h-32 sm:w-32"
+        className="pointer-events-none absolute -right-2 -bottom-1 h-[7.5rem] w-[7.5rem] text-[var(--text-primary)] opacity-[0.07] transition-opacity duration-300 group-hover:opacity-[0.11] sm:h-32 sm:w-32"
       />
 
       <div className="relative z-10 flex h-full flex-col p-5 sm:p-[1.15rem]">
         <div className="mb-3.5 flex items-start justify-between gap-3">
           {icon ? (
-            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#4A6B94]/12 text-[#2F4C73] ring-1 ring-[#4A6B94]/10 transition-colors duration-300 group-hover:bg-[#4A6B94]/18 group-hover:ring-[#4A6B94]/22 sm:h-11 sm:w-11">
+            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[var(--accent-soft)]/16 text-[var(--text-primary)] ring-1 ring-[var(--accent-soft)]/10 transition-colors duration-300 group-hover:bg-[var(--accent-soft)]/22 group-hover:ring-[var(--accent-soft)]/22 sm:h-11 sm:w-11">
               {icon}
             </span>
           ) : (
@@ -195,7 +195,7 @@ export const Card3D = React.forwardRef(function Card3D(
 
           {displayMarker ? (
             <span
-              className="font-display text-[11px] font-semibold tracking-[0.14em] text-[#6B8AB0]/80 tabular-nums"
+              className="font-display text-[11px] font-semibold tracking-[0.14em] text-[var(--text-secondary)]/80 tabular-nums"
               aria-hidden
             >
               {displayMarker}
@@ -203,17 +203,17 @@ export const Card3D = React.forwardRef(function Card3D(
           ) : null}
         </div>
 
-        <h3 className="font-display text-base font-semibold tracking-tight text-[#2F4C73] sm:text-[1.05rem]">
+        <h3 className="font-display text-base font-semibold tracking-tight text-[var(--text-primary)] sm:text-[1.05rem]">
           {title}
         </h3>
 
-        <p className="mt-2 line-clamp-3 flex-1 text-[0.9375rem] leading-relaxed text-[#5A6B7D] sm:text-sm">{description}</p>
+        <p className="mt-2 line-clamp-3 flex-1 text-[0.9375rem] leading-relaxed text-[var(--text-secondary)] sm:text-sm">{description}</p>
 
         {onClick && !disabled ? (
           <button
             type="button"
             onClick={handleCtaClick}
-            className="mt-4 inline-flex min-h-10 w-fit items-center gap-1.5 text-sm font-semibold text-[#2F4C73] transition-colors duration-300 hover:text-[#4A6B94] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4A6B94]/45 sm:min-h-0"
+            className="mt-4 inline-flex min-h-10 w-fit items-center gap-1.5 text-sm font-semibold text-[var(--text-primary)] transition-colors duration-300 hover:text-[var(--text-secondary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-soft)]/45 sm:min-h-0"
           >
             {loading ? 'Loading...' : exploreLabel}
             <span
@@ -227,9 +227,9 @@ export const Card3D = React.forwardRef(function Card3D(
       </div>
 
       {loading ? (
-        <div className="absolute inset-0 z-20 flex items-center justify-center rounded-2xl bg-[#2F4C73]/20 backdrop-blur-sm">
+        <div className="absolute inset-0 z-20 flex items-center justify-center rounded-2xl bg-[var(--accent-soft)]/20 backdrop-blur-sm">
           <motion.div
-            className="h-6 w-6 rounded-full border-2 border-white/30 border-t-[#4A6B94]"
+            className="h-6 w-6 rounded-full border-2 border-transparent border-t-[var(--accent-soft)]"
             animate={{ rotate: 360 }}
             transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
           />

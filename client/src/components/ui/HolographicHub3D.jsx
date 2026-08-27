@@ -1,19 +1,39 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { ScrollTrigger, prefersReducedMotion, isCompactViewport } from '../../motion/config';
 import { disposeRenderer, installThreeGuards } from '../../motion/webglSlots';
 
 installThreeGuards(THREE);
+
+function cssHex(name, fallback) {
+  if (typeof window === 'undefined') return fallback;
+  const raw = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  if (!raw.startsWith('#') || raw.length < 7) return fallback;
+  const n = Number.parseInt(raw.slice(1, 7), 16);
+  return Number.isFinite(n) ? n : fallback;
+}
+
 /**
  * Compact interactive holographic hub for section accents.
- * Brand navy only, scroll-scrubbed when inside a chapter.
+ * Colors follow active theme (navy light / purple dark).
  */
 export default function HolographicHub3D({ className = '', interactive = true, onContextLost }) {
   const containerRef = useRef(null);
+  const [themeTick, setThemeTick] = useState(0);
+
+  useEffect(() => {
+    const onTheme = () => setThemeTick((n) => n + 1);
+    window.addEventListener('gc-themechange', onTheme);
+    return () => window.removeEventListener('gc-themechange', onTheme);
+  }, []);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container || prefersReducedMotion()) return undefined;
+
+    const soft = cssHex('--accent-soft', 0x6b8ab0);
+    const mid = cssHex('--accent-secondary', 0x4a6b94);
+    const primary = cssHex('--accent-primary', 0x2f4c73);
 
     const compact = isCompactViewport();
     const scene = new THREE.Scene();
@@ -48,7 +68,7 @@ export default function HolographicHub3D({ className = '', interactive = true, o
     const hubGeo = track(new THREE.IcosahedronGeometry(3.4, 1));
     const hubMat = track(
       new THREE.MeshBasicMaterial({
-        color: 0x6b8ab0,
+        color: soft,
         wireframe: true,
         transparent: true,
         opacity: 0.55,
@@ -61,7 +81,7 @@ export default function HolographicHub3D({ className = '', interactive = true, o
       track(new THREE.SphereGeometry(4.1, 28, 28)),
       track(
         new THREE.MeshBasicMaterial({
-          color: 0x4a6b94,
+          color: mid,
           transparent: true,
           opacity: 0.1,
           depthWrite: false,
@@ -74,7 +94,7 @@ export default function HolographicHub3D({ className = '', interactive = true, o
       track(new THREE.TorusGeometry(7.2, 0.05, 10, 100)),
       track(
         new THREE.MeshBasicMaterial({
-          color: 0x4a6b94,
+          color: mid,
           transparent: true,
           opacity: 0.45,
         }),
@@ -84,42 +104,24 @@ export default function HolographicHub3D({ className = '', interactive = true, o
     root.add(ring);
 
     const ring2 = new THREE.Mesh(
-      track(new THREE.TorusGeometry(9.4, 0.04, 10, 100)),
+      track(new THREE.TorusGeometry(8.4, 0.035, 10, 100)),
       track(
         new THREE.MeshBasicMaterial({
-          color: 0x2f4c73,
+          color: primary,
           transparent: true,
-          opacity: 0.28,
+          opacity: 0.3,
         }),
       ),
     );
-    ring2.rotation.x = Math.PI / 3.2;
-    ring2.rotation.y = 0.35;
+    ring2.rotation.x = Math.PI / 3.1;
     root.add(ring2);
 
-    const nodeGeo = track(new THREE.SphereGeometry(0.42, 12, 12));
-    const nodeMat = track(
-      new THREE.MeshBasicMaterial({ color: 0x6b8ab0, transparent: true, opacity: 0.95 }),
-    );
-    const lineMat = track(
-      new THREE.LineBasicMaterial({ color: 0x4a6b94, transparent: true, opacity: 0.4 }),
-    );
-    const count = compact ? 5 : 6;
-    for (let i = 0; i < count; i += 1) {
-      const a = (i / count) * Math.PI * 2;
-      const node = new THREE.Mesh(nodeGeo, nodeMat);
-      node.position.set(Math.cos(a) * 7.2, Math.sin(a) * 0.35, Math.sin(a) * 7.2);
-      root.add(node);
-      const geo = track(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0, 0, 0), node.position.clone()]));
-      root.add(new THREE.Line(geo, lineMat));
-    }
-
-    const sparkCount = compact ? 40 : 70;
+    const sparkCount = compact ? 18 : 28;
     const sparkPos = new Float32Array(sparkCount * 3);
     for (let i = 0; i < sparkCount; i += 1) {
-      sparkPos[i * 3] = (Math.random() - 0.5) * 28;
-      sparkPos[i * 3 + 1] = (Math.random() - 0.5) * 22;
-      sparkPos[i * 3 + 2] = (Math.random() - 0.5) * 18;
+      sparkPos[i * 3] = (Math.random() - 0.5) * 18;
+      sparkPos[i * 3 + 1] = (Math.random() - 0.5) * 12;
+      sparkPos[i * 3 + 2] = (Math.random() - 0.5) * 14;
     }
     const sparkGeo = track(new THREE.BufferGeometry());
     sparkGeo.setAttribute('position', new THREE.BufferAttribute(sparkPos, 3));
@@ -127,35 +129,58 @@ export default function HolographicHub3D({ className = '', interactive = true, o
       sparkGeo,
       track(
         new THREE.PointsMaterial({
-          color: 0x6b8ab0,
-          size: 0.55,
+          color: soft,
+          size: 0.28,
           transparent: true,
-          opacity: 0.5,
+          opacity: 0.55,
           depthWrite: false,
+          sizeAttenuation: true,
         }),
       ),
     );
-    scene.add(sparks);
+    root.add(sparks);
+
+    const nodes = [];
+    for (let i = 0; i < 6; i += 1) {
+      const a = (i / 6) * Math.PI * 2;
+      const node = new THREE.Mesh(
+        track(new THREE.SphereGeometry(0.28, 12, 12)),
+        track(
+          new THREE.MeshBasicMaterial({
+            color: soft,
+            transparent: true,
+            opacity: 0.95,
+          }),
+        ),
+      );
+      node.position.set(Math.cos(a) * 5.2, Math.sin(a * 1.3) * 1.4, Math.sin(a) * 5.2);
+      root.add(node);
+      nodes.push(node);
+
+      const link = new THREE.Line(
+        track(
+          new THREE.BufferGeometry().setFromPoints([
+            new THREE.Vector3(0, 0, 0),
+            node.position.clone(),
+          ]),
+        ),
+        track(new THREE.LineBasicMaterial({ color: mid, transparent: true, opacity: 0.4 })),
+      );
+      root.add(link);
+    }
 
     const mouse = { x: 0, y: 0, tx: 0, ty: 0 };
     const scroll = { p: 0 };
+    let animId = 0;
+    let visible = true;
+    let lost = false;
+
     const onPointer = (e) => {
-      if (!interactive) return;
       const rect = container.getBoundingClientRect();
-      mouse.tx = ((e.clientX - rect.left) / rect.width - 0.5) * 2.4;
-      mouse.ty = -((e.clientY - rect.top) / rect.height - 0.5) * 1.8;
+      mouse.tx = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      mouse.ty = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
     };
-    if (interactive) {
-      container.addEventListener('pointermove', onPointer, { passive: true });
-      container.addEventListener(
-        'pointerleave',
-        () => {
-          mouse.tx = 0;
-          mouse.ty = 0;
-        },
-        { passive: true },
-      );
-    }
+    if (interactive) container.addEventListener('pointermove', onPointer);
 
     const onResize = () => {
       const w = container.clientWidth;
@@ -166,23 +191,17 @@ export default function HolographicHub3D({ className = '', interactive = true, o
     };
     window.addEventListener('resize', onResize);
 
-    let visible = true;
     const io = new IntersectionObserver(
       ([entry]) => {
         visible = entry.isIntersecting;
       },
-      { threshold: 0.08 },
+      { rootMargin: '80px' },
     );
     io.observe(container);
 
-    let animId = 0;
-    let lost = false;
     const handleLost = (e) => {
       e.preventDefault();
-      if (lost) return;
       lost = true;
-      visible = false;
-      cancelAnimationFrame(animId);
       onContextLost?.();
     };
     renderer.domElement.addEventListener('webglcontextlost', handleLost, false);
@@ -240,7 +259,7 @@ export default function HolographicHub3D({ className = '', interactive = true, o
       disposables.forEach((d) => d.dispose?.());
       disposeRenderer(renderer);
     };
-  }, [interactive, onContextLost]);
+  }, [interactive, onContextLost, themeTick]);
 
   return (
     <div

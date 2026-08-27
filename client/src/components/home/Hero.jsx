@@ -192,6 +192,7 @@ export default function Hero() {
               height={1080}
             />
           )}
+          {/* Soft neutral scrim — readable text, no navy/purple color cast */}
           <div className="hero-overlay-directional absolute inset-0 z-[1]" />
           <div className="hero-overlay-vignette absolute inset-0 z-[1]" />
         </div>
@@ -217,7 +218,7 @@ export default function Hero() {
                 transition={itemTransition}
                 className="hero-title min-w-0 max-w-full font-display font-extrabold text-[#FFFFFF]"
               >
-                <span className="block">
+                <span className="block text-[#FFFFFF]">
                   {heroContent.titleStart}
                 </span>
                 <span className="hero-title-highlight relative mt-1 block min-w-0 max-w-full text-[#FFFFFF] sm:mt-1.5">
@@ -242,7 +243,7 @@ export default function Hero() {
             >
               <div
                 ref={fccRef}
-                className="hero-fcc-panel relative z-[2] flex flex-col rounded-2xl border border-[#6B8AB0]/45 p-5 sm:rounded-[1.25rem] sm:p-6 md:p-7"
+                className="hero-fcc-panel relative z-[2] flex flex-col rounded-2xl border border-[var(--accent-soft)]/45 p-5 sm:rounded-[1.25rem] sm:p-6 md:p-7"
               >
                 <p
                   data-fcc="eyebrow"
@@ -285,7 +286,7 @@ export default function Hero() {
           <motion.ul
             variants={fadeUp}
             transition={itemTransition}
-            className="flex flex-wrap gap-2 border-t border-white/15 pt-5 sm:gap-2.5 sm:pt-6"
+            className="flex flex-wrap gap-2 border-t border-transparent pt-5 sm:gap-2.5 sm:pt-6"
             aria-label="Core solutions"
           >
             {(heroContent.pillars || []).map((bit) => (
@@ -311,7 +312,7 @@ export default function Hero() {
           className="hero-interact absolute bottom-3 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-1 text-[10px] tracking-[0.18em] text-[#FFFFFF]/80 uppercase transition-colors hover:text-[#FFFFFF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 sm:bottom-6 sm:flex sm:text-[11px] md:bottom-8"
         >
           <span className="hidden sm:inline">Scroll</span>
-          <span className="grid h-8 w-8 place-items-center rounded-full border border-white/25 bg-white/15 shadow-sm backdrop-blur-sm">
+          <span className="grid h-8 w-8 place-items-center rounded-full border border-transparent bg-white/15 shadow-sm backdrop-blur-sm">
             <ArrowDown size={14} className="animate-bounce" aria-hidden />
           </span>
         </motion.button>

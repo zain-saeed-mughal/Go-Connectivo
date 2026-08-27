@@ -2,13 +2,23 @@ import { useMemo, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
-/** Brand navy, matches Go Connectivo UI */
-const NAVY = '#2F4C73';
-const MID = '#4A6B94';
-const LIGHT = '#6B8AB0';
-const SOFT = '#A8BFD8';
+function themeColor(name, fallback) {
+  if (typeof window === 'undefined') return fallback;
+  const v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  return v || fallback;
+}
 
-function Meridians({ radius = 1.35, count = 10 }) {
+/** Brand accents — resolved from active theme CSS vars (navy fallbacks) */
+function getSceneColors() {
+  return {
+    navy: themeColor('--accent-primary', '#2F4C73'),
+    mid: themeColor('--accent-secondary', '#4A6B94'),
+    light: themeColor('--accent-soft', '#6B8AB0'),
+    soft: themeColor('--accent-light', '#8BA3C4'),
+  };
+}
+
+function Meridians({ radius = 1.35, count = 10, color }) {
   const geos = useMemo(() => {
     return Array.from({ length: count }, (_, i) => {
       const a = (i / count) * Math.PI;
@@ -31,14 +41,14 @@ function Meridians({ radius = 1.35, count = 10 }) {
     <group>
       {geos.map((geo, i) => (
         <line key={`mer-${i}`} geometry={geo}>
-          <lineBasicMaterial color={SOFT} transparent opacity={0.55} depthWrite={false} />
+          <lineBasicMaterial color={color} transparent opacity={0.55} depthWrite={false} />
         </line>
       ))}
     </group>
   );
 }
 
-function Parallels({ radius = 1.35, count = 7 }) {
+function Parallels({ radius = 1.35, count = 7, color }) {
   const geos = useMemo(() => {
     return Array.from({ length: count }, (_, i) => {
       const y = ((i + 1) / (count + 1)) * 2 - 1;
@@ -56,7 +66,7 @@ function Parallels({ radius = 1.35, count = 7 }) {
     <group>
       {geos.map((geo, i) => (
         <line key={`par-${i}`} geometry={geo}>
-          <lineBasicMaterial color={LIGHT} transparent opacity={0.42} depthWrite={false} />
+          <lineBasicMaterial color={color} transparent opacity={0.42} depthWrite={false} />
         </line>
       ))}
     </group>
@@ -66,7 +76,8 @@ function Parallels({ radius = 1.35, count = 7 }) {
 /**
  * World globe, elegant scale-in on page open, then scroll-driven motion.
  */
-export default function HeroNetworkScene({ progressRef }) {
+export default function HeroNetworkScene({ progressRef, theme = 'dark' }) {
+  const colors = useMemo(() => getSceneColors(), [theme]);
   const root = useRef(null);
   const glow = useRef(null);
   const ring = useRef(null);
@@ -111,26 +122,26 @@ export default function HeroNetworkScene({ progressRef }) {
       <group ref={root} position={[0.05, 0.02, 0]} scale={0.01}>
         <mesh ref={shell}>
           <sphereGeometry args={[1.32, 48, 48]} />
-          <meshBasicMaterial color={NAVY} transparent opacity={0} depthWrite={false} />
+          <meshBasicMaterial color={colors.navy} transparent opacity={0} depthWrite={false} />
         </mesh>
 
         <mesh ref={wire}>
           <sphereGeometry args={[1.35, 28, 28]} />
-          <meshBasicMaterial color={LIGHT} wireframe transparent opacity={0} />
+          <meshBasicMaterial color={colors.light} wireframe transparent opacity={0} />
         </mesh>
 
-        <Meridians radius={1.36} count={12} />
-        <Parallels radius={1.36} count={8} />
+        <Meridians radius={1.36} count={12} color={colors.soft} />
+        <Parallels radius={1.36} count={8} color={colors.light} />
 
         <mesh rotation={[Math.PI / 2, 0, 0]}>
           <torusGeometry args={[1.36, 0.012, 8, 96]} />
-          <meshBasicMaterial color={SOFT} transparent opacity={0.7} depthWrite={false} />
+          <meshBasicMaterial color={colors.soft} transparent opacity={0.7} depthWrite={false} />
         </mesh>
 
         <mesh ref={glow}>
           <sphereGeometry args={[1.55, 32, 32]} />
           <meshBasicMaterial
-            color={MID}
+            color={colors.mid}
             transparent
             opacity={0}
             depthWrite={false}
@@ -141,7 +152,7 @@ export default function HeroNetworkScene({ progressRef }) {
 
         <mesh ref={ring} rotation={[Math.PI / 2.6, 0.35, 0.2]}>
           <torusGeometry args={[1.85, 0.018, 8, 100]} />
-          <meshBasicMaterial color={LIGHT} transparent opacity={0} depthWrite={false} />
+          <meshBasicMaterial color={colors.light} transparent opacity={0} depthWrite={false} />
         </mesh>
       </group>
     </>

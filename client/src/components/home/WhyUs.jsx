@@ -15,6 +15,7 @@ const featureChips = [
 
 /**
  * Advantages — commercial outcomes with a smooth panel entrance.
+ * Outer shell avoids .gc-card preserve-3d so border-radius actually clips.
  */
 export default function WhyUs() {
   return (
@@ -31,12 +32,12 @@ export default function WhyUs() {
           <StaggerContainer className="space-y-5" stagger={0.1} from="up" start="top 88%">
             {whyUs.map((item) => (
               <div key={item.title} className="group flex items-start gap-4">
-                <span className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[#4A6B94] to-[#2F4C73] text-[#FFFFFF] shadow-[0_6px_18px_rgba(47,76,115,0.35)] transition-transform duration-500 group-hover:scale-110">
+                <span className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)] text-[var(--text-on-accent)] shadow-[var(--shadow-card-hover)] transition-transform duration-500 group-hover:scale-110">
                   <Check size={14} strokeWidth={3} aria-hidden />
                 </span>
                 <div>
-                  <h3 className="font-display text-lg font-semibold text-[#2F4C73]">{item.title}</h3>
-                  <p className="mt-1 text-[0.9375rem] leading-relaxed text-[#5A6B7D] sm:text-sm">
+                  <h3 className="font-display text-lg font-semibold text-[var(--text-primary)]">{item.title}</h3>
+                  <p className="mt-1 text-[0.9375rem] leading-relaxed text-[var(--text-secondary)] sm:text-sm">
                     {item.description}
                   </p>
                 </div>
@@ -46,8 +47,9 @@ export default function WhyUs() {
         </SlideUpOnView>
 
         <SlideUpOnView className="min-w-0" distance={44} delay={0.08}>
-          <div className="gc-card relative overflow-hidden bg-gradient-to-br from-[#E8ECF2] via-[#E0E5ED] to-[#FFFFFF] p-6 sm:p-8">
-            <div className="pointer-events-none absolute inset-0 hidden opacity-60 lg:block">
+          <div className="why-us-panel relative isolate overflow-hidden rounded-[1.25rem] border border-[color:var(--border-soft)] p-6 shadow-[var(--shadow-card)] sm:rounded-[1.5rem] sm:p-8">
+            {/* 3D tower backdrop — clipped by overflow:hidden on panel */}
+            <div className="why-us-panel__scene pointer-events-none absolute inset-0 z-0">
               <TelecomScene3DLazy
                 variant="tower"
                 className="min-h-full"
@@ -57,24 +59,24 @@ export default function WhyUs() {
                 slotPriority={5}
               />
             </div>
-            <div className="pointer-events-none absolute -top-10 -right-10 h-40 w-40 rounded-full bg-[#2F4C73]/25 blur-3xl" />
-            <div className="pointer-events-none absolute -bottom-12 -left-8 h-44 w-44 rounded-full bg-[#4A6B94]/20 blur-3xl" />
+            <div className="pointer-events-none absolute -top-10 -right-10 z-0 h-40 w-40 rounded-full bg-[var(--accent-primary)]/20 blur-3xl" />
+            <div className="pointer-events-none absolute -bottom-12 -left-8 z-0 h-44 w-44 rounded-full bg-[var(--accent-secondary)]/15 blur-3xl" />
 
             <StaggerContainer
-              className="relative space-y-4"
+              className="relative z-[1] space-y-4"
               stagger={0.09}
               from="up"
               start="top 90%"
               delay={0.12}
             >
-              <div className="gc-card rounded-2xl p-5">
-                <p className="text-sm font-medium text-[#6B7C8F]">Traditional phone systems</p>
-                <p className="mt-1.5 text-sm text-[#6B7C8F]">Higher overhead · Slower change cycles</p>
+              <div className="rounded-2xl border border-[color:var(--border-soft)] bg-[var(--surface)]/92 p-5 backdrop-blur-[2px]">
+                <p className="text-sm font-medium text-[var(--text-secondary)]">Traditional phone systems</p>
+                <p className="mt-1.5 text-sm text-[var(--text-secondary)]">Higher overhead · Slower change cycles</p>
               </div>
 
-              <div className="gc-card gc-card-accent rounded-2xl p-5">
-                <p className="text-sm font-medium text-[#2F4C73]">Go Connectivo</p>
-                <p className="mt-1.5 text-sm text-[#4A6B94]">
+              <div className="rounded-2xl border border-[color:var(--border)] bg-[var(--surface)] p-5 shadow-[var(--shadow-card)]">
+                <p className="text-sm font-medium text-[var(--text-primary)]">Go Connectivo</p>
+                <p className="mt-1.5 text-sm text-[var(--text-secondary)]">
                   Competitive rates · Guided go-live · Specialist support
                 </p>
               </div>
@@ -83,7 +85,7 @@ export default function WhyUs() {
                 {featureChips.map((feature) => (
                   <span
                     key={feature}
-                    className="gc-card-sm px-3 py-2 text-center text-[11px] leading-tight text-[#5A6B7D]"
+                    className="rounded-xl border border-[color:var(--border-soft)] bg-[var(--surface)]/90 px-3 py-2 text-center text-[11px] leading-tight text-[var(--text-secondary)]"
                   >
                     {feature}
                   </span>

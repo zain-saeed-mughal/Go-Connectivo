@@ -78,14 +78,30 @@ export default function Process() {
       },
     });
 
+    const getPulseShadow = () =>
+      getComputedStyle(document.documentElement).getPropertyValue('--shadow-pulse').trim() ||
+      '0 0 0 12px var(--focus-ring)';
+
     const pulse = gsap.to(nodes, {
-      boxShadow: '0 0 0 12px rgba(74,107,148,0.1)',
+      boxShadow: getPulseShadow(),
       duration: 1.7,
       ease: 'sine.inOut',
       yoyo: true,
       repeat: -1,
       stagger: 0.2,
       paused: true,
+    });
+
+    const onThemeChange = () => {
+      const next = getPulseShadow();
+      pulse.vars.boxShadow = next;
+      gsap.set(nodes, { boxShadow: next });
+      pulse.invalidate();
+    };
+    window.addEventListener('gc-themechange', onThemeChange);
+    cleanups.push(() => {
+      window.removeEventListener('gc-themechange', onThemeChange);
+      pulse.kill();
     });
 
     const pulseTrigger = ScrollTrigger.create({
@@ -139,12 +155,12 @@ export default function Process() {
 
         <div
           data-journey-stage
-          className="relative mb-8 hidden overflow-hidden rounded-[1.75rem] border border-[rgba(47,76,115,0.12)] bg-gradient-to-br from-[#FFFFFF]/90 via-[#F4F6F9]/95 to-[#E8ECF2]/80 p-6 shadow-[0_24px_80px_rgba(47,76,115,0.1)] [transform-style:preserve-3d] sm:p-8 lg:block"
+          className="relative mb-8 hidden overflow-hidden rounded-[1.75rem] border border-[color:var(--border-soft)] bg-gradient-to-br from-[var(--surface)]/90 via-[var(--bg-secondary)]/95 to-[var(--bg-secondary)]/80 p-6 shadow-[var(--shadow)] [transform-style:preserve-3d] sm:p-8 lg:block"
           style={{ perspective: '1200px' }}
         >
           <div
             data-journey-glow
-            className="pointer-events-none absolute top-1/2 left-1/2 h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#4A6B94]/18 blur-3xl"
+            className="pointer-events-none absolute top-1/2 left-1/2 h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--accent-soft)]/22 blur-3xl"
             aria-hidden
           />
           <div
@@ -152,7 +168,7 @@ export default function Process() {
             aria-hidden
             style={{
               backgroundImage:
-                'radial-gradient(circle at 18% 28%, rgba(107,138,176,0.22), transparent 42%), radial-gradient(circle at 82% 68%, rgba(47,76,115,0.14), transparent 46%)',
+                'radial-gradient(circle at 18% 28%, var(--glare-a), transparent 42%), radial-gradient(circle at 82% 68%, var(--glare-b), transparent 46%)',
             }}
           />
 
@@ -160,7 +176,7 @@ export default function Process() {
             {Array.from({ length: 24 }).map((_, i) => (
               <span
                 key={`dust-${i}`}
-                className="absolute h-1 w-1 rounded-full bg-[#6B8AB0]/40"
+                className="absolute h-1 w-1 rounded-full bg-[var(--accent-soft)]/40"
                 style={{
                   left: `${6 + ((i * 41) % 88)}%`,
                   top: `${10 + ((i * 59) % 78)}%`,
@@ -172,13 +188,13 @@ export default function Process() {
 
           <div className="relative z-[1]">
             <div className="mb-4 flex items-center justify-between gap-4">
-              <p className="text-[11px] font-semibold tracking-[0.2em] text-[#4A6B94] uppercase">
+              <p className="text-[11px] font-semibold tracking-[0.2em] text-[var(--text-secondary)] uppercase">
                 Launch path
               </p>
-              <div className="h-1.5 w-44 overflow-hidden rounded-full bg-[rgba(47,76,115,0.1)] sm:w-64">
+              <div className="h-1.5 w-44 overflow-hidden rounded-full bg-[var(--border-soft)] sm:w-64">
                 <div
                   data-journey-progress
-                  className="h-full origin-left rounded-full bg-gradient-to-r from-[#2F4C73] via-[#4A6B94] to-[#6B8AB0]"
+                  className="h-full origin-left rounded-full bg-gradient-to-r from-[var(--accent-primary)] via-[var(--accent-secondary)] to-[var(--accent-secondary)]"
                 />
               </div>
             </div>
@@ -193,7 +209,7 @@ export default function Process() {
               >
                 <path
                   d="M40 110 C160 40, 240 150, 320 100 S480 35, 560 105 S700 160, 820 80 S920 45, 960 100"
-                  stroke="rgba(47,76,115,0.12)"
+                  stroke="var(--line-faint)"
                   strokeWidth="2.5"
                   strokeLinecap="round"
                 />
@@ -206,9 +222,9 @@ export default function Process() {
                 />
                 <defs>
                   <linearGradient id="gc-journey-grad" x1="0" y1="0" x2="1000" y2="0">
-                    <stop stopColor="#2F4C73" />
-                    <stop offset="0.55" stopColor="#4A6B94" />
-                    <stop offset="1" stopColor="#6B8AB0" />
+                    <stop stopColor="var(--accent-soft)" />
+                    <stop offset="0.55" stopColor="var(--accent-soft)" />
+                    <stop offset="1" stopColor="var(--accent-soft)" />
                   </linearGradient>
                 </defs>
               </svg>
@@ -223,10 +239,10 @@ export default function Process() {
                     top: `${(NODE_Y[index] / 180) * 100}%`,
                   }}
                 >
-                  <span className="grid h-12 w-12 place-items-center rounded-full border border-[#4A6B94]/50 bg-[#FFFFFF] font-display text-xs font-bold text-[#2F4C73] shadow-[0_12px_32px_rgba(47,76,115,0.18)]">
+                  <span className="grid h-12 w-12 place-items-center rounded-full border border-[var(--accent-soft)]/50 bg-[var(--surface)] font-display text-xs font-bold text-[var(--text-primary)] shadow-[var(--shadow-soft)]">
                     {step.step}
                   </span>
-                  <span className="mt-2 max-w-[6.5rem] text-center text-[10px] font-semibold tracking-[0.12em] text-[#4A5D73] uppercase">
+                  <span className="mt-2 max-w-[6.5rem] text-center text-[10px] font-semibold tracking-[0.12em] text-[var(--text-secondary)] uppercase">
                     {step.title}
                   </span>
                 </div>
@@ -242,20 +258,20 @@ export default function Process() {
               data-step
               className="gc-card group relative flex h-full flex-col overflow-hidden p-5 sm:p-6"
             >
-              <div className="pointer-events-none absolute -right-6 -top-6 h-24 w-24 rounded-full bg-[#4A6B94]/10 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
+              <div className="pointer-events-none absolute -right-6 -top-6 h-24 w-24 rounded-full bg-[var(--accent-soft)]/15 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
               <div className="mb-4 flex items-center gap-3">
-                <span className="grid h-9 w-9 place-items-center rounded-full border border-[#4A6B94]/35 bg-[#4A6B94]/10 font-display text-xs font-bold text-[#4A6B94] transition-[background-color,border-color,transform] duration-500 group-hover:scale-105 group-hover:border-[#4A6B94]/60 group-hover:bg-[#4A6B94]/18">
+                <span className="grid h-9 w-9 place-items-center rounded-full border border-[var(--accent-soft)]/35 bg-[var(--accent-soft)]/15 font-display text-xs font-bold text-[var(--text-secondary)] transition-[background-color,border-color,transform] duration-500 group-hover:scale-105 group-hover:border-[var(--accent-soft)]/60 group-hover:bg-[var(--accent-soft)]/22">
                   {step.step}
                 </span>
-                <span className="text-[10px] font-semibold tracking-[0.18em] text-[#6B8AB0] uppercase">
+                <span className="text-[10px] font-semibold tracking-[0.18em] text-[var(--text-secondary)] uppercase">
                   Step {index + 1}
                 </span>
               </div>
-              <h3 className="font-display text-lg font-semibold tracking-[-0.02em] text-[#2F4C73]">
+              <h3 className="font-display text-lg font-semibold tracking-[-0.02em] text-[var(--text-primary)]">
                 {step.title}
               </h3>
-              <p className="mt-2 flex-1 text-[0.9375rem] leading-relaxed text-[#5A6B7D] sm:text-sm">{step.description}</p>
-              <div className="mt-5 h-px w-full origin-left scale-x-0 bg-gradient-to-r from-[#4A6B94]/50 to-transparent transition-transform duration-500 group-hover:scale-x-100" />
+              <p className="mt-2 flex-1 text-[0.9375rem] leading-relaxed text-[var(--text-secondary)] sm:text-sm">{step.description}</p>
+              <div className="mt-5 h-px w-full origin-left scale-x-0 bg-gradient-to-r from-[var(--accent-soft)]/50 to-transparent transition-transform duration-500 group-hover:scale-x-100" />
             </article>
           ))}
         </div>

@@ -1,11 +1,17 @@
 import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import { isCompactViewport, prefersReducedMotion } from '../../motion/config';
 import { prefetchTelecomScene } from '../../motion/prefetchHome3d';
-import { noteWebglPressure, releaseWebglSlot, requestWebglSlot } from '../../motion/webglSlots';
+import {
+  isWebglBackingOff,
+  isWebglCoolingDown,
+  noteWebglPressure,
+  releaseWebglSlot,
+  requestWebglSlot,
+} from '../../motion/webglSlots';
 
 const Fallback = () => (
   <div
-    className="h-full min-h-[200px] w-full bg-gradient-to-br from-[#E8ECF2] via-[#F4F6F9] to-[#E0E5ED]"
+    className="h-full min-h-[200px] w-full bg-gradient-to-br from-[var(--bg-secondary)] via-[var(--bg-secondary)] to-[var(--surface)]"
     aria-hidden
   />
 );
@@ -13,13 +19,13 @@ const Fallback = () => (
 /**
  * Glass-stage Three models (Services / Platform / WhyUs).
  *
- * - `eager`: start WebGL off-screen after a short delay so scroll-in is instant
- * - `keepAlive`: once mounted, stay mounted until another scene steals the slot
+ * - `eager`: warm after a short delay when near the fold
+ * - Scenes unmount when far off-screen (no keep-alive thrash)
  */
 export default function TelecomScene3DLazy({
   eager = false,
-  keepAlive = true,
-  warmDelay = 500,
+  keepAlive = false,
+  warmDelay = 700,
   slotPriority = 12,
   ...props
 }) {
@@ -34,6 +40,10 @@ export default function TelecomScene3DLazy({
   );
 
   const tryAcquire = useCallback(() => {
+    if (isWebglBackingOff(slotId) || isWebglCoolingDown()) {
+      setAllowed(false);
+      return;
+    }
     const ok = requestWebglSlot(slotId, {
       priority: slotPriority,
       onEvict: () => setAllowed(false),
@@ -104,17 +114,14 @@ export default function TelecomScene3DLazy({
           tryAcquire();
           return;
         }
-        if (keepAlive) {
-          // Stay mounted; only yield if another stage steals the WebGL slot.
-          return;
-        }
+        if (keepAlive) return;
         leaveTimer.current = window.setTimeout(() => {
           releaseWebglSlot(slotId);
           setAllowed(false);
           setInView(false);
-        }, 800);
+        }, 600);
       },
-      { rootMargin: '200% 0px 200% 0px', threshold: 0 },
+      { rootMargin: '35% 0px 35% 0px', threshold: 0 },
     );
     observer.observe(el);
 
@@ -126,9 +133,10 @@ export default function TelecomScene3DLazy({
     };
   }, [blocked, slotId, tryAcquire, eager, warmDelay, keepAlive]);
 
+  // Slow retry — never spam remounts while GPU is cooling / backing off.
   useEffect(() => {
     if (blocked || !inView || allowed) return undefined;
-    const id = window.setInterval(tryAcquire, 40);
+    const id = window.setInterval(tryAcquire, 700);
     return () => window.clearInterval(id);
   }, [blocked, inView, allowed, tryAcquire]);
 

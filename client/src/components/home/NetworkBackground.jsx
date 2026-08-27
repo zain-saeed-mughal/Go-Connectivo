@@ -150,35 +150,35 @@ export default function NetworkBackground() {
     >
       <div className="absolute inset-0 grid-fade opacity-70" />
 
-      <div className="absolute top-[18%] left-[-10%] h-[40vh] w-[55vw] rounded-full bg-[#4A6B94]/[0.07] gc-glow md:h-[55vh]" />
+      <div className="absolute top-[18%] left-[-10%] h-[40vh] w-[55vw] rounded-full bg-[var(--accent-soft)]/[0.07] gc-glow md:h-[55vh]" />
 
       <div
         data-arcs
         className="absolute top-1/2 right-[4%] hidden h-[min(58vh,480px)] w-[min(58vh,480px)] -translate-y-1/2 lg:block"
       >
         <svg className="h-full w-full opacity-[0.22]" viewBox="0 0 200 200" fill="none">
-          <g stroke="#4A6B94" strokeWidth="9" strokeLinecap="round">
+          <g stroke="var(--accent-soft)" strokeWidth="9" strokeLinecap="round">
             <path d="M168 42a78 78 0 1 0 0 116" />
             <path d="M152 62a52 52 0 1 0 0 76" />
             <path d="M136 82a28 28 0 1 0 0 36" />
           </g>
-          <circle cx="168" cy="100" r="3.5" fill="#6B8AB0" opacity="0.9" />
+          <circle cx="168" cy="100" r="3.5" fill="var(--accent-soft)" opacity="0.9" />
         </svg>
-        <div className="absolute inset-[18%] rounded-full border border-[#4A6B94]/15" />
-        <div className="absolute inset-[32%] rounded-full border border-[#4A6B94]/10" />
+        <div className="absolute inset-[18%] rounded-full border border-[var(--accent-soft)]/15" />
+        <div className="absolute inset-[32%] rounded-full border border-[var(--accent-soft)]/10" />
       </div>
 
       <div
         data-orb
-        className="gc-glow absolute top-10 -left-16 h-48 w-48 rounded-full bg-[#2F4C73]/22 sm:-left-24 sm:h-72 sm:w-72"
+        className="gc-glow absolute top-10 -left-16 h-48 w-48 rounded-full bg-[var(--accent-soft)]/22 sm:-left-24 sm:h-72 sm:w-72"
       />
       <div
         data-orb
-        className="gc-glow absolute top-24 right-[-2rem] h-52 w-52 rounded-full bg-[#4A6B94]/28 sm:right-[-4rem] sm:h-80 sm:w-80"
+        className="gc-glow absolute top-24 right-[-2rem] h-52 w-52 rounded-full bg-[var(--accent-soft)]/28 sm:right-[-4rem] sm:h-80 sm:w-80"
       />
       <div
         data-orb
-        className="gc-glow absolute right-1/4 bottom-10 hidden h-56 w-56 rounded-full bg-[#6B8AB0]/12 sm:block"
+        className="gc-glow absolute right-1/4 bottom-10 hidden h-56 w-56 rounded-full bg-[var(--accent-soft)]/14 sm:block"
       />
 
       <div data-depth="0.55" className="absolute inset-0 hidden lg:block">
@@ -190,7 +190,7 @@ export default function NetworkBackground() {
                 <circle
                   data-packet
                   r="0.55"
-                  fill="#6B8AB0"
+                  fill="var(--accent-soft)"
                   style={{
                     offsetPath: `path('M ${x1} ${y1} L ${x2} ${y2}')`,
                     offsetRotate: '0deg',
@@ -200,7 +200,7 @@ export default function NetworkBackground() {
                   cx={(x1 + x2) / 2}
                   cy={(y1 + y2) / 2}
                   r="0.35"
-                  fill="#4A6B94"
+                  fill="var(--accent-soft)"
                   opacity="0.35"
                   className={index % 2 === 0 ? '' : 'hidden'}
                 />
@@ -220,14 +220,14 @@ export default function NetworkBackground() {
           <div className="-translate-x-1/2 -translate-y-1/2">
             <div
               data-float
-              className="relative flex items-center gap-2 rounded-full border border-[rgba(47,76,115,0.14)] bg-[#FFFFFF]/75 px-3 py-1.5 shadow-[0_8px_30px_rgba(0,0,0,0.35)] backdrop-blur-md will-change-transform"
+              className="relative flex items-center gap-2 rounded-full border border-[color:var(--border-soft)] bg-[var(--surface)]/90 px-3 py-1.5 shadow-[var(--shadow-soft)] backdrop-blur-md will-change-transform"
             >
               <span
                 data-pulse
-                className="pointer-events-none absolute left-3 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-[#4A6B94]/50"
+                className="pointer-events-none absolute left-3 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-[var(--accent-soft)]/50"
               />
-              <span className="relative h-1.5 w-1.5 rounded-full bg-[#4A6B94] shadow-[0_0_14px_#4A6B94]" />
-              <span className="text-[11px] font-medium tracking-wide text-[#f0f0f0]">
+              <span className="relative h-1.5 w-1.5 rounded-full bg-[var(--accent-soft)] shadow-[0_0_14px_var(--accent-soft)]" />
+              <span className="text-[11px] font-medium tracking-wide text-[var(--text-primary)]">
                 {node.label}
               </span>
             </div>

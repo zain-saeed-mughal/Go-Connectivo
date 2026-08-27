@@ -29,7 +29,7 @@ export default function ScrollProgress() {
     >
       <div
         ref={barRef}
-        className="h-full w-full origin-left bg-gradient-to-r from-[#2F4C73] via-[#4A6B94] to-[#6B8AB0]"
+        className="h-full w-full origin-left bg-gradient-to-r from-[var(--accent-primary)] via-[var(--accent-secondary)] to-[var(--accent-secondary)]"
       />
     </div>
   );

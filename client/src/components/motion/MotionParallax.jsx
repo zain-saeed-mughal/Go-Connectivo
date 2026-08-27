@@ -88,7 +88,7 @@ export function MotionImageMask({ children, className = '', delay = 0 }) {
   );
 }
 
-/** Page reading progress, direct scrub (no spring lag on the main thread). */
+/** Page reading progress — direct scrub, no CSS transition lag. */
 export function MotionScrollProgress() {
   const { scrollYProgress } = useScroll();
   const reduced = useReducedMotion();
@@ -97,7 +97,7 @@ export function MotionScrollProgress() {
 
   return (
     <motion.div
-      className="pointer-events-none fixed inset-x-0 top-0 z-[60] h-[2px] origin-left bg-gradient-to-r from-[#2F4C73] via-[#4A6B94] to-[#6B8AB0]"
+      className="pointer-events-none fixed inset-x-0 top-0 z-[110] h-[2px] origin-left bg-gradient-to-r from-[var(--accent-primary)] via-[var(--accent-secondary)] to-[var(--accent-secondary)]"
       style={{ scaleX: scrollYProgress }}
       aria-hidden="true"
     />

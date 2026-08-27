@@ -102,21 +102,21 @@ export default function ScrollAtmosphere() {
         <path
           ref={pathA}
           d="M180 40 C260 220 120 420 240 620 C360 820 80 980 200 1180 C320 1380 140 1580 260 1780 C360 1940 200 2100 280 2320"
-          stroke="rgba(74,107,148,0.35)"
+          stroke="var(--line-soft)"
           strokeWidth="1.25"
           vectorEffect="non-scaling-stroke"
         />
         <path
           ref={pathB}
           d="M720 20 C640 200 820 380 700 560 C580 740 860 920 740 1100 C620 1280 880 1460 760 1640 C660 1780 840 1960 760 2140 C700 2240 780 2320 740 2380"
-          stroke="rgba(107,138,176,0.28)"
+          stroke="var(--line-soft)"
           strokeWidth="1.1"
           vectorEffect="non-scaling-stroke"
         />
         <path
           ref={pathC}
           d="M1260 60 C1180 240 1320 420 1200 620 C1080 820 1340 980 1220 1180 C1100 1380 1360 1560 1240 1760 C1140 1920 1320 2080 1220 2280"
-          stroke="rgba(47,76,115,0.22)"
+          stroke="var(--line-soft)"
           strokeWidth="1.1"
           vectorEffect="non-scaling-stroke"
         />

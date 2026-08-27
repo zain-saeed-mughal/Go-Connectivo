@@ -74,18 +74,18 @@ export default function CustomCursor() {
       label.textContent = nextLabel;
       label.style.opacity = nextLabel ? '1' : '0';
 
+      const css = getComputedStyle(document.documentElement);
+      const ringColor = css.getPropertyValue('--cursor-ring').trim() || 'rgba(47, 76, 115, 0.35)';
+      const ringHover = css.getPropertyValue('--cursor-ring-hover').trim() || 'rgba(74, 107, 148, 0.55)';
+      const ringText = css.getPropertyValue('--cursor-ring-text').trim() || 'rgba(47, 76, 115, 0.4)';
+      const fillHover = css.getPropertyValue('--cursor-fill-hover').trim() || 'rgba(74, 107, 148, 0.1)';
+
       const size = next === 'hover' ? 52 : next === 'text' ? 68 : 34;
       gsap.to(ring, {
         width: size,
         height: size,
-        borderColor:
-          next === 'hover'
-            ? 'rgba(74, 107, 148, 0.55)'
-            : next === 'text'
-              ? 'rgba(47, 76, 115, 0.35)'
-              : 'rgba(47, 76, 115, 0.28)',
-        backgroundColor:
-          next === 'hover' ? 'rgba(107, 138, 176, 0.12)' : 'rgba(255,255,255,0.01)',
+        borderColor: next === 'hover' ? ringHover : next === 'text' ? ringText : ringColor,
+        backgroundColor: next === 'hover' ? fillHover : 'rgba(255,255,255,0.01)',
         duration: 0.22,
         ease: 'power3.out',
         overwrite: 'auto',
@@ -97,6 +97,13 @@ export default function CustomCursor() {
         overwrite: 'auto',
       });
     };
+
+    const refreshThemeColors = () => {
+      const prev = mode;
+      mode = '';
+      applyMode(prev, labelText);
+    };
+    window.addEventListener('gc-themechange', refreshThemeColors);
 
     const resolveTarget = (target) => {
       if (!(target instanceof Element)) return { mode: 'default', label: '' };
@@ -166,6 +173,7 @@ export default function CustomCursor() {
       window.removeEventListener('pointermove', onMove);
       window.removeEventListener('pointerdown', onDown);
       window.removeEventListener('pointerup', onUp);
+      window.removeEventListener('gc-themechange', refreshThemeColors);
       document.documentElement.removeEventListener('mouseleave', hide);
       gsap.killTweensOf([wrap, ring, dot]);
     };

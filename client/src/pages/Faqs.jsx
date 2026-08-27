@@ -33,9 +33,9 @@ export default function Faqs() {
           {faqCategories.map((group, groupIndex) => (
             <div key={group.category}>
               <AnimatedSection from="up" duration={0.7}>
-                <div className="mb-5 border-b border-[rgba(47,76,115,0.12)] pb-3">
-                  <h2 className="font-display text-xl font-semibold tracking-[-0.02em] text-[#2F4C73]">
-                    <span className="mr-3 text-sm font-semibold text-[#4A6B94]">
+                <div className="mb-5 border-b border-[color:var(--border-soft)] pb-3">
+                  <h2 className="font-display text-xl font-semibold tracking-[-0.02em] text-[var(--text-primary)]">
+                    <span className="mr-3 text-sm font-semibold text-[var(--text-secondary)]">
                       {String(groupIndex + 1).padStart(2, '0')}
                     </span>
                     {group.category}
@@ -52,7 +52,7 @@ export default function Faqs() {
                     <div
                       key={item.q}
                       className={`gc-card-sm overflow-hidden ${
-                        open ? 'border-[#4A6B94]/40 shadow-[0_12px_36px_rgba(74,107,148,0.1)]' : ''
+                        open ? 'border-[var(--accent-soft)]/40 shadow-[var(--shadow-soft)]' : ''
                       }`}
                     >
                       <button
@@ -61,17 +61,17 @@ export default function Faqs() {
                         onClick={() => setOpenId(open ? null : id)}
                         aria-expanded={open}
                       >
-                        <span className="min-w-0 flex-1 text-sm font-medium leading-snug text-[#2F4C73] sm:text-[15px]">
+                        <span className="min-w-0 flex-1 text-sm font-medium leading-snug text-[var(--text-primary)] sm:text-[15px]">
                           {item.q}
                         </span>
                         <span
                           className={`grid h-7 w-7 shrink-0 place-items-center rounded-full border transition-[transform,border-color,background-color] duration-500 ${
                             open
-                              ? 'rotate-45 border-[#4A6B94]/50 bg-[#4A6B94]/15'
-                              : 'border-[rgba(47,76,115,0.12)] bg-[#FFFFFF]/80'
+                              ? 'rotate-45 border-[var(--accent-soft)]/50 bg-[var(--accent-soft)]/18'
+                              : 'border-[color:var(--border-soft)] bg-[var(--surface)]/80'
                           }`}
                         >
-                          <Plus size={15} className="text-[#4A6B94]" />
+                          <Plus size={15} className="text-[var(--text-secondary)]" />
                         </span>
                       </button>
 
@@ -89,14 +89,14 @@ export default function Faqs() {
                               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.05 }}
                               className="px-5 pb-5"
                             >
-                              <p className="text-sm leading-relaxed text-[#6B7C8F]">{item.a}</p>
+                              <p className="text-sm leading-relaxed text-[var(--text-secondary)]">{item.a}</p>
                               {item.related?.length ? (
                                 <ul className="mt-3 flex flex-wrap gap-2">
                                   {item.related.map((link) => (
                                     <li key={`${item.q}-${link.to}`}>
                                       <Link
                                         to={link.to}
-                                        className="inline-flex min-h-9 items-center rounded-lg border border-[rgba(47,76,115,0.12)] bg-[#F4F6F9] px-3 text-xs font-semibold text-[#2F4C73] transition-colors hover:border-[#4A6B94]/40 hover:bg-white"
+                                        className="inline-flex min-h-9 items-center rounded-lg border border-[color:var(--border-soft)] bg-[var(--bg-primary)] px-3 text-xs font-semibold text-[var(--text-primary)] transition-colors hover:border-[var(--accent-soft)]/40 hover:bg-[var(--surface)]"
                                       >
                                         {link.label}
                                       </Link>
@@ -116,15 +116,15 @@ export default function Faqs() {
           ))}
 
           <AnimatedSection from="scale">
-            <div className="gc-card relative overflow-hidden bg-gradient-to-br from-[#E8ECF2] via-[#E0E5ED] to-[#FFFFFF] px-4 py-10 text-center sm:px-6 sm:py-12">
-              <div className="pointer-events-none absolute -top-12 left-1/4 h-40 w-40 rounded-full bg-[#2F4C73]/25 blur-3xl" />
-              <div className="pointer-events-none absolute right-1/4 -bottom-12 h-44 w-44 rounded-full bg-[#4A6B94]/20 blur-3xl" />
+            <div className="gc-card relative overflow-hidden bg-gradient-to-br from-[var(--bg-secondary)] via-[var(--bg-secondary)] to-[var(--surface)] px-4 py-10 text-center sm:px-6 sm:py-12">
+              <div className="pointer-events-none absolute -top-12 left-1/4 h-40 w-40 rounded-full bg-[var(--accent-soft)]/22 blur-3xl" />
+              <div className="pointer-events-none absolute right-1/4 -bottom-12 h-44 w-44 rounded-full bg-[var(--accent-soft)]/20 blur-3xl" />
 
               <div className="relative">
-                <h2 className="font-display text-2xl font-bold tracking-[-0.02em] text-[#2F4C73] sm:text-3xl">
+                <h2 className="font-display gradient-text-brand text-2xl font-bold tracking-[-0.02em] sm:text-3xl">
                   Still have questions?
                 </h2>
-                <p className="mt-3 text-sm text-[#4A5D73] md:text-base">
+                <p className="mt-3 text-sm text-[var(--text-secondary)] md:text-base">
                   Our team is here to help! Contact us for personalized assistance.
                 </p>
                 <div className="mt-7 flex justify-center">

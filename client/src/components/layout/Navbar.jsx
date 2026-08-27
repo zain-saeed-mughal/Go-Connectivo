@@ -4,9 +4,11 @@ import { ChevronDown, Menu, X } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import Logo from '../ui/Logo';
 import MagneticButton from '../ui/MagneticButton';
+import ThemeToggle from '../ui/ThemeToggle';
 import ServiceIcon from '../ui/ServiceIcon';
 import ServicesMegaMenu from './ServicesMegaMenu';
 import LegalMegaMenu from './LegalMegaMenu';
+import { useTheme } from '../../context/ThemeContext';
 import { getServicesForCategory, legalNavItems, navLinks, serviceCategories } from '../../data/content';
 
 const menuVariants = {
@@ -25,7 +27,7 @@ const itemVariants = {
   exit: { opacity: 0 },
 };
 
-function DesktopNavLink({ to, end, children, active, onMouseEnter }) {
+function DesktopNavLink({ to, end, children, active, onMouseEnter, isLight }) {
   return (
     <NavLink
       to={to}
@@ -33,14 +35,24 @@ function DesktopNavLink({ to, end, children, active, onMouseEnter }) {
       onMouseEnter={onMouseEnter}
       className={() =>
         `relative inline-flex items-center gap-1 rounded-full px-2.5 py-2 text-[13px] font-semibold whitespace-nowrap transition-colors duration-200 xl:px-3.5 xl:text-sm ${
-          active ? 'text-[#FFFFFF]' : 'text-[#D7E2E8] hover:text-[#FFFFFF]'
+          isLight
+            ? active
+              ? 'text-[#FFFFFF]'
+              : 'text-[#D7E2E8] hover:text-[#FFFFFF]'
+            : active
+              ? 'text-[var(--nav-text-active)]'
+              : 'text-[var(--nav-text)] hover:text-[var(--nav-text-active)]'
         }`
       }
     >
       {active && (
         <motion.span
           layoutId="activeNavPill"
-          className="absolute inset-0 -z-10 rounded-full bg-[#FFFFFF]/25 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.4)] backdrop-blur-md"
+          className={`absolute inset-0 -z-10 rounded-full backdrop-blur-md ${
+            isLight
+              ? 'bg-[#FFFFFF]/25 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.4)]'
+              : 'bg-gradient-to-r from-[var(--accent-primary)]/35 to-[var(--accent-secondary)]/25 shadow-[inset_0_0_0_1px_var(--nav-border)]'
+          }`}
           transition={{ type: 'spring', stiffness: 380, damping: 30 }}
         />
       )}
@@ -54,8 +66,8 @@ function isInside(node, container) {
 }
 
 export default function Navbar() {
+  const { isLight } = useTheme();
   const [scrolled, setScrolled] = useState(false);
-  const [progress, setProgress] = useState(0);
   const [open, setOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState(null);
   const [mobileOpenMenu, setMobileOpenMenu] = useState(null);
@@ -78,8 +90,6 @@ export default function Navbar() {
       scrollRaf = window.requestAnimationFrame(() => {
         scrollRaf = 0;
         setScrolled(window.scrollY > 16);
-        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-        setProgress(scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0);
         // Drop mega-menu on scroll so it never overlays after reverse scroll.
         setOpenMenu((wasOpen) => (wasOpen ? null : wasOpen));
       });
@@ -178,13 +188,6 @@ export default function Navbar() {
       Only the nav island + open menus re-enable pointer events.
     */
     <header className="pointer-events-none fixed inset-x-0 top-0 z-[100] px-3 pt-3 sm:px-6 sm:pt-4">
-      <div className="pointer-events-none fixed inset-x-0 top-0 h-0.5">
-        <div
-          className="h-full w-full origin-left bg-gradient-to-r from-[#2F4C73] via-[#4A6B94] to-[#6B8AB0] transition-transform duration-500 ease-out"
-          style={{ transform: `scaleX(${progress / 100})` }}
-        />
-      </div>
-
       <AnimatePresence>
         {open ? (
           <motion.button
@@ -193,7 +196,7 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="pointer-events-auto fixed inset-0 z-40 bg-[#2F4C73]/40 backdrop-blur-[2px] lg:hidden"
+            className="pointer-events-auto fixed inset-0 z-40 bg-[var(--bg-primary)]/75 backdrop-blur-[2px] lg:hidden"
             onClick={() => setOpen(false)}
           />
         ) : null}
@@ -214,10 +217,14 @@ export default function Navbar() {
         onMouseLeave={onDesktopClusterLeave}
       >
         <nav
-          className={`pointer-events-auto flex items-center justify-between rounded-2xl border px-3 py-2 transition-[border-color,background-color,box-shadow] duration-300 sm:px-5 sm:py-2.5 ${
-            scrolled || open
-              ? 'border-[#6B8AB0]/35 bg-[#2F4C73]/97 shadow-[0_12px_40px_rgba(28,49,79,0.22)] backdrop-blur-xl'
-              : 'border-[#6B8AB0]/25 bg-[#2F4C73]/92 shadow-[0_10px_35px_rgba(28,49,79,0.16)] backdrop-blur-lg'
+          className={`gc-nav-pill pointer-events-auto flex items-center justify-between px-4 py-2.5 transition-[border-color,background-color,box-shadow] duration-300 sm:px-6 sm:py-3 ${
+            isLight
+              ? scrolled || open
+                ? 'border-[#6B8AB0]/35 bg-[#2F4C73]/97 shadow-[0_12px_40px_rgba(28,49,79,0.22)] backdrop-blur-xl'
+                : 'border-[#6B8AB0]/25 bg-[#2F4C73]/92 shadow-[0_10px_35px_rgba(28,49,79,0.16)] backdrop-blur-lg'
+              : scrolled || open
+                ? 'border-[color:var(--nav-border)] bg-[var(--nav-bg-scrolled)] shadow-[var(--shadow)] backdrop-blur-xl'
+                : 'border-[color:var(--nav-border)] bg-[var(--nav-bg)]/95 shadow-[var(--shadow-soft)] backdrop-blur-lg'
           }`}
         >
           <Logo compact />
@@ -234,6 +241,7 @@ export default function Navbar() {
                     <DesktopNavLink
                       to="/services"
                       active={servicesActive}
+                      isLight={isLight}
                       onMouseEnter={() => openDesktopMenu('services')}
                     >
                       <span>Services</span>
@@ -259,6 +267,7 @@ export default function Navbar() {
                     <DesktopNavLink
                       to="/compliance"
                       active={legalActive}
+                      isLight={isLight}
                       onMouseEnter={() => openDesktopMenu('legal')}
                     >
                       <span>Legal Compliance</span>
@@ -292,6 +301,7 @@ export default function Navbar() {
                   to={link.path}
                   end={link.path === '/'}
                   active={isActive}
+                  isLight={isLight}
                   onMouseEnter={closeMenusNow}
                 >
                   {link.label}
@@ -300,21 +310,39 @@ export default function Navbar() {
             })}
           </div>
 
-          <div className="hidden lg:block" onMouseEnter={closeMenusNow}>
-            <MagneticButton to="/contact" variant="primary" magnetic={false} motionFx={false} className="!px-5 !py-2.5">
+          <div className="hidden items-center gap-2 lg:flex" onMouseEnter={closeMenusNow}>
+            <ThemeToggle onNav />
+            <MagneticButton
+              to="/contact"
+              variant={isLight ? 'secondary' : 'primary'}
+              magnetic={false}
+              motionFx={false}
+              className={
+                isLight
+                  ? '!border-white/50 !bg-white !px-5 !py-2.5 !text-[#2F4C73] hover:!border-white hover:!bg-[#F4F6F9] hover:!text-[#1C314F]'
+                  : '!px-5 !py-2.5'
+              }
+            >
               Contact Us
             </MagneticButton>
           </div>
 
-          <button
-            type="button"
-            className="gc-tap grid place-items-center rounded-xl border border-[#6B8AB0]/35 bg-[#FFFFFF]/15 text-[#FFFFFF] transition-colors duration-200 hover:bg-[#FFFFFF]/25 lg:hidden"
-            onClick={() => setOpen((value) => !value)}
-            aria-label={open ? 'Close menu' : 'Open menu'}
-            aria-expanded={open}
-          >
-            {open ? <X size={18} /> : <Menu size={18} />}
-          </button>
+          <div className="flex items-center gap-2 lg:hidden">
+            <ThemeToggle onNav />
+            <button
+              type="button"
+              className={`gc-tap grid h-10 w-10 place-items-center rounded-xl border transition-colors duration-200 ${
+                isLight
+                  ? 'border-[#6B8AB0]/35 bg-[#FFFFFF]/15 text-[#FFFFFF] hover:bg-[#FFFFFF]/25'
+                  : 'border-[var(--accent-soft)]/35 bg-[var(--surface)]/15 text-[var(--text-primary)] hover:bg-[var(--surface)]/25'
+              }`}
+              onClick={() => setOpen((value) => !value)}
+              aria-label={open ? 'Close menu' : 'Open menu'}
+              aria-expanded={open}
+            >
+              {open ? <X size={18} /> : <Menu size={18} />}
+            </button>
+          </div>
         </nav>
 
         {servicesOpen ? (
@@ -334,7 +362,11 @@ export default function Navbar() {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="pointer-events-auto relative z-50 mx-auto mt-2 max-h-[min(85dvh,720px)] max-w-6xl overflow-y-auto overscroll-contain rounded-2xl border border-[#6B8AB0]/25 bg-[#FFFFFF] p-3 shadow-[0_16px_40px_rgba(47,76,115,0.2)] sm:p-4 lg:hidden"
+            className={`pointer-events-auto relative z-50 mx-auto mt-2 max-h-[min(85dvh,720px)] max-w-6xl overflow-y-auto overscroll-contain rounded-2xl p-3 sm:p-4 lg:hidden ${
+              isLight
+                ? 'border border-[#6B8AB0]/25 bg-[#FFFFFF] shadow-[0_16px_40px_rgba(47,76,115,0.2)]'
+                : 'border border-[var(--accent-soft)]/25 bg-[var(--surface)] shadow-[0_16px_40px_rgba(0,0,0,0.28)]'
+            }`}
           >
             <div className="flex flex-col gap-1">
               {navLinks.map((link) => {
@@ -348,8 +380,8 @@ export default function Navbar() {
                         }
                         className={`flex w-full items-center justify-between rounded-xl px-4 py-3 text-left text-sm font-medium transition-colors duration-200 ${
                           servicesActive
-                            ? 'bg-[#4A6B94]/12 text-[#2F4C73]'
-                            : 'text-[#4A5D73] hover:bg-[#E8ECF2]'
+                            ? 'bg-[var(--accent-soft)]/16 text-[var(--text-primary)]'
+                            : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'
                         }`}
                         aria-expanded={mobileServicesOpen}
                       >
@@ -372,7 +404,7 @@ export default function Navbar() {
                             <div className="space-y-4 px-2 pt-2 pb-3">
                               {serviceCategories.map((category) => (
                                 <div key={category.id}>
-                                  <p className="mb-2 flex items-center gap-2 px-2 text-xs font-semibold tracking-wide text-[#4A6B94] uppercase">
+                                  <p className="mb-2 flex items-center gap-2 px-2 text-xs font-semibold tracking-wide text-[var(--text-secondary)] uppercase">
                                     <ServiceIcon name={category.icon} size={14} />
                                     {category.title}
                                   </p>
@@ -381,9 +413,9 @@ export default function Navbar() {
                                       <li key={service.id}>
                                         <Link
                                           to={`/services/${service.id}`}
-                                          className="flex min-h-11 items-center gap-2.5 rounded-lg px-2 py-2.5 text-sm text-[#4A5D73] hover:bg-[#FFFFFF]/80 hover:text-[#2F4C73]"
+                                          className="flex min-h-11 items-center gap-2.5 rounded-lg px-2 py-2.5 text-sm text-[var(--text-secondary)] hover:bg-[var(--surface)]/80 hover:text-[var(--text-primary)]"
                                         >
-                                          <span className="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-[#4A6B94] text-[#FFFFFF]">
+                                          <span className="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)] text-[var(--text-on-accent)]">
                                             <ServiceIcon name={service.icon} size={13} />
                                           </span>
                                           <span className="min-w-0 leading-snug">{service.title}</span>
@@ -395,7 +427,7 @@ export default function Navbar() {
                               ))}
                               <Link
                                 to="/services"
-                                className="block min-h-11 px-2 py-2.5 text-sm font-semibold text-[#6B8AB0]"
+                                className="block min-h-11 px-2 py-2.5 text-sm font-semibold text-[var(--text-secondary)]"
                               >
                                 View all services →
                               </Link>
@@ -417,8 +449,8 @@ export default function Navbar() {
                         }
                         className={`flex w-full items-center justify-between rounded-xl px-4 py-3 text-left text-sm font-medium transition-colors duration-200 ${
                           legalActive
-                            ? 'bg-[#4A6B94]/12 text-[#2F4C73]'
-                            : 'text-[#4A5D73] hover:bg-[#E8ECF2]'
+                            ? 'bg-[var(--accent-soft)]/16 text-[var(--text-primary)]'
+                            : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'
                         }`}
                         aria-expanded={mobileLegalOpen}
                       >
@@ -443,9 +475,9 @@ export default function Navbar() {
                                 <Link
                                   key={item.id}
                                   to={item.path}
-                                  className="flex min-h-11 items-center gap-2.5 rounded-lg px-2 py-2.5 text-sm text-[#4A5D73] hover:bg-[#FFFFFF]/80 hover:text-[#2F4C73]"
+                                  className="flex min-h-11 items-center gap-2.5 rounded-lg px-2 py-2.5 text-sm text-[var(--text-secondary)] hover:bg-[var(--surface)]/80 hover:text-[var(--text-primary)]"
                                 >
-                                  <span className="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-[#4A6B94] text-[#FFFFFF]">
+                                  <span className="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)] text-[var(--text-on-accent)]">
                                     <ServiceIcon name={item.icon} size={13} />
                                   </span>
                                   <span className="min-w-0 leading-snug">{item.title}</span>
@@ -467,8 +499,8 @@ export default function Navbar() {
                       className={({ isActive }) =>
                         `flex min-h-11 items-center rounded-xl px-4 py-3 text-sm font-medium transition-colors duration-200 ${
                           isActive
-                            ? 'bg-[#4A6B94]/12 text-[#2F4C73]'
-                            : 'text-[#4A5D73] hover:bg-[#E8ECF2]'
+                            ? 'bg-[var(--accent-soft)]/16 text-[var(--text-primary)]'
+                            : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'
                         }`
                       }
                     >

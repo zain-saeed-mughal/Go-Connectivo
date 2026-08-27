@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import logo from '../../assets/logo.webp';
 
@@ -6,6 +7,16 @@ import logo from '../../assets/logo.webp';
  * Accessible only via direct /kyc URL.
  */
 export default function KycLayout() {
+  useEffect(() => {
+    const root = document.documentElement;
+    root.setAttribute('data-portal', 'kyc');
+    return () => {
+      if (root.getAttribute('data-portal') === 'kyc') {
+        root.removeAttribute('data-portal');
+      }
+    };
+  }, []);
+
   return (
     <div className="kyc-portal relative min-h-screen bg-[#E8ECF2] text-[#2F4C73]">
       <div className="kyc-watermark" aria-hidden="true">

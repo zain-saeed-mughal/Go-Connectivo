@@ -1,0 +1,158 @@
+/* Dark theme component polish */
+
+/* Hero — night scrim, purple wash softened */
+[data-theme='dark'] .hero-media {
+  background: #0d1321;
+}
+
+[data-theme='dark'] .hero-video {
+  opacity: 0.82;
+  filter: brightness(0.82) contrast(1.04) saturate(0.94);
+}
+
+[data-theme='dark'] .hero-overlay-directional {
+  background: linear-gradient(
+    90deg,
+    rgba(13, 19, 33, 0.62) 0%,
+    rgba(21, 27, 46, 0.34) 36%,
+    rgba(73, 30, 184, 0.06) 64%,
+    transparent 100%
+  );
+}
+
+@media (max-width: 639px) {
+  [data-theme='dark'] .hero-overlay-directional {
+    background: linear-gradient(
+      180deg,
+      rgba(13, 19, 33, 0.36) 0%,
+      rgba(21, 27, 46, 0.44) 48%,
+      rgba(13, 19, 33, 0.52) 100%
+    );
+  }
+}
+
+[data-theme='dark'] .hero-overlay-vignette {
+  background: radial-gradient(
+    ellipse 95% 85% at 50% 45%,
+    transparent 44%,
+    rgba(13, 19, 33, 0.26) 100%
+  );
+}
+
+[data-theme='dark'] .hero-title {
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='dark'] .hero-fcc-panel {
+  background: rgba(21, 27, 46, 0.62);
+  box-shadow:
+    inset 0 0 0 1px rgba(198, 200, 253, 0.22),
+    0 18px 44px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+}
+
+[data-theme='dark'] .hero-fcc-eyebrow {
+  color: #c6c8fd;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55);
+}
+
+[data-theme='dark'] .hero-fcc-heading-accent,
+[data-theme='dark'] .hero-fcc-heading-rest {
+  color: #ffffff;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
+}
+
+[data-theme='dark'] .hero-fcc-line {
+  color: #f7f7fb;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
+}
+
+[data-theme='dark'] .hero-fcc-cta {
+  background: linear-gradient(90deg, #491eb8 0%, #844ffc 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 10px 28px rgba(73, 30, 184, 0.45);
+}
+
+[data-theme='dark'] .hero-fcc-cta:hover {
+  box-shadow: 0 14px 32px rgba(132, 79, 252, 0.5);
+}
+
+[data-theme='dark'] .gc-nav-pill {
+  background: var(--nav-bg);
+  border-color: var(--nav-border);
+  box-shadow: var(--shadow-soft);
+}
+
+[data-theme='dark'] .gc-card,
+[data-theme='dark'] .gc-card-sm {
+  border-color: var(--border-soft);
+  box-shadow: var(--shadow-card);
+}
+
+[data-theme='dark'] .gc-card:hover,
+[data-theme='dark'] .gc-card-sm:hover {
+  border-color: var(--border);
+  box-shadow: var(--shadow-card-hover);
+}
+
+[data-theme='dark'] .site-footer {
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  border-color: var(--footer-border);
+}
+
+[data-theme='dark'] .gc-card::before {
+  background: linear-gradient(90deg, transparent, rgba(132, 79, 252, 0.35), transparent);
+}
+
+[data-theme='dark'] .gc-card::after {
+  background: radial-gradient(circle, rgba(132, 79, 252, 0.12), transparent 70%);
+}
+
+/* Dark headings — solid pure white (no lavender/purple gradient); accents keep own fill */
+[data-theme='dark'] .gradient-text-brand,
+[data-theme='dark'] .gc-heading,
+[data-theme='dark'] .gradient-text,
+[data-theme='dark'] .gc-page-title,
+[data-theme='dark'] h1.font-display,
+[data-theme='dark'] h2.font-display,
+[data-theme='dark'] h3.font-display {
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  -webkit-text-fill-color: #ffffff;
+  color: #ffffff;
+}
+
+[data-theme='dark'] .page-hero-highlight {
+  -webkit-text-fill-color: var(--accent-secondary) !important;
+  color: var(--accent-secondary) !important;
+}
+
+/* Secondary / outline buttons — white label on dark */
+[data-theme='dark'] .gc-btn-secondary {
+  color: #ffffff;
+  border-color: rgba(198, 200, 253, 0.45);
+  background: transparent;
+}
+
+[data-theme='dark'] .gc-btn-secondary:hover {
+  color: #ffffff;
+  background: rgba(132, 79, 252, 0.15);
+  border-color: rgba(198, 200, 253, 0.7);
+}
+
+[data-theme='dark'] .why-us-panel {
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--surface) 55%, var(--bg-primary) 100%);
+}
+
+[data-theme='dark'] .why-us-panel__scene {
+  opacity: 0.55;
+}
+
+@media (max-width: 1023px) {
+  [data-theme='dark'] .why-us-panel__scene {
+    opacity: 0.35;
+  }
+}

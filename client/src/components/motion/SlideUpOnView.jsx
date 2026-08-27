@@ -28,7 +28,8 @@ export default function SlideUpOnView({
           io.disconnect();
         }
       },
-      { threshold: 0.16, rootMargin: '0px 0px -10% 0px' },
+      // Fire as soon as the block nears the viewport (not after heavy scroll).
+      { threshold: 0.05, rootMargin: '0px 0px 18% 0px' },
     );
     io.observe(el);
     return () => io.disconnect();

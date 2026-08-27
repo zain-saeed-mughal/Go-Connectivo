@@ -21,12 +21,12 @@ export default function SectionHeading({
   const body = (
     <>
       {eyebrow ? (
-        <p className="text-[11px] font-semibold tracking-[0.2em] text-[#4A6B94] uppercase sm:text-xs sm:tracking-[0.22em]">
+        <p className="text-[11px] font-semibold tracking-[0.2em] text-[var(--text-secondary)] uppercase sm:text-xs sm:tracking-[0.22em]">
           {eyebrow}
         </p>
       ) : null}
 
-      <h2 className="font-display w-full text-[clamp(1.35rem,4.2vw,3rem)] leading-[1.15] font-bold tracking-[-0.03em] break-words text-[#2F4C73] text-balance">
+      <h2 className="font-display gradient-text-brand w-full text-[clamp(1.35rem,4.2vw,3rem)] leading-[1.15] font-bold tracking-[-0.03em] break-words text-balance">
         {title}
       </h2>
 
@@ -53,7 +53,7 @@ export default function SectionHeading({
         <motion.p
           variants={fadeUp}
           transition={transition}
-          className="text-[11px] font-semibold tracking-[0.2em] text-[#4A6B94] uppercase sm:text-xs sm:tracking-[0.22em]"
+          className="text-[11px] font-semibold tracking-[0.2em] text-[var(--text-secondary)] uppercase sm:text-xs sm:tracking-[0.22em]"
         >
           {eyebrow}
         </motion.p>
@@ -62,7 +62,7 @@ export default function SectionHeading({
       <motion.h2
         variants={fadeUp}
         transition={transition}
-        className="font-display w-full text-[clamp(1.35rem,4.2vw,3rem)] leading-[1.15] font-bold tracking-[-0.03em] break-words text-[#2F4C73] text-balance"
+        className="font-display gradient-text-brand w-full text-[clamp(1.35rem,4.2vw,3rem)] leading-[1.15] font-bold tracking-[-0.03em] break-words text-balance"
       >
         {title}
       </motion.h2>

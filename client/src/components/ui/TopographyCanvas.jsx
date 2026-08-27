@@ -54,20 +54,46 @@ export default function TopographyCanvas({ className = '' }) {
       ctx.stroke();
     };
 
+    const cssColor = (name, fallback) => {
+      const v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+      return v || fallback;
+    };
+
+    const hexToRgba = (hex, alpha) => {
+      const h = hex.replace('#', '');
+      if (h.length < 6) {
+        const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+        return dark ? `rgba(132, 79, 252, ${alpha})` : `rgba(47, 76, 115, ${alpha})`;
+      }
+      const r = parseInt(h.slice(0, 2), 16);
+      const g = parseInt(h.slice(2, 4), 16);
+      const b = parseInt(h.slice(4, 6), 16);
+      return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    };
+
     const paint = () => {
+      // Footer palette (light site keeps deep navy footer; dark uses purple footer)
+      const top = cssColor('--footer-bg', '#1c314f');
+      const mid = cssColor('--footer-bg-mid', '#243c5c');
+      const bottom = cssColor('--footer-bg-top', '#2f4c73');
+      const cA = cssColor('--footer-contour-a', 'rgba(107, 138, 176, 0.25)');
+      const cB = cssColor('--footer-contour-b', 'rgba(74, 107, 148, 0.3)');
+      const cC = cssColor('--footer-contour-c', 'rgba(139, 163, 196, 0.28)');
+      const particle = cssColor('--footer-particle', 'rgba(139, 163, 196, 0.55)');
+
       const bgGrad = ctx.createLinearGradient(0, 0, 0, height);
-      bgGrad.addColorStop(0, '#1c314f');
-      bgGrad.addColorStop(0.5, '#243c5c');
-      bgGrad.addColorStop(1, '#2f4c73');
+      bgGrad.addColorStop(0, top);
+      bgGrad.addColorStop(0.5, mid);
+      bgGrad.addColorStop(1, bottom);
       ctx.fillStyle = bgGrad;
       ctx.fillRect(0, 0, width, height);
 
       const contours = [
-        { y: height * 0.15, amp: 25, freq: 0.004, color: 'rgba(107, 138, 176, 0.25)' },
-        { y: height * 0.35, amp: 35, freq: 0.003, color: 'rgba(74, 107, 148, 0.3)' },
-        { y: height * 0.55, amp: 28, freq: 0.005, color: 'rgba(139, 163, 196, 0.28)' },
-        { y: height * 0.75, amp: 40, freq: 0.0025, color: 'rgba(107, 138, 176, 0.32)' },
-        { y: height * 0.9, amp: 20, freq: 0.0045, color: 'rgba(74, 107, 148, 0.22)' },
+        { y: height * 0.15, amp: 25, freq: 0.004, color: cA },
+        { y: height * 0.35, amp: 35, freq: 0.003, color: cB },
+        { y: height * 0.55, amp: 28, freq: 0.005, color: cC },
+        { y: height * 0.75, amp: 40, freq: 0.0025, color: cA },
+        { y: height * 0.9, amp: 20, freq: 0.0045, color: cB },
       ];
       contours.forEach((c) => drawContourPath(c.y, c.amp, c.freq, c.color));
 
@@ -78,7 +104,11 @@ export default function TopographyCanvas({ className = '' }) {
         if (p.x > width) p.x = 0;
         if (p.y < 0) p.y = height;
         if (p.y > height) p.y = 0;
-        ctx.fillStyle = `rgba(139, 163, 196, ${p.opacity})`;
+        if (particle.startsWith('rgba')) {
+          ctx.fillStyle = particle.replace(/,\s*[\d.]+\s*\)$/, `, ${p.opacity})`);
+        } else {
+          ctx.fillStyle = hexToRgba(particle, p.opacity);
+        }
         ctx.fillRect(p.x, p.y, p.size, p.size);
       });
     };
@@ -136,9 +166,18 @@ export default function TopographyCanvas({ className = '' }) {
     };
     window.addEventListener('resize', onResize);
 
+    const themeObserver = new MutationObserver(() => {
+      paint();
+    });
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme'],
+    });
+
     return () => {
       stop();
       observer.disconnect();
+      themeObserver.disconnect();
       document.removeEventListener('visibilitychange', onVisibility);
       window.removeEventListener('resize', onResize);
       window.clearTimeout(resizeTimer);

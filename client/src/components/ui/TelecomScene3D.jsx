@@ -1,13 +1,30 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { ScrollTrigger, prefersReducedMotion, isCompactViewport } from '../../motion/config';
 import { disposeRenderer, installThreeGuards } from '../../motion/webglSlots';
 
 installThreeGuards(THREE);
-const NAVY = 0x2f4c73;
-const MID = 0x4a6b94;
-const LIGHT = 0x6b8ab0;
-const SCREEN = 0x9ec4ef;
+
+function cssHex(name, fallback) {
+  if (typeof window === 'undefined') return fallback;
+  const raw = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  if (!raw.startsWith('#') || raw.length < 7) return fallback;
+  const n = Number.parseInt(raw.slice(1, 7), 16);
+  return Number.isFinite(n) ? n : fallback;
+}
+
+/** Mutated on each scene mount so light=navy / dark=purple stay in sync. */
+let NAVY = 0x2f4c73;
+let MID = 0x4a6b94;
+let LIGHT = 0x6b8ab0;
+let SCREEN = 0x9ec4ef;
+
+function syncThemeColors() {
+  NAVY = cssHex('--accent-primary', 0x2f4c73);
+  MID = cssHex('--accent-secondary', 0x4a6b94);
+  LIGHT = cssHex('--accent-soft', 0x6b8ab0);
+  SCREEN = cssHex('--accent-light', 0x8ba3c4);
+}
 
 function disposeObject(obj) {
   obj.traverse?.((child) => {
@@ -639,14 +656,21 @@ function buildVariant(variant, compact) {
 }
 
 function addStudioLights(scene) {
-  const ambient = new THREE.AmbientLight(0xd7e2e8, 0.55);
-  const key = new THREE.DirectionalLight(0xffffff, 1.15);
+  const isDark =
+    typeof document !== 'undefined' && document.documentElement.getAttribute('data-theme') === 'dark';
+
+  const ambient = new THREE.AmbientLight(isDark ? 0xc6c8fd : 0xd7e2e8, isDark ? 0.42 : 0.55);
+  const key = new THREE.DirectionalLight(0xffffff, isDark ? 1.05 : 1.15);
   key.position.set(4.5, 7, 5);
-  const fill = new THREE.DirectionalLight(0x9ec4ef, 0.55);
+  const fill = new THREE.DirectionalLight(isDark ? LIGHT : 0x9ec4ef, isDark ? 0.5 : 0.55);
   fill.position.set(-5, 2.5, -2);
-  const rim = new THREE.DirectionalLight(0x6b8ab0, 0.45);
+  const rim = new THREE.DirectionalLight(isDark ? MID : 0x6b8ab0, isDark ? 0.4 : 0.45);
   rim.position.set(0, 3, -6);
-  const hemi = new THREE.HemisphereLight(0xe8eef5, 0x2f4c73, 0.35);
+  const hemi = new THREE.HemisphereLight(
+    isDark ? 0x1a2238 : 0xe8eef5,
+    NAVY,
+    isDark ? 0.28 : 0.35,
+  );
   scene.add(ambient, key, fill, rim, hemi);
   return () => {
     scene.remove(ambient, key, fill, rim, hemi);
@@ -674,10 +698,19 @@ export default function TelecomScene3D({
   const containerRef = useRef(null);
   const serviceFocusRef = useRef(serviceFocus);
   serviceFocusRef.current = serviceFocus;
+  const [themeTick, setThemeTick] = useState(0);
+
+  useEffect(() => {
+    const onTheme = () => setThemeTick((n) => n + 1);
+    window.addEventListener('gc-themechange', onTheme);
+    return () => window.removeEventListener('gc-themechange', onTheme);
+  }, []);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container || prefersReducedMotion()) return undefined;
+
+    syncThemeColors();
 
     const compact = isCompactViewport();
     const isLiveModel = variant === 'services' || variant === 'platform';
@@ -945,12 +978,12 @@ export default function TelecomScene3D({
       if (container.contains(renderer.domElement)) container.removeChild(renderer.domElement);
       disposeRenderer(renderer);
     };
-  }, [variant, interactive, scrollScrub, onContextLost]);
+  }, [variant, interactive, scrollScrub, onContextLost, themeTick]);
 
   return (
     <div
       ref={containerRef}
-      className={`relative h-full min-h-[200px] w-full overflow-hidden bg-gradient-to-br from-[#E8ECF2] via-[#F4F6F9] to-[#E0E5ED] ${className}`}
+      className={`relative h-full min-h-[200px] w-full overflow-hidden bg-gradient-to-br from-[var(--bg-secondary)] via-[var(--bg-secondary)] to-[var(--surface)] ${className}`}
       aria-hidden="true"
     />
   );

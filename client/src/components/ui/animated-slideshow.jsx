@@ -91,7 +91,7 @@ export const TextStaggerHover = React.forwardRef(
                       }}
                     >
                       <motion.span
-                        className="inline-block opacity-25"
+                        className="inline-block text-[var(--text-secondary)]/50"
                         initial={{ y: '0%' }}
                         animate={isActive ? { y: '-110%' } : { y: '0%' }}
                       >
@@ -99,7 +99,7 @@ export const TextStaggerHover = React.forwardRef(
                       </motion.span>
 
                       <motion.span
-                        className="absolute top-0 left-0 inline-block opacity-100"
+                        className="absolute top-0 left-0 inline-block text-[var(--text-primary)]"
                         initial={{ y: '110%' }}
                         animate={isActive ? { y: '0%' } : { y: '110%' }}
                       >

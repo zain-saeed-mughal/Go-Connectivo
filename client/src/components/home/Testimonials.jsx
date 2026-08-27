@@ -19,12 +19,12 @@ export default function Testimonials() {
 
         <StaggerContainer className="grid gap-4 md:grid-cols-3" stagger={0.1}>
           {homeProofPoints.map((item) => (
-            <RevealCard key={item.title} className="flex h-full flex-col border border-[rgba(47,76,115,0.1)] p-5 sm:p-6">
-              <h3 className="font-display text-lg font-semibold text-[#2F4C73]">{item.title}</h3>
-              <p className="mt-3 flex-1 text-[0.9375rem] leading-relaxed text-[#5A6B7D] sm:text-sm">{item.text}</p>
+            <RevealCard key={item.title} className="flex h-full flex-col border border-[color:var(--border-soft)] p-5 sm:p-6">
+              <h3 className="font-display text-lg font-semibold text-[var(--text-primary)]">{item.title}</h3>
+              <p className="mt-3 flex-1 text-[0.9375rem] leading-relaxed text-[var(--text-secondary)] sm:text-sm">{item.text}</p>
               <Link
                 to={item.to}
-                className="mt-5 inline-flex min-h-10 items-center gap-1.5 text-sm font-semibold text-[#2F4C73] transition-colors hover:text-[#4A6B94] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4A6B94]/45"
+                className="mt-5 inline-flex min-h-10 items-center gap-1.5 text-sm font-semibold text-[var(--text-primary)] transition-colors hover:text-[var(--text-secondary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-soft)]/45"
               >
                 Explore related service <ArrowRight size={14} aria-hidden />
               </Link>

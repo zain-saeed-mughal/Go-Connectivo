@@ -1,7 +1,13 @@
 import { lazy, Suspense, useCallback, useEffect, useId, useRef, useState } from 'react';
 import { isCompactViewport, prefersReducedMotion } from '../../motion/config';
 import { prefetchHolographicHub } from '../../motion/prefetchHome3d';
-import { noteWebglPressure, releaseWebglSlot, requestWebglSlot } from '../../motion/webglSlots';
+import {
+  isWebglBackingOff,
+  isWebglCoolingDown,
+  noteWebglPressure,
+  releaseWebglSlot,
+  requestWebglSlot,
+} from '../../motion/webglSlots';
 
 const Hub = lazy(() => import('./HolographicHub3D'));
 
@@ -16,6 +22,10 @@ export default function HolographicHub3DLazy(props) {
   const [allowed, setAllowed] = useState(false);
 
   const tryAcquire = useCallback(() => {
+    if (isWebglBackingOff(slotId) || isWebglCoolingDown()) {
+      setAllowed(false);
+      return;
+    }
     const ok = requestWebglSlot(slotId, {
       priority: 8,
       onEvict: () => setAllowed(false),
@@ -50,9 +60,9 @@ export default function HolographicHub3DLazy(props) {
           releaseWebglSlot(slotId);
           setAllowed(false);
           setInView(false);
-        }, 1800);
+        }, 700);
       },
-      { rootMargin: '120% 0px 120% 0px', threshold: 0 },
+      { rootMargin: '40% 0px 40% 0px', threshold: 0 },
     );
     observer.observe(el);
 
@@ -66,7 +76,7 @@ export default function HolographicHub3DLazy(props) {
   useEffect(() => {
     if (!inView || allowed) return undefined;
     if (prefersReducedMotion() || isCompactViewport()) return undefined;
-    const id = window.setInterval(tryAcquire, 50);
+    const id = window.setInterval(tryAcquire, 700);
     return () => window.clearInterval(id);
   }, [inView, allowed, tryAcquire]);
 

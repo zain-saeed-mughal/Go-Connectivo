@@ -1,12 +1,12 @@
 {
   "siteUrl": "https://www.goconnectivo.com",
-  "generatedAt": "2026-08-25T19:38:28.662Z",
+  "generatedAt": "2026-08-27T19:09:51.820Z",
   "routes": [
     {
       "path": "/",
-      "title": "Business VoIP, Contact Center, SIP & VoIP Termination | Go Connectivo",
+      "title": "Go Connectivo | Business VoIP, Contact Center, SIP & VoIP Termination",
       "description": "Go Connectivo delivers Business VoIP, contact center platforms, SIP trunking, DID numbers, and VoIP termination for call centers and growing teams. FCC RMD certified.",
-      "h1": "Business VoIP, Contact Center, SIP & VoIP Termination",
+      "h1": "Transform Your Business Communication",
       "noindex": false,
       "jsonLd": [
         {
@@ -52,15 +52,15 @@
     {
       "path": "/about",
       "title": "About Go Connectivo | VoIP & Communications Partner",
-      "description": "Learn about Go Connectivo, a voice infrastructure partner for dialers, Business VoIP, SIP, numbers, termination, and contact-center platforms.",
-      "h1": "About Go Connectivo",
+      "description": "Learn about Go Connectivo, a voice infrastructure partner for Business VoIP, contact center platforms, SIP, numbers, and VoIP termination.",
+      "h1": "Your Trusted VoIP Partner",
       "noindex": false,
       "jsonLd": [
         {
           "@context": "https://schema.org",
           "@type": "WebPage",
           "name": "About Go Connectivo | VoIP & Communications Partner",
-          "description": "Learn about Go Connectivo, a voice infrastructure partner for dialers, Business VoIP, SIP, numbers, termination, and contact-center platforms.",
+          "description": "Learn about Go Connectivo, a voice infrastructure partner for Business VoIP, contact center platforms, SIP, numbers, and VoIP termination.",
           "url": "https://www.goconnectivo.com/about",
           "isPartOf": {
             "@type": "WebSite",
@@ -81,7 +81,7 @@
             {
               "@type": "ListItem",
               "position": 2,
-              "name": "About Go Connectivo",
+              "name": "Your Trusted VoIP Partner",
               "item": "https://www.goconnectivo.com/about"
             }
           ]
@@ -161,45 +161,6 @@
               "position": 2,
               "name": "Frequently Asked Questions",
               "item": "https://www.goconnectivo.com/faqs"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "path": "/resources",
-      "title": "VoIP Resources & Guides | Go Connectivo",
-      "description": "Guides, FAQs, compliance documents, and service explainers from Go Connectivo covering dialers, Business VoIP, SIP, numbers, and termination.",
-      "h1": "Guides, policies, and service explainers",
-      "noindex": false,
-      "jsonLd": [
-        {
-          "@context": "https://schema.org",
-          "@type": "WebPage",
-          "name": "VoIP Resources & Guides | Go Connectivo",
-          "description": "Guides, FAQs, compliance documents, and service explainers from Go Connectivo covering dialers, Business VoIP, SIP, numbers, and termination.",
-          "url": "https://www.goconnectivo.com/resources",
-          "isPartOf": {
-            "@type": "WebSite",
-            "name": "Go Connectivo",
-            "url": "https://www.goconnectivo.com"
-          }
-        },
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.goconnectivo.com/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Guides, policies, and service explainers",
-              "item": "https://www.goconnectivo.com/resources"
             }
           ]
         }
@@ -1595,7 +1556,6 @@
     "/about",
     "/services",
     "/faqs",
-    "/resources",
     "/compliance",
     "/compliance/robocall-mitigation-plan",
     "/compliance/acceptable-use-policy",

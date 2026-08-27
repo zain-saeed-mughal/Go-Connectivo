@@ -47,12 +47,12 @@ function ContactBrief() {
       <ul className="space-y-4">
         {nextSteps.map((item) => (
           <li key={item.title} className="flex items-start gap-3.5">
-            <span className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-[rgba(47,76,115,0.12)] bg-[#FFFFFF] text-[#2F4C73]">
+            <span className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-[color:var(--border-soft)] bg-[var(--surface)] text-[var(--accent-primary)] shadow-[var(--shadow-card)]">
               <item.icon size={16} strokeWidth={1.75} />
             </span>
             <div>
-              <p className="text-sm font-semibold text-[#2F4C73]">{item.title}</p>
-              <p className="mt-1 text-sm leading-relaxed text-[#6B7C8F]">{item.copy}</p>
+              <p className="text-sm font-semibold text-[var(--text-primary)]">{item.title}</p>
+              <p className="mt-1 text-sm leading-relaxed text-[var(--text-muted)]">{item.copy}</p>
             </div>
           </li>
         ))}
@@ -63,26 +63,26 @@ function ContactBrief() {
 
 function GetInTouchCard() {
   return (
-    <div className="gc-card p-6 sm:p-7">
-      <p className="text-[11px] font-semibold tracking-[0.18em] text-[#4A6B94] uppercase">
+    <div className="gc-card border border-[color:var(--border-soft)] bg-[var(--surface)] p-6 sm:p-7">
+      <p className="text-[11px] font-semibold tracking-[0.18em] text-[var(--accent-secondary)] uppercase">
         Direct line
       </p>
-      <h2 className="font-display mt-2 text-xl font-semibold tracking-[-0.02em] text-[#2F4C73] sm:text-2xl">
+      <h2 className="font-display mt-2 text-xl font-semibold tracking-[-0.02em] text-[var(--text-primary)] sm:text-2xl">
         Get In Touch
       </h2>
-      <p className="mt-2 text-sm leading-relaxed text-[#6B7C8F]">
+      <p className="mt-2 text-sm leading-relaxed text-[var(--text-muted)]">
         Questions on dialers, voice, numbers, termination, or APIs, our team will point you to the
         right setup.
       </p>
 
-      <ul className="mt-6 divide-y divide-[rgba(47,76,115,0.08)]">
+      <ul className="mt-6 divide-y divide-[color:var(--border-soft)]">
         {details.map((detail) => (
           <li key={detail.title} className="flex items-start gap-3.5 py-4 first:pt-0 last:pb-0">
-            <span className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-[#2F4C73] text-[#FFFFFF]">
+            <span className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-[var(--accent-primary)] text-[var(--text-on-accent)]">
               <detail.icon size={16} strokeWidth={1.75} />
             </span>
             <div className="min-w-0">
-              <p className="text-[11px] font-semibold tracking-[0.08em] text-[#4A6B94] uppercase">
+              <p className="text-[11px] font-semibold tracking-[0.08em] text-[var(--accent-secondary)] uppercase">
                 {detail.title}
               </p>
               {detail.lines.map((line) =>
@@ -90,12 +90,12 @@ function GetInTouchCard() {
                   <a
                     key={line}
                     href={detail.href}
-                    className="mt-1 block text-sm leading-relaxed text-[#2F4C73] transition-colors duration-300 hover:text-[#4A6B94]"
+                    className="mt-1 block text-sm leading-relaxed text-[var(--text-primary)] transition-colors duration-300 hover:text-[var(--accent-secondary)]"
                   >
                     {line}
                   </a>
                 ) : (
-                  <p key={line} className="mt-1 text-sm leading-relaxed text-[#4A5D73]">
+                  <p key={line} className="mt-1 text-sm leading-relaxed text-[var(--text-secondary)]">
                     {line}
                   </p>
                 ),
@@ -105,9 +105,9 @@ function GetInTouchCard() {
         ))}
       </ul>
 
-      <div className="mt-6 border-l-2 border-[#4A6B94] bg-[#F4F6F9] px-4 py-3.5">
-        <p className="text-sm font-semibold text-[#2F4C73]">24/7 customer support</p>
-        <p className="mt-1 text-sm leading-relaxed text-[#6B7C8F]">
+      <div className="mt-6 border-l-2 border-[var(--accent-secondary)] bg-[var(--bg-secondary)] px-4 py-3.5">
+        <p className="text-sm font-semibold text-[var(--text-primary)]">24/7 customer support</p>
+        <p className="mt-1 text-sm leading-relaxed text-[var(--text-muted)]">
           Existing customers can reach technical support any time by phone, email, or live chat.
         </p>
       </div>
@@ -138,14 +138,14 @@ export default function Contact() {
 
       <section className="pb-16 sm:pb-20">
         <div className="gc-container">
-          <div className="gc-card mx-auto max-w-4xl p-6 sm:p-8 md:p-10">
-            <p className="text-[11px] font-semibold tracking-[0.18em] text-[#4A6B94] uppercase">
+          <div className="gc-card mx-auto max-w-4xl border border-[color:var(--border-soft)] bg-[var(--surface)] p-6 sm:p-8 md:p-10">
+            <p className="text-[11px] font-semibold tracking-[0.18em] text-[var(--accent-secondary)] uppercase">
               Enquiry
             </p>
-            <h2 className="font-display mt-2 text-xl font-semibold tracking-[-0.02em] text-[#2F4C73] sm:text-2xl">
+            <h2 className="font-display mt-2 text-xl font-semibold tracking-[-0.02em] text-[var(--text-primary)] sm:text-2xl">
               Send Us a Message
             </h2>
-            <p className="mt-2 mb-8 max-w-xl text-sm leading-relaxed text-[#6B7C8F]">
+            <p className="mt-2 mb-8 max-w-xl text-sm leading-relaxed text-[var(--text-muted)]">
               Fill in the form and we’ll get back to you shortly with a clear next step.
             </p>
             <ContactForm />

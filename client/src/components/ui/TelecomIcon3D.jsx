@@ -4,9 +4,24 @@ import { prefersReducedMotion, isCompactViewport } from '../../motion/config';
 import { disposeRenderer, installThreeGuards } from '../../motion/webglSlots';
 
 installThreeGuards(THREE);
-const MID = 0x4a6b94;
-const LIGHT = 0x6b8ab0;
-const NAVY = 0x2f4c73;
+
+function cssHex(name, fallback) {
+  if (typeof window === 'undefined') return fallback;
+  const raw = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  if (!raw.startsWith('#') || raw.length < 7) return fallback;
+  const n = Number.parseInt(raw.slice(1, 7), 16);
+  return Number.isFinite(n) ? n : fallback;
+}
+
+let MID = 0x4a6b94;
+let LIGHT = 0x6b8ab0;
+let NAVY = 0x2f4c73;
+
+function syncThemeColors() {
+  NAVY = cssHex('--accent-primary', 0x2f4c73);
+  MID = cssHex('--accent-secondary', 0x4a6b94);
+  LIGHT = cssHex('--accent-soft', 0x6b8ab0);
+}
 
 function buildShape(shape) {
   const g = new THREE.Group();
@@ -61,7 +76,6 @@ function buildShape(shape) {
       ),
     );
   } else {
-    // network / default
     const hub = new THREE.Mesh(
       new THREE.OctahedronGeometry(0.45, 0),
       new THREE.MeshBasicMaterial({ color: MID, transparent: true, opacity: 0.95 }),
@@ -129,6 +143,8 @@ export default function TelecomIcon3D({ shape = 'network', iconName, className =
     const container = ref.current;
     if (!container || prefersReducedMotion() || isCompactViewport()) return undefined;
 
+    syncThemeColors();
+
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 40);
     camera.position.z = 4.2;
@@ -138,7 +154,7 @@ export default function TelecomIcon3D({ shape = 'network', iconName, className =
     renderer.setClearColor(0x000000, 0);
     container.appendChild(renderer.domElement);
 
-    const root = buildShape(resolved);
+    let root = buildShape(resolved);
     scene.add(root);
 
     const mouse = { x: 0, y: 0 };
@@ -174,6 +190,18 @@ export default function TelecomIcon3D({ shape = 'network', iconName, className =
     }, { threshold: 0.1 });
     io.observe(container);
 
+    const rebuild = () => {
+      syncThemeColors();
+      scene.remove(root);
+      root.traverse((child) => {
+        child.geometry?.dispose?.();
+        child.material?.dispose?.();
+      });
+      root = buildShape(resolved);
+      scene.add(root);
+    };
+    window.addEventListener('gc-themechange', rebuild);
+
     let id = 0;
     const tick = () => {
       id = requestAnimationFrame(tick);
@@ -189,6 +217,7 @@ export default function TelecomIcon3D({ shape = 'network', iconName, className =
     return () => {
       cancelAnimationFrame(id);
       io.disconnect();
+      window.removeEventListener('gc-themechange', rebuild);
       container.removeEventListener('pointermove', onMove);
       root.traverse((child) => {
         child.geometry?.dispose?.();
@@ -200,7 +229,7 @@ export default function TelecomIcon3D({ shape = 'network', iconName, className =
   }, [resolved]);
 
   const fallback = (
-    <span className="block h-full w-full rounded-lg bg-gradient-to-br from-[#4A6B94]/25 to-[#2F4C73]/15" />
+    <span className="block h-full w-full rounded-lg bg-gradient-to-br from-[var(--accent-soft)]/25 to-[var(--accent-soft)]/15" />
   );
 
   if (typeof window !== 'undefined' && (prefersReducedMotion() || isCompactViewport())) {

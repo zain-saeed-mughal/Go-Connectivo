@@ -37,7 +37,7 @@ export default function ServicesHoverSlider() {
   return (
     <AnimatedSection from="up" duration={0.9}>
       <HoverSlider className="gc-card gc-card-panel gc-container overflow-hidden px-4 py-7 sm:px-6 sm:py-10 md:px-10 md:py-12 lg:px-12 lg:py-14">
-        <p className="mb-5 text-xs font-semibold tracking-[0.22em] text-[#4A6B94] uppercase sm:mb-6">
+        <p className="mb-5 text-xs font-semibold tracking-[0.22em] text-[var(--text-secondary)] uppercase sm:mb-6">
           / our services
         </p>
 
@@ -48,13 +48,13 @@ export default function ServicesHoverSlider() {
                 key={slide.id}
                 index={index}
                 to={`/services/${slide.id}`}
-                className="min-h-11 w-full min-w-0 cursor-pointer py-1.5 font-display text-[0.95rem] font-bold tracking-tight break-words text-[#2F4C73] uppercase sm:min-h-0 sm:py-1 sm:text-2xl md:text-3xl lg:text-[2rem] lg:leading-tight xl:text-4xl"
+                className="min-h-11 w-full min-w-0 cursor-pointer py-1.5 font-display text-[0.95rem] font-bold tracking-tight break-words text-[var(--text-primary)] uppercase sm:min-h-0 sm:py-1 sm:text-2xl md:text-3xl lg:text-[2rem] lg:leading-tight xl:text-4xl"
                 text={slide.title}
               />
             ))}
           </div>
 
-          <HoverSliderImageWrap className="relative order-1 mx-auto aspect-square w-full max-w-[min(100%,22rem)] overflow-hidden rounded-2xl border border-[rgba(47,76,115,0.12)] bg-[#E8ECF2] shadow-[0_16px_40px_rgba(47,76,115,0.12)] sm:max-w-md lg:order-2 lg:mx-0 lg:max-w-none lg:justify-self-end">
+          <HoverSliderImageWrap className="relative order-1 mx-auto aspect-square w-full max-w-[min(100%,22rem)] overflow-hidden rounded-2xl border border-[color:var(--border-soft)] bg-[var(--bg-secondary)] shadow-[var(--shadow-card)] sm:max-w-md lg:order-2 lg:mx-0 lg:max-w-none lg:justify-self-end">
             {SERVICE_SLIDES.map((slide, index) => (
               <div key={slide.id} className="size-full overflow-hidden rounded-2xl">
                 <HoverSliderImage

@@ -75,6 +75,16 @@ export default function AdminLayout() {
   const [confirmLogout, setConfirmLogout] = useState(false);
   const [loggingOut, setLoggingOut] = useState(false);
 
+  useEffect(() => {
+    const root = document.documentElement;
+    root.setAttribute('data-portal', 'admin');
+    return () => {
+      if (root.getAttribute('data-portal') === 'admin') {
+        root.removeAttribute('data-portal');
+      }
+    };
+  }, []);
+
   const handleLogout = async () => {
     setLoggingOut(true);
     try {
