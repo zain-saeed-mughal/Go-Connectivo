@@ -49,14 +49,14 @@ export default function WhyUs() {
         <SlideUpOnView className="min-w-0" distance={44} delay={0.08}>
           <div className="why-us-panel relative isolate overflow-hidden rounded-[1.25rem] border border-[color:var(--border-soft)] p-6 shadow-[var(--shadow-card)] sm:rounded-[1.5rem] sm:p-8">
             {/* 3D tower backdrop — clipped by overflow:hidden on panel */}
-            <div className="why-us-panel__scene pointer-events-none absolute inset-0 z-0">
+            <div className="why-us-panel__scene pointer-events-none absolute inset-0 z-0 hidden lg:block">
               <TelecomScene3DLazy
                 variant="tower"
                 className="min-h-full"
                 interactive={false}
                 scrollScrub={false}
                 keepAlive={false}
-                slotPriority={5}
+                slotPriority={4}
               />
             </div>
             <div className="pointer-events-none absolute -top-10 -right-10 z-0 h-40 w-40 rounded-full bg-[var(--accent-primary)]/20 blur-3xl" />

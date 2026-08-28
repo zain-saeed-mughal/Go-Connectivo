@@ -4,7 +4,7 @@ import PageHero from '../components/ui/PageHero';
 import SectionHeading from '../components/ui/SectionHeading';
 import ServiceIcon from '../components/ui/ServiceIcon';
 import MagneticButton from '../components/ui/MagneticButton';
-import CTA from '../components/home/CTA';
+import CTA from '../components/home/CTALazy';
 import {
   ServiceSeoBenefits,
   ServiceSeoCardSection,

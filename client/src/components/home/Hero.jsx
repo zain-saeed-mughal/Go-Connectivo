@@ -166,7 +166,7 @@ export default function Hero() {
 
   return (
     <div ref={heroRef} className="gc-hero relative w-full">
-      <section className="relative flex min-h-[100svh] max-w-[100vw] items-center overflow-x-hidden px-5 pt-24 pb-16 sm:px-6 sm:pt-28 sm:pb-20 md:pb-24">
+      <section className="relative flex min-h-[100svh] w-full max-w-full items-center overflow-x-clip px-5 pt-24 pb-16 sm:px-6 sm:pt-28 sm:pb-20 md:pb-24">
         <div className="hero-media pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
           {showVideo && videoSrc ? (
             <video

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Search } from 'lucide-react';
 import voipVisual from '../assets/services/voip-4.webp';
@@ -7,8 +7,7 @@ import PageHero from '../components/ui/PageHero';
 import StatsBand from '../components/ui/StatsBand';
 import ServiceIcon from '../components/ui/ServiceIcon';
 import ServiceCardArt from '../components/ui/ServiceCardArt';
-import ServicesHoverSlider from '../components/ui/ServicesHoverSlider';
-import CTA from '../components/home/CTA';
+import CTA from '../components/home/CTALazy';
 import { RevealCard, StaggerContainer } from '../components/motion';
 import {
   getCatalogServices,
@@ -17,6 +16,8 @@ import {
   serviceCategories,
 } from '../data/content';
 import { PageSeo } from '../components/seo/PageSeo';
+
+const ServicesHoverSlider = lazy(() => import('../components/ui/ServicesHoverSlider'));
 
 export default function Services() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -90,7 +91,9 @@ export default function Services() {
       </section>
 
       <section className="gc-section">
-        <ServicesHoverSlider />
+        <Suspense fallback={<div className="min-h-[40vh] w-full" aria-hidden />}>
+          <ServicesHoverSlider />
+        </Suspense>
       </section>
 
       <section id="all-services" className="gc-section scroll-mt-28">

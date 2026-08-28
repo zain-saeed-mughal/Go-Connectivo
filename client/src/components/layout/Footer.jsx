@@ -40,6 +40,7 @@ export default function Footer() {
     { label: 'Terms', path: '/terms' },
     { label: 'Compliance', path: '/compliance' },
     { label: 'RMP', path: '/compliance/robocall-mitigation-plan' },
+    { label: 'AUP', path: '/compliance/acceptable-use-policy' },
   ];
 
   return (

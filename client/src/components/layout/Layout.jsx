@@ -14,10 +14,6 @@ export default function Layout() {
   const skipTransition = isHome || location.pathname === '/contact';
 
   useEffect(() => {
-    document.documentElement.classList.remove('gc-custom-cursor');
-  }, []);
-
-  useEffect(() => {
     if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual';
     }
@@ -85,7 +81,7 @@ export default function Layout() {
         <Navbar />
       </div>
 
-      <div className="relative z-0 max-w-[100vw]">
+      <div className="relative z-0 w-full max-w-full overflow-x-clip">
         <main className="relative z-0 min-w-0 w-full">
           {skipTransition ? (
             <Outlet />

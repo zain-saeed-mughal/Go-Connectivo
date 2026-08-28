@@ -1,6 +1,6 @@
 import PageHero from '../ui/PageHero';
 import MagneticButton from '../ui/MagneticButton';
-import CTA from '../home/CTA';
+import CTA from '../home/CTALazy';
 
 function SectionBody({ section }) {
   return (

@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Plus } from 'lucide-react';
 import PageHero from '../components/ui/PageHero';
 import MagneticButton from '../components/ui/MagneticButton';
-import CTA from '../components/home/CTA';
+import CTA from '../components/home/CTALazy';
 import { AnimatedSection, StaggerContainer } from '../components/motion';
 import { faqCategories } from '../data/content';
 import { PageSeo } from '../components/seo/PageSeo';
