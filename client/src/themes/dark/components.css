@@ -78,6 +78,10 @@
   text-shadow: 0 2px 18px rgba(0, 0, 0, 0.5);
 }
 
+[data-theme='dark'] .hero-eyebrow {
+  color: var(--accent-primary);
+}
+
 [data-theme='dark'] .hero-fcc-panel {
   background: rgba(16, 31, 51, 0.62);
   box-shadow:
@@ -135,6 +139,10 @@
   background: var(--footer-bg);
   color: var(--footer-text);
   border-color: var(--footer-border);
+}
+
+[data-theme='dark'] .site-footer h3 {
+  color: var(--accent-primary);
 }
 
 [data-theme='dark'] .gc-card::before {

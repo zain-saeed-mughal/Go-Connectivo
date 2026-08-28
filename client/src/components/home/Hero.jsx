@@ -208,7 +208,7 @@ export default function Hero() {
               <motion.p
                 variants={fadeUp}
                 transition={itemTransition}
-                className="mb-3 text-xs font-semibold tracking-[0.22em] text-[#F4F6F9] uppercase sm:mb-4 sm:text-[0.8125rem]"
+                className="hero-eyebrow mb-3 text-xs font-semibold tracking-[0.22em] uppercase sm:mb-4 sm:text-[0.8125rem]"
               >
                 {heroContent.eyebrow}
               </motion.p>
