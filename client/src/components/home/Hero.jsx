@@ -192,7 +192,7 @@ export default function Hero() {
               height={1080}
             />
           )}
-          {/* Soft neutral scrim — readable text, no navy/purple color cast */}
+          {/* Theme-aware scrims — legibility + brand tone (see themes/dark, themes/light) */}
           <div className="hero-overlay-directional absolute inset-0 z-[1]" />
           <div className="hero-overlay-vignette absolute inset-0 z-[1]" />
         </div>

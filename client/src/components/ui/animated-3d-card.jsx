@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 import { isCompactViewport } from '../../motion/config';
 import ServiceCardArt from './ServiceCardArt';
 
-/** Dark purple premium card surfaces — no light wash */
+/** Card surfaces driven by theme CSS variables */
 const THEMES = {
   primary: 'from-[var(--surface)] via-[var(--surface)] to-[var(--bg-secondary)]',
   secondary: 'from-[var(--surface)] via-[var(--bg-secondary)] to-[var(--bg-primary)]',

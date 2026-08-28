@@ -63,7 +63,7 @@ export default function TopographyCanvas({ className = '' }) {
       const h = hex.replace('#', '');
       if (h.length < 6) {
         const dark = document.documentElement.getAttribute('data-theme') === 'dark';
-        return dark ? `rgba(132, 79, 252, ${alpha})` : `rgba(47, 76, 115, ${alpha})`;
+        return dark ? `rgba(0, 194, 255, ${alpha})` : `rgba(47, 76, 115, ${alpha})`;
       }
       const r = parseInt(h.slice(0, 2), 16);
       const g = parseInt(h.slice(2, 4), 16);
@@ -72,7 +72,7 @@ export default function TopographyCanvas({ className = '' }) {
     };
 
     const paint = () => {
-      // Footer palette (light site keeps deep navy footer; dark uses purple footer)
+      // Footer palette (light site keeps deep navy footer; dark uses cyan navy footer)
       const top = cssColor('--footer-bg', '#1c314f');
       const mid = cssColor('--footer-bg-mid', '#243c5c');
       const bottom = cssColor('--footer-bg-top', '#2f4c73');

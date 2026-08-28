@@ -13,7 +13,7 @@ function cssHex(name, fallback) {
   return Number.isFinite(n) ? n : fallback;
 }
 
-/** Mutated on each scene mount so light=navy / dark=purple stay in sync. */
+/** Mutated on each scene mount so light=navy / dark=cyan stay in sync. */
 let NAVY = 0x2f4c73;
 let MID = 0x4a6b94;
 let LIGHT = 0x6b8ab0;
@@ -659,7 +659,7 @@ function addStudioLights(scene) {
   const isDark =
     typeof document !== 'undefined' && document.documentElement.getAttribute('data-theme') === 'dark';
 
-  const ambient = new THREE.AmbientLight(isDark ? 0xc6c8fd : 0xd7e2e8, isDark ? 0.42 : 0.55);
+  const ambient = new THREE.AmbientLight(isDark ? 0x38d5ff : 0xd7e2e8, isDark ? 0.42 : 0.55);
   const key = new THREE.DirectionalLight(0xffffff, isDark ? 1.05 : 1.15);
   key.position.set(4.5, 7, 5);
   const fill = new THREE.DirectionalLight(isDark ? LIGHT : 0x9ec4ef, isDark ? 0.5 : 0.55);
@@ -667,7 +667,7 @@ function addStudioLights(scene) {
   const rim = new THREE.DirectionalLight(isDark ? MID : 0x6b8ab0, isDark ? 0.4 : 0.45);
   rim.position.set(0, 3, -6);
   const hemi = new THREE.HemisphereLight(
-    isDark ? 0x1a2238 : 0xe8eef5,
+    isDark ? 0x101f33 : 0xe8eef5,
     NAVY,
     isDark ? 0.28 : 0.35,
   );

@@ -15,7 +15,7 @@ function cssHex(name, fallback) {
 
 /**
  * Compact interactive holographic hub for section accents.
- * Colors follow active theme (navy light / purple dark).
+ * Colors follow active theme (navy light / cyan dark).
  */
 export default function HolographicHub3D({ className = '', interactive = true, onContextLost }) {
   const containerRef = useRef(null);

@@ -1,21 +1,48 @@
 /* Dark theme component polish */
 
-/* Hero — night scrim, purple wash softened */
+/* Hero — cinematic dark grade (cyan navy theme) */
 [data-theme='dark'] .hero-media {
-  background: #0d1321;
+  background: var(--bg-primary);
 }
 
 [data-theme='dark'] .hero-video {
-  opacity: 0.82;
-  filter: brightness(0.82) contrast(1.04) saturate(0.94);
+  opacity: 0.74;
+  filter: brightness(0.64) contrast(1.1) saturate(0.7);
+}
+
+/* Brand tone wash — unifies footage with dark palette */
+[data-theme='dark'] .hero-media::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    125deg,
+    rgba(7, 17, 31, 0.68) 0%,
+    rgba(11, 23, 40, 0.34) 34%,
+    rgba(0, 194, 255, 0.08) 58%,
+    rgba(56, 213, 255, 0.05) 100%
+  );
+  pointer-events: none;
+}
+
+[data-theme='dark'] .hero-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(0, 194, 255, 0.04);
+  mix-blend-mode: soft-light;
+  pointer-events: none;
 }
 
 [data-theme='dark'] .hero-overlay-directional {
+  z-index: 2;
   background: linear-gradient(
     90deg,
-    rgba(13, 19, 33, 0.62) 0%,
-    rgba(21, 27, 46, 0.34) 36%,
-    rgba(73, 30, 184, 0.06) 64%,
+    rgba(7, 17, 31, 0.76) 0%,
+    rgba(11, 23, 40, 0.4) 38%,
+    rgba(0, 194, 255, 0.07) 68%,
     transparent 100%
   );
 }
@@ -24,19 +51,27 @@
   [data-theme='dark'] .hero-overlay-directional {
     background: linear-gradient(
       180deg,
-      rgba(13, 19, 33, 0.36) 0%,
-      rgba(21, 27, 46, 0.44) 48%,
-      rgba(13, 19, 33, 0.52) 100%
+      rgba(7, 17, 31, 0.42) 0%,
+      rgba(11, 23, 40, 0.5) 44%,
+      rgba(0, 194, 255, 0.08) 72%,
+      rgba(7, 17, 31, 0.55) 100%
     );
   }
 }
 
 [data-theme='dark'] .hero-overlay-vignette {
-  background: radial-gradient(
-    ellipse 95% 85% at 50% 45%,
-    transparent 44%,
-    rgba(13, 19, 33, 0.26) 100%
-  );
+  z-index: 2;
+  background:
+    radial-gradient(
+      ellipse 100% 90% at 50% 40%,
+      transparent 36%,
+      rgba(7, 17, 31, 0.32) 100%
+    ),
+    radial-gradient(
+      ellipse 80% 55% at 88% 18%,
+      rgba(0, 194, 255, 0.06) 0%,
+      transparent 52%
+    );
 }
 
 [data-theme='dark'] .hero-title {
@@ -44,16 +79,16 @@
 }
 
 [data-theme='dark'] .hero-fcc-panel {
-  background: rgba(21, 27, 46, 0.62);
+  background: rgba(16, 31, 51, 0.62);
   box-shadow:
-    inset 0 0 0 1px rgba(198, 200, 253, 0.22),
+    inset 0 0 0 1px rgba(28, 48, 72, 0.85),
     0 18px 44px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(12px) saturate(120%);
   -webkit-backdrop-filter: blur(12px) saturate(120%);
 }
 
 [data-theme='dark'] .hero-fcc-eyebrow {
-  color: #c6c8fd;
+  color: #38d5ff;
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55);
 }
 
@@ -64,18 +99,18 @@
 }
 
 [data-theme='dark'] .hero-fcc-line {
-  color: #f7f7fb;
+  color: #aab8cc;
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
 }
 
 [data-theme='dark'] .hero-fcc-cta {
-  background: linear-gradient(90deg, #491eb8 0%, #844ffc 100%) !important;
-  color: #ffffff !important;
-  box-shadow: 0 10px 28px rgba(73, 30, 184, 0.45);
+  background: linear-gradient(90deg, #00c2ff 0%, #38d5ff 100%) !important;
+  color: #07111f !important;
+  box-shadow: 0 10px 28px rgba(0, 194, 255, 0.35);
 }
 
 [data-theme='dark'] .hero-fcc-cta:hover {
-  box-shadow: 0 14px 32px rgba(132, 79, 252, 0.5);
+  box-shadow: 0 14px 32px rgba(56, 213, 255, 0.42);
 }
 
 [data-theme='dark'] .gc-nav-pill {
@@ -103,14 +138,14 @@
 }
 
 [data-theme='dark'] .gc-card::before {
-  background: linear-gradient(90deg, transparent, rgba(132, 79, 252, 0.35), transparent);
+  background: linear-gradient(90deg, transparent, rgba(0, 194, 255, 0.28), transparent);
 }
 
 [data-theme='dark'] .gc-card::after {
-  background: radial-gradient(circle, rgba(132, 79, 252, 0.12), transparent 70%);
+  background: radial-gradient(circle, rgba(0, 194, 255, 0.1), transparent 70%);
 }
 
-/* Dark headings — solid pure white (no lavender/purple gradient); accents keep own fill */
+/* Dark headings — solid white; accents keep own fill */
 [data-theme='dark'] .gradient-text-brand,
 [data-theme='dark'] .gc-heading,
 [data-theme='dark'] .gradient-text,
@@ -126,21 +161,21 @@
 }
 
 [data-theme='dark'] .page-hero-highlight {
-  -webkit-text-fill-color: var(--accent-secondary) !important;
-  color: var(--accent-secondary) !important;
+  -webkit-text-fill-color: var(--accent-primary) !important;
+  color: var(--accent-primary) !important;
 }
 
-/* Secondary / outline buttons — white label on dark */
+/* Secondary / outline buttons */
 [data-theme='dark'] .gc-btn-secondary {
   color: #ffffff;
-  border-color: rgba(198, 200, 253, 0.45);
+  border-color: #1c3048;
   background: transparent;
 }
 
 [data-theme='dark'] .gc-btn-secondary:hover {
   color: #ffffff;
-  background: rgba(132, 79, 252, 0.15);
-  border-color: rgba(198, 200, 253, 0.7);
+  background: rgba(0, 194, 255, 0.12);
+  border-color: #00c2ff;
 }
 
 [data-theme='dark'] .why-us-panel {

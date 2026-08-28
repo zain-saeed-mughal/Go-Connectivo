@@ -31,7 +31,7 @@ export default function KycLayout() {
             <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#9BB0C9]">
               Confidential · Direct access only
             </p>
-            <h1 className="truncate font-display text-sm font-bold tracking-[-0.01em] sm:text-base">
+            <h1 className="kyc-portal__title truncate font-display text-sm font-bold tracking-[-0.01em] text-white sm:text-base">
               Call Center KYC & Onboarding Application
             </h1>
           </div>

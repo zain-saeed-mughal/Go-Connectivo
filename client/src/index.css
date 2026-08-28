@@ -962,7 +962,7 @@ html.gc-custom-cursor label {
   color-scheme: light;
 }
 
-/* KYC / Admin: navy scrollbar + light scheme (ignore marketing dark purple) */
+/* KYC / Admin: navy scrollbar + light scheme (ignore marketing dark theme) */
 html[data-portal='kyc'],
 html[data-portal='admin'] {
   color-scheme: light;
@@ -970,6 +970,38 @@ html[data-portal='admin'] {
   --scrollbar-track: rgba(232, 236, 242, 0.98);
   --selection-bg: rgba(74, 107, 148, 0.28);
   scrollbar-color: rgba(74, 107, 148, 0.5) rgba(232, 236, 242, 0.98);
+}
+
+html[data-portal='kyc'] body,
+html[data-portal='admin'] body {
+  color: #2f4c73;
+}
+
+html[data-portal='kyc'] input,
+html[data-portal='kyc'] textarea,
+html[data-portal='kyc'] select,
+html[data-portal='admin'] input,
+html[data-portal='admin'] textarea,
+html[data-portal='admin'] select {
+  color: #1c314f;
+  -webkit-text-fill-color: #1c314f;
+}
+
+html[data-portal='kyc'] input::placeholder,
+html[data-portal='kyc'] textarea::placeholder,
+html[data-portal='admin'] input::placeholder,
+html[data-portal='admin'] textarea::placeholder {
+  color: #6b7c8f;
+  opacity: 1;
+}
+
+html[data-portal='kyc'] input:-webkit-autofill,
+html[data-portal='kyc'] input:-webkit-autofill:hover,
+html[data-portal='kyc'] input:-webkit-autofill:focus,
+html[data-portal='admin'] input:-webkit-autofill,
+html[data-portal='admin'] input:-webkit-autofill:hover,
+html[data-portal='admin'] input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #1c314f;
 }
 
 html[data-portal='kyc']::-webkit-scrollbar-thumb,
@@ -1021,6 +1053,28 @@ html[data-portal='admin']::-webkit-scrollbar-track {
 .kyc-card {
   position: relative;
   z-index: 1;
+}
+
+/* Portal surfaces — keep local navy heading colors (ignore public dark theme) */
+html[data-portal='kyc'] .kyc-portal header .kyc-portal__title {
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+}
+
+html[data-portal='admin'] h1.font-display,
+html[data-portal='admin'] h2.font-display,
+html[data-portal='admin'] h3.font-display,
+html[data-portal='kyc'] .kyc-portal h1.font-display:not(.kyc-portal__title),
+html[data-portal='kyc'] .kyc-portal h2.font-display,
+html[data-portal='kyc'] .kyc-portal h3.font-display {
+  color: #1c314f;
+  -webkit-text-fill-color: #1c314f;
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
 }
 
 /* WhyUs panel: clip WebGL/blur to rounded corners (avoid .gc-card preserve-3d) */

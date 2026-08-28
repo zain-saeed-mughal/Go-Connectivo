@@ -28,6 +28,16 @@ export default function AdminLogin() {
     };
   }, []);
 
+  useEffect(() => {
+    const root = document.documentElement;
+    root.setAttribute('data-portal', 'admin');
+    return () => {
+      if (root.getAttribute('data-portal') === 'admin') {
+        root.removeAttribute('data-portal');
+      }
+    };
+  }, []);
+
   if (!loading && user) return <Navigate to="/admin" replace />;
 
   const onSubmit = async (e) => {
@@ -111,7 +121,7 @@ export default function AdminLogin() {
               autoComplete="username"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full rounded-xl border border-[rgba(47,76,115,0.16)] bg-[#F8FAFC] px-3.5 py-2.5 text-sm outline-none focus:border-[#4A6B94] focus:bg-white"
+              className="w-full rounded-xl border border-[rgba(47,76,115,0.16)] bg-[#F8FAFC] px-3.5 py-2.5 text-sm text-[#1C314F] outline-none focus:border-[#4A6B94] focus:bg-white"
             />
           </label>
           <label className="block text-sm">
@@ -123,7 +133,7 @@ export default function AdminLogin() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"
-              className="w-full rounded-xl border border-[rgba(47,76,115,0.16)] bg-[#F8FAFC] px-3.5 py-2.5 text-sm outline-none focus:border-[#4A6B94] focus:bg-white"
+              className="w-full rounded-xl border border-[rgba(47,76,115,0.16)] bg-[#F8FAFC] px-3.5 py-2.5 text-sm text-[#1C314F] outline-none focus:border-[#4A6B94] focus:bg-white"
             />
           </label>
 

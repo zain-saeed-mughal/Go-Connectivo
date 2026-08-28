@@ -27,7 +27,7 @@
 }
 
 /* Reset dark-mode heading fill when switching back to light */
-[data-theme='light'] h1.font-display:not(.gradient-text-brand):not(.gc-heading):not(.gradient-text),
+[data-theme='light'] h1.font-display:not(.gradient-text-brand):not(.gc-heading):not(.gradient-text):not(.kyc-portal__title),
 [data-theme='light'] h2.font-display:not(.gradient-text-brand):not(.gc-heading):not(.gradient-text),
 [data-theme='light'] h3.font-display:not(.gradient-text-brand):not(.gc-heading):not(.gradient-text) {
   background: none;
