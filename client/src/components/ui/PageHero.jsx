@@ -72,7 +72,7 @@ export default function PageHero({
         <img
           src={image}
           alt={imageAlt || title || 'Service illustration'}
-          className="aspect-[16/10] h-auto w-full object-cover object-center sm:aspect-[3/2]"
+          className="aspect-[16/10] h-auto w-full object-contain object-center sm:aspect-[3/2]"
           width={imageWidth}
           height={imageHeight}
           loading="eager"

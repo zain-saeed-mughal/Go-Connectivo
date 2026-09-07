@@ -289,6 +289,29 @@
   opacity: 0.55;
 }
 
+[data-theme='light'] .partners-mega__mark,
+[data-theme='light'] .partner-card__mark {
+  background: linear-gradient(135deg, #4a6b94 0%, #6b8ab0 100%);
+  box-shadow: 0 8px 20px rgba(74, 107, 148, 0.28);
+  color: #f7f9fc;
+}
+
+[data-theme='light'] .partner-mark--logo {
+  background: #f4f6f9;
+  border: 1px solid rgba(107, 138, 176, 0.28);
+}
+
+[data-theme='light'] .partners-mega {
+  background: #ffffff;
+  border-color: rgba(107, 138, 176, 0.28);
+  box-shadow: 0 18px 48px rgba(28, 49, 79, 0.14);
+}
+
+[data-theme='light'] .partner-card:hover {
+  border-color: rgba(74, 107, 148, 0.4);
+  box-shadow: 0 16px 40px rgba(47, 76, 115, 0.12);
+}
+
 [data-theme='light'] .noise {
   mix-blend-mode: multiply;
   opacity: 0.02;

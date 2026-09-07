@@ -42,6 +42,12 @@ export const staticPages = {
       'Explore Go Connectivo services: dialers, Business VoIP, hosted PBX, SIP trunking, DID numbers, VoIP termination, call center software, SMS, and voice APIs.',
     h1: 'Complete Voice Stack, Built for Teams',
   },
+  '/partners': {
+    title: 'Marketing Partners | Go Connectivo',
+    description:
+      'Go Connectivo marketing partners: Commio, Sangoma, Callivex, Vestacall, Dial World, DID Central, and Range — trusted voice and dialer ecosystem partners.',
+    h1: 'Built with Trusted Partners',
+  },
   '/faqs': {
     title: 'VoIP & Dialer FAQs | Go Connectivo',
     description:

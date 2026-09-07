@@ -9,7 +9,12 @@ import ServiceIcon from '../ui/ServiceIcon';
 import ServicesMegaMenu from './ServicesMegaMenu';
 import LegalMegaMenu from './LegalMegaMenu';
 import { useTheme } from '../../context/ThemeContext';
-import { getServicesForCategory, legalNavItems, navLinks, serviceCategories } from '../../data/content';
+import {
+  getServicesForCategory,
+  legalNavItems,
+  navLinks,
+  serviceCategories,
+} from '../../data/content';
 
 const menuVariants = {
   hidden: { opacity: 0, y: -12 },

@@ -3,7 +3,76 @@ export const navLinks = [
   { label: 'About', path: '/about' },
   { label: 'Services', path: '/services' },
   { label: 'Legal Compliance', path: '/compliance' },
+  { label: 'Marketing Partners', path: '/partners' },
   { label: 'FAQs', path: '/faqs' },
+];
+
+/** Display order is intentional — keep this sequence in nav + partners page. */
+export const marketingPartners = [
+  {
+    id: 'commio',
+    name: 'Commio',
+    monogram: 'CO',
+    logo: '/partners/commio.png',
+    logoDark: '/partners/commio-white.png',
+    website: 'https://www.commio.com/',
+    blurb: 'Cloud voice & messaging API platform for contact centers.',
+  },
+  {
+    id: 'sangoma',
+    name: 'Sangoma',
+    monogram: 'SA',
+    logo: '/partners/sangoma.svg',
+    logoDark: '/partners/sangoma-white.svg',
+    website: 'https://sangoma.com/',
+    blurb: 'Business communications platforms, UCaaS, and SIP.',
+  },
+  {
+    id: 'callivex',
+    name: 'Callivex',
+    monogram: 'CX',
+    logo: '/partners/callivex.png',
+    logoOnDark: true,
+    website: 'https://callivex.com/',
+    blurb: 'Wholesale SIP termination, DIDs, and SIP trunking.',
+  },
+  {
+    id: 'vestacall',
+    name: 'Vestacall',
+    monogram: 'VC',
+    // Same asset both themes — SVG vs PNG aspect mismatch caused size jump on toggle
+    logo: '/partners/vestacall-white.png',
+    logoOnDark: true,
+    website: 'https://www.vestacall.com/',
+    blurb: 'Cloud contact center, UCaaS, and wholesale VoIP.',
+  },
+  {
+    id: 'dial-world',
+    name: 'Dial World',
+    monogram: 'DW',
+    logo: '/partners/dial-world.png',
+    logoOnDark: true,
+    website: 'https://www.dialworldcom.com/',
+    blurb: 'VoIP termination, numbers, messaging, and BYOC for call centers.',
+  },
+  {
+    id: 'did-central',
+    name: 'DID Central',
+    monogram: 'DC',
+    logo: '/partners/did-central.png',
+    logoOnLight: true,
+    website: 'https://www.didcentral.io/',
+    blurb: 'US & Australia wholesale termination and toll-free voice.',
+  },
+  {
+    id: 'range',
+    name: 'Range',
+    monogram: 'RG',
+    logo: '/partners/range.png',
+    logoOnDark: true,
+    website: 'https://rangetelecom.com/',
+    blurb: 'Tier 1 VoIP termination, US DIDs, toll-free, and SMS.',
+  },
 ];
 
 export const contactInfo = {

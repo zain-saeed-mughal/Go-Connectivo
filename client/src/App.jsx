@@ -9,6 +9,7 @@ const loaders = {
   about: () => import('./pages/About'),
   services: () => import('./pages/Services'),
   serviceDetail: () => import('./pages/ServiceDetail'),
+  partners: () => import('./pages/Partners'),
   faqs: () => import('./pages/Faqs'),
   compliance: () => import('./pages/Compliance'),
   robocallPlan: () => import('./pages/RobocallMitigationPlan'),
@@ -26,6 +27,7 @@ const AdminRoutes = lazy(() => import('./pages/AdminRoutes'));
 const About = lazy(loaders.about);
 const Services = lazy(loaders.services);
 const ServiceDetail = lazy(loaders.serviceDetail);
+const Partners = lazy(loaders.partners);
 const Faqs = lazy(loaders.faqs);
 const Compliance = lazy(loaders.compliance);
 const RobocallMitigationPlan = lazy(loaders.robocallPlan);
@@ -137,6 +139,14 @@ export default function App() {
             element={
               <Suspense fallback={<RouteFallback />}>
                 <ServiceDetail />
+              </Suspense>
+            }
+          />
+          <Route
+            path="partners"
+            element={
+              <Suspense fallback={<RouteFallback />}>
+                <Partners />
               </Suspense>
             }
           />

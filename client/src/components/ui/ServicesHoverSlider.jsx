@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import {
   HoverSlider,
   HoverSliderImage,
@@ -6,34 +7,40 @@ import {
 } from './animated-slideshow';
 import { AnimatedSection } from '../motion';
 import { featuredServices } from '../../data/content';
-import autoDialersImg from '../../assets/services/auto-dialers.webp';
-import businessVoipImg from '../../assets/services/illustrations/business-voip.webp';
-import callCenterSoftwareImg from '../../assets/services/call-center-software.webp';
-import sipTrunkingImg from '../../assets/services/illustrations/sip-trunking.webp';
-import didServicesImg from '../../assets/services/illustrations/did-services.webp';
-import voipVoiceImg from '../../assets/services/voip-voice.webp';
+import businessVoipImg from '../../assets/services/illustrations/slider/business-voip.webp';
+import sipTrunkingImg from '../../assets/services/illustrations/slider/sip-trunking.webp';
+import contactCenterImg from '../../assets/services/illustrations/slider/contact-center.webp';
+import voipTerminationImg from '../../assets/services/illustrations/slider/voip-termination.webp';
+import autoDialerImg from '../../assets/services/illustrations/slider/auto-dialer.webp';
+import didServicesImg from '../../assets/services/illustrations/slider/did-services.webp';
 
 /**
- * Featured service titles + imagery (local assets where provided).
+ * Featured service titles + square illustrations sized for the rounded preview box.
  */
-const SERVICE_SLIDES = featuredServices.map((service) => {
-  const images = {
-    'business-voip': businessVoipImg,
-    'sip-trunking': sipTrunkingImg,
-    'call-center-software': callCenterSoftwareImg,
-    'voip-termination': voipVoiceImg,
-    'auto-dialer': autoDialersImg,
-    'did-services': didServicesImg,
-  };
+const SLIDER_IMAGES = {
+  'business-voip': businessVoipImg,
+  'sip-trunking': sipTrunkingImg,
+  'call-center-software': contactCenterImg,
+  'voip-termination': voipTerminationImg,
+  'auto-dialer': autoDialerImg,
+  'did-services': didServicesImg,
+};
 
-  return {
-    id: service.id,
-    title: service.title,
-    imageUrl: images[service.id] || autoDialersImg,
-  };
-});
+const SERVICE_SLIDES = featuredServices.map((service) => ({
+  id: service.id,
+  title: service.title,
+  imageUrl: SLIDER_IMAGES[service.id] || businessVoipImg,
+}));
 
 export default function ServicesHoverSlider() {
+  // Warm the browser cache so hover swaps never wait on network.
+  useEffect(() => {
+    SERVICE_SLIDES.forEach((slide) => {
+      const img = new Image();
+      img.src = slide.imageUrl;
+    });
+  }, []);
+
   return (
     <AnimatedSection from="up" duration={0.9}>
       <HoverSlider className="gc-card gc-card-panel gc-container overflow-hidden px-4 py-7 sm:px-6 sm:py-10 md:px-10 md:py-12 lg:px-12 lg:py-14">
@@ -63,7 +70,8 @@ export default function ServicesHoverSlider() {
                   src={slide.imageUrl}
                   alt={slide.title}
                   className="h-full w-full rounded-2xl object-cover object-center"
-                  loading={index === 0 ? 'eager' : 'lazy'}
+                  loading="eager"
+                  fetchPriority={index === 0 ? 'high' : 'low'}
                   decoding="async"
                 />
               </div>
