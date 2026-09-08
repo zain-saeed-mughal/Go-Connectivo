@@ -45,7 +45,7 @@ export const staticPages = {
   '/partners': {
     title: 'Marketing Partners | Go Connectivo',
     description:
-      'Go Connectivo marketing partners: Commio, Sangoma, Callivex, Vestacall, Dial World, DID Central, and Range — trusted voice and dialer ecosystem partners.',
+      'Go Connectivo marketing partners: Sangoma, Dial World, DID Central, and Range — trusted voice and dialer ecosystem partners.',
     h1: 'Built with Trusted Partners',
   },
   '/faqs': {

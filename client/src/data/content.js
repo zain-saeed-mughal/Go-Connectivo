@@ -10,15 +10,6 @@ export const navLinks = [
 /** Display order is intentional — keep this sequence in nav + partners page. */
 export const marketingPartners = [
   {
-    id: 'commio',
-    name: 'Commio',
-    monogram: 'CO',
-    logo: '/partners/commio.png',
-    logoDark: '/partners/commio-white.png',
-    website: 'https://www.commio.com/',
-    blurb: 'Cloud voice & messaging API platform for contact centers.',
-  },
-  {
     id: 'sangoma',
     name: 'Sangoma',
     monogram: 'SA',
@@ -26,25 +17,6 @@ export const marketingPartners = [
     logoDark: '/partners/sangoma-white.svg',
     website: 'https://sangoma.com/',
     blurb: 'Business communications platforms, UCaaS, and SIP.',
-  },
-  {
-    id: 'callivex',
-    name: 'Callivex',
-    monogram: 'CX',
-    logo: '/partners/callivex.png',
-    logoOnDark: true,
-    website: 'https://callivex.com/',
-    blurb: 'Wholesale SIP termination, DIDs, and SIP trunking.',
-  },
-  {
-    id: 'vestacall',
-    name: 'Vestacall',
-    monogram: 'VC',
-    // Same asset both themes — SVG vs PNG aspect mismatch caused size jump on toggle
-    logo: '/partners/vestacall-white.png',
-    logoOnDark: true,
-    website: 'https://www.vestacall.com/',
-    blurb: 'Cloud contact center, UCaaS, and wholesale VoIP.',
   },
   {
     id: 'dial-world',

@@ -17,7 +17,7 @@ export default function Partners() {
         ]}
       />
 
-      <section className="gc-section pt-40 sm:pt-44 md:pt-48">
+      <section className="gc-section pt-52 sm:pt-56 md:pt-64">
         <div className="gc-container">
           <h1 className="font-display mb-8 text-[clamp(1.75rem,4vw,2.75rem)] font-extrabold tracking-tight text-[var(--text-primary)] sm:mb-10">
             Marketing Partners
