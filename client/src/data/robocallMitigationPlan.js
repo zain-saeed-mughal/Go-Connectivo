@@ -4,7 +4,7 @@ export const robocallMitigationPlan = {
   lastUpdated: 'August 2026',
   intro: [
     'Go Connectivo is committed to preventing its network, services, telephone numbers, SIP services, VoIP termination services, and related communications infrastructure from being used to originate, transmit, facilitate, or support illegal robocalls, fraudulent calls, unlawful spoofing, or other abusive voice traffic.',
-    'This Robocall Mitigation Plan describes the policies, procedures, monitoring practices, customer-verification controls, and enforcement measures used by Go Connectivo to identify and mitigate potentially unlawful voice traffic.',
+    'This KYC & Robocall Mitigation Plan describes the policies, procedures, monitoring practices, customer-verification controls, and enforcement measures used by Go Connectivo to identify and mitigate potentially unlawful voice traffic.',
   ],
   sections: [
     {

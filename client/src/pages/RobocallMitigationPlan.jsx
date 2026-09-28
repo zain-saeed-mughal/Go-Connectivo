@@ -6,17 +6,17 @@ export default function RobocallMitigationPlan() {
   return (
     <>
       <PageSeo
-        path="/compliance/robocall-mitigation-plan"
+        path="/compliance/KYC-RMD"
         breadcrumbs={[
           { name: 'Home', path: '/' },
           { name: 'Compliance', path: '/compliance' },
-          { name: 'Robocall Mitigation Plan', path: '/compliance/robocall-mitigation-plan' },
+          { name: 'Robocall Mitigation Plan', path: '/compliance/KYC-RMD' },
         ]}
       />
       <LegalPolicyDocument
-        title="Robocall"
-        highlight="Mitigation Plan"
-        description="Policies, monitoring practices, customer-verification controls, and enforcement measures used by Go Connectivo to identify and mitigate potentially unlawful voice traffic."
+        title="Know Your Customer &"
+        highlight="Robocall Mitigation Plan"
+        description="Policies, monitoring practices, customer-verification controls, and enforcement measures used by Go Connectivo to identify customers and mitigate potentially unlawful voice traffic."
         document={robocallMitigationPlan}
       />
     </>

@@ -39,7 +39,7 @@ export default function Footer() {
     { label: 'Privacy', path: '/privacy' },
     { label: 'Terms', path: '/terms' },
     { label: 'Compliance', path: '/compliance' },
-    { label: 'RMP', path: '/compliance/robocall-mitigation-plan' },
+    { label: 'RMP', path: '/compliance/KYC-RMD' },
     { label: 'AUP', path: '/compliance/acceptable-use-policy' },
   ];
 

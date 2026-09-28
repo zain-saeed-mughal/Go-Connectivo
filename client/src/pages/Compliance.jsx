@@ -52,7 +52,7 @@ export default function Compliance() {
             Talk to our team
           </MagneticButton>
           <MagneticButton
-            to="/compliance/robocall-mitigation-plan"
+            to="/compliance/KYC-RMD"
             variant="secondary"
             className="w-full justify-center sm:w-auto"
           >
@@ -83,7 +83,7 @@ export default function Compliance() {
                   </p>
                   {item.id === 'rmp' ? (
                     <MagneticButton
-                      to="/compliance/robocall-mitigation-plan"
+                      to="/compliance/KYC-RMD"
                       variant="secondary"
                       className="w-full justify-center sm:w-auto"
                     >

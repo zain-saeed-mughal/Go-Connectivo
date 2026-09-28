@@ -60,7 +60,7 @@ export const staticPages = {
       'How Go Connectivo approaches robocall mitigation, caller authentication, KYC, and responsible use of voice services.',
     h1: 'Legal Compliance',
   },
-  '/compliance/robocall-mitigation-plan': {
+  '/compliance/KYC-RMD': {
     title: 'Robocall Mitigation Plan | Go Connectivo',
     description:
       'Read Go Connectivo’s Robocall Mitigation Plan covering network integrity, traceback cooperation, and unlawful traffic controls.',

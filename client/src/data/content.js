@@ -739,7 +739,7 @@ export const legalNavItems = [
   {
     id: 'robocall-plan',
     title: 'Robocall Mitigation Plan',
-    path: '/compliance/robocall-mitigation-plan',
+    path: '/compliance/KYC-RMD',
     icon: 'ListOrdered',
   },
   {

@@ -167,7 +167,7 @@ export default function App() {
             }
           />
           <Route
-            path="compliance/robocall-mitigation-plan"
+            path="compliance/KYC-RMD"
             element={
               <Suspense fallback={<RouteFallback />}>
                 <RobocallMitigationPlan />

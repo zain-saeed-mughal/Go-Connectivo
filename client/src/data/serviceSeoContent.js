@@ -662,7 +662,7 @@ export const SERVICE_SEO = {
       { label: 'VoIP termination', to: '/services/voip-termination' },
       { label: 'Wholesale termination', to: '/services/wholesale-termination' },
       { label: 'Smart auto dialer', to: '/services/auto-dialer' },
-      { label: 'Robocall mitigation', to: '/compliance/robocall-mitigation-plan' },
+      { label: 'Robocall mitigation', to: '/compliance/KYC-RMD' },
     ],
     closing: {
       heading: 'Fuel dialers with campaign outbound voice',
@@ -868,7 +868,7 @@ export const SERVICE_SEO = {
       { label: 'Wholesale termination', to: '/services/wholesale-termination' },
       { label: 'Outbound voice (dialers)', to: '/services/outbound-services' },
       { label: 'Toll-free termination', to: '/services/toll-free-termination' },
-      { label: 'Robocall mitigation', to: '/compliance/robocall-mitigation-plan' },
+      { label: 'Robocall mitigation', to: '/compliance/KYC-RMD' },
     ],
     closing: {
       heading: 'Terminate with Go Connectivo',
