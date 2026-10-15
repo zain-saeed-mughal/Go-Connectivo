@@ -1,6 +1,6 @@
 {
   "siteUrl": "https://www.goconnectivo.com",
-  "generatedAt": "2026-08-28T16:06:16.625Z",
+  "generatedAt": "2026-10-15T18:18:59.356Z",
   "routes": [
     {
       "path": "/",
@@ -17,14 +17,24 @@
           "url": "https://www.goconnectivo.com",
           "logo": "https://www.goconnectivo.com/favicon-192.png",
           "email": "support@goconnectivo.com",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "522 Glenwood Ave",
-            "addressLocality": "Williamsport",
-            "addressRegion": "PA",
-            "postalCode": "17701",
-            "addressCountry": "US"
-          },
+          "address": [
+            {
+              "@type": "PostalAddress",
+              "streetAddress": "522 Glenwood Ave",
+              "addressLocality": "Williamsport",
+              "addressRegion": "PA",
+              "postalCode": "17701",
+              "addressCountry": "US"
+            },
+            {
+              "@type": "PostalAddress",
+              "streetAddress": "4943 Kings Hwy N",
+              "addressLocality": "Emmaus",
+              "addressRegion": "PA",
+              "postalCode": "18049",
+              "addressCountry": "US"
+            }
+          ],
           "contactPoint": [
             {
               "@type": "ContactPoint",
@@ -128,6 +138,45 @@
       ]
     },
     {
+      "path": "/partners",
+      "title": "Marketing Partners | Go Connectivo",
+      "description": "Go Connectivo marketing partners: Sangoma, Dial World, DID Central, and Range — trusted voice and dialer ecosystem partners.",
+      "h1": "Built with Trusted Partners",
+      "noindex": false,
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "Marketing Partners | Go Connectivo",
+          "description": "Go Connectivo marketing partners: Sangoma, Dial World, DID Central, and Range — trusted voice and dialer ecosystem partners.",
+          "url": "https://www.goconnectivo.com/partners",
+          "isPartOf": {
+            "@type": "WebSite",
+            "name": "Go Connectivo",
+            "url": "https://www.goconnectivo.com"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.goconnectivo.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Built with Trusted Partners",
+              "item": "https://www.goconnectivo.com/partners"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "path": "/faqs",
       "title": "VoIP & Dialer FAQs | Go Connectivo",
       "description": "Answers about Go Connectivo dialers, Business VoIP, SIP, numbers, VoIP termination, contact-center tools, APIs, onboarding, and support.",
@@ -206,7 +255,7 @@
       ]
     },
     {
-      "path": "/compliance/robocall-mitigation-plan",
+      "path": "/compliance/KYC-RMD",
       "title": "Robocall Mitigation Plan | Go Connectivo",
       "description": "Read Go Connectivo’s Robocall Mitigation Plan covering network integrity, traceback cooperation, and unlawful traffic controls.",
       "h1": "Robocall Mitigation Plan",
@@ -217,7 +266,7 @@
           "@type": "WebPage",
           "name": "Robocall Mitigation Plan | Go Connectivo",
           "description": "Read Go Connectivo’s Robocall Mitigation Plan covering network integrity, traceback cooperation, and unlawful traffic controls.",
-          "url": "https://www.goconnectivo.com/compliance/robocall-mitigation-plan",
+          "url": "https://www.goconnectivo.com/compliance/KYC-RMD",
           "isPartOf": {
             "@type": "WebSite",
             "name": "Go Connectivo",
@@ -244,7 +293,7 @@
               "@type": "ListItem",
               "position": 3,
               "name": "Robocall Mitigation Plan",
-              "item": "https://www.goconnectivo.com/compliance/robocall-mitigation-plan"
+              "item": "https://www.goconnectivo.com/compliance/KYC-RMD"
             }
           ]
         }
@@ -1555,9 +1604,10 @@
     "/",
     "/about",
     "/services",
+    "/partners",
     "/faqs",
     "/compliance",
-    "/compliance/robocall-mitigation-plan",
+    "/compliance/KYC-RMD",
     "/compliance/acceptable-use-policy",
     "/contact",
     "/privacy",
