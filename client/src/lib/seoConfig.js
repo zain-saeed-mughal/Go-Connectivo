@@ -13,6 +13,22 @@ export const organization = {
   url: SITE_URL,
   logo: `${SITE_URL}/favicon-192.png`,
   email: 'support@goconnectivo.com',
+  addresses: [
+    {
+      streetAddress: '522 Glenwood Ave',
+      addressLocality: 'Williamsport',
+      addressRegion: 'PA',
+      postalCode: '17701',
+      addressCountry: 'US',
+    },
+    {
+      streetAddress: '4943 Kings Hwy N',
+      addressLocality: 'Emmaus',
+      addressRegion: 'PA',
+      postalCode: '18049',
+      addressCountry: 'US',
+    },
+  ],
   address: {
     streetAddress: '522 Glenwood Ave',
     addressLocality: 'Williamsport',
@@ -115,10 +131,10 @@ export function buildOrganizationSchema() {
     url: organization.url,
     logo: organization.logo,
     email: organization.email,
-    address: {
+    address: (organization.addresses || [organization.address]).map((addr) => ({
       '@type': 'PostalAddress',
-      ...organization.address,
-    },
+      ...addr,
+    })),
     contactPoint: [
       {
         '@type': 'ContactPoint',

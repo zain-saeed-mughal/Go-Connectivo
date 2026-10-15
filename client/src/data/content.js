@@ -50,6 +50,10 @@ export const marketingPartners = [
 export const contactInfo = {
   email: 'support@goconnectivo.com',
   address: '522 Glenwood Ave, Williamsport PA 17701, USA',
+  addresses: [
+    '522 Glenwood Ave, Williamsport PA 17701, USA',
+    '4943 Kings Hwy N, Emmaus, PA 18049, USA',
+  ],
   support: '24/7 Customer Support',
   hours: 'Monday – Friday: 9:00 AM – 6:00 PM · Saturday: 9:00 AM – 2:00 PM',
 };

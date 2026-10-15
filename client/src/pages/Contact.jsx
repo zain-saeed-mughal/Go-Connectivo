@@ -7,8 +7,11 @@ import { PageSeo } from '../components/seo/PageSeo';
 const details = [
   {
     icon: MapPin,
-    title: 'Our Location',
-    lines: ['522 Glenwood Ave', 'Williamsport PA 17701, USA'],
+    title: 'Our Locations',
+    locations: [
+      ['522 Glenwood Ave', 'Williamsport PA 17701, USA'],
+      ['4943 Kings Hwy N', 'Emmaus, PA 18049, USA'],
+    ],
   },
   {
     icon: Mail,
@@ -85,20 +88,34 @@ function GetInTouchCard() {
               <p className="text-[11px] font-semibold tracking-[0.08em] text-[var(--accent-secondary)] uppercase">
                 {detail.title}
               </p>
-              {detail.lines.map((line) =>
-                detail.href ? (
-                  <a
-                    key={line}
-                    href={detail.href}
-                    className="mt-1 block text-sm leading-relaxed text-[var(--text-primary)] transition-colors duration-300 hover:text-[var(--accent-secondary)]"
-                  >
-                    {line}
-                  </a>
-                ) : (
-                  <p key={line} className="mt-1 text-sm leading-relaxed text-[var(--text-secondary)]">
-                    {line}
-                  </p>
-                ),
+              {detail.locations ? (
+                <div className="mt-1.5 space-y-2.5">
+                  {detail.locations.map((loc, idx) => (
+                    <div key={idx} className={idx > 0 ? 'border-t border-[color:var(--border-soft)]/60 pt-2' : ''}>
+                      {loc.map((line) => (
+                        <p key={line} className="text-sm leading-relaxed text-[var(--text-secondary)]">
+                          {line}
+                        </p>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                detail.lines?.map((line) =>
+                  detail.href ? (
+                    <a
+                      key={line}
+                      href={detail.href}
+                      className="mt-1 block text-sm leading-relaxed text-[var(--text-primary)] transition-colors duration-300 hover:text-[var(--accent-secondary)]"
+                    >
+                      {line}
+                    </a>
+                  ) : (
+                    <p key={line} className="mt-1 text-sm leading-relaxed text-[var(--text-secondary)]">
+                      {line}
+                    </p>
+                  ),
+                )
               )}
             </div>
           </li>

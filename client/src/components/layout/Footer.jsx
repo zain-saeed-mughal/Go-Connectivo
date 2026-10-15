@@ -103,7 +103,13 @@ export default function Footer() {
           <h3 className="mb-3.5 font-mono text-[10px] font-bold tracking-[0.2em] text-[var(--footer-heading)] uppercase sm:text-xs">
             Contact
           </h3>
-          <p className="max-w-[16rem] text-sm leading-relaxed text-[var(--footer-muted)]">{contactInfo.address}</p>
+          <div className="space-y-2 text-sm leading-relaxed text-[var(--footer-muted)]">
+            {(contactInfo.addresses || [contactInfo.address]).map((addr) => (
+              <p key={addr} className="max-w-[16rem]">
+                {addr}
+              </p>
+            ))}
+          </div>
           <a
             href={`mailto:${contactInfo.email}`}
             className="mt-3 inline-block text-sm font-medium text-[var(--footer-link)] transition-colors duration-300 hover:text-[var(--footer-link-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--footer-underline)]/60"
